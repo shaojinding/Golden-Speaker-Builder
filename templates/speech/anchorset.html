@@ -1,0 +1,24 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+{% block title %}AnchorSet Detail{% endblock %}
+
+{% block top_block %}
+    <h1>{{ anchor_set_name }}</h1>
+    <p><a class="btn btn-default" href="{% url 'manage_anchorset' %}" role="button">&laquo;Back</a></p>
+{% endblock %}
+
+{% block nav_title %}
+    Anchor Set "{{ anchor_set_name }}"
+{% endblock %}
+
+{% block bottom_block %}
+    <p><a class="btn btn-default" href="{% url 'manage_anchorset' %}" role="button">&laquo;Back</a></p>
+    {% if anchor_set %}
+        <p>Time stamp: {{ anchor_set.timestamp }}</p>
+        <p>Is the this anchor set active: {{ anchor_set.active }}</p>
+        <p>Has this anchor set used: {{ anchor_set.used }}</p>
+        <p>Recorded phonemes: {{ saved_phonemes }}</p>
+    {% else %}
+        The specified anchor set {{ anchor_set_name }} does not exist!
+    {% endif %}
+{% endblock %}

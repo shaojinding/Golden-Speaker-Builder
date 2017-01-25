@@ -1,0 +1,56 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav_title %}
+    Home
+{% endblock %}
+
+{% block css %}
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/index.js" %}"></script>
+    <link type="text/css" rel="stylesheet" href="{% static "css/index.css" %}"/>
+{% endblock %}
+
+{% block bottom_block %}
+    <!-- record anchor set -->
+    <div class="index-choice">
+        <div class="index-btn">
+            <p><a class="btn btn-default" href="{% url 'add_anchorset' %}" role="button" style="width: 300px">Record Anchor Set &raquo;</a></p>
+        </div>
+        <div class="index-btn-info">
+            <p>Record and annotate a new set of consonant and vowel sounds</p>
+        </div>
+    </div>
+    <!-- manage anchor set -->
+    <div class="index-choice">
+        <div class="index-btn">
+            <p><a class="btn btn-default" href="{% url 'manage_anchorset' %}" role="button" style="width: 300px">Edit Anchor Set &raquo;</a></p>
+        </div>
+        <div class="index-btn-info">
+            <p>Make corrections to a previously recorded set of anchors</p>
+        </div>
+    </div>
+    <!-- build and synthesize -->
+    <div class="index-choice">
+        <div class="index-btn">
+            <p><a class="btn btn-default" href="{% url 'build_synthesize' %}" role="button" style="width: 300px">Build Golden Speaker &raquo;</a></p>
+        </div>
+        <div class="index-btn-info">
+            <p>Select a recorded Anchor Set and model accent for your Golden Speaker</p>
+        </div>
+    </div>
+    <!-- practice with golden speaker -->
+    <div class="index-choice">
+        <div class="index-btn">
+            <p><a class="btn btn-default" href="/speech/practice/index" role="button" style="width: 300px">Practice with Golden Speaker &raquo;</a></p>
+        </div>
+        <div class="index-btn-info">
+            <p>Practice reference sentences against your a Golden Speaker and visualize your pronunciation</p>
+        </div>
+    </div>
+
+
+
+{% endblock %}

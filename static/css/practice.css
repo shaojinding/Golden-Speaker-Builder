@@ -1,0 +1,29 @@
+.scroll-list-uttr {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#controls {
+	height: 30%;
+	width: 100%;
+}
+
+#record {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/record.png");
+	background-repeat:no-repeat;
+}
+
+
+#playPause {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/play.png");
+	background-repeat:no-repeat;
+
+}

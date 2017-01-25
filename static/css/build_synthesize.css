@@ -1,0 +1,24 @@
+#source-speaker {
+    display: inline-block;
+    width: 48%;
+    float: left;
+}
+
+#target-speaker {
+    display: inline-block;
+    width: 48%;
+    float: right;
+}
+
+#speaker-choose {
+    height: 300px;
+}
+.scroll-list {
+    max-height: 255px;
+    overflow-y: scroll;
+}
+
+.scroll-list-uttr {
+    max-height: 300px;
+    overflow-y: scroll;
+}

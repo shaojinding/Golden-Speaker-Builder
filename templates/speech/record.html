@@ -1,0 +1,273 @@
+{% extends 'speech/record_base.html' %}
+{% load staticfiles %}
+
+{% csrf_token %}
+{% block title %}Record & Annotate{% endblock %}
+
+{% block nav_title %}
+    Recording Anchor Set
+{% endblock %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static "css/record.css" %}"/>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/record.js" %}"></script>
+    <script src="{% static "js/recorder/recorder.js" %}"></script>
+    <script src="{% static "js/recorder/main.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+    <script type="text/javascript">
+        currentPhoneme = "{{ phoneme }}";
+        savedPhoneme = {{ saved_phoneme|safe }};
+        record_details = {{ record_details|safe }};
+    </script>
+{% endblock %}
+
+{% block button_block %}
+    {% if completed %}
+        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'">Next</button>
+    {% else %}
+        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'" disabled>Next</button>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{#<!DOCTYPE html>#}
+{#{% load staticfiles %}#}
+{#<script src="{% static "js/jquery.js" %}"></script>#}
+{#<script src="{% static "js/record.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurferJQuery.js" %}"></script>#}
+{#<script src="{% static "js/recorder/recorder.js" %}"></script>#}
+{#<script src="{% static "js/recorder/main.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>#}
+{#<script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>#}
+{#<html>#}
+{#{% csrf_token %}#}
+{#<head>#}
+{#    <title>Record</title>#}
+{#    <link type="text/css" rel="stylesheet" href="{% static "css/record.css" %}"/>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#{% comment %}<script type="text/javascript">#}
+{#    data_from_django = {{ my_data }};#}
+{#    widget.init(data_from_django);#}
+{#</script>{% endcomment %}#}
+{#<h1>Record</h1>#}
+{#<a href="/speech/">Index</a><br/>#}
+{#<button type="button" class="workflow" id="Start">Start</button>#}
+{#<button type="button" class="workflow" id="Forward" style="display:none">Forward</button>#}
+{#<button type="button" class="workflow" id="Backward" style="display:none">Backward</button>#}
+{#<div id="Notification">#}
+{#    <h2>Notification</h2>#}
+{#    <p>This is the notification of how to operate</p>#}
+{#</div>#}
+{#<div class="PhoneTable">#}
+{#    <table border="1">#}
+{#        <tr>#}
+{#            <th rowspan="2"></th>#}
+{#            <th rowspan="2" colspan="2">MANNER</th>#}
+{#            <th rowspan="2">VOICING</th>#}
+{#            <th colspan="7">PLACE</th>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th>Bilabial</th>#}
+{#            <th>Labiodental</th>#}
+{#            <th>Interdental</th>#}
+{#            <th>Alveolar</th>#}
+{#            <th>Palatal</th>#}
+{#            <th>Velar</th>#}
+{#            <th>Glottal</th>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th rowspan="6">OBSTRUENTS</th>#}
+{#            <th rowspan="2" colspan="2">Stop</th>#}
+{#            <th>Unvoiced</th>#}
+{#            <td><button type="button" id="P" class="phoneme btn btn-xs btn-default">P</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="T" class="phoneme btn btn-xs btn-default">T</button></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="K" class="phoneme btn btn-xs btn-default">K</button></td>#}
+{#            <!--first row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th>Voiced</th>#}
+{#            <td><button type="button" id="B" class="phoneme btn btn-xs btn-default">B</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="D" class="phoneme btn btn-xs btn-default">D</button></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="G" class="phoneme btn btn-xs btn-default">G</button></td>#}
+{#            <td></td>#}
+{#            <!--Second row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th rowspan="2" colspan="2">Fricative</th>#}
+{#            <th>Unvoiced</th>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="F" class="phoneme btn btn-xs btn-default">F</button></td>#}
+{#            <td><button type="button" id="TH" class="phoneme btn btn-xs btn-default">TH</button></td>#}
+{#            <td><button type="button" id="S" class="phoneme btn btn-xs btn-default">S</button></td>#}
+{#            <td><button type="button" id="SH" class="phoneme btn btn-xs btn-default">SH</button></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="HH" class="phoneme btn btn-xs btn-default">HH</button></td>#}
+{#            <!--Third row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th>Voiced</th>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="V" class="phoneme btn btn-xs btn-default">V</button></td>#}
+{#            <td><button type="button" id="DH" class="phoneme btn btn-xs btn-default">DH</button></td>#}
+{#            <td><button type="button" id="Z" class="phoneme btn btn-xs btn-default">Z</button></td>#}
+{#            <td><button type="button" id="ZH" class="phoneme btn btn-xs btn-default">ZH</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <!--Fourth row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th rowspan="2" colspan="2">Affricate</th>#}
+{#            <th>Unvoiced</th>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="CH" class="phoneme btn btn-xs btn-default">CH</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <!--Fifth row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th>Voiced</th>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="JH" class="phoneme btn btn-xs btn-default">JH</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <!--Sixth row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th rowspan="4">SONORANTS</th>#}
+{#            <th colspan="2">Nasal</th>#}
+{#            <th>Voiced</th>#}
+{#            <td><button type="button" id="M" class="phoneme btn btn-xs btn-default">M</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="N" class="phoneme btn btn-xs btn-default">N</button></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="NG" class="phoneme btn btn-xs btn-default">NG</button></td>#}
+{#            <td></td>#}
+{#            <!--Seventh row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th rowspan="2">Liquid</th>#}
+{#            <th>Lateral</th>#}
+{#            <th>Voiced</th>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="L" class="phoneme btn btn-xs btn-default">L</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <!--Eighth row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th>Rhotic</th>#}
+{#            <th>Voiced</th>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="R" class="phoneme btn btn-xs btn-default">R</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <!--Nineth row-->#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th colspan="2">Glide</th>#}
+{#            <th>Voiced</th>#}
+{#            <td><button type="button" id="W" class="phoneme btn btn-xs btn-default">W</button></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td></td>#}
+{#            <td><button type="button" id="Y" class="phoneme btn btn-xs btn-default">Y</button></td>#}
+{#            <td></td>#}
+{#            <!--Nineth row-->#}
+{#        </tr>#}
+{#    </table>#}
+{#</div>#}
+{##}
+{#<div id="Sound">#}
+{#    <div id="SoundRecorder">#}
+{#        <h1>Sound Recorder</h1>#}
+{#        <div id="viz">#}
+{#            <div id="wavesurf">#}
+{#            </div>#}
+{#            <div id="timeline">#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#        <div id="controls">#}
+{#            {% comment %}<h1>controls</h1>{% endcomment %}#}
+{#            <!--<img id="record" src="/static/images/mic128.png" onclick="toggleRecording(this);">-->#}
+{#            <button id="record" class="ctrlButton" disabled></button>#}
+{#            <button id="playPause" class="ctrlButton" disabled></button>#}
+{#            <button id="zoomin" class="ctrlButton" disabled></button>#}
+{#            <button id="zoomout" class="ctrlButton" disabled></button>#}
+{#            <button id="save" class="ctrlButton" disabled></button>#}
+{#            <table id="annotation">#}
+{#                <tr>#}
+{#                    <th>Start:</th>#}
+{#                    <td id="startTime">0.00#}
+{#                    </td>#}
+{#                    <th>End:</th>#}
+{#                    <td id="endTime">0.00#}
+{#                    </td>#}
+{#                    <th>Status:</th>#}
+{#                    <td id="status">unsaved#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{#    <div id="SoundExample">#}
+{#        <h1>Example</h1>#}
+{#    </div>#}
+{##}
+{#</div>#}
+{##}
+{#</body>#}
+{##}
+{#</html>#}

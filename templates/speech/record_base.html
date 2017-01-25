@@ -1,0 +1,243 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+
+{% csrf_token %}
+
+{% block bottom_block %}
+    <!-- progress bar -->
+    <div class="progress">
+        <div id="record-progress-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <!-- tabs to switch between consonents and vowels -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" id="consTab" class="active"><a>Consonants</a></li>
+        <li role="presentation" id="vowelTab"><a>Vowels</a></li>
+    </ul>
+    <!-- consonent table -->
+    <div id="consTable">
+        <table class="table table-bordered">
+            <tr>
+                <th rowspan="2"></th>
+                <th rowspan="2" colspan="2">MANNER</th>
+                <th rowspan="2">VOICING</th>
+                <th colspan="7">PLACE</th>
+            </tr>
+            <tr>
+                <th>Bilabial</th>
+                <th>Labiodental</th>
+                <th>Interdental</th>
+                <th>Alveolar</th>
+                <th>Palatal</th>
+                <th>Velar</th>
+                <th>Glottal</th>
+            </tr>
+            <tr>
+                <th rowspan="6">OBSTRUENTS</th>
+                <th rowspan="2" colspan="2">Stop</th>
+                <th>Unvoiced</th>
+                <td><button type="button" id="P" class="phoneme btn btn-xs btn-default">p</button></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="T" class="phoneme btn btn-xs btn-default">t</button></td>
+                <td></td>
+                <td><button type="button" id="K" class="phoneme btn btn-xs btn-default">k</button></td>
+                <td></td>
+                <!--first row-->
+            </tr>
+            <tr>
+                <th>Voiced</th>
+                <td><button type="button" id="B" class="phoneme btn btn-xs btn-default">b</button></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="D" class="phoneme btn btn-xs btn-default">d</button></td>
+                <td></td>
+                <td><button type="button" id="G" class="phoneme btn btn-xs btn-default">ɡ</button></td>
+                <td></td>
+                <!--Second row-->
+            </tr>
+            <tr>
+                <th rowspan="2" colspan="2">Fricative</th>
+                <th>Unvoiced</th>
+                <td></td>
+                <td><button type="button" id="F" class="phoneme btn btn-xs btn-default">f</button></td>
+                <td><button type="button" id="TH" class="phoneme btn btn-xs btn-default">θ</button></td>
+                <td><button type="button" id="S" class="phoneme btn btn-xs btn-default">s</button></td>
+                <td><button type="button" id="SH" class="phoneme btn btn-xs btn-default">ʃ</button></td>
+                <td></td>
+                <td><button type="button" id="HH" class="phoneme btn btn-xs btn-default">h</button></td>
+                <!--Third row-->
+            </tr>
+            <tr>
+                <th>Voiced</th>
+                <td></td>
+                <td><button type="button" id="V" class="phoneme btn btn-xs btn-default">v</button></td>
+                <td><button type="button" id="DH" class="phoneme btn btn-xs btn-default">ð</button></td>
+                <td><button type="button" id="Z" class="phoneme btn btn-xs btn-default">z</button></td>
+                <td><button type="button" id="ZH" class="phoneme btn btn-xs btn-default">ʒ</button></td>
+                <td></td>
+                <td></td>
+                <!--Fourth row-->
+            </tr>
+            <tr>
+                <th rowspan="2" colspan="2">Affricate</th>
+                <th>Unvoiced</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="CH" class="phoneme btn btn-xs btn-default">tʃ</button></td>
+                <td></td>
+                <td></td>
+                <!--Fifth row-->
+            </tr>
+            <tr>
+                <th>Voiced</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="JH" class="phoneme btn btn-xs btn-default">dʒ</button></td>
+                <td></td>
+                <td></td>
+                <!--Sixth row-->
+            </tr>
+            <tr>
+                <th rowspan="4">SONORANTS</th>
+                <th colspan="2">Nasal</th>
+                <th>Voiced</th>
+                <td><button type="button" id="M" class="phoneme btn btn-xs btn-default">m</button></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="N" class="phoneme btn btn-xs btn-default">n</button></td>
+                <td></td>
+                <td><button type="button" id="NG" class="phoneme btn btn-xs btn-default">ŋ</button></td>
+                <td></td>
+                <!--Seventh row-->
+            </tr>
+            <tr>
+                <th rowspan="2">Liquid</th>
+                <th>Lateral</th>
+                <th>Voiced</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="L" class="phoneme btn btn-xs btn-default">ɫ</button></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <!--Eighth row-->
+            </tr>
+            <tr>
+                <th>Rhotic</th>
+                <th>Voiced</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="R" class="phoneme btn btn-xs btn-default">r</button></td>
+                <td></td>
+                <td></td>
+                <!--Nineth row-->
+            </tr>
+            <tr>
+                <th colspan="2">Glide</th>
+                <th>Voiced</th>
+                <td><button type="button" id="W" class="phoneme btn btn-xs btn-default">w</button></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="Y" class="phoneme btn btn-xs btn-default">j</button></td>
+                <td></td>
+                <td></td>
+                <!--Nineth row-->
+            </tr>
+        </table>
+    </div>
+    <!-- vowel table -->
+    <div id="vowelTable">
+        <table class="table table-bordered">
+            <tr>
+                <th></th>
+                <th>Front</th>
+                <th></th>
+                <th>Central</th>
+                <th></th>
+                <th>Back</th>
+            </tr>
+            <tr>
+                <th>Close-high</th>
+                <td><button type="button" id="IY" class="phoneme btn btn-xs btn-default">i</button></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="UW" class="phoneme btn btn-xs btn-default">u</button></td>
+            </tr>
+            <tr>
+                <th>Close-mid</th>
+                <td></td>
+                <td><button type="button" id="IH" class="phoneme btn btn-xs btn-default">ɪ</button></td>
+                <td></td>
+                <td><button type="button" id="UH" class="phoneme btn btn-xs btn-default">ʊ</button></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><button type="button" id="EY" class="phoneme btn btn-xs btn-default">eɪ</button></td>
+                <td></td>
+                <td><button type="button" id="OY" class="phoneme btn btn-xs btn-default">ɔɪ</button></td>
+                <td><button type="button" id="AX" class="phoneme btn btn-xs btn-default">ə</button></td>
+                <td><button type="button" id="OW" class="phoneme btn btn-xs btn-default">oʊ</button></td>
+            </tr>
+            <tr>
+                <th>Open-mid</th>
+                <td><button type="button" id="AY" class="phoneme btn btn-xs btn-default">aɪ</button></td>
+                <td><button type="button" id="EH" class="phoneme btn btn-xs btn-default">ɛ</button></td>
+                <td><button type="button" id="AH" class="phoneme btn btn-xs btn-default">ʌ</button></td>
+                <td><button type="button" id="AW" class="phoneme btn btn-xs btn-default">aʊ</button></td>
+                <td><button type="button" id="AO" class="phoneme btn btn-xs btn-default">ɔ</button></td>
+            </tr>
+            <tr>
+                <th>Open-low</th>
+                <td></td>
+                <td></td>
+                <td><button type="button" id="AE" class="phoneme btn btn-xs btn-default">æ</button></td>
+                <td></td>
+                <td><button type="button" id="AA" class="phoneme btn btn-xs btn-default">ɑ</button></td>
+            </tr>
+        </table>
+    </div>
+    <!-- Recorder block -->
+    <div id="SoundRecorder">
+        <!-- visualization parts : including waveform and timeline -->
+        <div id="viz">
+            <div id="wavesurf">
+            </div>
+            <div id="timeline">
+            </div>
+
+        </div>
+        <!-- control buttons -->
+        <div id="controls">
+            <button id="record" class="ctrlButton" disabled></button>
+            <button id="playPause" class="ctrlButton" disabled></button>
+            <button id="zoomin" class="ctrlButton" disabled></button>
+            <button id="zoomout" class="ctrlButton" disabled></button>
+            <button id="save" class="ctrlButton" disabled></button>
+            <table id="annotation">
+                <tr>
+                    <th>Start:</th>
+                    <td id="startTime">0.00
+                    </td>
+                    <th>End:</th>
+                    <td id="endTime">0.00
+                    </td>
+                    <th>Status:</th>
+                    <td id="status">unsaved
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {% block button_block %}
+    {% endblock %}
+{% endblock %}

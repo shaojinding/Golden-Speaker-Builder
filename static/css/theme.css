@@ -1,0 +1,109 @@
+body {
+  padding-bottom: 30px;
+}
+
+
+
+#toplogo {
+	height: 100px;
+    /*background-color: purple;*/
+}
+
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 14px;
+    background-color: rgba(128, 0, 0, 1);
+    border-width: 1px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(139, 0, 0, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(139, 0, 0, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #8b0000;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #8b0000;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #8b0000;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #800000;
+}
+
+div.index-title p{
+    margin-top: 20px;
+    font-family: Arial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: none;
+    color: maroon;
+    background-color: #ffffff;
+}
+
+div.index-subtitle p{
+    margin-top: 0px;
+    margin-left: 200px;
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: none;
+    color: maroon;
+    background-color: #ffffff;
+
+}
+
+#top-title {
+    /*background-color: yellow;*/
+    display: inline-block;
+    width: 40%;
+    height:100px;
+}
+
+#tamu-logo {
+    width: 310px;
+    height: 100px;
+    /*background-color: green;*/
+    display: inline-block;
+    float: right;
+}
+
+#iawo-logo {
+    width: 234px;
+    height: 100px;
+    margin-left: 0%;
+    /*background-color: green;*/
+    display: inline-block;
+    float: right;
+}
+
+#nav_title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(248, 248, 248, 0);
+}

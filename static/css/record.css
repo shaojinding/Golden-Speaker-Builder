@@ -1,0 +1,234 @@
+
+
+#consTable {
+	margin-top: 10px;
+	/*width:200px;
+	height:100px;*/
+	/*display: none;*/
+	clear: both;
+	float: left;
+	display: none;
+}
+
+#vowelTable {
+	margin-top: 10px;
+	clear: both;
+	float: left;
+	display: none;
+}
+
+
+td {
+	vertical-align:middle;
+	text-align:center;
+}
+
+
+
+
+.phoneme {
+	/*color:red;*/
+	width:30px;
+	height:30px;
+}
+
+
+#Animation {
+	height: 300px;
+	width: 25%;
+	/*border: 2px solid black;*/
+	/*border-radius: 5px;*/
+	background-color: #bce8f1;
+	float: left;
+	text-align: center;
+	/*Add your CSS here!*/
+}
+
+.Animation_video {
+	vertical-align:middle;
+}
+
+#InfoText {
+	height: 300px;
+	width: 70%;
+	/*border: 2px solid black;*/
+	/*border-radius: 5px;*/
+	background-color: #bce8f1;
+	float: right;
+	/*Add your CSS here!*/
+}
+
+#SoundRecorder {
+	float: left;
+	height: 240px;
+	width: 90%;
+	/*margin-right: 2%;*/
+	clear: both;
+	/*background-color: yellow;*/
+}
+
+#viz {
+	height: 70%;
+	width: 100%;
+	margin-top: 10px;
+	/*background-color: red;*/
+	/*margin-bottom: -21px;*/
+	/*position: relative;*/
+	/*z-index: 1;*/
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*justify-content: space-around;*/
+	/*align-items: center;*/
+}
+
+
+#wavesurf {
+	width: 100%;
+	height: 90%;
+	/*background-color: yellow;*/
+}
+#timeline {
+	width: 100%;
+	height: 10%;
+	/*margin-top: 10px;*/
+	/*background-color: white;*/
+	/*background-color: red;*/
+}
+
+
+
+#controls {
+	/*display: flex;*/
+	/*flex-direction: row;*/
+	/*align-items: center;*/
+	/*justify-content: space-around;*/
+	/*margin-top: -10px;*/
+	height: 30%;
+	width: 100%;
+	/*background-color: green;*/
+}
+
+#record {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/record.png");
+	background-repeat:no-repeat;
+}
+
+.recording {
+	background: red;
+	background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
+	background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
+	background: radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
+
+}
+
+
+
+#playPause {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/play.png");
+	background-repeat:no-repeat;
+
+}
+
+#zoomin {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomin.png");
+	background-repeat:no-repeat;
+}
+
+#zoomout {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomout.png");
+	background-repeat:no-repeat;
+}
+
+#save {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/save.png");
+	background-repeat:no-repeat;
+}
+
+.playing {
+	background: red;
+	background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
+	background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
+	background: radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
+
+}
+
+#annotation {
+	display: inline-block;
+	margin-left: 10px;
+}
+#SoundExample {
+	/*background-color: blue;*/
+	height: 400px;
+	width: 50%;
+	float: right;
+}
+
+
+/*#controls {*/
+	/*display: flex;*/
+	/*flex-direction: row;*/
+	/*align-items: center;*/
+	/*justify-content: space-around;*/
+	/*height: 20%;*/
+	/*width: 100%;*/
+/*}*/
+
+/*.en-markup-crop-options {*/
+	/*top: 18px !important;*/
+	/*left: 50% !important;*/
+	/*margin-left: -100px !important;*/
+	/*width: 200px !important;*/
+	/*border: 2px rgba(255,255,255,.38) solid !important;*/
+	/*border-radius: 4px !important;*/
+/*}*/
+
+/*.en-markup-crop-options div div:first-of-type {*/
+	/*margin-left: 0px !important;*/
+/*}*/
+
+
+
+
+
+
+/*#record { height: 15vh; }*/
+/*#record.recording {*/
+	/*background: red;*/
+	/*background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);*/
+	/*background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);*/
+	/*background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);*/
+
+/*}*/
+/*#save, #save img { height: 10vh; }*/
+/*#save { opacity: 0.25;}*/
+/*#save[download] { opacity: 1;}*/
+
+/*@media (orientation: landscape) {*/
+	/*body { flex-direction: row;}*/
+	/*#controls { flex-direction: column; height: 100%; width: 10%;}*/
+	/*#viz { height: 100%; width: 90%;}*/
+/*}*/
+
+/*#wavesurf {*/
+	/*clear: both;*/
+/*}*/

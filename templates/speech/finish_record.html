@@ -1,0 +1,61 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Finish recording & annotation{% endblock %}
+
+{% block nav_title %}
+    Recording Finished
+{% endblock %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static "css/record.css" %}"/>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/pitch.js" %}"></script>
+    <script src="{% static "js/recorder/recorder.js" %}"></script>
+    <script src="{% static "js/recorder/main.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+    <script type="text/javascript">
+        pitchFile = "{{ pitch_file }}";
+    </script>
+{% endblock %}
+
+{% block bottom_block %}
+    <!-- pitch recording -->
+    <h1>One last step</h1>
+    <p>You have finished the recording and annotation of all anchors in <b>{{ anchor_set_name }}</b> anchor set.</p>
+    <p>Please read the following paragraph and record your voice.</p>
+    <div class="well">
+        <p>Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.</p>
+    </div>
+    <div id="SoundRecorder">
+        <div id="viz">
+            <div id="wavesurf">
+            </div>
+            <div id="timeline">
+            </div>
+
+        </div>
+        <div id="controls">
+            <button id="record" class="ctrlButton" disabled></button>
+            <button id="playPause" class="ctrlButton" disabled></button>
+            <button id="save" class="ctrlButton" disabled></button>
+            <table id="annotation">
+                <tr>
+                    <th>Status:</th>
+                    <td id="status">unsaved
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- buttons -->
+    <div style="clear: both">
+    <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right" onclick="window.location.href='/speech/build_sabr_model'" disabled>Continue</button>
+    <button type="button" class="btn btn-primary" style="float: left" onclick="window.location.href='/speech/manage_anchorset'">Back</button>
+    </div>
+{% endblock %}

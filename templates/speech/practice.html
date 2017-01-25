@@ -1,0 +1,108 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav_title %}
+    Practice with Golden Speaker
+{% endblock %}
+
+{% block css %}
+    <link href="{% static "css/practice.css" %}" rel="stylesheet">
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/practice.js" %}"></script>
+    <script src="{% static "js/recorder/recorder.js" %}"></script>
+    <script src="{% static "js/recorder/main.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+    {% if not if_choose %}
+        <script type="text/javascript">
+            cwd = "{{ cwd }}";
+            goldenSpeakerName = "{{ gs.speaker_name }}";
+            ifChoose = "{{ if_choose }}";
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block bottom_block %}
+    <div class="panel panel-default practice-panel" id="select-gs">
+        <div class="panel-heading">
+            <h3 class="panel-title">Select Golden Speaker and practice with it</h3>
+        </div>
+        <!-- select golden speaker -->
+        {% if if_choose %}
+            <div class="panel-body scroll-list-uttr"  style="max-height: 600px">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Source Speaker</th>
+                        <th>Anchor Set</th>
+                        <th>Built Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for golden_speaker in golden_speakers %}
+                        <tr>
+                            <td>{{ golden_speaker.source_model.model_name }}</td>
+                            <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
+                            <td>{{ golden_speaker.timestamp }}</td>
+                            <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
+                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <!-- display all utterances in selected golden speaker -->
+            <div class="scroll-list list-group">
+                {% for utterance in gs.contained_utterance.all %}
+                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}"><button class="btn btn-success btn-xs play-gs" style="margin-right: 5px">play</button>{{ utterance.transcription }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    {% if not if_choose %}
+        <!-- audio player for converted utterances -->
+        <audio id="utterance-play">
+            <source id="utterance-source" src="" type="audio/wav">
+        </audio>
+        <!-- choose and play converted utterances  -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Teacher's recording</h3>
+            </div>
+            <div class="panel-body">
+                <div id="wavesurf-teacher">
+                </div>
+                <div id="teacher-spec" class="spec" style="height: 256px">
+                </div>
+                <div id="teacher-timeline">
+                </div>
+            </div>
+        </div>
+        <!-- record and practice with golden speaker -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Student's recording</h3>
+            </div>
+            <div class="panel-body">
+                <div id="student-spec" class="spec" style="height: 256px">
+                </div>
+                <div id="wavesurf-student">
+                </div>
+                <div id="student-timeline">
+                </div>
+                <div id="controls">
+                    <button id="record" class="ctrlButton"></button>
+                    <button id="playPause" class="ctrlButton"></button>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+

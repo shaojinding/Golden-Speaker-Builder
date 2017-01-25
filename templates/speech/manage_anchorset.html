@@ -1,0 +1,63 @@
+{% extends 'speech/base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Manage AnchorSets{% endblock %}
+
+{% block nav_title %}
+    Manage Anchor Set
+{% endblock %}
+
+{% block css %}
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/manage_anchorset.js" %}"></script>
+{#    <script type="text/javascript">#}
+{#        slug = "{{ building_anchorset }}";#}
+{#        built = "{{ built }}";#}
+{#    </script>#}
+{% endblock %}
+
+{% block bottom_block %}
+    <p><a class="btn btn-default" href="{% url 'add_anchorset' %}" role="button">New Anchor Set &raquo;</a></p>
+    <!-- error message -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error!</strong> {{ message }}
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if anchorsets %}
+        <!-- table to list all anchor sets -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Anchor set name</th>
+                <th>Set up time</th>
+                <th>Active</th>
+                <th>Used</th>
+                <th>Completed</th>
+                <th>Built</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for anchorset in anchorsets %}
+                <tr>
+                    <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>
+                    <td>{{ anchorset.timestamp }}</td>
+                    <td>{{ anchorset.active }}</td>
+                    <td>{{ anchorset.used }}</td>
+                    <td>{{ anchorset.completed }}</td>
+                    <td>{{ anchorset.built }}</td>
+                    <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Record and Annotate</button></td>
+                    <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <strong>There are no anchor sets.</strong>
+    {% endif %}
+{% endblock %}
