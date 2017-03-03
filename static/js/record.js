@@ -143,7 +143,8 @@ $(document).ready( function() {
             regionVar = wavesurfer.addRegion({
                 start: record_details[0], // time in seconds
                 end: record_details[1], // time in seconds
-                color: 'hsla(400, 100%, 30%, 0.1)'
+                color: 'hsla(400, 100%, 30%, 0.1)',
+                drag: false
             });
             regionEnabled = true;
             firstTimeLoad = false
@@ -284,6 +285,7 @@ $(document).ready( function() {
                     if (savedPhoneme.length >= numPhoneme - 1) {
                         var nextbtn = document.getElementById("btn_next");
                         nextbtn.disabled = false;
+                        $("#btn_next").css("display", "inline-block");
                     }
                 });
             }
@@ -316,6 +318,7 @@ $(document).ready( function() {
                         if (savedPhoneme.length >= numPhoneme - 1) {
                             var nextbtn = document.getElementById("btn_next");
                             nextbtn.disabled = false;
+                            $("#btn_next").css("display", "inline-block");
                         }
                         var finishPercent = (savedPhoneme.length + 1) / numPhoneme;
                         $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");

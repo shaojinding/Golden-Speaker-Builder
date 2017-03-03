@@ -94,6 +94,10 @@ def delete_anchorset(request, anchor_set_name_slug):
     if 'current_anchorset' in request.session:
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
+    if os.path.exists('static/pitch/{}.wav'.format(anchor_set_name_slug)):
+        os.remove('static/pitch/{}.wav'.format(anchor_set_name_slug))
+    if os.path.exists('static/sabr/{}.mat'.format(anchor_set_name_slug)):
+        os.remove('static/sabr/{}.mat'.format(anchor_set_name_slug))
     AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user).delete()
     return redirect('/speech/manage_anchorset')
 
