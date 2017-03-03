@@ -331,7 +331,7 @@ def synthesize(request):
         if select_names_string and source_model_name and target_model_name:
             select_names = select_names_string.strip().split(',')
             source_model = SourceModel.objects.get(model_name=source_model_name)
-            target_model = AnchorSet.objects.get(anchor_set_name=target_model_name)
+            target_model = AnchorSet.objects.get(anchor_set_name=target_model_name, user=user)
             target_model_name_slug = target_model.slug
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name + '-' + timestamp.replace('.', '-')

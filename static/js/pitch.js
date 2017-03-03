@@ -21,8 +21,10 @@ $(document).ready( function() {
     if (pitchFile != null) {
         var recording_blob = b64toBlob(pitchFile);
         wavesurfer.loadBlob(recording_blob);
+        var playbtn = document.getElementById("playPause");
+        playbtn.disabled = false;
         var buildbtn = document.getElementById("build-sabr-btn");
-                    buildbtn.disabled = false;
+        buildbtn.disabled = false;
     }
     microphone = Object.create(WaveSurfer.Microphone);
     microphone.init({
