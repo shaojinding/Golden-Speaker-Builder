@@ -8,6 +8,7 @@ var wavesurfer = null;
 var microphone = null;
 var recorded = null;
 var ifChoose = null;
+var buildingGoldenSpeaker = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
@@ -59,6 +60,9 @@ $(document).ready( function() {
             });
         });
     }
+    else {
+        setTimeout ( "checkBuildStatus()", 30000 );
+    }
     $(".synthesized-uttr").click(function () {
         $(".synthesized-uttr").removeClass('active');
         $(this).addClass('active');
@@ -87,3 +91,20 @@ $(document).ready( function() {
     });
 });
 
+function checkBuildStatus() {
+    if (buildingGoldenSpeaker!=null) {
+        for (var i = 0; i < buildingGoldenSpeaker.length; i++) {
+            $.get('/speech/get_synthesize_status/', {slug: buildingGoldenSpeaker[i]}, function (data) {
+                var arr = JSON.parse(data);
+                var name = arr[0];
+                var status = arr[1];
+                if (status == "Finished") {
+                    alert("Your Golden Speaker '{0}' is built!".replace("{0}", name));
+                    window.location.href = '/speech/practice/index'
+                }
+            });
+        }
+        setTimeout("checkBuildStatus()", 30000);
+    }
+
+}

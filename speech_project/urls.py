@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^speech/', include('speech.urls')),
     url(r'^auth/', include('django_auth0.urls')),
+    #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root', settings.STATIC_ROOT}),
     #url(r'^notifications/', include('pinax.notifications.urls')),
 ]

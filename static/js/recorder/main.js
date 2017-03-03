@@ -33,6 +33,7 @@ function toggleRecording( e ) {
         e.classList.remove("recording");
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = false;
+        isRecording = false;
     } else {
         // start recording
         if (!recorder)
@@ -41,8 +42,15 @@ function toggleRecording( e ) {
         if ($.inArray(currentPhoneme, savedPhoneme) >=0) {
             reRecord = true;
         }
+        var zoominbtn = document.getElementById("zoomin");
+        zoominbtn.disabled = true;
+        var zoomoutbtn = document.getElementById("zoomout");
+        zoomoutbtn.disabled = true;
+        var savebtn = document.getElementById("save");
+        savebtn.disabled = true;
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = true;
+        isRecording = true;
         microphone.start();
         if (regionEnabled) {
             wavesurfer.empty();

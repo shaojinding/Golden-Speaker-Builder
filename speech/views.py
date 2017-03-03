@@ -28,7 +28,13 @@ def manage_anchorset(request):
     username = request.session['profile']['nickname']
     user = User.objects.get(user_name=username)
     anchorset_list = AnchorSet.objects.filter(user=user)
-    context_dict = {'anchorsets': anchorset_list, 'name': username, 'is_login': True}
+    building_anchor_set = []
+    for anchorset in anchorset_list:
+        if anchorset.built == 'In processing':
+            building_anchor_set.append(anchorset.slug)
+    json_building_anchor_set = json.dumps(building_anchor_set)
+    context_dict = {'anchorsets': anchorset_list, 'name': username, 'is_login': True,
+                    'building_anchor_set': json_building_anchor_set}
     return render(request, 'speech/manage_anchorset.html', context_dict)
 
 
@@ -36,12 +42,13 @@ def manage_anchorset(request):
 @login_required_auth0()
 def anchorset(request, anchor_set_name_slug):
     context_dict = {}
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug)
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     context_dict['anchor_set_name'] = anchor_set.anchor_set_name
     anchors = Anchor.objects.filter(anchor_set=anchor_set)
     context_dict['anchors'] = anchors
     context_dict['anchor_set'] = anchor_set
-    username = request.session['profile']['nickname']
     context_dict['name'] = username
     context_dict['is_login'] = True
     saved_phonemes = anchor_set.get_saved_phonemes()
@@ -70,7 +77,7 @@ def add_anchorset(request):
             anchorset.sabr_model_path = 'static/sabr/{}.mat'.format(anchorset.slug)
             anchorset.pitch_path = 'static/pitch/{}.wav'.format(anchorset.slug)
             anchorset.save()
-            return redirect('/speech/manage_anchorset')
+            return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
         else:
             print anchorset_form.errors
     else:
@@ -82,9 +89,12 @@ def add_anchorset(request):
 # delete anchor set operation view
 @login_required_auth0()
 def delete_anchorset(request, anchor_set_name_slug):
-    if request.session['current_anchorset'] == anchor_set_name_slug:
-        del request.session['current_anchorset']
-    AnchorSet.objects.filter(slug=anchor_set_name_slug).delete()
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    if 'current_anchorset' in request.session:
+        if request.session['current_anchorset'] == anchor_set_name_slug:
+            del request.session['current_anchorset']
+    AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user).delete()
     return redirect('/speech/manage_anchorset')
 
 
@@ -95,21 +105,27 @@ def start_record_session(request, anchor_set_name_slug):
     return redirect('/speech/record/index')
 
 
-# @login_required_auth0()
-# def start_edit_session(request, anchor_set_name_slug):
-#     request.session['current_edit_anchorset'] = anchor_set_name_slug
-#     return redirect('/speech/edit/index')
-
-
 # record and annotate page view
 @login_required_auth0()
 def record(request, phoneme):
     username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     saved_phonemes = anchor_set.get_saved_phonemes()
     json_saved_phoneme = json.dumps(saved_phonemes)
     completed = anchor_set.completed
+    with open('static/doc/keywords.txt', 'r') as kw_f:
+        lines = kw_f.readlines()
+    ipas = []
+    keywords = []
+    for line in lines:
+        items = line.strip().split(' ')
+        ipas.append(items[0])
+        keywords.append(items[1])
+    json_ipas = json.dumps(ipas)
+    json_keywords = json.dumps(keywords)
+
     if phoneme in saved_phonemes:
         anchor = Anchor.objects.get(anchor_set=anchor_set, phoneme=phoneme)
         recording = anchor.recording
@@ -120,11 +136,13 @@ def record(request, phoneme):
         json_record_details = json.dumps([anchor.L, anchor.R, anchor.C, recording_base64])
         context_dict = {'name': username, 'is_login': True,
                         'phoneme': phoneme, 'record_details': json_record_details,
-                        'saved_phoneme': json_saved_phoneme, 'completed': completed}
+                        'saved_phoneme': json_saved_phoneme, 'completed': completed,
+                        'ipas': json_ipas, 'keywords': json_keywords}
     else:
         context_dict = {'name': username, 'is_login': True,
-                        'phoneme': phoneme, 'record_details': None,
-                        'saved_phoneme': json_saved_phoneme, 'completed': completed}
+                        'phoneme': phoneme, 'record_details': "[]",
+                        'saved_phoneme': json_saved_phoneme, 'completed': completed,
+                        'ipas': json_ipas, 'keywords': json_keywords}
     return render(request, 'speech/record.html', context_dict)
 
 
@@ -132,8 +150,9 @@ def record(request, phoneme):
 @login_required_auth0()
 def finish_record_session(request):
     username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     num_phoneme = 39
     if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
         # del request.session['current_anchorset']
@@ -145,15 +164,17 @@ def finish_record_session(request):
                              'all anchor sets, please finish them first.')
         return redirect('/speech/record/index')
     pitch_path = anchor_set.pitch_path
+    with open('static/doc/pitch.txt', 'r') as pitch_f:
+        pitch_doc = pitch_f.readline()
     if os.path.exists(pitch_path):
         with open(pitch_path, "rb") as recording_file:
             recording_blob = recording_file.read()
         recording_base64 = base64.b64encode(recording_blob)
         context_dict = {'anchor_set_name': anchor_set.anchor_set_name, 'name': username, 'is_login': True,
-                        'pitch_file': recording_base64}
+                        'pitch_file': recording_base64, 'pitch_doc': pitch_doc}
     else:
         context_dict = {'anchor_set_name': anchor_set.anchor_set_name, 'name': username, 'is_login': True,
-                        'pitch_file': None}
+                        'pitch_file': None, 'pitch_doc': pitch_doc}
 
     return render(request, 'speech/finish_record.html', context_dict)
 
@@ -169,9 +190,10 @@ def upload_annotation(request):
         phoneme = request.POST['phoneme']
         re_record = request.POST['re_record']
         if L and R and C and phoneme:
-            nickname = request.session['profile']['nickname']
+            username = request.session['profile']['nickname']
+            user = User.objects.get(user_name=username)
             anchor_set_name_slug = request.session['current_anchorset']
-            current_anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug)
+            current_anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
             saved_phonemes = current_anchorset.get_saved_phonemes()
             if phoneme in saved_phonemes:
                 anc = Anchor.objects.get(anchor_set=current_anchorset, phoneme=phoneme)
@@ -192,7 +214,6 @@ def upload_annotation(request):
                 request.session['saved_phonemes'] = saved_phonemes
                 current_anchorset.set_saved_phonemes(saved_phonemes)
                 current_anchorset.save()
-                user = User.objects.filter(user_name=nickname)[0]
                 record_name = str(Recording.objects.count())
                 recording_blob = base64.b64decode(recording_base64)
                 with open("static/recordings/%s.wav" % record_name, "wb") as recording_file:
@@ -209,8 +230,10 @@ def upload_annotation(request):
 @ensure_csrf_cookie
 def upload_pitch(request):
     if request.method == 'POST':
+        username = request.session['profile']['nickname']
+        user = User.objects.get(user_name=username)
         anchor_set_name_slug = request.session['current_anchorset']
-        current_anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug)
+        current_anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
         pitch_path = current_anchorset.pitch_path
         pitch_base64 = request.POST['recording']
         pitch_blob = base64.b64decode(pitch_base64)
@@ -222,10 +245,12 @@ def upload_pitch(request):
 # view for building sabr model
 @login_required_auth0()
 def build_sabr(request):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     if anchor_set.built == 'Built':
-        return redirect('/speech/manage_anchorset')
+        return redirect('/speech')
     anchor_set.built = 'In processing'
     anchor_set.save()
     anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
@@ -243,9 +268,9 @@ def build_sabr(request):
         left.append(anchor.L)
         right.append(anchor.R)
         center.append(anchor.C)
-    build_sabr_model.delay(anchor_set_name_slug, audio_paths, left, right, center,
+    build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
                                     phoneme, pitch_path, output_mat_path)
-    return redirect('/speech/manage_anchorset')
+    return redirect('/speech')
 
 
 # page to choose source and target anchor set, and choose utterance to be built
@@ -279,8 +304,10 @@ def get_utterances(request):
 @login_required_auth0()
 def get_build_status(request):
     if request.method == 'GET':
-        anchor_set_name_slug = request.GET['slug']
-        anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug)
+        username = request.session['profile']['nickname']
+        user = User.objects.get(user_name=username)
+        slug = request.GET['slug']
+        anchorset = AnchorSet.objects.get(slug=slug, user=user)
         built = anchorset.built
         name = anchorset.anchor_set_name
         json_list = [name, built]
@@ -305,7 +332,7 @@ def synthesize(request):
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()))
+                               user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
             for name in select_names:
                 uttr = Utterance.objects.get(name=name, source_model=source_model)
@@ -319,7 +346,7 @@ def synthesize(request):
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
             target_model_path = 'static/sabr/' + target_model_name + '.mat'
             utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
-            synthesize_sabr.delay(target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
 
@@ -331,29 +358,32 @@ def practice(request, golden_speaker_name_slug):
     user = User.objects.get(user_name=username)
     if golden_speaker_name_slug == 'index':
         if_choose = True
-        gss = GoldenSpeaker.objects.filter(user=user)
-        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'golden_speakers': gss}
+        gss = GoldenSpeaker.objects.order_by('-timestamp').filter(user=user)
+        building_gs = []
+        for gs in gss:
+            if gs.status == 'Synthesizing':
+                building_gs.append(gs.slug)
+        json_building_gs = json.dumps(building_gs)
+        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'golden_speakers': gss, 'building_golden_speakers': json_building_gs}
     else:
         if_choose = False
         gs = GoldenSpeaker.objects.get(slug=golden_speaker_name_slug)
         context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'cwd': os.getcwd(), 'gs': gs}
     return render(request, 'speech/practice.html', context_dict)
 
+@login_required_auth0()
+def get_synthesize_status(request):
+    if request.method == 'GET':
+        username = request.session['profile']['nickname']
+        user = User.objects.get(user_name=username)
+        slug = request.GET['slug']
+        gs = GoldenSpeaker.objects.get(slug=slug, user=user)
+        built = gs.status
+        name = gs.speaker_name
+        json_list = [name, built]
+        json_file = json.dumps(json_list)
+        return HttpResponse(json_file)
 
-# @login_required_auth0()
-# def get_contained_utterances(request):
-#     if request.method == 'GET':
-#         trans = request.GET['trans']
-#
-#         source_model_name_slug = request.GET['source_model']
-#         source_model = SourceModel.objects.get(slug=source_model_name_slug)
-#         utterances = Utterance.objects.filter(source_model=source_model)
-#         names = [u.name for u in utterances]
-#         trans = [u.transcription for u in utterances]
-#         json_list = [names, trans]
-#         json_file = json.dumps(json_list)
-#     return HttpResponse(json_file)
-# Create your views here.
 
 
 # view to delete golden_speaker

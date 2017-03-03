@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '6@k$*+$28u-g&k2u7q5j+iel2n!ui9du51$4kqpk805i0^e2*q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-# ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,11 +133,14 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
+# STATIC_ROOT = '/home/shjd/golden-speaker/static_root/'
 STATIC_ROOT = '/var/goldenspeaker/static/'
 
-AUTH0_INDEX_URL = 'http://gomera.cse.tamu.edu:8000'
+# STATICFILES_DIRS = '/home/shjd/golden-speaker/static_root/'
 
-AUTH0_CALLBACK_URL = 'http://gomera.cse.tamu.edu:8000/auth/callback/?'
+AUTH0_INDEX_URL = 'http://goldenspeaker.las.iastate.edu'
+
+AUTH0_CALLBACK_URL = 'http://goldenspeaker.las.iastate.edu/auth/callback/?'
 
 AUTH0_CLIENT_ID = 'GfnvKP8rFiGCaBXauuNEulqY8EapxJmp'
 

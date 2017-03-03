@@ -20,6 +20,8 @@
     <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
     <script type="text/javascript">
+        Ipas = {{ ipas|safe }};
+        Keywords = {{ keywords|safe }};
         currentPhoneme = "{{ phoneme }}";
         savedPhoneme = {{ saved_phoneme|safe }};
         record_details = {{ record_details|safe }};
@@ -30,7 +32,7 @@
     {% if completed %}
         <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'">Next</button>
     {% else %}
-        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'" disabled>Next</button>
+        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="window.location.href='/speech/finish_record_session'">Next</button>
     {% endif %}
 {% endblock %}
 

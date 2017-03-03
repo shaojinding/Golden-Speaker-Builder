@@ -27,11 +27,11 @@ class AnchorSetMethodTest(TestCase):
         self.assertTrue(isinstance(a, AnchorSet))
         self.assertEqual(a.__unicode__(), a.anchor_set_name)
 
-    def test_ensure_anchor_set_name_is_unique(self):
-        u = User.objects.create(user_name='a')
-        AnchorSet.objects.create(anchor_set_name='b', user=u, active=False, used=False, completed=False)
-        with self.assertRaises(IntegrityError):
-            AnchorSet.objects.create(anchor_set_name='b', user=u)
+    # def test_ensure_anchor_set_name_is_unique(self):
+    #     u = User.objects.create(user_name='a')
+    #     AnchorSet.objects.create(anchor_set_name='b', user=u, active=False, used=False, completed=False)
+    #     with self.assertRaises(IntegrityError):
+    #         AnchorSet.objects.create(anchor_set_name='b', user=u)
 
     def test_slug_line_creation(self):
         u = User.objects.create(user_name='a')

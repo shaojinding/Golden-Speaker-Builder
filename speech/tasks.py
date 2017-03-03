@@ -1,12 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task
-from .models import AnchorSet
+from .models import AnchorSet, User, GoldenSpeaker
 import matlab.engine
 import os
 
 @shared_task
-def build_sabr_model(anchor_set_name_slug, audio_paths, left, right, center, phoneme, pitch_path, output_mat_path):
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug)
+def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, center, phoneme, pitch_path, output_mat_path):
+    user = User.objects.get(user_name=username)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     eng = matlab.engine.connect_matlab()
     eng.clear
     eng.addpath('SABR')
@@ -34,7 +35,8 @@ def build_sabr_model(anchor_set_name_slug, audio_paths, left, right, center, pho
     return success
 
 @shared_task
-def synthesize_sabr(target_model_name_slug, source_analysis_paths, source_model_path, target_model_path, output_paths):
+def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_paths, source_model_path, target_model_path, output_paths):
+    user = User.objects.get(user_name=username)
     cwd = os.getcwd()
     eng = matlab.engine.connect_matlab()
     eng.clear
@@ -55,7 +57,10 @@ def synthesize_sabr(target_model_name_slug, source_analysis_paths, source_model_
         if suc == 0.0:
             success = 0.0
     if success == 1.0:
-        anchor_set = AnchorSet.objects.get(slug=target_model_name_slug)
+        gs = GoldenSpeaker.objects.get(speaker_name=gs_name)
+        gs.status = "Finished"
+        gs.save()
+        anchor_set = AnchorSet.objects.get(slug=target_model_name_slug, user=user)
         anchor_set.used = True
         anchor_set.save()
     return success

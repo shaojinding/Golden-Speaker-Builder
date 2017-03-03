@@ -21,49 +21,9 @@ $(document).ready( function() {
         $(this).addClass('active');
         if (targetModel != null) {
             getUtterances(audio, source);
-            // $.ajax({
-            //     type: 'GET',
-            //     url: '/speech/get_utterances/',
-            //     data: fd,
-            //     processData: false,
-            //     contentType: false
-            // }).done(function (data) {
-            //     for (var i = 0; i < data.length; i ++) {
-            //         var node = document.createElement("LI");
-            //         var textnode = document.createTextNode(data[i]);
-            //         node.appendChild(textnode);
-            //         $("#utterance-list").appendChild(node);
-            //     }
-            // });
-            // $.get('/speech/get_utterances/', {source_model: sourceModel}, function(data){
-            //     var arr = JSON.parse(data);
-            //     utteranceNames = arr[0];
-            //     transcriptions = arr[1];
-            //     var utterList = document.getElementById("utterance-list");
-            //     while(utterList.firstChild){
-            //         utterList.removeChild(utterList.firstChild);
-            //     }
-            //     for (var i = 0; i < transcriptions.length; i ++) {
-            //         var node = document.createElement("A");
-            //         var btnNode = document.createElement("BUTTON");
-            //         btnNode.className = "btn btn-success btn-xs source-speaker-preview";
-            //         btnNode.style.marginRight = "5px";
-            //         btnNode.onclick = function () {
-            //             var idxPlay = $(this).parent().index();
-            //             source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[idxPlay] + '.wav';
-            //             audio.load();
-            //             audio.play();
-            //         };
-            //         var btnTextNode = document.createTextNode("play");
-            //         btnNode.appendChild(btnTextNode);
-            //         var textnode = document.createTextNode(transcriptions[i]);
-            //         node.appendChild(btnNode);
-            //         node.appendChild(textnode);
-            //         node.className = 'list-group-item utterance-item';
-            //         utterList.appendChild(node);
-            //     }
-            //     $("#utterance-block").css("display", "block");
-            // });
+        }
+        else {
+            $("#target-speaker").css("display", "inline-block")
         }
     });
     $(".target-model").click(function () {
@@ -72,117 +32,79 @@ $(document).ready( function() {
         $(this).addClass('active');
         if (sourceModel != null) {
             getUtterances(audio, source);
-            // $.ajax({
-            //     type: 'GET',
-            //     url: '/speech/get_utterances/',
-            //     data: fd,
-            //     processData: false,
-            //     contentType: false
-            // }).done(function (data) {
-            //     for (var i = 0; i < data.length; i ++) {
-            //         var node = document.createElement("LI");
-            //         var textnode = document.createTextNode(data[i]);
-            //         node.appendChild(textnode);
-            //         $("#utterance-list").appendChild(node);
-            //     }
-            // });
-            // $.get('/speech/get_utterances/', {source_model: sourceModel}, function(data){
-            //     var arr = JSON.parse(data);
-            //     utteranceNames = arr[0];
-            //     transcriptions = arr[1];
-            //     var utterList = document.getElementById("utterance-list");
-            //     while(utterList.firstChild){
-            //         utterList.removeChild(utterList.firstChild);
-            //     }
-            //     for (var i = 0; i < transcriptions.length; i ++) {
-            //         var node = document.createElement("A");
-            //         var btnNode = document.createElement("BUTTON");
-            //         btnNode.className = "btn btn-success btn-xs source-speaker-preview";
-            //         btnNode.style.marginRight = "5px";
-            //         btnNode.onclick = function () {
-            //             var idxPlay = $(this).parent().index();
-            //             source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[idxPlay] + '.wav';
-            //             audio.load();
-            //             audio.play();
-            //         };
-            //         var btnTextNode = document.createTextNode("play");
-            //         btnNode.appendChild(btnTextNode);
-            //         var textnode = document.createTextNode(transcriptions[i]);
-            //         node.appendChild(btnNode);
-            //         node.appendChild(textnode);
-            //         node.className = 'list-group-item utterance-item';
-            //         //document.getElementById("utterance-list").appendChild(btnNode);
-            //         utterList.appendChild(node);
-            //     }
-            //     $("#utterance-block").css("display", "block");
-            // });
         }
     });
-    $("body").on('click', 'a.utterance-item', function() {
-        $(".utterance-item").removeClass('active');
-        // utteranceSelect = $(this).html();
-        idxAdd = $(this).index();
-        $(this).addClass('active');
-        var btnAdd = document.getElementById("add-utterance");
-        btnAdd.disabled = false;
-    });
-    $("#add-utterance").click(function () {
-        //var parent = document.getElementById("utterance-list");
-        //var child1 = document.getElementById("utterance-list").firstElementChild;
-        // var utterList = document.getElementById("utterance-list");
-        var child = document.getElementsByClassName("utterance-item");
-        child = child[idxAdd];
-        var childText = child.childNodes[1];
-        var innerText = childText.data;
-        var childIdx = transcriptions.indexOf(innerText);
-        selectNames.push(utteranceNames[childIdx]);
-        // chosenIndexes.push(idxAdd);
-        child.className = 'list-group-item added-utterance-item';
-        document.getElementById("added-utterance-list").appendChild(child);
-        var btnAdd = document.getElementById("add-utterance");
-        btnAdd.disabled = true;
-        // parent.removeChild(child);
-        // var node = document.createElement("A");
-        // var textnode = document.createTextNode(utteranceSelect);
-        // node.appendChild(textnode);
-        // node.className = 'list-group-item added-utterance-item';
-        // document.getElementById("added-utterance-list").appendChild(node);
-    });
-    $("body").on('click', 'a.added-utterance-item', function() {
-        $(".added-utterance-item").removeClass('active');
-        // utteranceAddSelect = $(this).html();
-        idxRemove = $(this).index();
-        $(this).addClass('active');
-        var btnRemove = document.getElementById("remove-utterance");
-        btnRemove.disabled = false;
-    });
-    $("#remove-utterance").click(function () {
-        var child = document.getElementsByClassName("added-utterance-item");
-        child = child[idxRemove];
-        // var innerText = child.innerText;
-        // var childIdx = transcriptions.indexOf(innerText);
-        // var removingName = utteranceNames[childIdx];
-        selectNames.splice(idxRemove, 1);
-        // var removingName = selectNames.pop(idxRemove);
-        // var removingIdx = utteranceNames.indexOf(removingName);
-        child.className = 'list-group-item utterance-item';
-        document.getElementById("utterance-list").appendChild(child);
-        // var utterList = document.getElementById("utterance-list");
-        // utterList.insertBefore(child, utterList.childNodes[removingIdx + 1]);
-        // document.getElementById("utterance-list").appendChild(child);
-        var btnRemove = document.getElementById("remove-utterance");
-        btnRemove.disabled = true;
-        // var parent = document.getElementById("added-utterance-list");
-        // var child = document.getElementById("added-utterance-list").firstElementChild;
-        // parent.removeChild(child);
-        // var node = document.createElement("A");
-        // var textnode = document.createTextNode(utteranceSelect);
-        // node.appendChild(textnode);
-        // node.className = 'list-group-item utterance-item';
-        //document.getElementById("utterance-list").insertBefore()
-    });
+    // $("body").on('click', 'a.utterance-item', function() {
+    //     $(".utterance-item").removeClass('active');
+    //     // utteranceSelect = $(this).html();
+    //     idxAdd = $(this).index();
+    //     $(this).addClass('active');
+    //     var btnAdd = document.getElementById("add-utterance");
+    //     btnAdd.disabled = false;
+    // });
+    // $("#add-utterance").click(function () {
+    //     //var parent = document.getElementById("utterance-list");
+    //     //var child1 = document.getElementById("utterance-list").firstElementChild;
+    //     // var utterList = document.getElementById("utterance-list");
+    //     var child = document.getElementsByClassName("utterance-item");
+    //     child = child[idxAdd];
+    //     var childText = child.childNodes[1];
+    //     var innerText = childText.data;
+    //     var childIdx = transcriptions.indexOf(innerText);
+    //     selectNames.push(utteranceNames[childIdx]);
+    //     // chosenIndexes.push(idxAdd);
+    //     child.className = 'list-group-item added-utterance-item';
+    //     document.getElementById("added-utterance-list").appendChild(child);
+    //     var btnAdd = document.getElementById("add-utterance");
+    //     btnAdd.disabled = true;
+    //     // parent.removeChild(child);
+    //     // var node = document.createElement("A");
+    //     // var textnode = document.createTextNode(utteranceSelect);
+    //     // node.appendChild(textnode);
+    //     // node.className = 'list-group-item added-utterance-item';
+    //     // document.getElementById("added-utterance-list").appendChild(node);
+    // });
+    // $("body").on('click', 'a.added-utterance-item', function() {
+    //     $(".added-utterance-item").removeClass('active');
+    //     // utteranceAddSelect = $(this).html();
+    //     idxRemove = $(this).index();
+    //     $(this).addClass('active');
+    //     var btnRemove = document.getElementById("remove-utterance");
+    //     btnRemove.disabled = false;
+    // });
+    // $("#remove-utterance").click(function () {
+    //     var child = document.getElementsByClassName("added-utterance-item");
+    //     child = child[idxRemove];
+    //     // var innerText = child.innerText;
+    //     // var childIdx = transcriptions.indexOf(innerText);
+    //     // var removingName = utteranceNames[childIdx];
+    //     selectNames.splice(idxRemove, 1);
+    //     // var removingName = selectNames.pop(idxRemove);
+    //     // var removingIdx = utteranceNames.indexOf(removingName);
+    //     child.className = 'list-group-item utterance-item';
+    //     document.getElementById("utterance-list").appendChild(child);
+    //     // var utterList = document.getElementById("utterance-list");
+    //     // utterList.insertBefore(child, utterList.childNodes[removingIdx + 1]);
+    //     // document.getElementById("utterance-list").appendChild(child);
+    //     var btnRemove = document.getElementById("remove-utterance");
+    //     btnRemove.disabled = true;
+    //     // var parent = document.getElementById("added-utterance-list");
+    //     // var child = document.getElementById("added-utterance-list").firstElementChild;
+    //     // parent.removeChild(child);
+    //     // var node = document.createElement("A");
+    //     // var textnode = document.createTextNode(utteranceSelect);
+    //     // node.appendChild(textnode);
+    //     // node.className = 'list-group-item utterance-item';
+    //     //document.getElementById("utterance-list").insertBefore()
+    // });
     $("#synthesize").click(function () {
         try {
+            var checkedValue = $(".utterance-checkbox:checked").map(function () {
+                return $(this).val()
+            }).get();
+            for (var i = 0; i < checkedValue.length; i++) {
+                selectNames.push(utteranceNames[parseInt(checkedValue[i])]);
+            }
             var csrftoken = getCookie('csrftoken');
             $.ajaxSetup({
                 beforeSend: function (xhr, settings) {
@@ -191,7 +113,6 @@ $(document).ready( function() {
                     }
                 }
             });
-            $("#synthesize-notification").css('display', 'inline-block');
             var fd = new FormData();
             fd.append('select_names', selectNames);
             fd.append('source_model', sourceModel);
@@ -203,12 +124,42 @@ $(document).ready( function() {
                 processData: false,
                 contentType: false
             }).done(function () {
-                window.location.href = '/speech/practice/index'
+                window.location.href = '/speech'
             });
         }
         catch (e) {
-            alert("synthesize failed! Please try again.")
+            alert("synthesize failed! Please try again.");
         }
+        // try {
+        //     var checkedValue = $(".utterance-checkbox:checked").map(function(){return $(this).val()}).get();
+        //     var checkedValue1 = checkedValue.map(function () {return parseInt(this)}).get();
+        //     var csrftoken = getCookie('csrftoken');
+        //     selectNames = utteranceNames[checkedValue];
+        //     $.ajaxSetup({
+        //         beforeSend: function (xhr, settings) {
+        //             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        //                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        //             }
+        //         }
+        //     });
+        //     $("#synthesize-notification").css('display', 'inline-block');
+        //     var fd = new FormData();
+        //     fd.append('select_names', checkedValue);
+        //     fd.append('source_model', sourceModel);
+        //     fd.append('target_model', targetModel);
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/speech/synthesize/',
+        //         data: fd,
+        //         processData: false,
+        //         contentType: false
+        //     }).done(function () {
+        //         window.location.href = '/speech/practice/index'
+        //     });
+        // }
+        // catch (e) {
+        //     alert("synthesize failed! Please try again.")
+        // }
     });
 });
 
@@ -255,9 +206,16 @@ function getUtterances(audio, source) {
                         audio.load();
                         audio.play();
                     };
+                    var checkbox = document.createElement('input');
+                    checkbox.type = "checkbox";
+                    checkbox.value = "{0}".replace("{0}", i);
+                    checkbox.className = "utterance-checkbox";
+                    var spaceNode = document.createTextNode("   ");
                     var btnTextNode = document.createTextNode("play");
                     btnNode.appendChild(btnTextNode);
                     var textnode = document.createTextNode(transcriptions[i]);
+                    node.appendChild(checkbox);
+                    node.appendChild(spaceNode);
                     node.appendChild(btnNode);
                     node.appendChild(textnode);
                     node.className = 'list-group-item utterance-item';

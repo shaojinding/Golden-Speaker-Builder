@@ -5,7 +5,7 @@
 }
 
 #target-speaker {
-    display: inline-block;
+    display: none;
     width: 48%;
     float: right;
 }
@@ -21,4 +21,14 @@
 .scroll-list-uttr {
     max-height: 300px;
     overflow-y: scroll;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
 }

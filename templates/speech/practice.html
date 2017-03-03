@@ -23,6 +23,10 @@
             goldenSpeakerName = "{{ gs.speaker_name }}";
             ifChoose = "{{ if_choose }}";
         </script>
+    {% else %}
+        <script type="text/javascript">
+            buildingGoldenSpeaker = {{ building_golden_speakers|safe }};
+        </script>
     {% endif %}
 {% endblock %}
 
@@ -48,8 +52,13 @@
                             <td>{{ golden_speaker.source_model.model_name }}</td>
                             <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
                             <td>{{ golden_speaker.timestamp }}</td>
-                            <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
-                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
+                            {% if golden_speaker.status == "Synthesizing" %}
+                                <td>Synthesizing...</td>
+                                <td></td>
+                            {% else %}
+                                <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
+                                <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -1,4 +1,10 @@
-
+.progress .bar {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}​
 
 #consTable {
 	margin-top: 10px;
@@ -18,11 +24,29 @@
 }
 
 
-td {
+#consTable td{
 	vertical-align:middle;
 	text-align:center;
+	width: 110px;
 }
 
+#consTable th{
+	vertical-align:middle;
+	text-align:center;
+	width: 110px;
+}
+
+#vowelTable td{
+	vertical-align:middle;
+	text-align:center;
+	width: 110px;
+}
+
+#vowelTable th{
+	vertical-align:middle;
+	text-align:center;
+	width: 110px;
+}
 
 
 
@@ -181,6 +205,11 @@ td {
 	height: 400px;
 	width: 50%;
 	float: right;
+}
+
+#info-panel {
+	display: block;
+	clear: both;
 }
 
 

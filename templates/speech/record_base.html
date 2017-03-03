@@ -121,7 +121,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button type="button" id="L" class="phoneme btn btn-xs btn-default">ɫ</button></td>
+                <td><button type="button" id="L" class="phoneme btn btn-xs btn-default">l</button></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -133,8 +133,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td><button type="button" id="R" class="phoneme btn btn-xs btn-default">ɹ</button></td>
                 <td></td>
-                <td><button type="button" id="R" class="phoneme btn btn-xs btn-default">r</button></td>
                 <td></td>
                 <td></td>
                 <!--Nineth row-->
@@ -207,6 +207,10 @@
         </table>
     </div>
     <!-- Recorder block -->
+    <div id="info-panel">
+        <h2 id="phoneme-info"></h2>
+        <h2 id="word-info"></h2>
+    </div>
     <div id="SoundRecorder">
         <!-- visualization parts : including waveform and timeline -->
         <div id="viz">
@@ -218,11 +222,16 @@
         </div>
         <!-- control buttons -->
         <div id="controls">
-            <button id="record" class="ctrlButton" disabled></button>
-            <button id="playPause" class="ctrlButton" disabled></button>
-            <button id="zoomin" class="ctrlButton" disabled></button>
-            <button id="zoomout" class="ctrlButton" disabled></button>
-            <button id="save" class="ctrlButton" disabled></button>
+{#            <button id="record" class="ctrlButton" disabled></button>#}
+{#            <button id="playPause" class="ctrlButton" disabled></button>#}
+{#            <button id="zoomin" class="ctrlButton" disabled></button>#}
+{#            <button id="zoomout" class="ctrlButton" disabled></button>#}
+{#            <button id="save" class="ctrlButton" disabled></button>#}
+            <button id="record" class="btn btn-default" disabled></button>
+            <button id="playPause" class="btn btn-default" disabled></button>
+            <button id="zoomin" class="btn btn-default" disabled></button>
+            <button id="zoomout" class="btn btn-default" disabled></button>
+            <button id="save" class="btn btn-default" disabled></button>
             <table id="annotation">
                 <tr>
                     <th>Start:</th>
@@ -231,9 +240,6 @@
                     <th>End:</th>
                     <td id="endTime">0.00
                     </td>
-                    <th>Status:</th>
-                    <td id="status">unsaved
-                    </td>
                 </tr>
             </table>
         </div>
@@ -241,3 +247,4 @@
     {% block button_block %}
     {% endblock %}
 {% endblock %}
+

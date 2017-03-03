@@ -11,7 +11,7 @@ var currentPhoneme = null;
 var lastPhoneme = null;
 var zoomLevel = null;
 var zoomMulti = 2;
-var audioDuration = null;
+// var audioDuration = null;
 var wavesurferWidth = null;
 var saveSuccess = false;
 var savedPhonemeCount = 0;
@@ -22,12 +22,25 @@ var savedPhoneme = null;
 var record_details = null;
 var firstTimeLoad = true;
 var reRecord = false;
+var regionVar = null;
+var isRecording = false;
+var Ipas = null;
+var Keywords = null;
 $(document).ready( function() {
     var finishPercent = savedPhoneme.length / numPhoneme;
     $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");
     $("#record-progress-bar").text(Math.round(finishPercent * 100).toString() + "%");
     if (currentPhoneme == "index") {
         $("#consTable").css("display", "block");
+        $("#SoundRecorder").hide();
+        $("#info-panel").hide();
+    }
+    else {
+        var cp = $("#{0}".replace("{0}", currentPhoneme)).text();
+        $("#phoneme-info").html("Phoneme: {0}".replace("{0}", cp));
+        var keyword = Keywords[Ipas.indexOf(cp)];
+        $("#word-info").html("Key word: {0}".replace("{0}", keyword));
+        window.scrollTo(0,document.body.scrollHeight);
     }
     if ($.inArray(currentPhoneme, consArray) >= 0) {
         $("#consTable").css("display", "block");
@@ -66,13 +79,14 @@ $(document).ready( function() {
         waveColor: 'violet',
         progressColor: 'purple',
         height: '150',
+        autoCenter: false,
+        hideScrollbar: true,
     });
     wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
     wavesurfer.empty();
     if ($.inArray(currentPhoneme, savedPhoneme) >= 0) {
         $("#startTime").html(record_details[0]);
         $("#endTime").html(record_details[1]);
-        $("#status").html('unsaved');
         wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
         var recording_blob = b64toBlob(record_details[3]);
         wavesurfer.loadBlob(recording_blob);
@@ -89,7 +103,6 @@ $(document).ready( function() {
     else {
         $("#startTime").html('0.00');
         $("#endTime").html('0.00');
-        $("#status").html('unsaved');
         var recordbtn = document.getElementById("record");
         if (currentPhoneme == "index") {
             recordbtn.disabled = true;
@@ -127,7 +140,7 @@ $(document).ready( function() {
                 drag: false,
                 //resize: false,
             });
-            wavesurfer.addRegion({
+            regionVar = wavesurfer.addRegion({
                 start: record_details[0], // time in seconds
                 end: record_details[1], // time in seconds
                 color: 'hsla(400, 100%, 30%, 0.1)'
@@ -143,23 +156,27 @@ $(document).ready( function() {
             endTime = end.toFixed(2)
             $("#startTime").html(startTime);
             $("#endTime").html(endTime);
-            audioDuration = wavesurfer.getDuration();
+            var savebtn = document.getElementById("save");
+            savebtn.disabled = false;
+            regionVar = region;
+        });
+        wavesurfer.on('region-removed', function () {
+            regionVar = null;
+            $("#startTime").html('0.00');
+            $("#endTime").html('0.00');
+            var savebtn = document.getElementById("save");
+            savebtn.disabled = true;
+        });
+        if (!isRecording) {
+            var audioDuration = wavesurfer.getDuration();
             zoomLevel = wavesurferWidth / audioDuration;
             var zoominbtn = document.getElementById("zoomin");
             zoominbtn.disabled = false;
             var zoomoutbtn = document.getElementById("zoomout");
             zoomoutbtn.disabled = false;
-            var savebtn = document.getElementById("save");
-            savebtn.disabled = false;
-        });
-        wavesurfer.on('region-click', function (region, e) {
-            e.stopPropagation();
-            // Play on click, loop on shift click
-            e.shiftKey ? region.playLoop() : region.play();
-
-            //region.color = 'hsla(100, 100%, 70%, 0.1)';
-
-        });
+            var playbtn = document.getElementById("playPause");
+            playbtn.disabled = false;
+        }
     });
 
     $("#consTab").click(function () {
@@ -188,13 +205,24 @@ $(document).ready( function() {
     //     $("#vowelTab").removeClass("active");
     //     $("#consTab").removeClass("active");
     // });
-    
+
     $("#record").click(function (){
+        if (zoomMulti != 2) {
+            wavesurfer.zoom(zoomLevel);
+            zoomMulti = 2;
+            //wavesurfer.scrollParent = false;
+        }
         toggleRecording(this);
     });
     $("#playPause").click(function (){
-        wavesurfer.playPause();
-        $(this).toggleClass("playing");
+        if (regionVar == null) {
+            wavesurfer.playPause();
+            $(this).toggleClass("playing");
+        }
+        else {
+            regionVar.play();
+        }
+
     });
     $(".phoneme").click(function () {
         var jumpPhoneme = $(this).attr('id');
@@ -211,9 +239,11 @@ $(document).ready( function() {
     });
     $("#zoomout").click(function () {
         wavesurfer.zoom(zoomLevel);
+        wavesurfer.zoom(zoomLevel);
         zoomMulti = 2;
         var zoominbtn = document.getElementById("zoomin");
         zoominbtn.disabled = false;
+        //wavesurfer.scrollParent = false;
     });
     $("#save").click(function () {
         try {
@@ -271,7 +301,6 @@ $(document).ready( function() {
                         processData: false,
                         contentType: false
                     }).done(function () {
-                        $("#status").html('saved');
                         var phonemebtn = document.getElementById(currentPhoneme);
                         phonemebtn.className = 'phoneme btn btn-xs btn-success';
                         var savebtn = document.getElementById("save");
@@ -280,10 +309,10 @@ $(document).ready( function() {
                         zoominbtn.disabled = true;
                         var zoomoutbtn = document.getElementById("zoomout");
                         zoomoutbtn.disabled = true;
-                        // var recordbtn = document.getElementById("record");
-                        // recordbtn.disabled = true;
                         var playbtn = document.getElementById("playPause");
                         playbtn.disabled = true;
+                        $("#info-panel").hide();
+                        $("#SoundRecorder").hide();
                         if (savedPhoneme.length >= numPhoneme - 1) {
                             var nextbtn = document.getElementById("btn_next");
                             nextbtn.disabled = false;
@@ -345,78 +374,3 @@ function b64toBlob(b64Data, contentType, sliceSize) {
     var blob = new Blob(byteArrays, {type: contentType});
     return blob;
 }
-// function upload(blob) {
-//     // var fd = new FormData();
-//     //     fd.append('data', soundBlob);
-//     var csrftoken = getCookie('csrftoken');
-//         var fd = {CSRF: csrftoken, record_audio: record_blob}
-//         $.ajax({
-//             type: 'POST',
-//             url: '/speech/upload_record',
-//             data: fd,
-//             processData: false,
-//             contentType: false
-//         });
-// }
-// function upload(blob) {
-//     var csrftoken = getCookie('csrftoken');
-//
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('POST', '/speech/upload_record/', true);
-//     xhr.setRequestHeader("X-CSRFToken", csrftoken);
-//     xhr.setRequestHeader("phoneme", currentPhoneme);
-//
-//
-//     xhr.send(blob);
-//     var res = xhr.responseText;
-// }
-
-
-
-// function initWaveSurfer () {
-//     wavesurfer.on('ready', function () {
-//         if (!regionEnabled) {
-//             wavesurfer.enableDragSelection({
-//                 color: 'hsla(100, 100%, 30%, 0.1)',
-//                 drag: false,
-//                 //resize: false,
-//             });
-//             regionEnabled = true;
-//
-//         }
-//
-//         //if (regionsEnabled != true) {
-//         //    wavesurfer.enableDragSelection({
-//         //        color: 'hsla(100, 100%, 30%, 0.1)',
-//         //    });
-//         //
-//         //}
-//
-//         // $("#spectrogram").css("display", "inline-block");
-//         // var spectrogram = Object.create(WaveSurfer.Spectrogram);
-//         // spectrogram.init({
-//         //     wavesurfer: wavesurfer,
-//         //     container: "#spectrogram",
-//         //     //container: "#SoundExample",
-//         //
-//         // });
-//     });
-//     wavesurfer.on('region-click', function (region, e) {
-//         e.stopPropagation();
-//         // Play on click, loop on shift click
-//         e.shiftKey ? region.playLoop() : region.play();
-//         var start = region.start;
-//         var end = region.end;
-//         //region.color = 'hsla(100, 100%, 70%, 0.1)';
-//         $("#startTime").html(start.toFixed(2));
-//         $("#endTime").html(end.toFixed(2));
-//     });
-//     //wavesurfer.on('region-dblclick', function (region, e) {
-//     //    e.stopPropagation();
-//     //    region.remove();
-//     //    //var start = region.start;
-//     //    //var end = region.end;
-//     //    //$("#startTime").html(start);
-//     //    //$("#endTime").html(end);
-//     //});
-// }

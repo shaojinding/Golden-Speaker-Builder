@@ -12,17 +12,20 @@ class User(models.Model):
 
 
 class AnchorSet(models.Model):
-    anchor_set_name = models.CharField(unique=True, max_length=128)
+    anchor_set_name = models.CharField(max_length=128)
     user = models.ForeignKey(User)
     timestamp = models.CharField(max_length=128)  # set up time
     active = models.BooleanField()  # whether the anchor set is active (in using)
     used = models.BooleanField()  # whether the anchor set has been used
     completed = models.BooleanField()  # whether all anchors are recorded
     built = models.CharField(max_length=128)  # whether sabr model has been built
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=400)  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model
     pitch_path = models.CharField(max_length=128)  # path to pitch recording file
+
+    class Meta:
+        unique_together = ('anchor_set_name', 'user')
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.anchor_set_name)
@@ -85,6 +88,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     slug = models.SlugField(unique=True)
     contained_utterance = models.ManyToManyField(Utterance)
     timestamp = models.CharField(max_length=128)
+    status = models.CharField(max_length=128)
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)
