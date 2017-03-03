@@ -124,6 +124,7 @@ $(document).ready( function() {
                 processData: false,
                 contentType: false
             }).done(function () {
+                alert("Your Golden Speaker is being synthesized. Please go to 'Play with Golden Speaker' to check on the status. Once the synthesis is done, you will be able to practice with the Golden Speaker");
                 window.location.href = '/speech'
             });
         }
