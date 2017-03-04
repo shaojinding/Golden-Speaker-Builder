@@ -249,3 +249,129 @@ spawned uWSGI worker 4 (pid: 20817, cores: 1)
 [pid: 20817|app: 0|req: 27/57] 10.64.203.147 () {44 vars in 1152 bytes} [Fri Feb 10 17:02:00 2017] GET /speech/start_record_session/test_shjd/ => generated 0 bytes in 26 msecs (HTTP/1.1 302) 5 headers in 268 bytes (1 switches on core 0)
 [pid: 20816|app: 0|req: 26/58] 10.64.203.147 () {44 vars in 1116 bytes} [Fri Feb 10 17:02:00 2017] GET /speech/record/index/ => generated 13582 bytes in 44 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
 [pid: 20816|app: 0|req: 27/59] 10.64.203.147 () {44 vars in 1087 bytes} [Fri Feb 10 17:02:07 2017] GET /speech/ => generated 4443 bytes in 19 msecs (HTTP/1.1 200) 3 headers in 102 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:08:15 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:10:09 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:11:02 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:13:39 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:19:43 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:21:34 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.14 (64bit) on [Sat Mar  4 17:24:07 2017] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-11) on 26 January 2017 12:01:02
+os: Linux-3.10.0-514.el7.x86_64 #1 SMP Wed Oct 19 11:24:13 EDT 2016
+nodename: goldenspeaker.las.iastate.edu
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/shjd/golden-speaker
+detected binary path: /usr/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/shjd/golden-speaker
+your processes number limit is 4096
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:49152).
+bind(): Address already in use [core/socket.c line 769]

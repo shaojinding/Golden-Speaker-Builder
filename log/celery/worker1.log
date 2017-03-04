@@ -385,3 +385,297 @@ Trying again in 10.00 seconds...
 [2017-01-30 19:40:37,728: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
 [2017-01-30 19:40:37,728: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:08:17,047: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:08:17,059: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:08:18,082: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:08:18,112: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:08:18,112: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:08:42,925: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:08:42,953: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:10:11,079: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:10:11,091: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:10:12,122: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:10:12,156: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:10:12,156: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:10:25,294: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:10:25,321: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:11:03,491: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:11:03,507: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:11:04,538: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:11:04,569: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:11:04,569: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:11:47,523: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:11:47,555: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:13:41,031: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:13:41,050: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:13:42,076: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:13:42,111: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:13:42,112: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:19:33,715: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:19:33,746: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:19:44,962: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:19:44,972: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:19:45,996: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:19:46,029: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:19:46,029: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:20:23,679: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:20:23,706: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:21:35,182: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:21:35,209: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:21:36,262: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:21:36,299: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:21:36,299: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-04 23:23:45,430: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
+    blueprint.start(self)
+  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
+    step.start(parent)
+  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
+    c.loop(*c.loop_args())
+  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
+    next(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
+    cb(*cbargs)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
+    reader(loop)
+  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
+    drain_events(timeout=0)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
+    return self.blocking_read(timeout)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
+    method_sig, payload, content,
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
+    listener(*args)
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
+    self._x_close_ok()
+  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
+    write(view[:offset])
+  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
+    self._write(s)
+  File "/usr/lib64/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 104] Connection reset by peer
+[2017-03-04 23:23:45,462: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2017-03-04 23:24:08,849: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-04 23:24:08,880: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-04 23:24:09,932: INFO/MainProcess] mingle: all alone
+[2017-03-04 23:24:09,960: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2017-03-04 23:24:09,960: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.

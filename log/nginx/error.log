@@ -486,3 +486,18 @@
 2017/02/09 22:48:21 [error] 16179#16179: *529 "/usr/share/nginx/html/jkstatus/index.html" is not found (2: No such file or directory), client: 129.186.6.4, server: localhost, request: "GET /jkstatus/ HTTP/1.1", host: "10.27.18.32"
 2017/02/09 22:48:21 [error] 16179#16179: *532 open() "/usr/share/nginx/html/crossdomain.xml" failed (2: No such file or directory), client: 129.186.6.4, server: localhost, request: "GET /crossdomain.xml HTTP/1.1", host: "10.27.18.32"
 2017/02/09 22:48:21 [error] 16179#16179: *533 open() "/usr/share/nginx/html/c99.php" failed (2: No such file or directory), client: 129.186.6.4, server: localhost, request: "GET /c99.php HTTP/1.1", host: "10.27.18.32"
+2017/03/04 17:08:30 [error] 8937#8937: *9 "/usr/share/nginx/html/auth/callback/index.html" is not found (2: No such file or directory), client: 10.64.203.147, server: localhost, request: "GET /auth/callback/?code=VecryHrZZDqt4CdO HTTP/1.1", host: "goldenspeaker.las.iastate.edu"
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2017/03/04 17:10:09 [emerg] 9227#9227: still could not bind()
+2017/03/04 17:11:26 [error] 9559#9559: *9 "/usr/share/nginx/html/auth/callback/index.html" is not found (2: No such file or directory), client: 10.64.203.147, server: localhost, request: "GET /auth/callback/?code=luKZZsYqtcKI9fT8 HTTP/1.1", host: "goldenspeaker.las.iastate.edu"
+2017/03/04 17:13:56 [error] 9871#9871: *3 open() "/usr/share/nginx/html/speech" failed (2: No such file or directory), client: 10.64.203.147, server: localhost, request: "GET /speech HTTP/1.1", host: "goldenspeaker.las.iastate.edu"
+2017/03/04 17:14:05 [error] 9871#9871: *3 "/usr/share/nginx/html/auth/callback/index.html" is not found (2: No such file or directory), client: 10.64.203.147, server: localhost, request: "GET /auth/callback/?code=yYDUkjLVFOTHHYJ8 HTTP/1.1", host: "goldenspeaker.las.iastate.edu"
