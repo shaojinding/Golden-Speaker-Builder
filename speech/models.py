@@ -41,22 +41,25 @@ class AnchorSet(models.Model):
         return json.loads(self.saved_phonemes)
 
 
-class Recording(models.Model):
-    record_name = models.CharField(unique=True, max_length=128)
-    phoneme = models.CharField(max_length=128)  # phoneme of the recording
-    user = models.ForeignKey(User)
-
-    def __unicode__(self):
-        return self.record_name
-
-
 class Anchor(models.Model):  # the anchor is determined by both recording and anchor set
-    recording = models.ForeignKey(Recording)
     anchor_set = models.ForeignKey(AnchorSet)
     phoneme = models.CharField(max_length=128)
     L = models.FloatField(default=0.0)
     C = models.FloatField(default=0.0)
     R = models.FloatField(default=0.0)
+
+    def __unicode__(self):
+        return '{0}_{1}_{2}'.format(self.anchor_set.user.user_name, self.anchor_set.anchor_set_name, self.phoneme)
+
+
+class Recording(models.Model):
+    record_name = models.CharField(unique=True, max_length=128)
+    phoneme = models.CharField(max_length=128)  # phoneme of the recording
+    user = models.ForeignKey(User)
+    anchor = models.ForeignKey(Anchor)
+
+    def __unicode__(self):
+        return self.record_name
 
 
 class SourceModel(models.Model):

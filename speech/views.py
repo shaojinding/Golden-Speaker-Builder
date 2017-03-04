@@ -74,8 +74,8 @@ def add_anchorset(request):
             anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
             anchorset.set_saved_phonemes([])
             anchorset.save()
-            anchorset.sabr_model_path = 'static/sabr/{}.mat'.format(anchorset.slug)
-            anchorset.pitch_path = 'static/pitch/{}.wav'.format(anchorset.slug)
+            anchorset.sabr_model_path = 'data/sabr/{}.mat'.format(anchorset.slug)
+            anchorset.pitch_path = 'data/pitch/{}.wav'.format(anchorset.slug)
             anchorset.save()
             return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
         else:
@@ -94,10 +94,17 @@ def delete_anchorset(request, anchor_set_name_slug):
     if 'current_anchorset' in request.session:
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
-    if os.path.exists('static/pitch/{}.wav'.format(anchor_set_name_slug)):
-        os.remove('static/pitch/{}.wav'.format(anchor_set_name_slug))
-    if os.path.exists('static/sabr/{}.mat'.format(anchor_set_name_slug)):
-        os.remove('static/sabr/{}.mat'.format(anchor_set_name_slug))
+    if os.path.exists('data/pitch/{}.wav'.format(anchor_set_name_slug)):
+        os.remove('data/pitch/{}.wav'.format(anchor_set_name_slug))
+    if os.path.exists('data/sabr/{}.mat'.format(anchor_set_name_slug)):
+        os.remove('data/sabr/{}.mat'.format(anchor_set_name_slug))
+    anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)
+    anchors = Anchor.objects.filter(anchor_set=anchorset)
+    for anchor in anchors:
+        recording = Recording.objects.get(anchor=anchor)
+        record_name = recording.record_name
+        if os.path.exists('data/recordings/{}.wav'.format(record_name)):
+            os.remove('data/recordings/{}.wav'.format(record_name))
     AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user).delete()
     return redirect('/speech/manage_anchorset')
 
@@ -132,9 +139,9 @@ def record(request, phoneme):
 
     if phoneme in saved_phonemes:
         anchor = Anchor.objects.get(anchor_set=anchor_set, phoneme=phoneme)
-        recording = anchor.recording
+        recording = Recording.objects.get(anchor=anchor)
         record_name = recording.record_name
-        with open("static/recordings/%s.wav" % record_name, "rb") as recording_file:
+        with open("data/recordings/%s.wav" % record_name, "rb") as recording_file:
             recording_blob = recording_file.read()
         recording_base64 = base64.b64encode(recording_blob)
         json_record_details = json.dumps([anchor.L, anchor.R, anchor.C, recording_base64])
@@ -208,24 +215,24 @@ def upload_annotation(request):
                 if re_record:
                     recording_base64 = request.POST['recording']
                     recording_blob = base64.b64decode(recording_base64)
-                    rec = anc.recording
+                    rec = Recording.objects.get(anchor=anc)
                     record_name = rec.record_name
-                    with open("static/recordings/%s.wav" % record_name, "wb") as recording_file:
+                    with open("data/recordings/%s.wav" % record_name, "wb") as recording_file:
                         recording_file.write(recording_blob)
             else:
+                anc = Anchor(anchor_set=current_anchorset, phoneme=phoneme, L=L, R=R, C=C)
+                anc.save()
                 recording_base64 = request.POST['recording']
                 saved_phonemes.append(phoneme)
                 request.session['saved_phonemes'] = saved_phonemes
                 current_anchorset.set_saved_phonemes(saved_phonemes)
                 current_anchorset.save()
-                record_name = str(Recording.objects.count())
+                record_name = anc.__unicode__()
                 recording_blob = base64.b64decode(recording_base64)
-                with open("static/recordings/%s.wav" % record_name, "wb") as recording_file:
+                with open("data/recordings/%s.wav" % record_name, "wb") as recording_file:
                     recording_file.write(recording_blob)
-                rec = Recording(record_name=record_name, phoneme=phoneme, user=user)
+                rec = Recording(record_name=record_name, phoneme=phoneme, user=user, anchor=anc)
                 rec.save()
-                anc = Anchor(recording=rec, anchor_set=current_anchorset, phoneme=phoneme, L=L, R=R, C=C)
-                anc.save()
     return HttpResponse('sucess')
 
 
@@ -266,8 +273,8 @@ def build_sabr(request):
     pitch_path = anchor_set.pitch_path
     output_mat_path = anchor_set.sabr_model_path
     for anchor in anchors:
-        recording = anchor.recording
-        audio_paths.append('static/recordings/{}'.format(recording.record_name))
+        recording = Recording.objects.get(anchor=anchor)
+        audio_paths.append('data/recordings/{}'.format(recording.record_name))
         phoneme.append(str(recording.phoneme))
         left.append(anchor.L)
         right.append(anchor.R)
@@ -343,12 +350,12 @@ def synthesize(request):
                 gs.contained_utterance.add(uttr)
             gs.save()
             slug = gs.slug
-            output_wav_folder = 'static/output_wav/' + slug
+            output_wav_folder = 'data/output_wav/' + slug
             if not os.path.exists(output_wav_folder):
                 os.mkdir(output_wav_folder)
             output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
-            target_model_path = 'static/sabr/' + target_model_name + '.mat'
+            target_model_path = 'data/sabr/' + target_model_name + '.mat'
             utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
             synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
@@ -371,8 +378,17 @@ def practice(request, golden_speaker_name_slug):
         context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'golden_speakers': gss, 'building_golden_speakers': json_building_gs}
     else:
         if_choose = False
+        uttr_files = {}
         gs = GoldenSpeaker.objects.get(slug=golden_speaker_name_slug)
-        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'cwd': os.getcwd(), 'gs': gs}
+        uttrs = Utterance.objects.filter(goldenspeaker=gs)
+        for uttr in uttrs:
+            uttr_path = 'data/output_wav/{0}/{1}.wav'.format(gs.speaker_name, uttr.name)
+            with open(uttr_path, "rb") as recording_file:
+                recording_blob = recording_file.read()
+            recording_base64 = base64.b64encode(recording_blob)
+            uttr_files['{0}_{1}'.format(gs.speaker_name, uttr.name)] = recording_base64
+            json_uttr_file = json.dumps(uttr_files)
+        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'cwd': os.getcwd(), 'gs': gs, 'uttr_files': json_uttr_file}
     return render(request, 'speech/practice.html', context_dict)
 
 @login_required_auth0()
@@ -393,5 +409,8 @@ def get_synthesize_status(request):
 # view to delete golden_speaker
 @login_required_auth0()
 def delete_golden_speaker(request, speaker_name_slug):
+    gs = GoldenSpeaker.objects.get(slug=speaker_name_slug)
+    if os.path.exists('data/output_wav/{}'.format(gs.speaker_name)):
+        os.removedirs('data/output_wav/{}'.format(gs.speaker_name))
     GoldenSpeaker.objects.filter(slug=speaker_name_slug).delete()
     return redirect('/speech/practice/index')

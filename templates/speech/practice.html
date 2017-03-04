@@ -21,6 +21,7 @@
         <script type="text/javascript">
             cwd = "{{ cwd }}";
             goldenSpeakerName = "{{ gs.speaker_name }}";
+            uttrFiles = {{ uttr_files|safe }};
             ifChoose = "{{ if_choose }}";
         </script>
     {% else %}
@@ -105,8 +106,8 @@
                 <div id="student-timeline">
                 </div>
                 <div id="controls">
-                    <button id="record" class="ctrlButton"></button>
-                    <button id="playPause" class="ctrlButton"></button>
+                    <button id="record" class="btn btn-default"></button>
+                    <button id="playPause" class="btn btn-default"></button>
                 </div>
             </div>
         </div>

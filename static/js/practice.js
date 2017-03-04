@@ -9,6 +9,7 @@ var microphone = null;
 var recorded = null;
 var ifChoose = null;
 var buildingGoldenSpeaker = null;
+var uttrFiles = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
@@ -77,8 +78,11 @@ $(document).ready( function() {
         var audio = document.getElementById("utterance-play");
         var source = document.getElementById("utterance-source");
         wavesurferTeacher.empty();
-        wavesurferTeacher.load("/static/output_wav/" + goldenSpeakerName + '/' + name + '.wav');
-        source.src = "/static/output_wav/" + goldenSpeakerName + '/' + name + '.wav';
+        var audioBase64 = uttrFiles["{0}_{1}".replace("{0}", goldenSpeakerName).replace("{1}", name)];
+        var audioBlob = b64toBlob(audioBase64);
+        var audioUrl = window.URL.createObjectURL(audioBlob);
+        wavesurferTeacher.load(audioUrl);
+        source.src = audioUrl;
         audio.load();
         audio.play();
     });
@@ -107,4 +111,28 @@ function checkBuildStatus() {
         setTimeout("checkBuildStatus()", 30000);
     }
 
+}
+
+function b64toBlob(b64Data, contentType, sliceSize) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, {type: contentType});
+    return blob;
 }
