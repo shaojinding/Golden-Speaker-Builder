@@ -1,2 +1,6 @@
 **.pyc
 static/ARCTIC/**
+**.wav
+db.sqlite3
+data/**
+log/**

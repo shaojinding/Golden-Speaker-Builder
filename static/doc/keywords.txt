@@ -3,7 +3,7 @@ b boat
 t tea
 d deep
 k keep
-g gas
+ɡ gas
 m make
 n no
 ŋ sing
