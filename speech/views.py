@@ -341,7 +341,7 @@ def synthesize(request):
             target_model = AnchorSet.objects.get(anchor_set_name=target_model_name, user=user)
             target_model_name_slug = target_model.slug
             timestamp = str(time())
-            gs_name = source_model_name + '-' + target_model_name + '-' + timestamp.replace('.', '-')
+            gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
                                user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
@@ -355,7 +355,7 @@ def synthesize(request):
                 os.mkdir(output_wav_folder)
             output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
-            target_model_path = 'data/sabr/' + target_model_name + '.mat'
+            target_model_path = 'data/sabr/' + target_model_name_slug + '.mat'
             utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
             synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)

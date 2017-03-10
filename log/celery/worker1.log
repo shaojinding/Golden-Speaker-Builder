@@ -1,397 +1,4 @@
-[2017-01-26 19:40:13,381: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-01-26 19:40:15,418: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 4.00 seconds...
-
-[2017-01-26 19:40:19,467: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 6.00 seconds...
-
-[2017-01-26 19:40:25,558: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 8.00 seconds...
-
-[2017-01-26 19:40:33,647: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 10.00 seconds...
-
-[2017-01-26 19:40:43,745: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 12.00 seconds...
-
-[2017-01-26 19:40:56,198: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 14.00 seconds...
-
-[2017-01-26 19:41:10,383: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 16.00 seconds...
-
-[2017-01-26 19:41:26,667: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 18.00 seconds...
-
-[2017-01-26 19:41:44,888: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 20.00 seconds...
-
-[2017-01-26 19:42:05,243: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 22.00 seconds...
-
-[2017-01-26 19:42:27,445: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 24.00 seconds...
-
-[2017-01-26 19:42:51,786: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 26.00 seconds...
-
-[2017-01-26 19:43:18,012: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 28.00 seconds...
-
-[2017-01-26 19:43:46,379: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 30.00 seconds...
-
-[2017-01-26 19:44:16,779: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:44:49,140: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:45:21,629: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:45:54,064: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:46:26,674: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:46:59,423: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:47:31,749: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:48:03,975: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:48:36,384: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:49:08,636: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:49:41,157: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:50:13,426: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:50:45,706: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:51:18,103: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:51:50,434: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:52:22,917: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:52:55,576: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:53:27,854: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:54:00,072: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:54:32,418: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:55:04,750: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:55:37,069: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:56:09,303: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:56:41,703: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:57:14,037: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:57:46,650: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:58:18,839: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:58:51,035: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:59:23,382: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 19:59:55,785: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:00:28,542: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:01:00,808: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:01:33,639: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:02:06,339: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:02:38,812: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:03:11,101: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:03:43,369: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:04:15,821: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:04:48,102: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:05:20,366: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:05:52,749: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:06:25,195: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:06:57,609: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:07:29,881: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:08:02,194: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:08:34,626: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:09:07,621: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:09:40,039: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:10:12,367: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:10:44,641: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:11:16,866: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:11:49,255: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:12:21,759: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:12:54,216: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:13:26,662: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:13:59,053: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:14:31,622: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:15:03,930: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:15:36,190: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:16:08,617: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:16:41,124: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:17:13,990: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:17:46,586: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:18:19,115: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:18:51,593: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:19:24,601: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:19:57,380: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:20:29,829: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:21:02,356: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:21:34,948: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:22:07,775: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:22:40,024: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:23:12,880: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:23:45,626: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:24:17,960: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:24:50,311: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:25:22,841: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:25:55,316: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:26:27,812: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:27:00,038: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:27:32,258: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:28:04,584: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:28:36,969: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:29:09,310: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:29:41,745: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 32.00 seconds...
-
-[2017-01-26 20:30:14,114: CRITICAL/MainProcess] Unrecoverable error: OperationalError(u'[Errno 111] Connection refused',)
-Traceback (most recent call last):
-  File "/usr/lib/python2.7/site-packages/celery/worker/worker.py", line 203, in start
-    self.blueprint.start(self)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
-    step.start(parent)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 370, in start
-    return self.obj.start()
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
-    blueprint.start(self)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
-    step.start(parent)
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/connection.py", line 21, in start
-    c.connection = c.connect()
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 424, in connect
-    callback=maybe_shutdown,
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 405, in ensure_connection
-    callback)
-  File "/usr/lib64/python2.7/contextlib.py", line 35, in __exit__
-    self.gen.throw(type, value, traceback)
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 419, in _reraise_as_library_errors
-    sys.exc_info()[2])
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 414, in _reraise_as_library_errors
-    yield
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 405, in ensure_connection
-    callback)
-  File "/usr/lib/python2.7/site-packages/kombu/utils/functional.py", line 333, in retry_over_time
-    return fun(*args, **kwargs)
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 261, in connect
-    return self.connection
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 802, in connection
-    self._connection = self._establish_connection()
-  File "/usr/lib/python2.7/site-packages/kombu/connection.py", line 757, in _establish_connection
-    conn = self.transport.establish_connection()
-  File "/usr/lib/python2.7/site-packages/kombu/transport/pyamqp.py", line 130, in establish_connection
-    conn.connect()
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 294, in connect
-    self.transport.connect()
-  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 103, in connect
-    self._connect(self.host, self.port, self.connect_timeout)
-  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 144, in _connect
-    self.sock.connect(sa)
-  File "/usr/lib64/python2.7/socket.py", line 224, in meth
-    return getattr(self._sock,name)(*args)
-OperationalError: [Errno 111] Connection refused
-[2017-01-30 19:15:55,835: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-01-30 19:15:57,883: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 4.00 seconds...
-
-[2017-01-30 19:16:01,934: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 6.00 seconds...
-
-[2017-01-30 19:16:08,002: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 8.00 seconds...
-
-[2017-01-30 19:16:16,124: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 10.00 seconds...
-
-[2017-01-30 19:17:59,710: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-01-30 19:18:01,736: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 4.00 seconds...
-
-[2017-01-30 19:18:05,787: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 6.00 seconds...
-
-[2017-01-30 19:18:11,836: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 8.00 seconds...
-
-[2017-01-30 19:18:19,921: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 10.00 seconds...
-
-[2017-01-30 19:35:16,341: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-01-30 19:35:16,355: INFO/MainProcess] mingle: searching for neighbors
-[2017-01-30 19:35:17,392: INFO/MainProcess] mingle: all alone
-[2017-01-30 19:35:17,430: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-01-30 19:35:17,430: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-01-30 19:40:36,631: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-01-30 19:40:36,649: INFO/MainProcess] mingle: searching for neighbors
-[2017-01-30 19:40:37,694: INFO/MainProcess] mingle: all alone
-[2017-01-30 19:40:37,728: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-01-30 19:40:37,728: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:08:17,047: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:08:17,059: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:08:18,082: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:08:18,112: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:08:18,112: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:08:42,925: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+[2017-03-09 05:57:25,031: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
 Traceback (most recent call last):
   File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
     blueprint.start(self)
@@ -430,16 +37,18 @@ Traceback (most recent call last):
   File "/usr/lib64/python2.7/socket.py", line 224, in meth
     return getattr(self._sock,name)(*args)
 error: [Errno 104] Connection reset by peer
-[2017-03-04 23:08:42,953: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+[2017-03-09 05:57:25,366: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
 Trying again in 2.00 seconds...
 
-[2017-03-04 23:10:11,079: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:10:11,091: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:10:12,122: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:10:12,156: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+[2017-03-09 05:58:08,897: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-09 05:58:08,912: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-09 05:58:09,937: INFO/MainProcess] mingle: all alone
+[2017-03-09 05:58:09,956: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:10:12,156: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:10:25,294: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+[2017-03-09 05:58:09,956: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-09 05:58:50,914: INFO/MainProcess] Received task: speech.tasks.build_sabr_model[46a8ab0c-4fac-493c-8e98-b024061d48ac]  
+[2017-03-09 06:07:20,287: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[e75e0867-8141-4bd3-b00e-38f109140609]  
+[2017-03-09 06:13:49,787: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
 Traceback (most recent call last):
   File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
     blueprint.start(self)
@@ -478,16 +87,17 @@ Traceback (most recent call last):
   File "/usr/lib64/python2.7/socket.py", line 224, in meth
     return getattr(self._sock,name)(*args)
 error: [Errno 104] Connection reset by peer
-[2017-03-04 23:10:25,321: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+[2017-03-09 06:13:49,846: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
 Trying again in 2.00 seconds...
 
-[2017-03-04 23:11:03,491: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:11:03,507: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:11:04,538: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:11:04,569: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+[2017-03-09 06:14:16,655: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-09 06:14:16,681: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-09 06:14:17,734: INFO/MainProcess] mingle: all alone
+[2017-03-09 06:14:17,775: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:11:04,569: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:11:47,523: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+[2017-03-09 06:14:17,775: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-09 06:14:56,591: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[b8f583ec-fd38-49e7-b665-ea349369434c]  
+[2017-03-09 06:17:59,200: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
 Traceback (most recent call last):
   File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
     blueprint.start(self)
@@ -526,156 +136,25 @@ Traceback (most recent call last):
   File "/usr/lib64/python2.7/socket.py", line 224, in meth
     return getattr(self._sock,name)(*args)
 error: [Errno 104] Connection reset by peer
-[2017-03-04 23:11:47,555: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
+[2017-03-09 06:17:59,233: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
 Trying again in 2.00 seconds...
 
-[2017-03-04 23:13:41,031: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:13:41,050: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:13:42,076: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:13:42,111: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+[2017-03-09 06:18:26,009: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+[2017-03-09 06:18:26,024: INFO/MainProcess] mingle: searching for neighbors
+[2017-03-09 06:18:27,055: INFO/MainProcess] mingle: all alone
+[2017-03-09 06:18:27,090: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:13:42,112: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:19:33,715: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
-Traceback (most recent call last):
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
-    blueprint.start(self)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
-    step.start(parent)
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
-    c.loop(*c.loop_args())
-  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
-    next(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
-    cb(*cbargs)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
-    reader(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
-    drain_events(timeout=0)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
-    return self.blocking_read(timeout)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
-    return self.on_inbound_frame(frame)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
-    callback(channel, method_sig, buf, None)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
-    method_sig, payload, content,
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
-    listener(*args)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
-    self._x_close_ok()
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
-    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
-    conn.frame_writer(1, self.channel_id, sig, args, content)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
-    write(view[:offset])
-  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
-    self._write(s)
-  File "/usr/lib64/python2.7/socket.py", line 224, in meth
-    return getattr(self._sock,name)(*args)
-error: [Errno 104] Connection reset by peer
-[2017-03-04 23:19:33,746: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-03-04 23:19:44,962: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:19:44,972: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:19:45,996: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:19:46,029: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:19:46,029: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:20:23,679: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
-Traceback (most recent call last):
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
-    blueprint.start(self)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
-    step.start(parent)
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
-    c.loop(*c.loop_args())
-  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
-    next(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
-    cb(*cbargs)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
-    reader(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
-    drain_events(timeout=0)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
-    return self.blocking_read(timeout)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
-    return self.on_inbound_frame(frame)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
-    callback(channel, method_sig, buf, None)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
-    method_sig, payload, content,
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
-    listener(*args)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
-    self._x_close_ok()
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
-    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
-    conn.frame_writer(1, self.channel_id, sig, args, content)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
-    write(view[:offset])
-  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
-    self._write(s)
-  File "/usr/lib64/python2.7/socket.py", line 224, in meth
-    return getattr(self._sock,name)(*args)
-error: [Errno 104] Connection reset by peer
-[2017-03-04 23:20:23,706: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-03-04 23:21:35,182: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:21:35,209: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:21:36,262: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:21:36,299: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:21:36,299: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
-[2017-03-04 23:23:45,430: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
-Traceback (most recent call last):
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 318, in start
-    blueprint.start(self)
-  File "/usr/lib/python2.7/site-packages/celery/bootsteps.py", line 119, in start
-    step.start(parent)
-  File "/usr/lib/python2.7/site-packages/celery/worker/consumer/consumer.py", line 594, in start
-    c.loop(*c.loop_args())
-  File "/usr/lib/python2.7/site-packages/celery/worker/loops.py", line 88, in asynloop
-    next(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/async/hub.py", line 345, in create_loop
-    cb(*cbargs)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 236, in on_readable
-    reader(loop)
-  File "/usr/lib/python2.7/site-packages/kombu/transport/base.py", line 218, in _read
-    drain_events(timeout=0)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 464, in drain_events
-    return self.blocking_read(timeout)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 469, in blocking_read
-    return self.on_inbound_frame(frame)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 68, in on_frame
-    callback(channel, method_sig, buf, None)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 473, in on_inbound_method
-    method_sig, payload, content,
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 142, in dispatch_method
-    listener(*args)
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 593, in _on_close
-    self._x_close_ok()
-  File "/usr/lib/python2.7/site-packages/amqp/connection.py", line 608, in _x_close_ok
-    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
-  File "/usr/lib/python2.7/site-packages/amqp/abstract_channel.py", line 64, in send_method
-    conn.frame_writer(1, self.channel_id, sig, args, content)
-  File "/usr/lib/python2.7/site-packages/amqp/method_framing.py", line 174, in write_frame
-    write(view[:offset])
-  File "/usr/lib/python2.7/site-packages/amqp/transport.py", line 269, in write
-    self._write(s)
-  File "/usr/lib64/python2.7/socket.py", line 224, in meth
-    return getattr(self._sock,name)(*args)
-error: [Errno 104] Connection reset by peer
-[2017-03-04 23:23:45,462: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@127.0.0.1:5672//: [Errno 111] Connection refused.
-Trying again in 2.00 seconds...
-
-[2017-03-04 23:24:08,849: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
-[2017-03-04 23:24:08,880: INFO/MainProcess] mingle: searching for neighbors
-[2017-03-04 23:24:09,932: INFO/MainProcess] mingle: all alone
-[2017-03-04 23:24:09,960: WARNING/MainProcess] /usr/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
-  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
-[2017-03-04 23:24:09,960: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-09 06:18:27,090: INFO/MainProcess] worker1@goldenspeaker.las.iastate.edu ready.
+[2017-03-09 06:18:44,872: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[e7915944-9dc4-43c4-9a19-2418e629914c]  
+[2017-03-09 06:20:19,618: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[ab9f9fa6-d8b2-4737-a38e-0bf9e965a3df]  
+[2017-03-09 06:25:26,705: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[9632096c-ed9e-4d45-8b6f-65854bbf629a]  
+[2017-03-09 13:40:13,801: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[9fad6efd-cde5-4b92-a23c-ac4396326908]  
+[2017-03-09 15:35:06,369: INFO/MainProcess] Received task: speech.tasks.build_sabr_model[26752894-e6de-44c2-896f-2d502d0bd755]  
+[2017-03-09 15:36:33,324: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[50ab48d3-bdc3-4178-8cdf-2ab70e5e8ed4]  
+[2017-03-09 16:47:26,235: INFO/MainProcess] Received task: speech.tasks.build_sabr_model[74ac6695-e9d0-49ca-880a-83a75a3c2316]  
+[2017-03-09 16:48:57,468: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[849aafad-50d1-45e7-9208-10c4a3caaf83]  
+[2017-03-09 16:58:23,445: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[af795aa7-e46c-48da-b262-47d0971fcb6a]  
+[2017-03-09 17:06:45,276: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[7c19eb0b-32a4-45f0-a953-37a1a5a3e8d0]  
+[2017-03-09 21:59:02,760: INFO/MainProcess] Received task: speech.tasks.build_sabr_model[472414e7-e251-4532-ab59-0797e6bec8d0]  
+[2017-03-09 22:02:46,553: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[badfee13-7c13-40b0-9fa7-39f8c3732f10]  
+[2017-03-09 22:06:50,868: INFO/MainProcess] Received task: speech.tasks.synthesize_sabr[cfce578f-281a-4d79-84f8-87d3f05741d8]  
