@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block nav_title %}
-    Anchor Set "{{ anchor_set_name }}"
+    <a href="{% url 'index' %}">Home</a> &raquo; <a href="{% url 'manage_anchorset' %}">Manage Anchor Set</a> &raquo; Anchor Set "{{ anchor_set_name }}"
 {% endblock %}
 
 {% block bottom_block %}

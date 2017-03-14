@@ -5,3 +5,7 @@ td {
 tr {
     width: 14%;
 }
+
+.nav>li>a {
+    display: inline-block;
+}

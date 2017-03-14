@@ -100,10 +100,14 @@ div.index-subtitle p{
 }
 
 #nav_title {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    /*padding-top: 15px;*/
+    /*padding-bottom: 15px;*/
     line-height: 20px;
     box-sizing: border-box;
     color: rgba(255, 255, 255, 1);
     background-color: rgba(248, 248, 248, 0);
+}
+
+.nav>li>a {
+    display: inline-block;
 }

@@ -18,6 +18,8 @@
     <!-- Custom styles for this template -->
     <link href="{% static "css/theme.css" %}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{% static "css/font-awesome/css/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/font-awesome/css/font-awesome-animation.min.css" %}">
     <!-- css : the block for css and script files for each page -->
     {% block css %}{% endblock %}
 </head>
@@ -50,7 +52,7 @@
                 <li id="nav_title">{% block nav_title %}{% endblock %}</li>
             </ul>
             <ul class="nav navbar-nav navbar-maroon navbar-right">
-                <li id="nav_home"><a href="{% url 'index' %}">Home</a></li>
+{#                <li id="nav_home"><a href="{% url 'index' %}">Home</a></li>#}
                 {% if is_login %}
                     <li><a href={% url 'index' %}>Welcome, {{ name }}</a></li>
                     <li><a href={% url 'logout' %}>Logout</a></li>
