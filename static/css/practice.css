@@ -1,3 +1,11 @@
+td {
+    width: 20%;
+}
+
+tr {
+    width: 20%;
+}
+
 .scroll-list-uttr {
     max-height: 500px;
     overflow-y: scroll;
@@ -24,6 +32,26 @@
 	width: 44px;
 	margin-top: 10px;
 	background-image: url("/static/images/play.png");
+	background-repeat:no-repeat;
+
+}
+
+#playPause-teacher {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/play.png");
+	background-repeat:no-repeat;
+
+}
+
+#download-teacher {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/download.png");
 	background-repeat:no-repeat;
 
 }

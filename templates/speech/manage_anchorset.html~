@@ -20,6 +20,7 @@
 {% endblock %}
 
 {% block bottom_block %}
+{#    <p><a class="btn btn-default" href="{% url 'add_anchorset' %}" role="button">New Anchor Set &raquo;</a></p>#}
     <!-- error message -->
     {% if messages %}
         <ul class="messages">
@@ -47,8 +48,7 @@
             {% for anchorset in anchorsets %}
                 <tr>
                     <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>
-                    <td class="time-stamp"></td>
-{#                    <td>{{ anchorset.timestamp }}</td>#}
+                    <td>{{ anchorset.timestamp }}</td>
 {#                    <td>{{ anchorset.active }}</td>#}
                     <td>{{ anchorset.used }}</td>
                     <td>{{ anchorset.completed }}</td>

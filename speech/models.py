@@ -19,6 +19,7 @@ class AnchorSet(models.Model):
     used = models.BooleanField()  # whether the anchor set has been used
     completed = models.BooleanField()  # whether all anchors are recorded
     built = models.CharField(max_length=128)  # whether sabr model has been built
+    modified = models.BooleanField()
     slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=400)  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model

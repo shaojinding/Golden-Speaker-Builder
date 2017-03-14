@@ -8,7 +8,12 @@ import os
 def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, center, phoneme, pitch_path, output_mat_path):
     user = User.objects.get(user_name=username)
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    eng = matlab.engine.connect_matlab()
+    eng = None
+    while eng is None:
+        try:
+            eng = matlab.engine.connect_matlab()
+        except:
+            pass
     eng.clear
     cwd = os.getcwd()
     eng.cd(cwd + '/SABR')
@@ -39,7 +44,12 @@ def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, c
 def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_paths, source_model_path, target_model_path, output_paths):
     user = User.objects.get(user_name=username)
     cwd = os.getcwd()
-    eng = matlab.engine.connect_matlab()
+    eng = None
+    while eng is None:
+        try:
+            eng = matlab.engine.connect_matlab()
+        except:
+            pass
     eng.clear
     eng.cd(cwd + '/SABR')
     eng.config

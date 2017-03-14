@@ -10,6 +10,7 @@
 {% block css %}
     <link href="{% static "css/practice.css" %}" rel="stylesheet">
     <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/moment.js" %}"></script>
     <script src="{% static "js/practice.js" %}"></script>
     <script src="{% static "js/recorder/recorder.js" %}"></script>
     <script src="{% static "js/recorder/main.js" %}"></script>
@@ -26,7 +27,9 @@
         </script>
     {% else %}
         <script type="text/javascript">
+            ifChoose = "{{ if_choose }}";
             buildingGoldenSpeaker = {{ building_golden_speakers|safe }};
+            timeStamps = {{ timestamps|safe }};
         </script>
     {% endif %}
 {% endblock %}
@@ -52,7 +55,8 @@
                         <tr>
                             <td>{{ golden_speaker.source_model.model_name }}</td>
                             <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
-                            <td>{{ golden_speaker.timestamp }}</td>
+{#                            <td>{{ golden_speaker.timestamp }}</td>#}
+                            <td class="time-stamp"></td>
                             {% if golden_speaker.status == "Synthesizing" %}
                                 <td>Synthesizing...</td>
                                 <td></td>
@@ -69,7 +73,8 @@
             <!-- display all utterances in selected golden speaker -->
             <div class="scroll-list list-group">
                 {% for utterance in gs.contained_utterance.all %}
-                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}"><button class="btn btn-success btn-xs play-gs" style="margin-right: 5px">play</button>{{ utterance.transcription }}</a>
+{#                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}"><button class="btn btn-success btn-xs play-gs" style="margin-right: 5px">play</button>{{ utterance.transcription }}</a>#}
+                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}">{{ utterance.transcription }}</a>
                 {% endfor %}
             </div>
         {% endif %}
@@ -87,10 +92,13 @@
             <div class="panel-body">
                 <div id="wavesurf-teacher">
                 </div>
-                <div id="teacher-spec" class="spec" style="height: 256px">
-                </div>
+{#                <div id="teacher-spec" class="spec" style="height: 256px">#}
+{#                </div>#}
                 <div id="teacher-timeline">
                 </div>
+                <div id="controls-teacher">
+                <button id="playPause-teacher" class="btn btn-default" disabled></button>
+                <a id="download-teacher" class="btn btn-default" disabled></a>
             </div>
         </div>
         <!-- record and practice with golden speaker -->
@@ -99,8 +107,8 @@
                 <h3 class="panel-title">Student's recording</h3>
             </div>
             <div class="panel-body">
-                <div id="student-spec" class="spec" style="height: 256px">
-                </div>
+{#                <div id="student-spec" class="spec" style="height: 256px">#}
+{#                </div>#}
                 <div id="wavesurf-student">
                 </div>
                 <div id="student-timeline">

@@ -1,10 +1,6 @@
 function [ success ] = build_sabr_model( anchor_wav_list, left_list, right_list, anchor_labels, pitch_file, output_mat_file )
 
 %verify each anchor file
-f = fopen('/home/shjd/golden-speaker/log/log.txt', 'w');
-fprintf(f, '%s', pwd);
-disp(pwd);
-fclose(f);
 config;
 for i=1:length(anchor_wav_list)
     if(~exist(anchor_wav_list{i}))

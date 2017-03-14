@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fa84f2ae-eca3-4049-80ca-cd46294f7022" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/base.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/changelists.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/dashboard.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/fonts.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/forms.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/login.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/rtl.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/css/widgets.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/fonts/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/fonts/README.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/fonts/Roboto-Bold-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/fonts/Roboto-Light-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/fonts/Roboto-Regular-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/README.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/calendar-icons.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/gis/move_vertex_off.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/gis/move_vertex_on.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-addlink.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-alert.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-calendar.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-changelink.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-clock.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-deletelink.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-no.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-unknown-alt.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-unknown.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/icon-yes.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/inline-delete.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/search.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/selector-icons.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/sorting-icons.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/tooltag-add.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/img/tooltag-arrowright.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/SelectBox.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/SelectFilter2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/actions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/actions.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/admin/DateTimeShortcuts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/admin/RelatedObjectLookups.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/calendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/cancel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/change_form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/collapse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/collapse.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/core.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/inlines.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/inlines.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/jquery.init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/popup_response.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/prepopulate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/prepopulate.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/prepopulate_init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/timeparse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/urlify.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/jquery/LICENSE-JQUERY.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/jquery/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/jquery/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/xregexp/xregexp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/admin/js/vendor/xregexp/xregexp.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/CNAME" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/Gemfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/Gemfile.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/ISSUE_TEMPLATE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/_config.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/composer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap-theme.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/dist/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/browser-bugs.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/browser-features.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/core-team.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/glyphicons.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/sass-team.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/showcase.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_data/translations.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/ads.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/alerts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/badges.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/breadcrumbs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/button-dropdowns.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/button-groups.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/dropdowns.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/glyphicons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/input-groups.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/jumbotron.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/labels.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/list-group.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/media.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/navbar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/navs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/page-header.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/pagination.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/panels.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/progress-bars.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/responsive-embed.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/thumbnails.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/components/wells.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/buttons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/code.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/forms.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/grid.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/helpers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/images.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/less.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/overview.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/responsive-utilities.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/sass.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/tables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/css/type.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/customizer-variables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/accessibility.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/browser-device-support.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/community.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/disabling-responsiveness.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/download.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/examples.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/grunt.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/license.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/template.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/third-party-support.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/tools.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/translations.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/getting-started/whats-included.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/header.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/affix.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/alerts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/buttons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/carousel.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/collapse.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/dropdowns.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/overview.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/popovers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/scrollspy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/tabs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/tooltips.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/js/transitions.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/components.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/css.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/customize.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/getting-started.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/javascript.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/main.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_includes/nav/migration.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_layouts/default.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_layouts/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_plugins/bridge.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_plugins/bugify.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_pug/customizer-nav.pug" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/_pug/customizer-variables.pug" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/brand/bootstrap-outline.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/brand/bootstrap-punchout.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/brand/bootstrap-solid.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/css/docs.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/css/docs.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/css/src/docs.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/css/src/pygments-manni.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/flash/ZeroClipboard.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/components.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/devices.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/expo-lyft.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/expo-newsweek.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/expo-riot.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/expo-vogue.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/img/sass-less.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/customize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/docs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/ie-emulation-modes-warning.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/ie8-responsive-file-warning.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/raw-files.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/src/application.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/src/customizer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/Blob.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/FileSaver.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/ZeroClipboard.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/anchor.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/autoprefixer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/holder.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/jszip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/less.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/assets/js/vendor/uglify.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/browser-bugs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/components.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/css.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/customize.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap-theme.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/dist/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/blog/blog.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/blog/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/carousel/carousel.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/carousel/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/cover/cover.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/cover/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/dashboard/dashboard.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/dashboard/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/grid/grid.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/grid/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/jumbotron-narrow/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/jumbotron-narrow/jumbotron-narrow.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/jumbotron/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/jumbotron/jumbotron.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/justified-nav/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/justified-nav/justified-nav.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar-fixed-top/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar-fixed-top/navbar-fixed-top.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar-static-top/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar-static-top/navbar-static-top.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/navbar/navbar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/non-responsive/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/non-responsive/non-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/offcanvas/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/offcanvas/offcanvas.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/offcanvas/offcanvas.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/blog.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/carousel.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/cover.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/dashboard.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/equal-height-columns.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/grid.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/jumbotron-narrow.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/jumbotron.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/justified-nav.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/navbar-fixed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/navbar-static.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/navbar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/non-responsive.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/offcanvas.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/sign-in.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/starter-template.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/sticky-footer-navbar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/sticky-footer.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/screenshots/theme.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/signin/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/signin/signin.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/starter-template/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/starter-template/starter-template.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/sticky-footer-navbar/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/sticky-footer/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/sticky-footer/sticky-footer.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/theme/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/theme/theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/tooltip-viewport/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/tooltip-viewport/tooltip-viewport.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/examples/tooltip-viewport/tooltip-viewport.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/getting-started.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/javascript.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/migration.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/docs/robots.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/bs-commonjs-generator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/bs-glyphicons-data-generator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/bs-lessdoc-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/bs-raw-files-generator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/change-version.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/configBridge.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/npm-shrinkwrap.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/grunt/sauce_browsers.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/affix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/alert.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/button.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/carousel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/collapse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/modal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/popover.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/scrollspy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/affix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/alert.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/button.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/carousel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/collapse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/modal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/phantom.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/popover.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/scrollspy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/tab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/unit/tooltip.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/vendor/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/vendor/qunit.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/vendor/qunit.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/affix-with-sticky-footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/affix.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/alert.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/button.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/carousel.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/collapse.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/dropdown.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/popover.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/scrollspy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/tab.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tests/visual/tooltip.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/tooltip.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/js/transition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/alerts.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/badges.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/bootstrap.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/breadcrumbs.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/button-groups.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/buttons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/carousel.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/close.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/code.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/component-animations.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/dropdowns.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/glyphicons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/grid.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/input-groups.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/jumbotron.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/labels.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/list-group.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/media.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/alerts.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/background-variant.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/border-radius.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/buttons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/center-block.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/clearfix.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/forms.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/gradients.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/grid-framework.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/grid.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/hide-text.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/image.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/labels.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/list-group.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/nav-divider.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/nav-vertical-align.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/opacity.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/pagination.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/panels.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/progress-bar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/reset-filter.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/reset-text.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/resize.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/responsive-visibility.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/size.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/tab-focus.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/table-row.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/text-emphasis.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/text-overflow.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/mixins/vendor-prefixes.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/modals.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/navbar.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/navs.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/normalize.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/pager.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/pagination.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/panels.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/popovers.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/print.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/progress-bars.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/responsive-embed.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/responsive-utilities.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/scaffolding.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/tables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/theme.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/thumbnails.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/tooltip.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/type.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/utilities.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/less/wells.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/nuget/MyGet.ps1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/nuget/bootstrap.less.nuspec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/nuget/bootstrap.nuspec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/package.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/bootstrap/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/build_synthesize.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/justified-nav.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/practice.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/record.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/css/theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/404 Not Found.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/iawo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/play.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/record.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/save.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/tamu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/zoomin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/images/zoomout.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/build_synthesize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/edit.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/manage_anchorset.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/pitch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/practice.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/record.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/recorder/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/recorder/recorder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.microphone.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.regions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.spectrogram.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurfer.timeline.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static_root/js/wavesurfer/wavesurferJQuery.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SABR/+service/build_sabr_model.m" afterPath="$PROJECT_DIR$/SABR/+service/build_sabr_model.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech/models.py" afterPath="$PROJECT_DIR$/speech/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech/tasks.py" afterPath="$PROJECT_DIR$/speech/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech/views.py" afterPath="$PROJECT_DIR$/speech/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech_project/settings.py" afterPath="$PROJECT_DIR$/speech_project/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/practice.css" afterPath="$PROJECT_DIR$/static/css/practice.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/build_synthesize.js" afterPath="$PROJECT_DIR$/static/js/build_synthesize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/manage_anchorset.js" afterPath="$PROJECT_DIR$/static/js/manage_anchorset.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/practice.js" afterPath="$PROJECT_DIR$/static/js/practice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/record.js" afterPath="$PROJECT_DIR$/static/js/record.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/speech/base.html" afterPath="$PROJECT_DIR$/templates/speech/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/speech/finish_record.html" afterPath="$PROJECT_DIR$/templates/speech/finish_record.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/speech/manage_anchorset.html" afterPath="$PROJECT_DIR$/templates/speech/manage_anchorset.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/speech/practice.html" afterPath="$PROJECT_DIR$/templates/speech/practice.html" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/speech/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_anchorset.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="48" column="113" lean-forward="false" selection-start-line="48" selection-start-column="113" selection-end-line="48" selection-end-column="113" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="practice.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/speech/practice.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="100" column="49" lean-forward="false" selection-start-line="100" selection-start-column="49" selection-end-line="100" selection-end-column="49" />
+              <folding>
+                <marker date="1489519596297" expanded="false" signature="5232:5245" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="practice.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/practice.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="53" column="54" lean-forward="false" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="practice.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/practice.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="94" column="43" lean-forward="false" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="record.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/record.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="280" column="20" lean-forward="false" selection-start-line="280" selection-start-column="20" selection-end-line="281" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/speech/tasks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_synthesize.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/speech/build_synthesize.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="78" column="67" lean-forward="false" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
+              <folding>
+                <element signature="e#3403#3448#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_synthesize.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/build_synthesize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="127" column="49" lean-forward="false" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finish_record.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/speech/finish_record.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="57" column="348" lean-forward="false" selection-start-line="57" selection-start-column="348" selection-end-line="57" selection-end-column="348" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/speech_project/settings.py" />
+        <option value="$PROJECT_DIR$/speech/tasks.py" />
+        <option value="$PROJECT_DIR$/static/js/build_synthesize.js" />
+        <option value="$PROJECT_DIR$/templates/speech/finish_record.html" />
+        <option value="$PROJECT_DIR$/speech/views.py" />
+        <option value="$PROJECT_DIR$/templates/speech/manage_anchorset.html" />
+        <option value="$PROJECT_DIR$/static/css/practice.css" />
+        <option value="$PROJECT_DIR$/templates/speech/practice.html" />
+        <option value="$PROJECT_DIR$/static/js/practice.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
+    <option name="width" value="1217" />
+    <option name="height" value="1029" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="speech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="speech_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golden-speaker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="speech" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.practice">
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="golden-speaker" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="golden-speaker" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="DJANGO_SETTINGS_MODULE" value="speech_project.settings" />
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../virtualenv/speech/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="golden-speaker" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="practice" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://127.0.0.1:8000/speech/practice/index">
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Django server.golden-speaker" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.practice" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa84f2ae-eca3-4049-80ca-cd46294f7022" name="Default" comment="" />
+      <created>1489511606231</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1489511606231</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="64" y="-4" width="1217" height="1029" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25834045" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3991131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/speech/views.py</url>
+          <line>269</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/speech_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2502">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2502">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2502">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/build_synthesize.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="78" column="67" lean-forward="false" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
+          <folding>
+            <element signature="e#3403#3448#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/build_synthesize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="127" column="49" lean-forward="false" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/finish_record.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="57" column="348" lean-forward="false" selection-start-line="57" selection-start-column="348" selection-end-line="57" selection-end-column="348" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="48" column="113" lean-forward="false" selection-start-line="48" selection-start-column="113" selection-end-line="48" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/record.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="280" column="20" lean-forward="false" selection-start-line="280" selection-start-column="20" selection-end-line="281" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/practice.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="53" column="54" lean-forward="false" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/practice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="100" column="49" lean-forward="false" selection-start-line="100" selection-start-column="49" selection-end-line="100" selection-end-column="49" />
+          <folding>
+            <marker date="1489519596297" expanded="false" signature="5232:5245" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/practice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="94" column="43" lean-forward="false" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

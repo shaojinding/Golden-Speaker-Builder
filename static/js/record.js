@@ -282,6 +282,8 @@ $(document).ready( function() {
                     recordbtn.disabled = true;
                     var playbtn = document.getElementById("playPause");
                     playbtn.disabled = true;
+                    $("#info-panel").hide();
+                    $("#SoundRecorder").hide();
                     if (savedPhoneme.length >= numPhoneme - 1) {
                         var nextbtn = document.getElementById("btn_next");
                         nextbtn.disabled = false;

@@ -5,7 +5,7 @@ from django_auth0.auth_decorator import login_required_auth0
 from django.views.decorators.csrf import ensure_csrf_cookie
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm
-from time import gmtime, strftime, time, localtime
+from time import gmtime, strftime, time
 from django.contrib import messages
 import base64
 import json
@@ -29,12 +29,15 @@ def manage_anchorset(request):
     user = User.objects.get(user_name=username)
     anchorset_list = AnchorSet.objects.filter(user=user)
     building_anchor_set = []
+    timestamps = []
     for anchorset in anchorset_list:
+        timestamps.append(anchorset.timestamp)
         if anchorset.built == 'In processing':
             building_anchor_set.append(anchorset.slug)
     json_building_anchor_set = json.dumps(building_anchor_set)
+    json_timestamps = json.dumps(timestamps)
     context_dict = {'anchorsets': anchorset_list, 'name': username, 'is_login': True,
-                    'building_anchor_set': json_building_anchor_set}
+                    'building_anchor_set': json_building_anchor_set, 'timestamps': json_timestamps}
     return render(request, 'speech/manage_anchorset.html', context_dict)
 
 
@@ -69,9 +72,11 @@ def add_anchorset(request):
             anchorset.active = False
             anchorset.used = False
             anchorset.completed = False
+            anchorset.modified = False
             anchorset.built = "False"
             anchorset.user = user
-            anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
+            anchorset.timestamp = time()
+            # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
             anchorset.set_saved_phonemes([])
             anchorset.save()
             anchorset.sabr_model_path = 'data/sabr/{}.mat'.format(anchorset.slug)
@@ -208,11 +213,13 @@ def upload_annotation(request):
             saved_phonemes = current_anchorset.get_saved_phonemes()
             if phoneme in saved_phonemes:
                 anc = Anchor.objects.get(anchor_set=current_anchorset, phoneme=phoneme)
+                current_anchorset.modified = True
+                current_anchorset.save()
                 anc.L = L
                 anc.R = R
                 anc.C = C
                 anc.save()
-                if re_record:
+                if re_record == 'true':
                     recording_base64 = request.POST['recording']
                     recording_blob = base64.b64decode(recording_base64)
                     rec = Recording.objects.get(anchor=anc)
@@ -260,9 +267,10 @@ def build_sabr(request):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    if anchor_set.built == 'Built':
+    if anchor_set.built == 'Built' and not anchor_set.modified:
         return redirect('/speech')
     anchor_set.built = 'In processing'
+    anchor_set.modified = False
     anchor_set.save()
     anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
     audio_paths = []
@@ -343,7 +351,9 @@ def synthesize(request):
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=strftime("%b %d %Y %H:%M:%S", localtime()), status="Synthesizing")
+                               user=user, timestamp=timestamp, status="Synthesizing")
+            # gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
+            #                    user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
             for name in select_names:
                 uttr = Utterance.objects.get(name=name, source_model=source_model)
@@ -371,11 +381,16 @@ def practice(request, golden_speaker_name_slug):
         if_choose = True
         gss = GoldenSpeaker.objects.order_by('-timestamp').filter(user=user)
         building_gs = []
+        timestamps = []
         for gs in gss:
+            timestamps.append(gs.timestamp)
             if gs.status == 'Synthesizing':
                 building_gs.append(gs.slug)
+        json_timestamps = json.dumps(timestamps)
         json_building_gs = json.dumps(building_gs)
-        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'golden_speakers': gss, 'building_golden_speakers': json_building_gs}
+        context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose,
+                        'golden_speakers': gss, 'building_golden_speakers': json_building_gs,
+                        'timestamps': json_timestamps}
     else:
         if_choose = False
         uttr_files = {}
