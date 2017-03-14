@@ -5,7 +5,7 @@ from django_auth0.auth_decorator import login_required_auth0
 from django.views.decorators.csrf import ensure_csrf_cookie
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm
-from time import gmtime, strftime, time
+from time import gmtime, strftime, time, localtime
 from django.contrib import messages
 import base64
 import json
@@ -343,7 +343,7 @@ def synthesize(request):
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
+                               user=user, timestamp=strftime("%b %d %Y %H:%M:%S", localtime()), status="Synthesizing")
             gs.save()
             for name in select_names:
                 uttr = Utterance.objects.get(name=name, source_model=source_model)

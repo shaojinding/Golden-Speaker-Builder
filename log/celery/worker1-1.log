@@ -41,3 +41,50 @@ The filename specified was not found in the MATLAB path.
 [2017-03-09 22:00:51,598: INFO/PoolWorker-1] Task speech.tasks.build_sabr_model[472414e7-e251-4532-ab59-0797e6bec8d0] succeeded in 108.489148795s: 1.0
 [2017-03-09 22:04:40,360: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[badfee13-7c13-40b0-9fa7-39f8c3732f10] succeeded in 113.553168962s: 1.0
 [2017-03-09 22:09:14,310: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[cfce578f-281a-4d79-84f8-87d3f05741d8] succeeded in 143.038000035s: 1.0
+[2017-03-10 16:57:23,898: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[2318fe90-d4f4-4d2e-bb96-e9ac4e081188] succeeded in 34.5240480981s: 1.0
+[2017-03-11 20:03:26,459: INFO/PoolWorker-1] Task speech.tasks.build_sabr_model[07a1bf36-c1f2-431e-acba-413a9f62d7e8] succeeded in 529.817339899s: 1.0
+[2017-03-13 16:37:41,325: INFO/PoolWorker-1] Task speech.tasks.build_sabr_model[47055653-96ae-452c-9551-95103d081858] succeeded in 156.985653079s: 1.0
+[2017-03-13 16:40:43,373: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[820a5e36-47e6-40ee-b453-28d6ea83c719] succeeded in 100.719754357s: 1.0
+[2017-03-13 17:44:32,137: INFO/PoolWorker-1] Task speech.tasks.build_sabr_model[374f8270-885c-456c-9d9d-bac37d4430f2] succeeded in 128.997205004s: 1.0
+[2017-03-13 17:48:10,798: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[7cbd2be8-0c97-41cc-8b02-c534f3a6c01f] succeeded in 149.251207664s: 1.0
+[2017-03-13 17:55:40,558: INFO/PoolWorker-1] Task speech.tasks.synthesize_sabr[fa12df7d-c1f7-4a9e-a892-9801d538bffd] succeeded in 60.041557499s: 1.0
+[2017-03-13 18:56:57,347: ERROR/PoolWorker-1] Task speech.tasks.build_sabr_model[6e826d9e-de2c-45cb-9912-46b496ffc3f5] raised unexpected: MatlabExecutionError('\n  File /opt/rit/app/matlab/r2016a/toolbox/matlab/audiovideo/audioread.m, line 74, in audioread\n\n  File /home/shjd/golden-speaker/SABR/+service/build_sabr_model.m, line 78, in build_sabr_model\nThe filename specified was not found in the MATLAB path.\n',)
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/app/trace.py", line 367, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/celery/app/trace.py", line 622, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "speech/tasks.py", line 32, in build_sabr_model
+    success = eng.service.build_sabr_model(abs_audio_paths, left, right, phoneme, abs_pitch_path, abs_output_mat_path)
+  File "/usr/lib/python2.7/site-packages/matlab/engine/matlabengine.py", line 84, in __call__
+    _stderr, feval=True).result()
+  File "/usr/lib/python2.7/site-packages/matlab/engine/futureresult.py", line 68, in result
+    return self.__future.result(timeout)
+  File "/usr/lib/python2.7/site-packages/matlab/engine/fevalfuture.py", line 82, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+MatlabExecutionError: 
+  File /opt/rit/app/matlab/r2016a/toolbox/matlab/audiovideo/audioread.m, line 74, in audioread
+
+  File /home/shjd/golden-speaker/SABR/+service/build_sabr_model.m, line 78, in build_sabr_model
+The filename specified was not found in the MATLAB path.
+
+[2017-03-13 19:28:41,416: ERROR/PoolWorker-1] Task speech.tasks.build_sabr_model[85ec96c6-1376-4f67-b9f4-ce62e60bba56] raised unexpected: MatlabExecutionError('\n  File /opt/rit/app/matlab/r2016a/toolbox/matlab/audiovideo/audioread.m, line 74, in audioread\n\n  File /home/shjd/golden-speaker/SABR/+service/build_sabr_model.m, line 78, in build_sabr_model\nThe filename specified was not found in the MATLAB path.\n',)
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/celery/app/trace.py", line 367, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/celery/app/trace.py", line 622, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "speech/tasks.py", line 32, in build_sabr_model
+    success = eng.service.build_sabr_model(abs_audio_paths, left, right, phoneme, abs_pitch_path, abs_output_mat_path)
+  File "/usr/lib/python2.7/site-packages/matlab/engine/matlabengine.py", line 84, in __call__
+    _stderr, feval=True).result()
+  File "/usr/lib/python2.7/site-packages/matlab/engine/futureresult.py", line 68, in result
+    return self.__future.result(timeout)
+  File "/usr/lib/python2.7/site-packages/matlab/engine/fevalfuture.py", line 82, in result
+    self._result = pythonengine.getFEvalResult(self._future,self._nargout, None, out=self._out, err=self._err)
+MatlabExecutionError: 
+  File /opt/rit/app/matlab/r2016a/toolbox/matlab/audiovideo/audioread.m, line 74, in audioread
+
+  File /home/shjd/golden-speaker/SABR/+service/build_sabr_model.m, line 78, in build_sabr_model
+The filename specified was not found in the MATLAB path.
+
