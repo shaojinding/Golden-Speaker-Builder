@@ -263,7 +263,7 @@ $(document).ready( function() {
             fd.append('phoneme', currentPhoneme);
             fd.append('re_record', reRecord);
             if (reRecord == false && $.inArray(currentPhoneme, savedPhoneme) >=0) {
-            // if ($.inArray(currentPhoneme, savedPhoneme) >=0) {
+                // if ($.inArray(currentPhoneme, savedPhoneme) >=0) {
                 $.ajax({
                     type: 'POST',
                     url: '/speech/upload_annotation/',
@@ -334,6 +334,30 @@ $(document).ready( function() {
             alert("upload failed! Please try again.")
         }
     });
+
+});
+
+$(window).keydown(function(e) {
+    switch (e.keyCode) {
+        case 32: // space key
+            $("#playPause").trigger("click");
+            return;
+        case 49: // num1 key
+            var zoominbtn = document.getElementById("zoomin");
+            if (zoominbtn.disabled != true) {
+              $("#zoomin").trigger("click");
+            }
+            return;
+        case 51: //num3 key
+            $("#zoomout").trigger("click");
+            return;
+        case 82: // "r" key
+            $("#record").trigger("click");
+            return;
+        case 83: // "s" key
+            $("#save").trigger("click");
+            return;
+    }
 });
 
 function getCookie(name) {

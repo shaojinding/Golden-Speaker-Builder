@@ -234,16 +234,16 @@ WaveSurfer.Region = {
             var css = {
                 cursor: 'col-resize',
                 position: 'absolute',
-                left: '-10px',
+                left: '-10%',
                 top: '0px',
-                width: '20px',
+                width: '20%',
                 maxWidth: '20px',
                 height: '100%'
             };
             this.style(handleLeft, css);
             this.style(handleRight, css);
             this.style(handleRight, {
-                left: calc(100% - 10px);
+                left: '90%'
             });
         }
 

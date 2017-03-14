@@ -245,6 +245,20 @@ WaveSurfer.Region = {
             this.style(handleRight, {
                 left: '90%'
             });
+            // var css = {
+            //     cursor: 'col-resize',
+            //     position: 'absolute',
+            //     left: '0px',
+            //     top: '0px',
+            //     width: '1%',
+            //     maxWidth: '4px',
+            //     height: '100%'
+            // };
+            // this.style(handleLeft, css);
+            // this.style(handleRight, css);
+            // this.style(handleRight, {
+            //     left: '100%'
+            // });
         }
 
         this.element = this.wrapper.appendChild(regionEl);
