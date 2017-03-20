@@ -60,7 +60,6 @@ $(document).ready( function() {
                 container: '#student-timeline',
                 //primaryFontColor: 'white',
             });
-            wavesurfer.play();
         });
     }
     else {
