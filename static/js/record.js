@@ -149,12 +149,12 @@ $(document).ready( function() {
             regionEnabled = true;
             firstTimeLoad = false
         }
-        wavesurfer.on('region-updated', function (region) {
+        wavesurfer.on('region-update-end', function (region) {
             var start = region.start;
             var end = region.end;
             centerTime = ((start + end) / 2).toFixed(2);
             startTime = start.toFixed(2);
-            endTime = end.toFixed(2)
+            endTime = end.toFixed(2);
             $("#startTime").html(startTime);
             $("#endTime").html(endTime);
             var savebtn = document.getElementById("save");
@@ -231,6 +231,8 @@ $(document).ready( function() {
     });
     // var zoominbtn = document.getElementById("zoomin");
     $("#zoomin").click(function () {
+        var sec = wavesurfer.getDuration();
+        wavesurfer.seekTo(centerTime / sec);
         wavesurfer.zoom(zoomMulti * zoomLevel);
         zoomMulti = zoomMulti * 2;
         if (zoomMulti * zoomLevel >= 6400) {
@@ -239,6 +241,8 @@ $(document).ready( function() {
         }
     });
     $("#zoomout").click(function () {
+        var sec = wavesurfer.getDuration();
+        wavesurfer.seekTo(centerTime / sec);
         wavesurfer.zoom(zoomLevel);
         wavesurfer.zoom(zoomLevel);
         zoomMulti = 2;

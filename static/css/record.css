@@ -135,18 +135,15 @@
 #record {
 	display: inline-block;
 	height: 44px;
-	width: 44px;
+	width: 42px;
 	margin-top: 10px;
-	background-image: url("/static/images/record.png");
+	background: url("/static/images/record_sprite.png") 0 0;
 	background-repeat:no-repeat;
 }
 
 .recording {
-	background: red;
-	background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
-	background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
-	background: radial-gradient(center, ellipse cover, #ff0000 0%,white 75%,white 100%,#7db9e8 100%);
-
+	background: url("/static/images/record_sprite.png") -40px 0;
+	background-repeat:no-repeat;
 }
 
 
