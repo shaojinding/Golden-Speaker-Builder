@@ -99,9 +99,18 @@ div.index-subtitle p{
     float: right;
 }
 
-#nav_title {
-    /*padding-top: 15px;*/
-    /*padding-bottom: 15px;*/
+.nav_title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 20px;
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+
+.nav_title_a {
     line-height: 20px;
     box-sizing: border-box;
     color: rgba(255, 255, 255, 1);
@@ -110,4 +119,9 @@ div.index-subtitle p{
 
 .nav>li>a {
     display: inline-block;
+}
+
+.nav_p {
+    /*padding-left: 14px;*/
+    /*display: inline-block;*/
 }

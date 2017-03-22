@@ -7,8 +7,16 @@
     <p><a class="btn btn-default" href="{% url 'manage_anchorset' %}" role="button">&laquo;Back</a></p>
 {% endblock %}
 
-{% block nav_title %}
-    <a href="{% url 'index' %}">Home</a> &raquo; <a href="{% url 'manage_anchorset' %}">Manage Anchor Set</a> &raquo; Anchor Set "{{ anchor_set_name }}"
+{% block nav_title1 %}
+    <a href="{% url 'index' %}">Home</a> &raquo;
+{% endblock %}
+
+{% block nav_title2 %}
+    <a href="{% url 'manage_anchorset' %}">Edit Anchor Set</a> &raquo;
+{% endblock %}
+
+{% block nav_title3 %}
+    Anchor Set "{{ anchor_set_name }}"
 {% endblock %}
 
 {% block bottom_block %}

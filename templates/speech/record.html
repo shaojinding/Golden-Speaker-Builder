@@ -4,8 +4,12 @@
 {% csrf_token %}
 {% block title %}Record & Annotate{% endblock %}
 
-{% block nav_title %}
-    <a href="{% url 'index' %}">Home</a> &raquo; Recording Anchor Set
+{% block nav_title1 %}
+    <a href="{% url 'index' %}">Home</a> &raquo;
+{% endblock %}
+
+{% block nav_title3 %}
+    Recording Anchor Set
 {% endblock %}
 
 {% block css %}

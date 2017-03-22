@@ -68,27 +68,36 @@ def add_anchorset(request):
     if request.method == 'POST':
         anchorset_form = AnchorSetForm(data=request.POST)
         if anchorset_form.is_valid():
-            anchorset = anchorset_form.save(commit=False)
-            anchorset.active = False
-            anchorset.used = False
-            anchorset.completed = False
-            anchorset.modified = False
-            anchorset.built = "False"
-            anchorset.user = user
-            anchorset.timestamp = time()
-            # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
-            anchorset.set_saved_phonemes([])
-            anchorset.save()
-            anchorset.sabr_model_path = 'data/sabr/{}.mat'.format(anchorset.slug)
-            anchorset.pitch_path = 'data/pitch/{}.wav'.format(anchorset.slug)
-            anchorset.save()
-            return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
+            try:
+                anchorset = anchorset_form.save(commit=False)
+                anchorset.active = False
+                anchorset.used = False
+                anchorset.completed = False
+                anchorset.modified = False
+                anchorset.built = "False"
+                anchorset.user = user
+                anchorset.timestamp = time()
+                # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
+                anchorset.set_saved_phonemes([])
+                anchorset.save()
+                anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, anchorset.slug)
+                anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, anchorset.slug)
+                anchorset.save()
+                return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
+            except:
+                messages.error(request, 'You have had an anchor set with the this name')
+                anchorset_form = AnchorSetForm()
+                context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
+                return render(request, 'speech/add_anchorset.html', context_dict)
         else:
-            print anchorset_form.errors
+            messages.error(request, 'Anchor set name should only contain A-Z, a-z and 0-9')
+            anchorset_form = AnchorSetForm()
+            context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
+            return render(request, 'speech/add_anchorset.html', context_dict)
     else:
         anchorset_form = AnchorSetForm()
-    context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
-    return render(request, 'speech/add_anchorset.html', context_dict)
+        context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
+        return render(request, 'speech/add_anchorset.html', context_dict)
 
 
 # delete anchor set operation view
@@ -99,10 +108,10 @@ def delete_anchorset(request, anchor_set_name_slug):
     if 'current_anchorset' in request.session:
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
-    if os.path.exists('data/pitch/{}.wav'.format(anchor_set_name_slug)):
-        os.remove('data/pitch/{}.wav'.format(anchor_set_name_slug))
-    if os.path.exists('data/sabr/{}.mat'.format(anchor_set_name_slug)):
-        os.remove('data/sabr/{}.mat'.format(anchor_set_name_slug))
+    if os.path.exists('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug)):
+        os.remove('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug))
+    if os.path.exists('data/pitch/{0}{1}.wav'.format(username, anchor_set_name_slug)):
+        os.remove('data/pitch/{0}{1}.wav'.format(username, anchor_set_name_slug))
     anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)
     anchors = Anchor.objects.filter(anchor_set=anchorset)
     for anchor in anchors:
@@ -365,7 +374,7 @@ def synthesize(request):
                 os.mkdir(output_wav_folder)
             output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
-            target_model_path = 'data/sabr/' + target_model_name_slug + '.mat'
+            target_model_path = target_model.sabr_model_path
             utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
             synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)

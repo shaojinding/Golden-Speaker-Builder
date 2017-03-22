@@ -137,14 +137,14 @@
 	height: 44px;
 	width: 42px;
 	margin-top: 10px;
-	background: url("/static/images/record_sprite.png") 0 0;
+	background: url("/static/images/record.png");
 	background-repeat:no-repeat;
 }
 
-.recording {
-	background: url("/static/images/record_sprite.png") -40px 0;
-	background-repeat:no-repeat;
-}
+/*.recording {*/
+	/*background: url("/static/images/record_sprite.png") -40px 0;*/
+	/*background-repeat:no-repeat;*/
+/*}*/
 
 
 
@@ -185,12 +185,40 @@
 	background-repeat:no-repeat;
 }
 
-.playing {
-	background: red;
-	background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
-	background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
-	background: radial-gradient(center, ellipse cover, #ff0000 0%,white 90%,white 100%,#7db9e8 100%);
 
+.recording {
+	-webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }
 
 #annotation {
@@ -258,3 +286,50 @@
 /*#wavesurf {*/
 	/*clear: both;*/
 /*}*/
+
+/*.button {*/
+  /*background-color: #004A7F;*/
+  /*-webkit-border-radius: 10px;*/
+  /*border-radius: 10px;*/
+  /*border: none;*/
+  /*color: #FFFFFF;*/
+  /*cursor: pointer;*/
+  /*display: inline-block;*/
+  /*font-family: Arial;*/
+  /*font-size: 20px;*/
+  /*padding: 5px 10px;*/
+  /*text-align: center;*/
+  /*text-decoration: none;*/
+	/*background-image: url("/static/images/zoomin.png");*/
+	/*background-repeat:no-repeat;*/
+/*}*/
+@-webkit-keyframes glowing {
+  0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+@keyframes glowing {
+  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+.blink_me_red {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}

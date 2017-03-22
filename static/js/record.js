@@ -85,6 +85,8 @@ $(document).ready( function() {
     wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
     wavesurfer.empty();
     if ($.inArray(currentPhoneme, savedPhoneme) >= 0) {
+        startTime = Number(record_details[0]);
+        endTime = Number(record_details[1]);
         $("#startTime").html(record_details[0]);
         $("#endTime").html(record_details[1]);
         wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
@@ -159,6 +161,10 @@ $(document).ready( function() {
             $("#endTime").html(endTime);
             var savebtn = document.getElementById("save");
             savebtn.disabled = false;
+            var zoominbtn = document.getElementById("zoomin");
+            zoominbtn.disabled = false;
+            // var zoomoutbtn = document.getElementById("zoomout");
+            // zoomoutbtn.disabled = false;
             regionVar = region;
         });
         wavesurfer.on('region-removed', function () {
@@ -167,14 +173,20 @@ $(document).ready( function() {
             $("#endTime").html('0.00');
             var savebtn = document.getElementById("save");
             savebtn.disabled = true;
+            var zoominbtn = document.getElementById("zoomin");
+            zoominbtn.disabled = true;
+            var zoomoutbtn = document.getElementById("zoomout");
+            zoomoutbtn.disabled = true;
         });
         if (!isRecording) {
             var audioDuration = wavesurfer.getDuration();
             zoomLevel = wavesurferWidth / audioDuration;
-            var zoominbtn = document.getElementById("zoomin");
-            zoominbtn.disabled = false;
-            var zoomoutbtn = document.getElementById("zoomout");
-            zoomoutbtn.disabled = false;
+            if (regionVar != null) {
+                var zoominbtn = document.getElementById("zoomin");
+                zoominbtn.disabled = false;
+                // var zoomoutbtn = document.getElementById("zoomout");
+                // zoomoutbtn.disabled = false;
+            }
             var playbtn = document.getElementById("playPause");
             playbtn.disabled = false;
         }
@@ -213,12 +225,12 @@ $(document).ready( function() {
             zoomMulti = 2;
             //wavesurfer.scrollParent = false;
         }
+        //$(this).toggleClass("blink_me");
         toggleRecording(this);
     });
     $("#playPause").click(function (){
         if (regionVar == null) {
             wavesurfer.playPause();
-            $(this).toggleClass("playing");
         }
         else {
             regionVar.play();
@@ -232,22 +244,26 @@ $(document).ready( function() {
     // var zoominbtn = document.getElementById("zoomin");
     $("#zoomin").click(function () {
         var sec = wavesurfer.getDuration();
-        wavesurfer.seekTo(centerTime / sec);
+        wavesurfer.seekTo((startTime + endTime) / 2 / sec);
         wavesurfer.zoom(zoomMulti * zoomLevel);
         zoomMulti = zoomMulti * 2;
         if (zoomMulti * zoomLevel >= 6400) {
             var zoominbtn = document.getElementById("zoomin");
             zoominbtn.disabled = true;
         }
+        var zoomoutbtn = document.getElementById("zoomout");
+        zoomoutbtn.disabled = false;
     });
     $("#zoomout").click(function () {
         var sec = wavesurfer.getDuration();
-        wavesurfer.seekTo(centerTime / sec);
+        wavesurfer.seekTo((startTime + endTime) / 2 / sec);
         wavesurfer.zoom(zoomLevel);
         wavesurfer.zoom(zoomLevel);
         zoomMulti = 2;
         var zoominbtn = document.getElementById("zoomin");
         zoominbtn.disabled = false;
+        var zoomoutbtn = document.getElementById("zoomout");
+        zoomoutbtn.disabled = true;
         //wavesurfer.scrollParent = false;
     });
     $("#save").click(function () {
@@ -349,7 +365,7 @@ $(window).keydown(function(e) {
         case 49: // num1 key
             var zoominbtn = document.getElementById("zoomin");
             if (zoominbtn.disabled != true) {
-              $("#zoomin").trigger("click");
+                $("#zoomin").trigger("click");
             }
             return;
         case 51: //num3 key
