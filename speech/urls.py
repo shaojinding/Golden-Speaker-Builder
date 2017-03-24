@@ -19,10 +19,12 @@ urlpatterns = [
         url(r'^upload_pitch', views.upload_pitch, name='upload_pitch'),
         # url(r'^upload_edit_annotation', views.upload_edit_annotation, name='upload_edit_annotation'),
         url(r'^manage_anchorset', views.manage_anchorset, name='manage_anchorset'),
+        url(r'^abort_anchorset/(?P<anchor_set_name_slug>[\w\-]+)/$', views.abort_anchorset, name='abort_anchorset'),
         url(r'^anchorset/(?P<anchor_set_name_slug>[\w\-]+)/$', views.anchorset, name='anchorset'),
         url(r'^add_anchorset', views.add_anchorset, name='add_anchorset'),
         url(r'^delete_anchorset/(?P<anchor_set_name_slug>[\w\-]+)/$', views.delete_anchorset, name='delete_anchorset'),
         url(r'^delete_golden_speaker/(?P<speaker_name_slug>[\w\-]+)/$', views.delete_golden_speaker, name='delete_golden_speaker'),
+        url(r'^abort_synthesize/(?P<speaker_name_slug>[\w\-]+)/$', views.abort_synthesize, name='abort_synthesize'),
         url(r'^get_build_status', views.get_build_status, name='get_build_status'),
         url(r'^get_synthesize_status', views.get_synthesize_status, name='get_synthesize_status'),
 ]

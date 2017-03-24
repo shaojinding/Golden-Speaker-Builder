@@ -84,7 +84,8 @@ mfcc_est = tgt_est + warp_res;
 
 %% synthesize 
 spec_hat = spectrum.invmfcc(mfcc_est,SR,size(src_ap,1));
-adj_f0   = vc.adj_f0(src_f0, target_model.f0_mean, target_model.f0_std);
+% adj_f0   = vc.adj_f0(src_f0, target_model.f0_mean, target_model.f0_std);
+adj_f0   = vc.adj_f0(src_f0, source_model, target_model.f0_mean, target_model.f0_std);
 
 % STRAIGHT synthesis
 

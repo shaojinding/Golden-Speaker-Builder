@@ -57,6 +57,7 @@
                     </thead>
                     <tbody>
                     {% for golden_speaker in golden_speakers %}
+{#                        {% if golden_speaker.aborted == False %}#}
                         <tr>
                             <td>{{ golden_speaker.source_model.model_name }}</td>
                             <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
@@ -70,6 +71,7 @@
                                 <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
                             {% endif %}
                         </tr>
+{#                        {% endif %}#}
                     {% endfor %}
                     </tbody>
                 </table>

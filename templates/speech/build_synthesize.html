@@ -29,7 +29,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">1. Select Teacher voice</h3>
             </div>
-            <div class="panel-body" style="max-height: 300px">
+            <div class="panel-body" style="height: 300px; max-height: 300px">
                 <div class="scroll-list list-group">
                     {% for source_model in source_models %}
                         <a class="list-group-item source-model" id="{{ source_model.model_name }}">{{ source_model.model_name }}</a>
@@ -42,7 +42,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">2. Select Anchor Set</h3>
             </div>
-            <div class="panel-body"  style="max-height: 300px">
+            <div class="panel-body"  style="height: 300px; max-height: 300px">
                 <div class="scroll-list list-group">
                     {% for anchor_set in anchor_sets %}
                         <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>

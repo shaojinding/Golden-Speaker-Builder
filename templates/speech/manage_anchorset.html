@@ -60,6 +60,13 @@
                     {% if anchorset.built == 'In processing' %}
                         <td>Processing...</td>
                         <td></td>
+{#                        {% if anchorset.aborted == True %}#}
+{#                            <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>#}
+{#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>#}
+{#                        {% else %}#}
+{#                            <td>Processing...</td>#}
+{#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/abort_anchorset/{{ anchorset.slug }}';} else {}">Abort</button></td>#}
+{#                        {% endif %}#}
                     {% else %}
                         <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>
                         <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>

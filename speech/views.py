@@ -33,12 +33,24 @@ def manage_anchorset(request):
     for anchorset in anchorset_list:
         timestamps.append(anchorset.timestamp)
         if anchorset.built == 'In processing':
+
             building_anchor_set.append(anchorset.slug)
     json_building_anchor_set = json.dumps(building_anchor_set)
     json_timestamps = json.dumps(timestamps)
     context_dict = {'anchorsets': anchorset_list, 'name': username, 'is_login': True,
                     'building_anchor_set': json_building_anchor_set, 'timestamps': json_timestamps}
     return render(request, 'speech/manage_anchorset.html', context_dict)
+
+
+@login_required_auth0()
+def abort_anchorset(request, anchor_set_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    anchor_set.aborted = True
+    anchor_set.built = "False"
+    anchor_set.save()
+    return redirect('/speech/manage_anchorset')
 
 
 # anchor set detail page view
@@ -182,6 +194,7 @@ def finish_record_session(request):
     if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
         # del request.session['current_anchorset']
         anchor_set.completed = True
+        # anchor_set.aborted = False
         anchor_set.save()
     else:
         messages.add_message(request, messages.INFO,
@@ -383,6 +396,14 @@ def synthesize(request):
     return redirect('/speech/practice/index')
 
 
+@login_required_auth0()
+def abort_synthesize(request, speaker_name_slug):
+    gs = GoldenSpeaker.objects.get(slug=speaker_name_slug)
+    gs.aborted = True
+    gs.save()
+    return redirect('/speech/manage_anchorset')
+
+
 # view for practice
 @login_required_auth0()
 def practice(request, golden_speaker_name_slug):
@@ -443,3 +464,5 @@ def delete_golden_speaker(request, speaker_name_slug):
         os.removedirs('data/output_wav/{}'.format(gs.speaker_name))
     GoldenSpeaker.objects.filter(slug=speaker_name_slug).delete()
     return redirect('/speech/practice/index')
+
+

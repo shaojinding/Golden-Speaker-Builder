@@ -20,6 +20,7 @@ class AnchorSet(models.Model):
     completed = models.BooleanField()  # whether all anchors are recorded
     built = models.CharField(max_length=128)  # whether sabr model has been built
     modified = models.BooleanField()
+    aborted = models.BooleanField()
     slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=400)  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model
@@ -93,6 +94,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     contained_utterance = models.ManyToManyField(Utterance)
     timestamp = models.CharField(max_length=128)
     status = models.CharField(max_length=128)
+    aborted = models.BooleanField()
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)

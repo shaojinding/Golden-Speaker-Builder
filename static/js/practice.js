@@ -14,6 +14,8 @@ var timeStamps = null;
 var regionVar = null;
 var regionVarTeacher = null;
 var regionEnabled = false;
+var regionPlay = "teacher";
+var ifTeacherLoad = false;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
@@ -23,6 +25,7 @@ $(document).ready( function() {
             height: '150',
         });
         wavesurferTeacher.on('ready', function () {
+            ifTeacherLoad = true;
             wavesurferTeacher.enableDragSelection({
                 color: 'hsla(400, 100%, 30%, 0.1)',
                 drag: false,
@@ -30,6 +33,10 @@ $(document).ready( function() {
             });
             wavesurferTeacher.on('region-update-end', function (region) {
                 regionVarTeacher = region;
+                regionPlay = "teacher";
+            });
+            wavesurferTeacher.on('click', function () {
+                regionPlay = "teacher";
             });
             wavesurferTeacher.on('region-removed', function () {
                 regionVarTeacher = null;
@@ -78,9 +85,13 @@ $(document).ready( function() {
             });
             wavesurfer.on('region-update-end', function (region) {
                 regionVar = region;
+                regionPlay = "student";
             });
             wavesurfer.on('region-removed', function () {
                 regionVar = null;
+            });
+            wavesurfer.on('click', function () {
+                regionPlay = "student";
             });
             if (recorded) {
                 var downloadbtn = document.getElementById("download");
@@ -112,6 +123,10 @@ $(document).ready( function() {
         var name = $(this).attr('id');
         var source = document.getElementById("utterance-source");
         wavesurferTeacher.empty();
+        if (ifTeacherLoad == true) {
+            wavesurferTeacher.clearRegions();
+            wavesurferTeacher.disableDragSelection();
+        }
         var audioBase64 = uttrFiles["{0}_{1}".replace("{0}", goldenSpeakerName).replace("{1}", name)];
         var audioBlob = b64toBlob(audioBase64);
         var audioUrl = window.URL.createObjectURL(audioBlob);
@@ -156,6 +171,16 @@ $(document).ready( function() {
             regionVar.play();
         }
     });
+});
+
+$(window).keydown(function(e) {
+    e.stopPropagation();
+    switch (e.keyCode) {
+        case 32: // space key
+            e.preventDefault();
+            $("#playPause").trigger("click");
+            return;
+    }
 });
 
 function checkBuildStatus() {

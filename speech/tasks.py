@@ -7,7 +7,6 @@ import os
 @shared_task
 def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, center, phoneme, pitch_path, output_mat_path):
     user = User.objects.get(user_name=username)
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     eng = None
     while eng is None:
         try:
@@ -35,9 +34,18 @@ def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, c
         eng.service.debug_model(abs_audio_paths, left, right, phoneme, abs_pitch_path, abs_output_debug_path)
     # sucess = eng.build_sabr_model(abs_audio_paths, left, right, phoneme, abs_pitch_path, abs_output_mat_path)
     success = eng.service.build_sabr_model(abs_audio_paths, left, right, phoneme, abs_pitch_path, abs_output_mat_path)
-    if success == 1.0:
-        anchor_set.built = 'Built'
-        anchor_set.save()
+    # if success == 1.0:
+    #     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    #     if not anchor_set.aborted:
+    #         anchor_set.built = 'Built'
+    #     else:
+    #         if os.path.exists('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug)):
+    #             os.remove('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug))
+    #         anchor_set.built = 'False'
+    #     anchor_set.save()
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    anchor_set.built = 'Built'
+    anchor_set.save()
     return success
 
 @shared_task
@@ -74,4 +82,17 @@ def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_p
         anchor_set = AnchorSet.objects.get(slug=target_model_name_slug, user=user)
         anchor_set.used = True
         anchor_set.save()
+        # if gs.aborted == False:
+        #     gs.status = "Finished"
+        #     gs.save()
+        #     anchor_set = AnchorSet.objects.get(slug=target_model_name_slug, user=user)
+        #     anchor_set.used = True
+        #     anchor_set.save()
+        # else:
+        #     if os.path.exists('data/output_wav/{}'.format(gs.speaker_name)):
+        #         files = os.listdir('data/output_wav/{}'.format(gs.speaker_name))
+        #         for f in files:
+        #             os.remove('data/output_wav/{0}/{1}'.format(gs.speaker_name, f))
+        #         os.removedirs('data/output_wav/{}'.format(gs.speaker_name))
+        #     GoldenSpeaker.objects.filter(slug=gs.slug).delete()
     return success
