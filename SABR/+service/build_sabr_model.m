@@ -29,7 +29,7 @@ end
 sabr_model = struct('anchors',[],'labels',[],'f0_mean',0,'f0_std',0);
 sabr_model.labels = anchor_labels;
 
-mfcc_comp  = @(x,sr) spectrum.spec2mfcc(x,sr,24,0);
+mfcc_comp  = @(x,sr) spectrum.spec2mfcc(x,sr,25,0);
 
 %% Extract each anchor 
 
@@ -84,7 +84,15 @@ prmF0.F0frameUpdateInterval = 1; %in milliseconds
 prmF0.F0searchLowerBound    = 50;
 prmF0.F0SearchUpperBound    = 400;
 
+Q.tframe=0.001;
+
+tic;
 f0 = MulticueF0v14  (pitch_audio(1:end),sr, prmF0);
+
+%f0 = fxrapt(pitch_audio(1:end), sr, 'u', Q);
+%f0(isnan(f0)) = 0;
+
+toc;
 
 sabr_model.f0_mean = mean(log(f0(f0 > 0)));
 sabr_model.f0_std  = std (log(f0(f0 > 0)));

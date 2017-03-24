@@ -90,7 +90,7 @@ def add_anchorset(request):
                 context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
                 return render(request, 'speech/add_anchorset.html', context_dict)
         else:
-            messages.error(request, 'Anchor set name should only contain A-Z, a-z and 0-9')
+            messages.error(request, 'Anchor set name should only contain A-Z, a-z, 0-9 and _')
             anchorset_form = AnchorSetForm()
             context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
             return render(request, 'speech/add_anchorset.html', context_dict)
@@ -266,6 +266,8 @@ def upload_pitch(request):
         pitch_blob = base64.b64decode(pitch_base64)
         with open(pitch_path, "wb") as recording_file:
             recording_file.write(pitch_blob)
+        current_anchorset.modified = True
+        current_anchorset.save()
     return HttpResponse('sucess')
 
 

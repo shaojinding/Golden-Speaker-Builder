@@ -186,6 +186,11 @@
 }
 
 
+/*.recording {*/
+	/*background: url("/static/images/recording.png") 0 0;*/
+	/*background-repeat:no-repeat;*/
+/*}*/
+
 .recording {
 	-webkit-animation-name: blinker;
     -webkit-animation-duration: 1s;

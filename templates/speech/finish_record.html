@@ -48,17 +48,18 @@
             <button id="record" class="btn btn-default" disabled></button>
             <button id="playPause" class="btn btn-default" disabled></button>
             <button id="save" class="btn btn-default" disabled></button>
-            <table id="annotation">
-                <tr>
-                    <th>Status:</th>
-                    <td id="status">unsaved
-                    </td>
-                </tr>
-            </table>
+{#            <table id="annotation">#}
+{#                <tr>#}
+{#                    <th>Status:</th>#}
+{#                    <td id="status">unsaved#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
         </div>
     </div>
     <!-- buttons -->
     <div style="clear: both">
+    <button type="button" class="btn btn-primary" style="float: left" onclick="window.location.href='/speech/record/index'">Back</button>
     <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/build_sabr_model'" disabled>Continue</button>
     </div>
 {% endblock %}

@@ -18,7 +18,7 @@ $(document).ready( function() {
     savebtn.disabled = true;
     var playbtn = document.getElementById("playPause");
     playbtn.disabled = true;
-    if (pitchFile != null) {
+    if ((pitchFile != null) && (pitchFile != "None") ) {
         var recording_blob = b64toBlob(pitchFile);
         wavesurfer.loadBlob(recording_blob);
         var playbtn = document.getElementById("playPause");
@@ -76,6 +76,7 @@ $(document).ready( function() {
                     recordbtn.disabled = true;
                     var playbtn = document.getElementById("playPause");
                     playbtn.disabled = true;
+                    $("#SoundRecorder").hide();
                     var buildbtn = document.getElementById("build-sabr-btn");
                     buildbtn.disabled = false;
                 });

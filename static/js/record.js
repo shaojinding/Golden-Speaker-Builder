@@ -26,6 +26,7 @@ var regionVar = null;
 var isRecording = false;
 var Ipas = null;
 var Keywords = null;
+var center = 0;
 $(document).ready( function() {
     var finishPercent = savedPhoneme.length / numPhoneme;
     $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");
@@ -85,8 +86,9 @@ $(document).ready( function() {
     wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
     wavesurfer.empty();
     if ($.inArray(currentPhoneme, savedPhoneme) >= 0) {
-        startTime = Number(record_details[0]);
-        endTime = Number(record_details[1]);
+        var start = Number(record_details[0]);
+        var end = Number(record_details[1]);
+        center = (start + end) / 2;
         $("#startTime").html(record_details[0]);
         $("#endTime").html(record_details[1]);
         wavesurferWidth = document.getElementById("wavesurf").offsetWidth;
@@ -152,8 +154,9 @@ $(document).ready( function() {
             firstTimeLoad = false
         }
         wavesurfer.on('region-update-end', function (region) {
-            var start = region.start;
-            var end = region.end;
+            start = region.start;
+            end = region.end;
+            center = (start + end) / 2;
             centerTime = ((start + end) / 2).toFixed(2);
             startTime = start.toFixed(2);
             endTime = end.toFixed(2);
@@ -161,16 +164,23 @@ $(document).ready( function() {
             $("#endTime").html(endTime);
             var savebtn = document.getElementById("save");
             savebtn.disabled = false;
-            var zoominbtn = document.getElementById("zoomin");
-            zoominbtn.disabled = false;
-            // var zoomoutbtn = document.getElementById("zoomout");
-            // zoomoutbtn.disabled = false;
+            if (zoomMulti * zoomLevel < 6400) {
+                var zoominbtn = document.getElementById("zoomin");
+                zoominbtn.disabled = false;
+                // var zoomoutbtn = document.getElementById("zoomout");
+                // zoomoutbtn.disabled = false;
+            }
+            if (zoomMulti != 2) {
+                var zoomoutbtn = document.getElementById("zoomout");
+                zoomoutbtn.disabled = false;
+            }
             regionVar = region;
         });
         wavesurfer.on('region-removed', function () {
             regionVar = null;
             $("#startTime").html('0.00');
             $("#endTime").html('0.00');
+            center = 0;
             var savebtn = document.getElementById("save");
             savebtn.disabled = true;
             var zoominbtn = document.getElementById("zoomin");
@@ -181,7 +191,7 @@ $(document).ready( function() {
         if (!isRecording) {
             var audioDuration = wavesurfer.getDuration();
             zoomLevel = wavesurferWidth / audioDuration;
-            if (regionVar != null) {
+            if (regionVar != null && zoomMulti * zoomLevel < 6400) {
                 var zoominbtn = document.getElementById("zoomin");
                 zoominbtn.disabled = false;
                 // var zoomoutbtn = document.getElementById("zoomout");
@@ -244,7 +254,7 @@ $(document).ready( function() {
     // var zoominbtn = document.getElementById("zoomin");
     $("#zoomin").click(function () {
         var sec = wavesurfer.getDuration();
-        wavesurfer.seekTo((startTime + endTime) / 2 / sec);
+        wavesurfer.seekTo(center / sec);
         wavesurfer.zoom(zoomMulti * zoomLevel);
         zoomMulti = zoomMulti * 2;
         if (zoomMulti * zoomLevel >= 6400) {
@@ -256,7 +266,7 @@ $(document).ready( function() {
     });
     $("#zoomout").click(function () {
         var sec = wavesurfer.getDuration();
-        wavesurfer.seekTo((startTime + endTime) / 2 / sec);
+        wavesurfer.seekTo(center / sec);
         wavesurfer.zoom(zoomLevel);
         wavesurfer.zoom(zoomLevel);
         zoomMulti = 2;
@@ -304,6 +314,7 @@ $(document).ready( function() {
                     playbtn.disabled = true;
                     $("#info-panel").hide();
                     $("#SoundRecorder").hide();
+                    document.getElementById(currentPhoneme).className = 'phoneme btn btn-xs btn-success';
                     if (savedPhoneme.length >= numPhoneme - 1) {
                         var nextbtn = document.getElementById("btn_next");
                         nextbtn.disabled = false;
@@ -337,6 +348,7 @@ $(document).ready( function() {
                         playbtn.disabled = true;
                         $("#info-panel").hide();
                         $("#SoundRecorder").hide();
+                        document.getElementById(currentPhoneme).className = 'phoneme btn btn-xs btn-success';
                         if (savedPhoneme.length >= numPhoneme - 1) {
                             var nextbtn = document.getElementById("btn_next");
                             nextbtn.disabled = false;
@@ -358,8 +370,10 @@ $(document).ready( function() {
 });
 
 $(window).keydown(function(e) {
+    e.stopPropagation();
     switch (e.keyCode) {
         case 32: // space key
+            e.preventDefault();
             $("#playPause").trigger("click");
             return;
         case 49: // num1 key
