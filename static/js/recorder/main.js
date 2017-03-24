@@ -90,6 +90,10 @@ function toggleRecordingPractice( e ) {
         // stop recording
         stopRecording();
         microphone.stop();
+        wavesurfer.enableDragSelection({
+            color: 'hsla(400, 100%, 30%, 0.1)',
+            drag: false
+        });
         recorded = true;
         e.classList.remove("recording");
         var playbtn = document.getElementById("playPause");
@@ -101,6 +105,8 @@ function toggleRecordingPractice( e ) {
         e.classList.add("recording");
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = true;
+        var downloadbtn = document.getElementById("download");
+        downloadbtn.disabled = true;
         recorded = false;
         microphone.start();
         startRecording();

@@ -19,6 +19,7 @@
     <script src="{% static "js/recorder/recorder.js" %}"></script>
     <script src="{% static "js/recorder/main.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
@@ -120,6 +121,7 @@
                 <div id="controls">
                     <button id="record" class="btn btn-default"></button>
                     <button id="playPause" class="btn btn-default" disabled></button>
+                    <a id="download" class="btn btn-default" disabled></a>
                 </div>
             </div>
         </div>

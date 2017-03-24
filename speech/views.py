@@ -437,6 +437,9 @@ def get_synthesize_status(request):
 def delete_golden_speaker(request, speaker_name_slug):
     gs = GoldenSpeaker.objects.get(slug=speaker_name_slug)
     if os.path.exists('data/output_wav/{}'.format(gs.speaker_name)):
+        files = os.listdir('data/output_wav/{}'.format(gs.speaker_name))
+        for f in files:
+            os.remove('data/output_wav/{0}/{1}'.format(gs.speaker_name, f))
         os.removedirs('data/output_wav/{}'.format(gs.speaker_name))
     GoldenSpeaker.objects.filter(slug=speaker_name_slug).delete()
     return redirect('/speech/practice/index')

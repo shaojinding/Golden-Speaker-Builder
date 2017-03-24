@@ -153,6 +153,9 @@ $(document).ready( function() {
             regionEnabled = true;
             firstTimeLoad = false
         }
+        // wavesurfer.on('click', function (e) {
+        //     e.stopImmediatePropagation();
+        // });
         wavesurfer.on('region-update-end', function (region) {
             start = region.start;
             end = region.end;

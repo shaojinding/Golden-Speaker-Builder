@@ -11,6 +11,8 @@ var ifChoose = null;
 var buildingGoldenSpeaker = null;
 var uttrFiles = null;
 var timeStamps = null;
+var regionVar = null;
+var regionVarTeacher = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
@@ -18,6 +20,19 @@ $(document).ready( function() {
             waveColor: 'violet',
             progressColor: 'purple',
             height: '150',
+        });
+        wavesurferTeacher.on('ready', function () {
+            wavesurferTeacher.enableDragSelection({
+                color: 'hsla(400, 100%, 30%, 0.1)',
+                drag: false,
+                //resize: false,
+            });
+            wavesurferTeacher.on('region-update-end', function (region) {
+                regionVarTeacher = region;
+            });
+            wavesurferTeacher.on('region-removed', function () {
+                regionVarTeacher = null;
+            });
         });
         // wavesurferTeacher.empty();
         // wavesurferTeacher.on('ready', function () {
@@ -60,6 +75,20 @@ $(document).ready( function() {
                 container: '#student-timeline',
                 //primaryFontColor: 'white',
             });
+            wavesurfer.on('region-update-end', function (region) {
+                regionVar = region;
+            });
+            wavesurfer.on('region-removed', function () {
+                regionVar = null;
+            });
+            if (recorded) {
+                var downloadbtn = document.getElementById("download");
+                downloadbtn.removeAttribute("disabled");
+                var recordUrl = window.URL.createObjectURL(record_blob);
+                downloadbtn.href = recordUrl;
+                downloadbtn.download = "student_recording.wav";
+            }
+
         });
     }
     else {
@@ -94,29 +123,37 @@ $(document).ready( function() {
         downloadbtn.download = "{0}_{1}.wav".replace("{0}", goldenSpeakerName).replace("{1}", name);
     });
     $("#playPause-teacher").click(function () {
-        wavesurferTeacher.playPause();
-        $(this).toggleClass("playing");
+        if (regionVarTeacher == null) {
+            wavesurferTeacher.playPause();
+        }
+        else {
+            regionVarTeacher.play();
+        }
     });
     //$(".play-gs").click(function () {
-        // var name = $(this).parent().attr('id');
-        // var audio = document.getElementById("utterance-play");
-        // var source = document.getElementById("utterance-source");
-        // wavesurferTeacher.empty();
-        // var audioBase64 = uttrFiles["{0}_{1}".replace("{0}", goldenSpeakerName).replace("{1}", name)];
-        // var audioBlob = b64toBlob(audioBase64);
-        // var audioUrl = window.URL.createObjectURL(audioBlob);
-        // wavesurferTeacher.load(audioUrl);
-        //wavesurferTeacher.play();
-        //source.src = audioUrl;
-        //audio.load();
-        //audio.play();
+    // var name = $(this).parent().attr('id');
+    // var audio = document.getElementById("utterance-play");
+    // var source = document.getElementById("utterance-source");
+    // wavesurferTeacher.empty();
+    // var audioBase64 = uttrFiles["{0}_{1}".replace("{0}", goldenSpeakerName).replace("{1}", name)];
+    // var audioBlob = b64toBlob(audioBase64);
+    // var audioUrl = window.URL.createObjectURL(audioBlob);
+    // wavesurferTeacher.load(audioUrl);
+    //wavesurferTeacher.play();
+    //source.src = audioUrl;
+    //audio.load();
+    //audio.play();
     //});
     $("#record").click(function (){
         toggleRecordingPractice(this);
     });
     $("#playPause").click(function (){
-        wavesurfer.playPause();
-        $(this).toggleClass("playing");
+        if (regionVar == null) {
+            wavesurfer.playPause();
+        }
+        else {
+            regionVar.play();
+        }
     });
 });
 
