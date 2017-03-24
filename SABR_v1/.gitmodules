@@ -1,0 +1,6 @@
+[submodule "toolkits/ARCTIC"]
+	path = toolkits/ARCTIC
+	url = https://github.tamu.edu/cliberatore/ARCTIC-toolkit
+[submodule "toolkits/PSI-utilities"]
+	path = toolkits/PSI-utilities
+	url = https://github.tamu.edu/cliberatore/PSI-utilities.git
