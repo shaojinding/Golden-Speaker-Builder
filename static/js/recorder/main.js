@@ -94,6 +94,7 @@ function toggleRecordingPractice( e ) {
             color: 'hsla(400, 100%, 30%, 0.1)',
             drag: false
         });
+        regionEnabled = true;
         recorded = true;
         e.classList.remove("recording");
         var playbtn = document.getElementById("playPause");
@@ -109,6 +110,12 @@ function toggleRecordingPractice( e ) {
         downloadbtn.disabled = true;
         recorded = false;
         microphone.start();
+        if (regionEnabled) {
+            wavesurfer.empty();
+            wavesurfer.clearRegions();
+            wavesurfer.disableDragSelection();
+            regionEnabled = false;
+        }
         startRecording();
     }
 }

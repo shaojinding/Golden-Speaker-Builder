@@ -13,6 +13,7 @@ var uttrFiles = null;
 var timeStamps = null;
 var regionVar = null;
 var regionVarTeacher = null;
+var regionEnabled = false;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
