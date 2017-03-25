@@ -387,7 +387,7 @@ $(window).keydown(function(e) {
             return;
         case 51: //num3 key
             var zoomoutbtn = document.getElementById("zoomout");
-            if (zoominbtn.disabled != true) {
+            if (zoomoutbtn.disabled != true) {
                 $("#zoomout").trigger("click");
             }
             return;

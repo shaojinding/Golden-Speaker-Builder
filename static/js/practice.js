@@ -23,6 +23,7 @@ var zoomMultiStudent = 2;
 var centerTeacher = 0;
 var centerStudent = 0;
 var wavesurferWidth = null;
+var microphone = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({

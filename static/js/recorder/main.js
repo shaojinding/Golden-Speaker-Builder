@@ -68,6 +68,12 @@ function toggleRecordingPitch( e ) {
         // stop recording
         stopRecording();
         microphone.stop();
+        wavesurfer.enableDragSelection({
+            color: 'hsla(400, 100%, 30%, 0.1)',
+            drag: false
+        });
+        regionEnabled = true;
+        isRecording = false;
         e.classList.remove("recording");
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = false;
@@ -80,7 +86,14 @@ function toggleRecordingPitch( e ) {
         e.classList.add("recording");
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = true;
+        isRecording = true;
         microphone.start();
+        if (regionEnabled) {
+            wavesurfer.empty();
+            wavesurfer.clearRegions();
+            wavesurfer.disableDragSelection();
+            regionEnabled = false;
+        }
         startRecording();
     }
 }
