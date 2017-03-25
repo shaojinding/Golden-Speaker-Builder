@@ -153,9 +153,9 @@ $(document).ready( function() {
             regionEnabled = true;
             firstTimeLoad = false
         }
-        // wavesurfer.on('click', function (e) {
-        //     e.stopImmediatePropagation();
-        // });
+        wavesurfer.on('click', function (e) {
+            e.stopImmediatePropagation();
+        });
         wavesurfer.on('region-update-end', function (region) {
             start = region.start;
             end = region.end;
@@ -386,14 +386,17 @@ $(window).keydown(function(e) {
             }
             return;
         case 51: //num3 key
-            $("#zoomout").trigger("click");
+            var zoomoutbtn = document.getElementById("zoomout");
+            if (zoominbtn.disabled != true) {
+                $("#zoomout").trigger("click");
+            }
             return;
-        case 82: // "r" key
-            $("#record").trigger("click");
-            return;
-        case 83: // "s" key
-            $("#save").trigger("click");
-            return;
+        // case 82: // "r" key
+        //     $("#record").trigger("click");
+        //     return;
+        // case 83: // "s" key
+        //     $("#save").trigger("click");
+        //     return;
     }
 });
 

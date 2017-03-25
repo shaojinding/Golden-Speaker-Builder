@@ -66,6 +66,44 @@ tr {
 
 }
 
+
+#zoomin-teacher {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomin.png");
+	background-repeat:no-repeat;
+}
+
+#zoomout-teacher {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomout.png");
+	background-repeat:no-repeat;
+}
+
+
+#zoomin-student {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomin.png");
+	background-repeat:no-repeat;
+}
+
+#zoomout-student {
+	display: inline-block;
+	height: 44px;
+	width: 44px;
+	margin-top: 10px;
+	background-image: url("/static/images/zoomout.png");
+	background-repeat:no-repeat;
+}
+
 .recording {
 	-webkit-animation-name: blinker;
     -webkit-animation-duration: 1s;

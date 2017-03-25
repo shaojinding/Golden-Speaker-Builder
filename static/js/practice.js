@@ -16,6 +16,13 @@ var regionVarTeacher = null;
 var regionEnabled = false;
 var regionPlay = "teacher";
 var ifTeacherLoad = false;
+var zoomLevelTeacher = null;
+var zoomMultiTeacher = 2;
+var zoomLevelStudent = null;
+var zoomMultiStudent = 2;
+var centerTeacher = 0;
+var centerStudent = 0;
+var wavesurferWidth = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = WaveSurfer.create({
@@ -23,6 +30,63 @@ $(document).ready( function() {
             waveColor: 'violet',
             progressColor: 'purple',
             height: '150',
+            autoCenter: false,
+            hideScrollbar: true,
+        });
+        wavesurferWidth = document.getElementById("wavesurf-teacher").offsetWidth;
+        $("#panel-student").click(function () {
+            regionPlay = "student";
+        });
+        $("#panel-teacher").click(function () {
+            regionPlay = "teacher";
+        });
+        $("#zoomin-teacher").click(function () {
+            var sec = wavesurferTeacher.getDuration();
+            wavesurferTeacher.seekTo(centerTeacher / sec);
+            wavesurferTeacher.zoom(zoomMultiTeacher * zoomLevelTeacher);
+            zoomMultiTeacher = zoomMultiTeacher * 2;
+            if (zoomMultiTeacher * zoomLevelTeacher >= 6400) {
+                var zoominbtn = document.getElementById("zoomin-teacher");
+                zoominbtn.disabled = true;
+            }
+            var zoomoutbtn = document.getElementById("zoomout-teacher");
+            zoomoutbtn.disabled = false;
+        });
+        $("#zoomout-teacher").click(function () {
+            var sec = wavesurferTeacher.getDuration();
+            wavesurferTeacher.seekTo(centerTeacher / sec);
+            wavesurferTeacher.zoom(zoomLevelTeacher);
+            wavesurferTeacher.zoom(zoomLevelTeacher);
+            zoomMultiTeacher = 2;
+            var zoominbtn = document.getElementById("zoomin-teacher");
+            zoominbtn.disabled = false;
+            var zoomoutbtn = document.getElementById("zoomout-teacher");
+            zoomoutbtn.disabled = true;
+            //wavesurfer.scrollParent = false;
+        });
+        $("#zoomin-student").click(function () {
+            var sec = wavesurfer.getDuration();
+            wavesurfer.seekTo(centerStudent / sec);
+            wavesurfer.zoom(zoomMultiStudent * zoomLevelStudent);
+            zoomMultiStudent = zoomMultiStudent * 2;
+            if (zoomMultiStudent * zoomLevelStudent >= 6400) {
+                var zoominbtn = document.getElementById("zoomin-student");
+                zoominbtn.disabled = true;
+            }
+            var zoomoutbtn = document.getElementById("zoomout-student");
+            zoomoutbtn.disabled = false;
+        });
+        $("#zoomout-student").click(function () {
+            var sec = wavesurfer.getDuration();
+            wavesurfer.seekTo(centerStudent / sec);
+            wavesurfer.zoom(zoomLevelStudent);
+            wavesurfer.zoom(zoomLevelStudent);
+            zoomMultiStudent = 2;
+            var zoominbtn = document.getElementById("zoomin-student");
+            zoominbtn.disabled = false;
+            var zoomoutbtn = document.getElementById("zoomout-student");
+            zoomoutbtn.disabled = true;
+            //wavesurfer.scrollParent = false;
         });
         wavesurferTeacher.on('ready', function () {
             ifTeacherLoad = true;
@@ -31,15 +95,30 @@ $(document).ready( function() {
                 drag: false,
                 //resize: false,
             });
+            var audioDuration = wavesurferTeacher.getDuration();
+            zoomLevelTeacher = wavesurferWidth / audioDuration;
             wavesurferTeacher.on('region-update-end', function (region) {
                 regionVarTeacher = region;
                 regionPlay = "teacher";
-            });
-            wavesurferTeacher.on('click', function () {
-                regionPlay = "teacher";
+                var start = region.start;
+                var end = region.end;
+                centerTeacher = (start + end) / 2;
+                if (zoomMultiTeacher * zoomLevelTeacher < 6400) {
+                    var zoominbtn = document.getElementById("zoomin-teacher");
+                    zoominbtn.disabled = false;
+                }
+                if (zoomMultiTeacher != 2) {
+                    var zoomoutbtn = document.getElementById("zoomout-teacher");
+                    zoomoutbtn.disabled = false;
+                }
             });
             wavesurferTeacher.on('region-removed', function () {
                 regionVarTeacher = null;
+                centerTeacher = 0;
+                var zoominbtn = document.getElementById("zoomin-teacher");
+                zoominbtn.disabled = true;
+                var zoomoutbtn = document.getElementById("zoomout-teacher");
+                zoomoutbtn.disabled = true;
             });
         });
         // wavesurferTeacher.empty();
@@ -63,6 +142,8 @@ $(document).ready( function() {
             waveColor: 'violet',
             progressColor: 'purple',
             height: '150',
+            autoCenter: false,
+            hideScrollbar: true,
         });
         wavesurfer.empty();
         microphone = Object.create(WaveSurfer.Microphone);
@@ -86,14 +167,30 @@ $(document).ready( function() {
             wavesurfer.on('region-update-end', function (region) {
                 regionVar = region;
                 regionPlay = "student";
+                var start = region.start;
+                var end = region.end;
+                centerStudent = (start + end) / 2;
+                if (zoomMultiStudent * zoomLevelStudent < 6400) {
+                    var zoominbtn = document.getElementById("zoomin-student");
+                    zoominbtn.disabled = false;
+                }
+                if (zoomMultiStudent != 2) {
+                    var zoomoutbtn = document.getElementById("zoomout-student");
+                    zoomoutbtn.disabled = false;
+                }
             });
             wavesurfer.on('region-removed', function () {
                 regionVar = null;
+                centerStudent = 0;
+                var zoominbtn = document.getElementById("zoomin-student");
+                zoominbtn.disabled = true;
+                var zoomoutbtn = document.getElementById("zoomout-student");
+                zoomoutbtn.disabled = true;
             });
-            wavesurfer.on('click', function () {
-                regionPlay = "student";
-            });
+
             if (recorded) {
+                var audioDuration = wavesurfer.getDuration();
+                zoomLevelStudent = wavesurferWidth / audioDuration;
                 var downloadbtn = document.getElementById("download");
                 downloadbtn.removeAttribute("disabled");
                 var recordUrl = window.URL.createObjectURL(record_blob);
@@ -107,7 +204,7 @@ $(document).ready( function() {
         var timeStampContainer = document.getElementsByClassName("time-stamp");
         for (var i = 0; i < timeStampContainer.length; i++) {
             if ($.isNumeric(timeStamps[i])) {
-                var time = moment.unix(timeStamps[i]).format("MMM D YYYY h:mm:ss");
+                var time = moment.unix(timeStamps[i]).format("MMM D YYYY HH:mm:ss");
             }
             else {
                 var time = timeStamps[i];
@@ -122,6 +219,7 @@ $(document).ready( function() {
         $(this).addClass('active');
         var name = $(this).attr('id');
         var source = document.getElementById("utterance-source");
+        wavesurfer.empty();
         wavesurferTeacher.empty();
         if (ifTeacherLoad == true) {
             wavesurferTeacher.clearRegions();
@@ -178,9 +276,46 @@ $(window).keydown(function(e) {
     switch (e.keyCode) {
         case 32: // space key
             e.preventDefault();
-            $("#playPause").trigger("click");
+            if (regionPlay == "teacher") {
+                $("#playPause-teacher").trigger("click");
+
+            }
+            else {
+                $("#playPause").trigger("click");
+            }
+
+            return;
+        case 49: // num1 key
+            if (regionPlay == "teacher") {
+                var zoominbtn = document.getElementById("zoomin-teacher");
+                if (zoominbtn.disabled != true) {
+                    $("#zoomin-teacher").trigger("click");
+                }
+            }
+            else {
+                var zoominbtn = document.getElementById("zoomin-student");
+                if (zoominbtn.disabled != true) {
+                    $("#zoomin-student").trigger("click");
+                }
+            }
+
+            return;
+        case 51: //num3 key
+            if (regionPlay == "teacher") {
+                var zoomoutbtn = document.getElementById("zoomout-teacher");
+                if (zoomoutbtn.disabled != true) {
+                    $("#zoomout-teacher").trigger("click");
+                }
+            }
+            else {
+                var zoomoutbtn = document.getElementById("zoomout-student");
+                if (zoomoutbtn.disabled != true) {
+                    $("#zoomout-student").trigger("click");
+                }
+            }
             return;
     }
+
 });
 
 function checkBuildStatus() {

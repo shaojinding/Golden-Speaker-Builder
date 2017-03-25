@@ -88,6 +88,7 @@ def add_anchorset(request):
                 anchorset.modified = False
                 anchorset.built = "False"
                 anchorset.user = user
+                anchorset.aborted = False
                 anchorset.timestamp = time()
                 # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
                 anchorset.set_saved_phonemes([])
@@ -375,7 +376,7 @@ def synthesize(request):
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=timestamp, status="Synthesizing")
+                               user=user, timestamp=timestamp, status="Synthesizing", aborted=False)
             # gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
             #                    user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()

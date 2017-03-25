@@ -57,11 +57,11 @@
                     </thead>
                     <tbody>
                     {% for golden_speaker in golden_speakers %}
-{#                        {% if golden_speaker.aborted == False %}#}
+                        {#                        {% if golden_speaker.aborted == False %}#}
                         <tr>
                             <td>{{ golden_speaker.source_model.model_name }}</td>
                             <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
-{#                            <td>{{ golden_speaker.timestamp }}</td>#}
+                            {#                            <td>{{ golden_speaker.timestamp }}</td>#}
                             <td class="time-stamp"></td>
                             {% if golden_speaker.status == "Synthesizing" %}
                                 <td>Synthesizing...</td>
@@ -71,7 +71,7 @@
                                 <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
                             {% endif %}
                         </tr>
-{#                        {% endif %}#}
+                        {#                        {% endif %}#}
                     {% endfor %}
                     </tbody>
                 </table>
@@ -80,7 +80,7 @@
             <!-- display all utterances in selected golden speaker -->
             <div class="scroll-list list-group">
                 {% for utterance in gs.contained_utterance.all %}
-{#                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}"><button class="btn btn-success btn-xs play-gs" style="margin-right: 5px">play</button>{{ utterance.transcription }}</a>#}
+                    {#                    <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}"><button class="btn btn-success btn-xs play-gs" style="margin-right: 5px">play</button>{{ utterance.transcription }}</a>#}
                     <a class="list-group-item synthesized-uttr" id="{{ utterance.name }}">{{ utterance.transcription }}</a>
                 {% endfor %}
             </div>
@@ -92,30 +92,33 @@
             <source id="utterance-source" src="" type="audio/wav">
         </audio>
         <!-- choose and play converted utterances  -->
-        <div class="panel panel-default">
+        <div id="panel-teacher" class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Teacher's recording</h3>
             </div>
             <div class="panel-body">
                 <div id="wavesurf-teacher">
                 </div>
-{#                <div id="teacher-spec" class="spec" style="height: 256px">#}
-{#                </div>#}
+                {#                <div id="teacher-spec" class="spec" style="height: 256px">#}
+                {#                </div>#}
                 <div id="teacher-timeline">
                 </div>
                 <div id="controls-teacher">
-                <button id="playPause-teacher" class="btn btn-default" disabled></button>
-                <a id="download-teacher" class="btn btn-default" disabled></a>
+                    <button id="playPause-teacher" class="btn btn-default" disabled></button>
+                    <button id="zoomin-teacher" class="btn btn-default" disabled></button>
+                    <button id="zoomout-teacher" class="btn btn-default" disabled></button>
+                    <a id="download-teacher" class="btn btn-default" disabled></a>
+                </div>
             </div>
         </div>
         <!-- record and practice with golden speaker -->
-        <div class="panel panel-default">
+        <div id="panel-student" class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Student's recording</h3>
             </div>
             <div class="panel-body">
-{#                <div id="student-spec" class="spec" style="height: 256px">#}
-{#                </div>#}
+                {#                <div id="student-spec" class="spec" style="height: 256px">#}
+                {#                </div>#}
                 <div id="wavesurf-student">
                 </div>
                 <div id="student-timeline">
@@ -123,6 +126,8 @@
                 <div id="controls">
                     <button id="record" class="btn btn-default"></button>
                     <button id="playPause" class="btn btn-default" disabled></button>
+                    <button id="zoomin-student" class="btn btn-default" disabled></button>
+                    <button id="zoomout-student" class="btn btn-default" disabled></button>
                     <a id="download" class="btn btn-default" disabled></a>
                 </div>
             </div>

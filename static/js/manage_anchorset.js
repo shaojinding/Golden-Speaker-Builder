@@ -9,7 +9,7 @@ $(document).ready( function() {
     var timeStampContainer = document.getElementsByClassName("time-stamp");
     for (var i = 0; i < timeStampContainer.length; i++) {
         if ($.isNumeric(timeStamps[i])) {
-            var time = moment.unix(timeStamps[i]).format("MMM D YYYY h:mm:ss");
+            var time = moment.unix(timeStamps[i]).format("MMM D YYYY HH:mm:ss");
         }
         else {
             var time = timeStamps[i];
