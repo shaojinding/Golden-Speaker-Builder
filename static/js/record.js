@@ -188,8 +188,10 @@ $(document).ready( function() {
             savebtn.disabled = true;
             var zoominbtn = document.getElementById("zoomin");
             zoominbtn.disabled = true;
-            var zoomoutbtn = document.getElementById("zoomout");
-            zoomoutbtn.disabled = true;
+            if (zoomMulti <= 2) {
+                var zoomoutbtn = document.getElementById("zoomout");
+                zoomoutbtn.disabled = true;
+            }
         });
         if (!isRecording) {
             var audioDuration = wavesurfer.getDuration();

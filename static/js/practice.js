@@ -63,7 +63,7 @@ $(document).ready( function() {
             zoominbtn.disabled = false;
             var zoomoutbtn = document.getElementById("zoomout-teacher");
             zoomoutbtn.disabled = true;
-            //wavesurfer.scrollParent = false;
+
         });
         $("#zoomin-student").click(function () {
             var sec = wavesurfer.getDuration();
@@ -87,7 +87,6 @@ $(document).ready( function() {
             zoominbtn.disabled = false;
             var zoomoutbtn = document.getElementById("zoomout-student");
             zoomoutbtn.disabled = true;
-            //wavesurfer.scrollParent = false;
         });
         wavesurferTeacher.on('ready', function () {
             ifTeacherLoad = true;
@@ -118,8 +117,10 @@ $(document).ready( function() {
                 centerTeacher = 0;
                 var zoominbtn = document.getElementById("zoomin-teacher");
                 zoominbtn.disabled = true;
-                var zoomoutbtn = document.getElementById("zoomout-teacher");
-                zoomoutbtn.disabled = true;
+                if (zoomMultiTeacher <= 2) {
+                    var zoomoutbtn = document.getElementById("zoomout-teacher");
+                    zoomoutbtn.disabled = true;
+                }
             });
         });
         // wavesurferTeacher.empty();
@@ -185,8 +186,10 @@ $(document).ready( function() {
                 centerStudent = 0;
                 var zoominbtn = document.getElementById("zoomin-student");
                 zoominbtn.disabled = true;
-                var zoomoutbtn = document.getElementById("zoomout-student");
-                zoomoutbtn.disabled = true;
+                if (zoomMultiStudent <= 2) {
+                    var zoomoutbtn = document.getElementById("zoomout-student");
+                    zoomoutbtn.disabled = true;
+                }
             });
 
             if (recorded) {
