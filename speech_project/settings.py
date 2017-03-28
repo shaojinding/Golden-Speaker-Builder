@@ -136,7 +136,7 @@ STATICFILES_DIRS = (
 TIME_ZONE = 'America/Chicago'
 
 # STATIC_ROOT = '/home/shjd/golden-speaker/static_root/'
-STATIC_ROOT = '/var/goldenspeaker/static/'
+STATIC_ROOT = '/var/golden-speaker-static/'
 
 # STATICFILES_DIRS = '/home/shjd/golden-speaker/static_root/'
 
