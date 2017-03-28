@@ -1,5 +1,6 @@
 function success = synthesize( source_analysis_file, source_model_file, target_model_file, synthesis_wav_output)
 
+config;
 %set up synth parameters
 SR = 16e3;
 

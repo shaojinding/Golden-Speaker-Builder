@@ -14,10 +14,6 @@ addpath('./toolkits/rastamat/');
 
 addpath('./toolkits/PSI-utilities/');
 
-%SPASMS-MATLAB
-
-addpath('./toolkits/spams-matlab/build/');
-
 %SRV
 
 addpath('./toolkits/srv1_9/');
