@@ -13,7 +13,7 @@ load(source_model_file);
 
 source_model = sabr_model;
 
-source_model.centroids(:,13) = [];
+% source_model.centroids(:,13) = [];
 source_model.centroids(:,end)= [];
 
 % load target model

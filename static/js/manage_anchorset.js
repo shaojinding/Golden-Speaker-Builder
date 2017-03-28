@@ -31,6 +31,10 @@ function checkBuildStatus() {
                     alert("Your anchor set '{0}' is built!".replace("{0}", name));
                     window.location.href = '/speech/manage_anchorset'
                 }
+                else if (built == "Error") {
+                    alert("An error occurs in anchor set '{0}', please try to build it again.".replace("{0}", name));
+                    window.location.href = '/speech/manage_anchorset'
+                }
             });
         }
         setTimeout("checkBuildStatus()", 30000);

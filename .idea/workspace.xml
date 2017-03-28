@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa84f2ae-eca3-4049-80ca-cd46294f7022" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/pitch.js" afterPath="$PROJECT_DIR$/static/js/pitch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SABR/+service/synthesize.m" afterPath="$PROJECT_DIR$/SABR/+service/synthesize.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech/tasks.py" afterPath="$PROJECT_DIR$/speech/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speech/views.py" afterPath="$PROJECT_DIR$/speech/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/doc/keywords.txt" afterPath="$PROJECT_DIR$/static/doc/keywords.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/manage_anchorset.js" afterPath="$PROJECT_DIR$/static/js/manage_anchorset.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/practice.js" afterPath="$PROJECT_DIR$/static/js/practice.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/record.js" afterPath="$PROJECT_DIR$/static/js/record.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/speech/record_base.html" afterPath="$PROJECT_DIR$/templates/speech/record_base.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +28,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/speech/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="90" column="41" lean-forward="false" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+            <state relative-caret-position="191">
+              <caret line="453" column="67" lean-forward="false" selection-start-line="453" selection-start-column="67" selection-end-line="453" selection-end-column="67" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -34,21 +40,19 @@
       <file leaf-file-name="manage_anchorset.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3">
+            <state relative-caret-position="192">
               <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="practice.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/speech/practice.html">
+      <file leaf-file-name="manage_anchorset.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/manage_anchorset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="129" column="47" lean-forward="false" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
-              <folding>
-                <marker date="1490398385726" expanded="false" signature="5905:5918" ph="..." />
-              </folding>
+            <state relative-caret-position="296">
+              <caret line="34" column="93" lean-forward="false" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,11 +67,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="practice.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/speech/tasks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="practice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/practice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="111" column="29" lean-forward="false" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+            <state relative-caret-position="126">
+              <caret line="320" column="5" lean-forward="true" selection-start-line="320" selection-start-column="5" selection-end-line="320" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="record_base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/speech/record_base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="186" column="90" lean-forward="false" selection-start-line="186" selection-start-column="90" selection-end-line="186" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -76,8 +102,8 @@
       <file leaf-file-name="record.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/record.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
+            <state relative-caret-position="-5256">
+              <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -87,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/pitch.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="386">
-              <caret line="81" column="13" lean-forward="true" selection-start-line="78" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
+              <caret line="81" column="13" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -98,26 +124,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-144">
               <caret line="88" column="27" lean-forward="false" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage_anchorset.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/manage_anchorset.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="71" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="finish_record.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/speech/finish_record.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="50" column="75" lean-forward="false" selection-start-line="50" selection-start-column="75" selection-end-line="50" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -134,8 +140,9 @@
       <find>zoomlevel</find>
       <find>recorded</find>
       <find>microphone</find>
-      <find>regionEn</find>
       <find>wavesurferwidth</find>
+      <find>get_bu</find>
+      <find>regionEn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,7 +159,6 @@
         <option value="$PROJECT_DIR$/templates/speech/index.html" />
         <option value="$PROJECT_DIR$/templates/speech/base.html" />
         <option value="$PROJECT_DIR$/static/css/theme.css" />
-        <option value="$PROJECT_DIR$/templates/speech/record_base.html" />
         <option value="$PROJECT_DIR$/templates/speech/record.html" />
         <option value="$PROJECT_DIR$/static/js/wavesurfer/wavesurfer.regions.js" />
         <option value="$PROJECT_DIR$/static/css/record.css" />
@@ -161,16 +167,17 @@
         <option value="$PROJECT_DIR$/templates/speech/build_synthesize.html" />
         <option value="$PROJECT_DIR$/speech/urls.py" />
         <option value="$PROJECT_DIR$/speech/models.py" />
-        <option value="$PROJECT_DIR$/speech/tasks.py" />
         <option value="$PROJECT_DIR$/templates/speech/manage_anchorset.html" />
-        <option value="$PROJECT_DIR$/speech/views.py" />
-        <option value="$PROJECT_DIR$/static/js/manage_anchorset.js" />
         <option value="$PROJECT_DIR$/templates/speech/practice.html" />
         <option value="$PROJECT_DIR$/static/css/practice.css" />
         <option value="$PROJECT_DIR$/templates/speech/finish_record.html" />
         <option value="$PROJECT_DIR$/static/js/recorder/main.js" />
         <option value="$PROJECT_DIR$/static/js/pitch.js" />
+        <option value="$PROJECT_DIR$/templates/speech/record_base.html" />
         <option value="$PROJECT_DIR$/static/js/record.js" />
+        <option value="$PROJECT_DIR$/speech/tasks.py" />
+        <option value="$PROJECT_DIR$/static/js/manage_anchorset.js" />
+        <option value="$PROJECT_DIR$/speech/views.py" />
         <option value="$PROJECT_DIR$/static/js/practice.js" />
       </list>
     </option>
@@ -732,11 +739,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/speech/tasks.py</url>
-          <line>38</line>
+          <line>122</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="43" />
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -857,9 +864,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1061,40 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/speech/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="79" column="30" lean-forward="false" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/speech/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="90" column="41" lean-forward="false" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/manage_anchorset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="71" lean-forward="false" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/speech/record.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
@@ -1118,14 +1089,6 @@
           <folding>
             <marker date="1490398385726" expanded="false" signature="5905:5918" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/speech/record_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="234" column="75" lean-forward="true" selection-start-line="233" selection-start-column="12" selection-end-line="234" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,24 +1119,68 @@
     <entry file="file://$PROJECT_DIR$/static/js/pitch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
-          <caret line="81" column="13" lean-forward="true" selection-start-line="78" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
+          <caret line="81" column="13" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="81" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/record_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="186" column="90" lean-forward="false" selection-start-line="186" selection-start-column="90" selection-end-line="186" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/record.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="193" column="13" lean-forward="false" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
+        <state relative-caret-position="-5256">
+          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/speech/manage_anchorset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="453" column="67" lean-forward="false" selection-start-line="453" selection-start-column="67" selection-end-line="453" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/manage_anchorset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="34" column="93" lean-forward="false" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/practice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="111" column="29" lean-forward="false" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+        <state relative-caret-position="126">
+          <caret line="320" column="5" lean-forward="true" selection-start-line="320" selection-start-column="5" selection-end-line="320" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -353,6 +353,9 @@ def get_build_status(request):
         slug = request.GET['slug']
         anchorset = AnchorSet.objects.get(slug=slug, user=user)
         built = anchorset.built
+        if built == 'Error':
+            anchorset.built = 'False'
+            anchorset.save()
         name = anchorset.anchor_set_name
         json_list = [name, built]
         json_file = json.dumps(json_list)
@@ -447,6 +450,8 @@ def get_synthesize_status(request):
         slug = request.GET['slug']
         gs = GoldenSpeaker.objects.get(slug=slug, user=user)
         built = gs.status
+        if built == 'Error':
+            GoldenSpeaker.objects.get(slug=slug, user=user).delete()
         name = gs.speaker_name
         json_list = [name, built]
         json_file = json.dumps(json_list)

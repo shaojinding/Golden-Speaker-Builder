@@ -333,6 +333,10 @@ function checkBuildStatus() {
                     alert("Your Golden Speaker '{0}' is built!".replace("{0}", name));
                     window.location.href = '/speech/practice/index'
                 }
+                else if (status == "Error") {
+                    alert("An error occurs in Golden Speaker '{0}', please go back to build it again.".replace("{0}", name));
+                    window.location.href = '/speech/practice/index'
+                }
             });
         }
         setTimeout("checkBuildStatus()", 30000);
