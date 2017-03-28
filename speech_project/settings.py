@@ -140,13 +140,12 @@ STATIC_ROOT = '/var/golden-speaker-static/'
 
 # STATICFILES_DIRS = '/home/shjd/golden-speaker/static_root/'
 
-# AUTH0_INDEX_URL = 'https://goldenspeaker.las.iastate.edu'
-#
-# AUTH0_CALLBACK_URL = 'https://goldenspeaker.las.iastate.edu/auth/callback/?'
+AUTH0_INDEX_URL = 'https://goldenspeaker.las.iastate.edu'
+AUTH0_CALLBACK_URL = 'https://goldenspeaker.las.iastate.edu/auth/callback/?'
 
-AUTH0_INDEX_URL = 'http://127.0.0.1:18000'
+# AUTH0_INDEX_URL = 'http://127.0.0.1:18000'
 
-AUTH0_CALLBACK_URL = 'http://127.0.0.1:18000/auth/callback/?'
+# AUTH0_CALLBACK_URL = 'http://127.0.0.1:18000/auth/callback/?'
 
 AUTH0_CLIENT_ID = 'GfnvKP8rFiGCaBXauuNEulqY8EapxJmp'
 
