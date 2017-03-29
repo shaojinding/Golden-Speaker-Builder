@@ -43,14 +43,17 @@
                 <h3 class="panel-title">2. Select Anchor Set</h3>
             </div>
             <div class="panel-body"  style="height: 300px; max-height: 300px">
-                <div class="scroll-list list-group">
-                    {% if anchor_sets == None %}
-                        <p>Please record your anchor set first, and then build the golden speaker.</p>
-                    {% endif %}
-                    {% for anchor_set in anchor_sets %}
-                        <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>
-                    {% endfor %}
-                </div>
+                {% if anchor_sets %}
+                    <div class="scroll-list list-group">
+
+                        {% for anchor_set in anchor_sets %}
+                            <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>
+                        {% endfor %}
+
+                    </div>
+                {% else %}
+                    <strong>Please record your anchor set first, and then build the golden speaker.</strong>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -66,21 +69,21 @@
                 </div>
             </div>
         </div>
-{#        <!-- add and remove buttons -->#}
-{#        <div id="add-remove-div" style="margin-bottom: 20px">#}
-{#            <button id="add-utterance" class="btn btn-success" style="margin-right: 20px; margin-left: 20px" disabled>Add &darr;</button>#}
-{#            <button id="remove-utterance" class="btn btn-danger" disabled>Remove &uarr;</button>#}
-{#        </div>#}
-{#        <!-- table to show choosen source utterances -->#}
-{#        <div class="panel panel-default" id="goldenspeaker-div">#}
-{#            <div class="panel-heading">#}
-{#                <h3 class="panel-title">Golden Speaker sentences</h3>#}
-{#            </div>#}
-{#            <div class="panel-body">#}
-{#                <div class="scroll-list-uttr list-group" id="added-utterance-list">#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+        {#        <!-- add and remove buttons -->#}
+        {#        <div id="add-remove-div" style="margin-bottom: 20px">#}
+        {#            <button id="add-utterance" class="btn btn-success" style="margin-right: 20px; margin-left: 20px" disabled>Add &darr;</button>#}
+        {#            <button id="remove-utterance" class="btn btn-danger" disabled>Remove &uarr;</button>#}
+        {#        </div>#}
+        {#        <!-- table to show choosen source utterances -->#}
+        {#        <div class="panel panel-default" id="goldenspeaker-div">#}
+        {#            <div class="panel-heading">#}
+        {#                <h3 class="panel-title">Golden Speaker sentences</h3>#}
+        {#            </div>#}
+        {#            <div class="panel-body">#}
+        {#                <div class="scroll-list-uttr list-group" id="added-utterance-list">#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
         <!-- synthesize button -->
         <div id="operation-div" style="margin-bottom: 20px">
             <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>

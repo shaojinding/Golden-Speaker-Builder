@@ -47,6 +47,7 @@
         <!-- select golden speaker -->
         {% if if_choose %}
             <div class="panel-body scroll-list-uttr"  style="max-height: 600px">
+            {% if golden_speakers %}
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -83,6 +84,9 @@
                     </tbody>
                 </table>
             </div>
+                {% else %}
+                <strong>There are no golden speakers. Please go to Build Golden Speaker and build it first.</strong>
+                {% endif %}
         {% else %}
             <!-- display all utterances in selected golden speaker -->
             <div class="scroll-list list-group">
