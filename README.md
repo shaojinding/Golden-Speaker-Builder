@@ -1,2 +1,2 @@
 # golden-speaker
-v0.2
+v0.2.1
