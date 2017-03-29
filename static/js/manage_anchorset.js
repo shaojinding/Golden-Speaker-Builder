@@ -32,7 +32,7 @@ function checkBuildStatus() {
                     window.location.href = '/speech/manage_anchorset'
                 }
                 else if (built == "Error") {
-                    alert("An error occurs in anchor set '{0}', please try to build it again.".replace("{0}", name));
+                    alert("An error occurs in anchor set '{0}', please click rebuild to build it again.".replace("{0}", name));
                     window.location.href = '/speech/manage_anchorset'
                 }
             });

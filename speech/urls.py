@@ -3,12 +3,14 @@ from speech import views
 
 urlpatterns = [
         url(r'^$', views.index, name='index'),
+        url(r'^resynthesize/(?P<speaker_name_slug>[\w\-]+)/', views.resynthesize, name='resynthesize'),
+        url(r'^rebuild_sabr/(?P<anchor_set_name_slug>[\w\-]+)/', views.rebuild_sabr, name='rebuild_sabr'),
         url(r'^start_record_session/(?P<anchor_set_name_slug>[\w\-]+)/$', views.start_record_session, name='start_record_session'),
         # url(r'^start_edit_session/(?P<anchor_set_name_slug>[\w\-]+)/$', views.start_edit_session, name='start_edit_session'),
         url(r'^record/(?P<phoneme>[\w\-]+)/$', views.record, name='record'),
         # url(r'^edit/(?P<phoneme>[\w\-]+)/$', views.edit, name='edit'),
         url(r'^finish_record_session', views.finish_record_session, name="finish_record_session"),
-        url(r'build_sabr', views.build_sabr, name='build_sabr'),
+        url(r'^build_sabr', views.build_sabr, name='build_sabr'),
         url(r'^build_synthesize', views.build_synthesize, name='build_synthesize'),
         url(r'^get_utterances', views.get_utterances, name='get_utterances'),
         url(r'^synthesize', views.synthesize, name='synthesize'),

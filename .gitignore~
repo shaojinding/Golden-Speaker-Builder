@@ -3,5 +3,4 @@ static/ARCTIC/**
 **.wav
 db.sqlite3
 data/**
-.idea/**
 log/**

@@ -11,8 +11,6 @@ import base64
 import json
 from tasks import build_sabr_model, synthesize_sabr
 
-def homepage(request):
-    return redirect('/speech/')
 
 # index page view
 def index(request):
@@ -35,7 +33,6 @@ def manage_anchorset(request):
     for anchorset in anchorset_list:
         timestamps.append(anchorset.timestamp)
         if anchorset.built == 'In processing':
-
             building_anchor_set.append(anchorset.slug)
     json_building_anchor_set = json.dumps(building_anchor_set)
     json_timestamps = json.dumps(timestamps)
@@ -319,6 +316,36 @@ def build_sabr(request):
     return redirect('/speech')
 
 
+# view for building sabr model
+@login_required_auth0()
+def rebuild_sabr(request, anchor_set_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    anchor_set.built = 'In processing'
+    anchor_set.modified = False
+    anchor_set.save()
+    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
+    audio_paths = []
+    left = []
+    right = []
+    center = []
+    phoneme = []
+    pitch_path = anchor_set.pitch_path
+    output_mat_path = anchor_set.sabr_model_path
+    for anchor in anchors:
+        recording = Recording.objects.get(anchor=anchor)
+        audio_paths.append('data/recordings/{}'.format(recording.record_name))
+        phoneme.append(str(recording.phoneme))
+        left.append(anchor.L)
+        right.append(anchor.R)
+        center.append(anchor.C)
+    build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
+                                    phoneme, pitch_path, output_mat_path)
+    return redirect('/speech/manage_anchorset/')
+
+
+
 # page to choose source and target anchor set, and choose utterance to be built
 @login_required_auth0()
 def build_synthesize(request):
@@ -355,9 +382,9 @@ def get_build_status(request):
         slug = request.GET['slug']
         anchorset = AnchorSet.objects.get(slug=slug, user=user)
         built = anchorset.built
-        if built == 'Error':
-            anchorset.built = 'False'
-            anchorset.save()
+        # if built == 'Error':
+        #     anchorset.built = 'False'
+        #     anchorset.save()
         name = anchorset.anchor_set_name
         json_list = [name, built]
         json_file = json.dumps(json_list)
@@ -401,6 +428,31 @@ def synthesize(request):
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
 
+
+# view for synthesize
+@login_required_auth0()
+def resynthesize(request, speaker_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    gs = GoldenSpeaker.objects.get(user=user, slug=speaker_name_slug)
+    output_wav_folder = 'data/output_wav/' + gs.slug
+    source_model_name = gs.source_model.model_name
+    gs_name = gs.speaker_name
+    gs.status = "Synthesizing"
+    gs.save()
+    target_model = gs.anchor_set
+    target_model_name_slug = target_model.slug
+    utterances = gs.contained_utterance.all()
+    select_names = [u.name for u in utterances]
+    if not os.path.exists(output_wav_folder):
+        os.mkdir(output_wav_folder)
+    output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
+    source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
+    target_model_path = target_model.sabr_model_path
+    utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
+    synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+
+    return redirect('/speech/practice/index')
 
 @login_required_auth0()
 def abort_synthesize(request, speaker_name_slug):
@@ -452,8 +504,6 @@ def get_synthesize_status(request):
         slug = request.GET['slug']
         gs = GoldenSpeaker.objects.get(slug=slug, user=user)
         built = gs.status
-        if built == 'Error':
-            GoldenSpeaker.objects.get(slug=slug, user=user).delete()
         name = gs.speaker_name
         json_list = [name, built]
         json_file = json.dumps(json_list)

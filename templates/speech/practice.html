@@ -53,6 +53,9 @@
                         <th>Source Speaker</th>
                         <th>Anchor Set</th>
                         <th>Built Date</th>
+                        <th>Synthesize status</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,9 +66,13 @@
                             <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
                             {#                            <td>{{ golden_speaker.timestamp }}</td>#}
                             <td class="time-stamp"></td>
+                            <td>{{ golden_speaker.status }}</td>
                             {% if golden_speaker.status == "Synthesizing" %}
                                 <td>Synthesizing...</td>
                                 <td></td>
+                            {% elif golden_speaker.status == "Error" %}
+                                <td><button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being synthesized. Once the synthesis is done, you will be able to practice with the Golden Speaker');window.location.href='/speech/resynthesize/{{ golden_speaker.slug }}'">Resynthesize</button></td>
+                                <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
                             {% else %}
                                 <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
                                 <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
