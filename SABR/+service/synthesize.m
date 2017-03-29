@@ -1,5 +1,8 @@
 function success = synthesize( source_analysis_file, source_model_file, target_model_file, synthesis_wav_output)
 
+% fff=fopen('/var/golden-speaker.txt', 'w');
+
+
 config;
 %set up synth parameters
 SR = 16e3;
@@ -69,8 +72,11 @@ end
 res = cell(1,size(sabr_weights,1));
 
 for anchor=1:size(sabr_weights,1)
-    res{anchor} = src_mfcc - source_model.centroids(:,anchor);
+  %  fprintf(fff, '%d, %d, %d, %d', size(src_mfcc, 1), size(src_mfcc, 2), size(source_model.centroids(:, anchor), 1), size(source_model.centroids(:, anchor), 2))
+    res{anchor} = src_mfcc - repmat(source_model.centroids(:,anchor), 1, size(src_mfcc, 2));
 end
+
+% fclose(fff);
 
 warp_res = zeros(size(src_mfcc));
 

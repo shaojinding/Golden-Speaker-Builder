@@ -223,6 +223,12 @@ $(document).ready( function() {
         $(this).addClass('active');
         var name = $(this).attr('id');
         var source = document.getElementById("utterance-source");
+        var playbtn = document.getElementById("playPause");
+        playbtn.disabled = true;
+        var downloadbtn = document.getElementById("download");
+        downloadbtn.setAttribute("disabled", "true");
+        downloadbtn.removeAttribute("href");
+        downloadbtn.removeAttribute("download");
         wavesurfer.empty();
         wavesurferTeacher.empty();
         if (ifTeacherLoad == true) {
@@ -263,6 +269,11 @@ $(document).ready( function() {
     //audio.play();
     //});
     $("#record").click(function (){
+        if (zoomMultiStudent != 2) {
+            wavesurfer.zoom(zoomLevelStudent);
+            wavesurfer.zoom(zoomLevelStudent);
+            zoomMultiStudent = 2;
+        }
         toggleRecordingPractice(this);
     });
     $("#playPause").click(function (){

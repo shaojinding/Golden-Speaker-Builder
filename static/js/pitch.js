@@ -96,6 +96,11 @@ $(document).ready( function() {
         }
     });
     $("#record").click(function (){
+        if (zoomMulti != 2) {
+            wavesurfer.zoom(zoomLevel);
+            wavesurfer.zoom(zoomLevel);
+            zoomMulti = 2;
+        }
         toggleRecordingPitch(this);
     });
     $("#playPause").click(function (){
