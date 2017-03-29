@@ -41,11 +41,11 @@
 
 {% block bottom_block %}
     <div class="panel panel-default practice-panel" id="select-gs">
-        <div class="panel-heading">
-            <h3 class="panel-title">Select Golden Speaker and practice with it</h3>
-        </div>
         <!-- select golden speaker -->
         {% if if_choose %}
+            <div class="panel-heading">
+            <h3 class="panel-title">Select Golden Speaker</h3>
+        </div>
             <div class="panel-body scroll-list-uttr"  style="max-height: 600px">
             {% if golden_speakers %}
                 <table class="table table-striped">
@@ -88,6 +88,9 @@
                 <strong>There are no golden speakers. Please go to Build Golden Speaker and build it first.</strong>
                 {% endif %}
         {% else %}
+            <div class="panel-heading">
+            <h3 class="panel-title">Select sentence</h3>
+        </div>
             <!-- display all utterances in selected golden speaker -->
             <div class="scroll-list list-group">
                 {% for utterance in gs.contained_utterance.all %}
@@ -105,7 +108,7 @@
         <!-- choose and play converted utterances  -->
         <div id="panel-teacher" class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Teacher's recording</h3>
+                <h3 class="panel-title">Play the Golden Speaker utterance</h3>
             </div>
             <div class="panel-body">
                 <div id="wavesurf-teacher">
@@ -125,7 +128,7 @@
         <!-- record and practice with golden speaker -->
         <div id="panel-student" class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Student's recording</h3>
+                <h3 class="panel-title">Record your utterance</h3>
             </div>
             <div class="panel-body">
                 {#                <div id="student-spec" class="spec" style="height: 256px">#}

@@ -167,6 +167,8 @@ $(document).ready( function() {
                     var playbtn = document.getElementById("playPause");
                     playbtn.disabled = true;
                     $("#SoundRecorder").hide();
+                    $("#Passage").hide;
+                    $("#instruction").text("Please click Finish to build the Anchor Set.");
                     var buildbtn = document.getElementById("build-sabr-btn");
                     buildbtn.disabled = false;
                 });
