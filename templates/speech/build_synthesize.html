@@ -44,6 +44,9 @@
             </div>
             <div class="panel-body"  style="height: 300px; max-height: 300px">
                 <div class="scroll-list list-group">
+                    {% if anchor_sets == None %}
+                        <p>Please record your anchor set first, and then build the golden speaker.</p>
+                    {% endif %}
                     {% for anchor_set in anchor_sets %}
                         <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>
                     {% endfor %}

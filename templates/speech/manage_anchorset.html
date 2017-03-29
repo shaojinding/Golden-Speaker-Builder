@@ -52,7 +52,8 @@
             <tbody>
             {% for anchorset in anchorsets %}
                 <tr>
-                    <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>
+{#                    <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>#}
+                    <td>{{ anchorset.anchor_set_name }}</td>
                     <td class="time-stamp"></td>
 {#                    <td>{{ anchorset.timestamp }}</td>#}
 {#                    <td>{{ anchorset.active }}</td>#}
