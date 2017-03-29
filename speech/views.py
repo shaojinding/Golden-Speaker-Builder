@@ -11,6 +11,8 @@ import base64
 import json
 from tasks import build_sabr_model, synthesize_sabr
 
+def homepage(request):
+    return redirect('/speech/')
 
 # index page view
 def index(request):
@@ -27,7 +29,7 @@ def index(request):
 def manage_anchorset(request):
     username = request.session['profile']['nickname']
     user = User.objects.get(user_name=username)
-    anchorset_list = AnchorSet.objects.filter(user=user)
+    anchorset_list = AnchorSet.objects.order_by('-timestamp').filter(user=user)
     building_anchor_set = []
     timestamps = []
     for anchorset in anchorset_list:

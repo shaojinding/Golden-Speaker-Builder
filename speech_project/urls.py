@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+from django.shortcuts import redirect
+
 
 urlpatterns = [
+    url(r'^$', lambda r: redirect('speech/')),
     url(r'^admin/', admin.site.urls),
     url(r'^speech/', include('speech.urls')),
     url(r'^auth/', include('django_auth0.urls')),
