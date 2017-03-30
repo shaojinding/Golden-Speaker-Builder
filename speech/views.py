@@ -514,7 +514,9 @@ def get_synthesize_status(request):
 # view to delete golden_speaker
 @login_required_auth0()
 def delete_golden_speaker(request, speaker_name_slug):
-    gs = GoldenSpeaker.objects.get(slug=speaker_name_slug)
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    gs = GoldenSpeaker.objects.get(slug=speaker_name_slug, user=user)
     if os.path.exists('data/output_wav/{}'.format(gs.speaker_name)):
         files = os.listdir('data/output_wav/{}'.format(gs.speaker_name))
         for f in files:
