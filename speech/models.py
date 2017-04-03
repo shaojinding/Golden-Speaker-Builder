@@ -80,6 +80,7 @@ class Utterance(models.Model):  # the utterance belongs to a source model, and h
     source_model = models.ForeignKey(SourceModel)
     transcription = models.CharField(max_length=512)
     name = models.CharField(max_length=128)
+    week = models.CharField(max_length=128)
 
     def __unicode__(self):
         return self.name

@@ -368,7 +368,8 @@ def get_utterances(request):
         utterances = Utterance.objects.filter(source_model=source_model)
         names = [u.name for u in utterances]
         trans = [u.transcription for u in utterances]
-        json_list = [names, trans]
+        weeks = [u.week for u in utterances]
+        json_list = [names, trans, weeks]
         json_file = json.dumps(json_list)
         return HttpResponse(json_file)
 
@@ -398,10 +399,12 @@ def synthesize(request):
     user = User.objects.get(user_name=username)
     if request.method == 'POST':
         select_names_string = request.POST['select_names']
+        select_weeks_string = request.POST['select_weeks']
         source_model_name = request.POST['source_model']
         target_model_name = request.POST['target_model']
         if select_names_string and source_model_name and target_model_name:
             select_names = select_names_string.strip().split(',')
+            select_weeks = select_weeks_string.strip().split(',')
             source_model = SourceModel.objects.get(model_name=source_model_name)
             target_model = AnchorSet.objects.get(anchor_set_name=target_model_name, user=user)
             target_model_name_slug = target_model.slug
@@ -423,8 +426,8 @@ def synthesize(request):
             output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
             target_model_path = target_model.sabr_model_path
-            utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
-            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+            utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
+            synthesize_sabr(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
 
@@ -444,12 +447,14 @@ def resynthesize(request, speaker_name_slug):
     target_model_name_slug = target_model.slug
     utterances = gs.contained_utterance.all()
     select_names = [u.name for u in utterances]
+    select_weeks = [u.week for u in utterances]
     if not os.path.exists(output_wav_folder):
         os.mkdir(output_wav_folder)
     output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
     source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
     target_model_path = target_model.sabr_model_path
-    utterance_path = ['static/ARCTIC/cache/' + source_model_name + '/' + u + '.mat' for u in select_names]
+    utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in
+                      zip(select_names, select_weeks)]
     synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
 
     return redirect('/speech/practice/index')

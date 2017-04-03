@@ -20,26 +20,26 @@ def populate():
         bdl_files = sorted(os.listdir('static/ARCTIC/cache/{}/bdl'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(bdl_files):
             name = f_name.strip().split('.')[0]
-            trans = '[{}] '.format(week) + transcription[i].strip()[16: -3]
-            add_uttr(name, bdl, trans)
+            trans = transcription[i].strip()[16: -3]
+            add_uttr(name, bdl, trans, week)
         clb_files = sorted(os.listdir('static/ARCTIC/cache/{}/clb'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(clb_files):
             name = f_name.strip().split('.')[0]
-            trans = '[{}] '.format(week) + transcription[i].strip()[16: -3]
-            add_uttr(name, clb, trans)
+            trans = transcription[i].strip()[16: -3]
+            add_uttr(name, clb, trans, week)
         rms_files = sorted(os.listdir('static/ARCTIC/cache/{}/rms'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(rms_files):
             name = f_name.strip().split('.')[0]
-            trans = '[{}] '.format(week) + transcription[i].strip()[16: -3]
-            add_uttr(name, rms, trans)
+            trans = transcription[i].strip()[16: -3]
+            add_uttr(name, rms, trans, week)
         slt_files = sorted(os.listdir('static/ARCTIC/cache/{}/slt'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(slt_files):
             name = f_name.strip().split('.')[0]
-            trans = '[{}] '.format(week) + transcription[i].strip()[16: -3]
-            add_uttr(name, slt, trans)
+            trans = transcription[i].strip()[16: -3]
+            add_uttr(name, slt, trans, week)
 
-def add_uttr(name, source_model, trans):
-    u = Utterance.objects.get_or_create(name=name, source_model=source_model, transcription=trans)
+def add_uttr(name, source_model, trans, week):
+    u = Utterance.objects.get_or_create(name=name, source_model=source_model, transcription=trans, week=week)
     return u
 
 def add_source_model(name):

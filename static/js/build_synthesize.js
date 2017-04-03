@@ -9,8 +9,9 @@ var idxRemove = null;
 // var utteranceAddSelect = null;
 var utteranceNames = null;
 var selectNames = [];
+var selectWeeks = [];
 var transcriptions = null;
-
+var weeks = null;
 // var chosenIndexes = [];
 $(document).ready( function() {
     var audio = document.getElementById("source-play");
@@ -105,6 +106,9 @@ $(document).ready( function() {
             for (var i = 0; i < checkedValue.length; i++) {
                 selectNames.push(utteranceNames[parseInt(checkedValue[i])]);
             }
+            for (var i = 0; i < checkedValue.length; i++) {
+                selectWeeks.push(weeks[parseInt(checkedValue[i])]);
+            }
             var csrftoken = getCookie('csrftoken');
             $.ajaxSetup({
                 beforeSend: function (xhr, settings) {
@@ -117,6 +121,7 @@ $(document).ready( function() {
             fd.append('select_names', selectNames);
             fd.append('source_model', sourceModel);
             fd.append('target_model', targetModel);
+            fd.append('select_weeks', selectWeeks);
             $.ajax({
                 type: 'POST',
                 url: '/speech/synthesize/',
@@ -190,6 +195,7 @@ function getUtterances(audio, source) {
                 var arr = JSON.parse(data);
                 utteranceNames = arr[0];
                 transcriptions = arr[1];
+                weeks = arr[2];
                 var utterList = document.getElementById("utterance-list");
                 while(utterList.firstChild){
                     utterList.removeChild(utterList.firstChild);
@@ -214,7 +220,7 @@ function getUtterances(audio, source) {
                     var spaceNode = document.createTextNode("   ");
                     var btnTextNode = document.createTextNode("play");
                     btnNode.appendChild(btnTextNode);
-                    var textnode = document.createTextNode(transcriptions[i]);
+                    var textnode = document.createTextNode("[{}]".replace("{}", weeks[i]) + transcriptions[i]);
                     node.appendChild(checkbox);
                     node.appendChild(spaceNode);
                     node.appendChild(btnNode);
