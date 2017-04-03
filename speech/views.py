@@ -521,7 +521,7 @@ def delete_golden_speaker(request, speaker_name_slug):
         files = os.listdir('data/output_wav/{}'.format(gs.speaker_name))
         for f in files:
             os.remove('data/output_wav/{0}/{1}'.format(gs.speaker_name, f))
-        os.removedirs('data/output_wav/{}'.format(gs.speaker_name))
+        os.rmdir('data/output_wav/{}'.format(gs.speaker_name))
     GoldenSpeaker.objects.filter(slug=speaker_name_slug).delete()
     return redirect('/speech/practice/index')
 
