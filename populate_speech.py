@@ -31,7 +31,7 @@ def populate():
             for t in transcription:
                 if name in t.strip():
                     trans = t.strip()[16: -3]
-                    add_uttr(name, bdl, trans, week)
+                    add_uttr(name, clb, trans, week)
                     break
         rms_files = sorted(os.listdir('static/ARCTIC/cache/{}/rms'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(rms_files):
@@ -39,7 +39,7 @@ def populate():
             for t in transcription:
                 if name in t.strip():
                     trans = t.strip()[16: -3]
-                    add_uttr(name, bdl, trans, week)
+                    add_uttr(name, rms, trans, week)
                     break
         slt_files = sorted(os.listdir('static/ARCTIC/cache/{}/slt'.format(week)), key=lambda x: (int(re.sub('\D', '', x)), x))
         for i, f_name in enumerate(slt_files):
@@ -47,7 +47,7 @@ def populate():
             for t in transcription:
                 if name in t.strip():
                     trans = t.strip()[16: -3]
-                    add_uttr(name, bdl, trans, week)
+                    add_uttr(name, slt, trans, week)
                     break
 
 def add_uttr(name, source_model, trans, week):

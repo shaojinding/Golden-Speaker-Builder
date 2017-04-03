@@ -208,7 +208,9 @@ function getUtterances(audio, source) {
                     btnNode.onclick = function () {
                         var parent = $(this).parent();
                         var innerText = parent[0].childNodes[3].data;
-                        var childIdx = transcriptions.indexOf(innerText);
+                        var strIdx = innerText.indexOf("]");
+                        // var temp = innerText.substring(strIdx + 1, innerText.length);
+                        var childIdx = transcriptions.indexOf(innerText.substring(strIdx + 1, innerText.length));
                         source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[childIdx] + '.wav';
                         audio.load();
                         audio.play();

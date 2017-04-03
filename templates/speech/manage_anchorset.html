@@ -71,7 +71,7 @@
 {#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/abort_anchorset/{{ anchorset.slug }}';} else {}">Abort</button></td>#}
 {#                        {% endif %}#}
                     {% elif anchorset.built == 'Error' %}
-                        <td><button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</button></td>
+                        <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button> <button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</button></td>
                         <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>
                     {% else %}
                         <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>
