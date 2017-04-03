@@ -427,7 +427,7 @@ def synthesize(request):
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
             target_model_path = target_model.sabr_model_path
             utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
-            synthesize_sabr(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
 
