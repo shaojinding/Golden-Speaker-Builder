@@ -18,75 +18,80 @@
 {% endblock %}
 
 {% block bottom_block %}
-    <!-- audio player for source utterances -->
-    <audio id="source-play">
-        <source id="source-play-source" src="" type="audio/wav">
-    </audio>
-    <!-- speaker choosing -->
-    <div id="speaker-choose">
-        <!-- table to choose source speaker -->
-        <div class="panel panel-default" id="source-speaker">
-            <div class="panel-heading">
-                <h3 class="panel-title">1. Select Teacher Voice</h3>
-            </div>
-            <div class="panel-body" style="height: 300px; max-height: 300px">
-                <div class="scroll-list list-group">
-                    {% for source_model in source_models %}
-                        <a class="list-group-item source-model" id="{{ source_model.model_name }}">{{ source_model.model_name }}</a>
-                    {% endfor %}
+    <form id="anchorset_form" method="post" action="/speech/add_anchorset/"1
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <!-- audio player for source utterances -->
+        <audio id="source-play">
+            <source id="source-play-source" src="" type="audio/wav">
+        </audio>
+        <!-- speaker choosing -->
+        <div id="speaker-choose">
+            <!-- table to choose source speaker -->
+            <div class="panel panel-default" id="source-speaker">
+                <div class="panel-heading">
+                    <h3 class="panel-title">1. Select Teacher Voice</h3>
                 </div>
-            </div>
-        </div>
-        <!-- table to choose target speaker -->
-        <div class="panel panel-default" id="target-speaker">
-            <div class="panel-heading">
-                <h3 class="panel-title">2. Select Anchor Set</h3>
-            </div>
-            <div class="panel-body"  style="height: 300px; max-height: 300px">
-                {% if anchor_sets %}
+                <div class="panel-body" style="height: 300px; max-height: 300px">
                     <div class="scroll-list list-group">
-
-                        {% for anchor_set in anchor_sets %}
-                            <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>
+                        {% for source_model in source_models %}
+                            <a class="list-group-item source-model" id="{{ source_model.model_name }}">{{ source_model.model_name }}</a>
                         {% endfor %}
-
                     </div>
-                {% else %}
-                    <strong>Please record your anchor set first, and then build the golden speaker.</strong>
-                {% endif %}
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- table to operate utterances -->
-    <div id="utterance-block" style="display: none">
-        <!-- table to choose source utterances -->
-        <div class="panel panel-default" id="utterance-div">
-            <div class="panel-heading">
-                <h3 class="panel-title">3. Select sentences</h3>
-            </div>
-            <div class="panel-body">
-                <div class="scroll-list-uttr list-group" id="utterance-list">
+            <!-- table to choose target speaker -->
+            <div class="panel panel-default" id="target-speaker">
+                <div class="panel-heading">
+                    <h3 class="panel-title">2. Select Anchor Set</h3>
+                </div>
+                <div class="panel-body"  style="height: 300px; max-height: 300px">
+                    {% if anchor_sets %}
+                        <div class="scroll-list list-group">
+
+                            {% for anchor_set in anchor_sets %}
+                                <a class="list-group-item target-model" id="{{ anchor_set.anchor_set_name }}">{{ anchor_set.anchor_set_name }}</a>
+                            {% endfor %}
+
+                        </div>
+                    {% else %}
+                        <strong>Please record your anchor set first, and then build the golden speaker.</strong>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {#        <!-- add and remove buttons -->#}
-        {#        <div id="add-remove-div" style="margin-bottom: 20px">#}
-        {#            <button id="add-utterance" class="btn btn-success" style="margin-right: 20px; margin-left: 20px" disabled>Add &darr;</button>#}
-        {#            <button id="remove-utterance" class="btn btn-danger" disabled>Remove &uarr;</button>#}
-        {#        </div>#}
-        {#        <!-- table to show choosen source utterances -->#}
-        {#        <div class="panel panel-default" id="goldenspeaker-div">#}
-        {#            <div class="panel-heading">#}
-        {#                <h3 class="panel-title">Golden Speaker sentences</h3>#}
-        {#            </div>#}
-        {#            <div class="panel-body">#}
-        {#                <div class="scroll-list-uttr list-group" id="added-utterance-list">#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        <!-- synthesize button -->
-        <div id="operation-div" style="margin-bottom: 20px">
-            <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
+        <!-- table to operate utterances -->
+        <div id="utterance-block" style="display: none">
+            <!-- table to choose source utterances -->
+            <div class="panel panel-default" id="utterance-div">
+                <div class="panel-heading">
+                    <h3 class="panel-title">3. Select sentences</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="scroll-list-uttr list-group" id="utterance-list">
+                    </div>
+                </div>
+            </div>
+            {#        <!-- add and remove buttons -->#}
+            {#        <div id="add-remove-div" style="margin-bottom: 20px">#}
+            {#            <button id="add-utterance" class="btn btn-success" style="margin-right: 20px; margin-left: 20px" disabled>Add &darr;</button>#}
+            {#            <button id="remove-utterance" class="btn btn-danger" disabled>Remove &uarr;</button>#}
+            {#        </div>#}
+            {#        <!-- table to show choosen source utterances -->#}
+            {#        <div class="panel panel-default" id="goldenspeaker-div">#}
+            {#            <div class="panel-heading">#}
+            {#                <h3 class="panel-title">Golden Speaker sentences</h3>#}
+            {#            </div>#}
+            {#            <div class="panel-body">#}
+            {#                <div class="scroll-list-uttr list-group" id="added-utterance-list">#}
+            {#                </div>#}
+            {#            </div>#}
+            {#        </div>#}
+            <!-- synthesize button -->
+            <div id="operation-div" style="margin-bottom: 20px">
+                <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
+            </div>
         </div>
-    </div>
+    </form>
 {% endblock %}
