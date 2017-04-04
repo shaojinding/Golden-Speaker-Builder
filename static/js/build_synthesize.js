@@ -100,6 +100,8 @@ $(document).ready( function() {
     // });
     $("#synthesize").click(function () {
         try {
+            var btnSynth = document.getElementById("synthesize");
+            btnSynth.disabled = true;
             var checkedValue = $(".utterance-checkbox:checked").map(function () {
                 return $(this).val()
             }).get();

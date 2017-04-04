@@ -394,6 +394,7 @@ def get_build_status(request):
 
 # view for synthesize
 @login_required_auth0()
+@ensure_csrf_cookie
 def synthesize(request):
     username = request.session['profile']['nickname']
     user = User.objects.get(user_name=username)
@@ -427,6 +428,8 @@ def synthesize(request):
             source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
             target_model_path = target_model.sabr_model_path
             utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
+            #print utterance_path[0]
+            #print utterance_path[1]
             synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
