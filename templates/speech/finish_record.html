@@ -29,6 +29,9 @@
 {% endblock %}
 
 {% block bottom_block %}
+    <form style="display: none">
+        {% csrf_token %}
+    </form>
     <!-- pitch recording -->
     <h1>One last step</h1>
     <p id="instruction">You have finished recording and annotating all anchors in <b>{{ anchor_set_name }}</b> anchor set. The last step is for you to record this long passage so we can collect pitch statistics from your voice.</p>
@@ -48,7 +51,9 @@
             <button id="playPause" class="btn btn-default" disabled></button>
             <button id="zoomin" class="btn btn-default" disabled></button>
             <button id="zoomout" class="btn btn-default" disabled></button>
+{#            <form style="display: inline-block">#}
             <button id="save" class="btn btn-default" disabled></button>
+{#            </form>#}
 {#            <table id="annotation">#}
 {#                <tr>#}
 {#                    <th>Status:</th>#}

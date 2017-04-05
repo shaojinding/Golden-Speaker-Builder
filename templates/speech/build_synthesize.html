@@ -18,10 +18,11 @@
 {% endblock %}
 
 {% block bottom_block %}
-    <form id="anchorset_form" method="post" action="/speech/add_anchorset/"1
-          enctype="multipart/form-data">
-
+    <form style="display: none">
         {% csrf_token %}
+    </form>
+
+
         <!-- audio player for source utterances -->
         <audio id="source-play">
             <source id="source-play-source" src="" type="audio/wav">
@@ -93,5 +94,5 @@
                 <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
             </div>
         </div>
-    </form>
+
 {% endblock %}
