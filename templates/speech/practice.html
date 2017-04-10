@@ -44,53 +44,53 @@
         <!-- select golden speaker -->
         {% if if_choose %}
             <div class="panel-heading">
-            <h3 class="panel-title">Select Golden Speaker</h3>
-        </div>
-            <div class="panel-body scroll-list-uttr"  style="max-height: 600px">
-            {% if golden_speakers %}
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Source Speaker</th>
-                        <th>Anchor Set</th>
-                        <th>Built Date</th>
-                        <th>Synthesize status</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for golden_speaker in golden_speakers %}
-                        {#                        {% if golden_speaker.aborted == False %}#}
-                        <tr>
-                            <td>{{ golden_speaker.source_model.model_name }}</td>
-                            <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
-                            {#                            <td>{{ golden_speaker.timestamp }}</td>#}
-                            <td class="time-stamp"></td>
-                            <td>{{ golden_speaker.status }}</td>
-                            {% if golden_speaker.status == "Synthesizing" %}
-                                <td>Synthesizing...</td>
-                                <td></td>
-                            {% elif golden_speaker.status == "Error" %}
-                                <td><button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being synthesized. Once the synthesis is done, you will be able to practice with the Golden Speaker');window.location.href='/speech/resynthesize/{{ golden_speaker.slug }}'">Resynthesize</button></td>
-                                <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
-                            {% else %}
-                                <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
-                                <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
-                            {% endif %}
-                        </tr>
-                        {#                        {% endif %}#}
-                    {% endfor %}
-                    </tbody>
-                </table>
+                <h3 class="panel-title">Select Golden Speaker</h3>
             </div>
+            <div class="panel-body scroll-list-uttr"  style="max-height: 600px">
+                {% if golden_speakers %}
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Source Speaker</th>
+                            <th>Anchor Set</th>
+                            <th>Built Date</th>
+                            <th>Synthesize status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for golden_speaker in golden_speakers %}
+                            {#                        {% if golden_speaker.aborted == False %}#}
+                            <tr>
+                                <td>{{ golden_speaker.source_model.model_name }}</td>
+                                <td>{{ golden_speaker.anchor_set.anchor_set_name }}</td>
+                                {#                            <td>{{ golden_speaker.timestamp }}</td>#}
+                                <td class="time-stamp"></td>
+                                <td>{{ golden_speaker.status }}</td>
+                                {% if golden_speaker.status == "Synthesizing" %}
+                                    <td>Synthesizing...</td>
+                                    <td></td>
+                                {% elif golden_speaker.status == "Error" %}
+                                    <td><button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being synthesized. Once the synthesis is done, you will be able to practice with the Golden Speaker');window.location.href='/speech/resynthesize/{{ golden_speaker.slug }}'">Resynthesize</button></td>
+                                    <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/practice/{{ golden_speaker.slug }}'">Practice with it</button></td>
+                                    <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this golden speaker?')) {window.location.href='/speech/delete_golden_speaker/{{ golden_speaker.slug }}';} else {}">Delete</button></td>
+                                {% endif %}
+                            </tr>
+                            {#                        {% endif %}#}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
                 {% else %}
-                <strong>There are no golden speakers. Please go to Build Golden Speaker and build it first.</strong>
+                    <strong>There are no golden speakers. Please go to Build Golden Speaker and build it first.</strong>
                 {% endif %}
         {% else %}
             <div class="panel-heading">
-            <h3 class="panel-title">Select sentence</h3>
-        </div>
+                <h3 class="panel-title">Select sentence</h3>
+            </div>
             <!-- display all utterances in selected golden speaker -->
             <div class="scroll-list list-group">
                 {% for utterance in gs.contained_utterance.all %}
@@ -105,26 +105,6 @@
         <audio id="utterance-play">
             <source id="utterance-source" src="" type="audio/wav">
         </audio>
-        <!-- choose and play converted utterances  -->
-        <div id="panel-teacher" class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Play the Golden Speaker utterance</h3>
-            </div>
-            <div class="panel-body">
-                <div id="wavesurf-teacher">
-                </div>
-                {#                <div id="teacher-spec" class="spec" style="height: 256px">#}
-                {#                </div>#}
-                <div id="teacher-timeline">
-                </div>
-                <div id="controls-teacher">
-                    <button id="playPause-teacher" class="btn btn-default" disabled></button>
-                    <button id="zoomin-teacher" class="btn btn-default" disabled></button>
-                    <button id="zoomout-teacher" class="btn btn-default" disabled></button>
-                    <a id="download-teacher" class="btn btn-default" disabled></a>
-                </div>
-            </div>
-        </div>
         <!-- record and practice with golden speaker -->
         <div id="panel-student" class="panel panel-default">
             <div class="panel-heading">
@@ -146,7 +126,26 @@
                 </div>
             </div>
         </div>
-
+        <!-- choose and play converted utterances  -->
+        <div id="panel-teacher" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Play the Golden Speaker utterance</h3>
+            </div>
+            <div class="panel-body">
+                <div id="wavesurf-teacher">
+                </div>
+                {#                <div id="teacher-spec" class="spec" style="height: 256px">#}
+                {#                </div>#}
+                <div id="teacher-timeline">
+                </div>
+                <div id="controls-teacher">
+                    <button id="playPause-teacher" class="btn btn-default" disabled></button>
+                    <button id="zoomin-teacher" class="btn btn-default" disabled></button>
+                    <button id="zoomout-teacher" class="btn btn-default" disabled></button>
+                    <a id="download-teacher" class="btn btn-default" disabled></a>
+                </div>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
 
