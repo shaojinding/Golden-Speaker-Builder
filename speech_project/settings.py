@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '6@k$*+$28u-g&k2u7q5j+iel2n!ui9du51$4kqpk805i0^e2*q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -143,9 +144,9 @@ STATIC_ROOT = '/var/golden-speaker-static/'
 AUTH0_INDEX_URL = 'https://goldenspeaker.las.iastate.edu'
 AUTH0_CALLBACK_URL = 'https://goldenspeaker.las.iastate.edu/auth/callback/?'
 
-#AUTH0_INDEX_URL = 'http://127.0.0.1:18000'
+# AUTH0_INDEX_URL = 'http://127.0.0.1:8000'
 
-#AUTH0_CALLBACK_URL = 'http://127.0.0.1:18000/auth/callback/?'
+# AUTH0_CALLBACK_URL = 'http://127.0.0.1:8000/auth/callback/?'
 
 AUTH0_CLIENT_ID = 'GfnvKP8rFiGCaBXauuNEulqY8EapxJmp'
 
