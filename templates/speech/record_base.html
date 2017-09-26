@@ -4,9 +4,9 @@
 {% csrf_token %}
 
 {% block bottom_block %}
-{#    <form>#}
-{##}
-{#        {% csrf_token %}#}
+    {#    <form>#}
+    {##}
+    {#        {% csrf_token %}#}
     <form style="display: none">
         {% csrf_token %}
     </form>
@@ -18,6 +18,7 @@
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" id="consTab" class="active"><a>Consonants</a></li>
         <li role="presentation" id="vowelTab"><a>Vowels</a></li>
+        <li role="presentation" id="pitchTab"><a>Pitch Sentences</a></li>
     </ul>
     <!-- consonent table -->
     <div id="consTable">
@@ -212,10 +213,93 @@
             </tr>
         </table>
     </div>
+
+    <!-- pitch table -->
+    <div id="pitchTable">
+        <table class="table table-bordered">
+            <tr>
+                <td><button type="button" id="pitchSentence1A" class="phoneme btn btn-xs btn-default">1A</button></td>
+                <td><button type="button" id="pitchSentence1B" class="phoneme btn btn-xs btn-default">1B</button></td>
+                <td><button type="button" id="pitchSentence2A" class="phoneme btn btn-xs btn-default">2A</button></td>
+                <td><button type="button" id="pitchSentence2B" class="phoneme btn btn-xs btn-default">2B</button></td>
+                <td><button type="button" id="pitchSentence3A" class="phoneme btn btn-xs btn-default">3A</button></td>
+                <td><button type="button" id="pitchSentence3B" class="phoneme btn btn-xs btn-default">3B</button></td>
+                <td><button type="button" id="pitchSentence4A" class="phoneme btn btn-xs btn-default">4A</button></td>
+                <td><button type="button" id="pitchSentence4B" class="phoneme btn btn-xs btn-default">4B</button></td>
+                <td><button type="button" id="pitchSentence5A" class="phoneme btn btn-xs btn-default">5A</button></td>
+                <td><button type="button" id="pitchSentence5B" class="phoneme btn btn-xs btn-default">5B</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="pitchSentence6A" class="phoneme btn btn-xs btn-default">6A</button></td>
+                <td><button type="button" id="pitchSentence6B" class="phoneme btn btn-xs btn-default">6B</button></td>
+                <td><button type="button" id="pitchSentence7A" class="phoneme btn btn-xs btn-default">7A</button></td>
+                <td><button type="button" id="pitchSentence7B" class="phoneme btn btn-xs btn-default">7B</button></td>
+                <td><button type="button" id="pitchSentence8A" class="phoneme btn btn-xs btn-default">8A</button></td>
+                <td><button type="button" id="pitchSentence8B" class="phoneme btn btn-xs btn-default">8B</button></td>
+                <td><button type="button" id="pitchSentence9A" class="phoneme btn btn-xs btn-default">9A</button></td>
+                <td><button type="button" id="pitchSentence9B" class="phoneme btn btn-xs btn-default">9B</button></td>
+                <td><button type="button" id="pitchSentence10A" class="phoneme btn btn-xs btn-default">10A</button></td>
+                <td><button type="button" id="pitchSentence10B" class="phoneme btn btn-xs btn-default">10B</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="pitchSentence11A" class="phoneme btn btn-xs btn-default">11A</button></td>
+                <td><button type="button" id="pitchSentence11B" class="phoneme btn btn-xs btn-default">11B</button></td>
+                <td><button type="button" id="pitchSentence12A" class="phoneme btn btn-xs btn-default">12A</button></td>
+                <td><button type="button" id="pitchSentence12B" class="phoneme btn btn-xs btn-default">12B</button></td>
+                <td><button type="button" id="pitchSentence13A" class="phoneme btn btn-xs btn-default">13A</button></td>
+                <td><button type="button" id="pitchSentence13B" class="phoneme btn btn-xs btn-default">13B</button></td>
+                <td><button type="button" id="pitchSentence14A" class="phoneme btn btn-xs btn-default">14A</button></td>
+                <td><button type="button" id="pitchSentence14B" class="phoneme btn btn-xs btn-default">14B</button></td>
+                <td><button type="button" id="pitchSentence15A" class="phoneme btn btn-xs btn-default">15A</button></td>
+                <td><button type="button" id="pitchSentence15B" class="phoneme btn btn-xs btn-default">15B</button></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="pitchSentence16" class="phoneme btn btn-xs btn-default">16</button></td>
+            </tr>
+        </table>
+    </div>
+
+
     <!-- Recorder block -->
+    {#    <div id="info-panel">#}
+    {#        <h2 id="phoneme-info"></h2>#}
+    {#        <h2 id="word-info"></h2>#}
+    {#    </div>#}
     <div id="info-panel">
-        <h2 id="phoneme-info"></h2>
-        <h2 id="word-info"></h2>
+        <div id="splitter">
+            <hr>
+        </div>
+        {#    <span id="phoneme-info" class="label label-success"></span>#}
+        <table id="info-table" class="table-bordered table-striped">
+            <tr>
+                <th>You selected phoneme:<span id="phoneme-info" class="label label-info info-span"></span> .  Please say the keyword:<span id="word-info" class="label label-info info-span"></span> .</th>
+            </tr>
+        </table>
+    </div>
+    <!-- Pitch recording panel -->
+
+    {#    <div id="Passage" style="clear:both">#}
+    {#        <h2>Please record the following sentence:</h2>#}
+    {#        <div class="well">#}
+    {#        <h2 id="PassageText"></h2>#}
+    {#        </div>#}
+    {#    </div>#}
+    <div id="Passage" style="clear:both">
+        <div id="splitter">
+            <hr>
+        </div>
+        <div id="pitch-info">
+            <table id="pitch-info-table" class="table-bordered table-striped">
+                <tr>
+                    {#                <th>Please record the following sentence:<span id="PassageText" class="label label-info info-span"></span></th>#}
+                    <th id="PassageText"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="pitch-video" style="display: none">
+            <object data="https://www.youtube.com/v/W_B2UZ_ZoxU" width="560" height="315"></object>
+        </div>
     </div>
     <div id="SoundRecorder">
         <!-- visualization parts : including waveform and timeline -->
@@ -228,13 +312,13 @@
         </div>
         <!-- control buttons -->
         <div id="controls">
-{#            <button id="record" class="ctrlButton" disabled></button>#}
-{#            <button id="playPause" class="ctrlButton" disabled></button>#}
-{#            <button id="zoomin" class="ctrlButton" disabled></button>#}
-{#            <button id="zoomout" class="ctrlButton" disabled></button>#}
-{#            <button id="save" class="ctrlButton" disabled></button>#}
-{#            <i class="fa fa-wrench faa-wrench animated"></i>#}
-{#            <i class="fa fa-microphone animated" aria-hidden="true"></i>#}
+            {#            <button id="record" class="ctrlButton" disabled></button>#}
+            {#            <button id="playPause" class="ctrlButton" disabled></button>#}
+            {#            <button id="zoomin" class="ctrlButton" disabled></button>#}
+            {#            <button id="zoomout" class="ctrlButton" disabled></button>#}
+            {#            <button id="save" class="ctrlButton" disabled></button>#}
+            {#            <i class="fa fa-wrench faa-wrench animated"></i>#}
+            {#            <i class="fa fa-microphone animated" aria-hidden="true"></i>#}
             <button id="record" class="btn btn-default" disabled></button>
             <button id="playPause" class="btn btn-default" disabled></button>
             <button id="zoomin" class="btn btn-default" disabled></button>
@@ -255,6 +339,6 @@
     </div>
     {% block button_block %}
     {% endblock %}
-{#    </form>#}
+    {#    </form>#}
 {% endblock %}
 

@@ -9,6 +9,8 @@ from time import gmtime, strftime, time
 from django.contrib import messages
 import base64
 import json
+import scipy.io.wavfile
+import numpy as np
 from tasks import build_sabr_model, synthesize_sabr
 
 
@@ -163,6 +165,13 @@ def record(request, phoneme):
     json_ipas = json.dumps(ipas)
     json_keywords = json.dumps(keywords)
 
+    with open('static/doc/pitch.txt', 'r') as pitch_f:
+        pitch_f = pitch_f.readlines()
+    pitch_sentences = []
+    for line in pitch_f:
+        pitch_sentences.append(line.strip())
+    json_pitch_sentences = json.dumps(pitch_sentences)
+
     if phoneme in saved_phonemes:
         anchor = Anchor.objects.get(anchor_set=anchor_set, phoneme=phoneme)
         recording = Recording.objects.get(anchor=anchor)
@@ -174,12 +183,12 @@ def record(request, phoneme):
         context_dict = {'name': username, 'is_login': True,
                         'phoneme': phoneme, 'record_details': json_record_details,
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
-                        'ipas': json_ipas, 'keywords': json_keywords}
+                        'ipas': json_ipas, 'keywords': json_keywords, 'pitch_sentences': json_pitch_sentences}
     else:
         context_dict = {'name': username, 'is_login': True,
                         'phoneme': phoneme, 'record_details': "[]",
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
-                        'ipas': json_ipas, 'keywords': json_keywords}
+                        'ipas': json_ipas, 'keywords': json_keywords, 'pitch_sentences': json_pitch_sentences}
     return render(request, 'speech/record.html', context_dict)
 
 
@@ -291,6 +300,17 @@ def build_sabr(request):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    num_phoneme = 50
+    if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
+        # del request.session['current_anchorset']
+        anchor_set.completed = True
+        # anchor_set.aborted = False
+        anchor_set.save()
+    else:
+        messages.add_message(request, messages.INFO,
+                             'You did not finish recording '
+                             'all anchor sets, please finish them first.')
+        return redirect('/speech/record/index')
     if anchor_set.built == 'Built' and not anchor_set.modified:
         return redirect('/speech')
     anchor_set.built = 'In processing'
@@ -301,19 +321,42 @@ def build_sabr(request):
     left = []
     right = []
     center = []
+    pitch_left = []
+    pitch_right = []
+    pitch_center = []
     phoneme = []
     pitch_path = anchor_set.pitch_path
+    raw_pitch_paths = []
     output_mat_path = anchor_set.sabr_model_path
     for anchor in anchors:
         recording = Recording.objects.get(anchor=anchor)
-        audio_paths.append('data/recordings/{}'.format(recording.record_name))
-        phoneme.append(str(recording.phoneme))
-        left.append(anchor.L)
-        right.append(anchor.R)
-        center.append(anchor.C)
+        if 'pitchSentence' in str(recording.phoneme):
+            raw_pitch_paths.append('data/recordings/{}'.format(recording.record_name))
+            pitch_left.append(anchor.L)
+            pitch_right.append(anchor.R)
+            pitch_center.append(anchor.C)
+        else:
+            audio_paths.append('data/recordings/{}'.format(recording.record_name))
+            phoneme.append(str(recording.phoneme))
+            left.append(anchor.L)
+            right.append(anchor.R)
+            center.append(anchor.C)
+    concat_pitch_utts(raw_pitch_paths, pitch_left, pitch_right, pitch_path)
     build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
                                     phoneme, pitch_path, output_mat_path)
     return redirect('/speech')
+
+
+def concat_pitch_utts(pitch_paths, left, right, output_pitch_path):
+    concat_list = []
+    for i, p in enumerate(pitch_paths):
+        fs, y = scipy.io.wavfile.read(os.path.join(os.getcwd(), p + '.wav'))
+        l = np.int32(np.ceil(left[i] * fs))
+        r = np.int32(np.ceil(right[i] * fs))
+        concat_list.append(y[l: r, :])
+    concat_audio = np.vstack(concat_list)
+    scipy.io.wavfile.write(output_pitch_path, fs, concat_audio)
+
 
 
 # view for building sabr model
@@ -330,18 +373,29 @@ def rebuild_sabr(request, anchor_set_name_slug):
     left = []
     right = []
     center = []
+    pitch_left = []
+    pitch_right = []
+    pitch_center = []
     phoneme = []
     pitch_path = anchor_set.pitch_path
+    raw_pitch_paths = []
     output_mat_path = anchor_set.sabr_model_path
     for anchor in anchors:
         recording = Recording.objects.get(anchor=anchor)
-        audio_paths.append('data/recordings/{}'.format(recording.record_name))
-        phoneme.append(str(recording.phoneme))
-        left.append(anchor.L)
-        right.append(anchor.R)
-        center.append(anchor.C)
+        if 'pitchSentence' in str(recording.phoneme):
+            raw_pitch_paths.append('data/recordings/{}'.format(recording.record_name))
+            pitch_left.append(anchor.L)
+            pitch_right.append(anchor.R)
+            pitch_center.append(anchor.C)
+        else:
+            audio_paths.append('data/recordings/{}'.format(recording.record_name))
+            phoneme.append(str(recording.phoneme))
+            left.append(anchor.L)
+            right.append(anchor.R)
+            center.append(anchor.C)
+    concat_pitch_utts(raw_pitch_paths, pitch_left, pitch_right, pitch_path)
     build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
-                                    phoneme, pitch_path, output_mat_path)
+                           phoneme, pitch_path, output_mat_path)
     return redirect('/speech/manage_anchorset/')
 
 

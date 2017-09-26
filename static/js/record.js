@@ -15,9 +15,16 @@ var zoomMulti = 2;
 var wavesurferWidth = null;
 var saveSuccess = false;
 var savedPhonemeCount = 0;
-var numPhoneme = 40;
+var numPhoneme = 71; // add 31 pitch utterences
 var consArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y']
 var vowArray = ['IY', 'UW', 'IH', 'UH', 'EY', 'OW', 'EH', 'AH', 'AE', 'AA', 'OY', 'AY', 'AO', 'AW', 'AX', 'ER'];
+var pitchArray = ['pitchSentence1A', 'pitchSentence1B', 'pitchSentence2A', 'pitchSentence2B', 'pitchSentence3A', 'pitchSentence3B',
+    'pitchSentence4A', 'pitchSentence4B', 'pitchSentence5A', 'pitchSentence5B',
+    'pitchSentence6A', 'pitchSentence6B', 'pitchSentence7A', 'pitchSentence7B', 'pitchSentence8A', 'pitchSentence8B',
+    'pitchSentence9A', 'pitchSentence9B', 'pitchSentence10A', 'pitchSentence10B',
+    'pitchSentence11A', 'pitchSentence11B', 'pitchSentence12A', 'pitchSentence12B', 'pitchSentence13A', 'pitchSentence13B',
+    'pitchSentence14A', 'pitchSentence14B', 'pitchSentence15A', 'pitchSentence15B', 'pitchSentence16'];
+var pitchVideoArray = ['pitchSentence16'];
 var savedPhoneme = null;
 var record_details = null;
 var firstTimeLoad = true;
@@ -26,6 +33,7 @@ var regionVar = null;
 var isRecording = false;
 var Ipas = null;
 var Keywords = null;
+var pitchSentences = null;
 var center = 0;
 $(document).ready( function() {
     var finishPercent = savedPhoneme.length / numPhoneme;
@@ -35,30 +43,59 @@ $(document).ready( function() {
         $("#consTable").css("display", "block");
         $("#SoundRecorder").hide();
         $("#info-panel").hide();
+        $("#Passage").hide();
     }
     else {
-        var cp = $("#{0}".replace("{0}", currentPhoneme)).text();
-        $("#phoneme-info").html("Phoneme: {0}".replace("{0}", cp));
-        var keyword = Keywords[Ipas.indexOf(cp)];
-        $("#word-info").html("Key word: {0}".replace("{0}", keyword));
-        window.scrollTo(0,document.body.scrollHeight);
+        if ($.inArray(currentPhoneme, pitchArray) >= 0) {
+            $("#info-panel").hide();
+            if ($.inArray(currentPhoneme, pitchVideoArray) >= 0) {
+                $("#pitch-video").css("display", "block");
+                $("#pitch-info-table").hide();
+            }
+            else {
+                var pitchSentence = pitchSentences[pitchArray.indexOf(currentPhoneme)];
+                $("#PassageText").html("{0}".replace("{0}", pitchSentence));
+            }
+        }
+        else {
+            $("#Passage").hide();
+            var cp = $("#{0}".replace("{0}", currentPhoneme)).text();
+            // $("#phoneme-info").html("Phoneme: {0}".replace("{0}", cp));
+            $("#phoneme-info").html("{0}".replace("{0}", cp));
+            var keyword = Keywords[Ipas.indexOf(cp)];
+            $("#word-info").html("{0}".replace("{0}", keyword));
+            // $("#word-info").html("Key word: {0}".replace("{0}", keyword));
+            window.scrollTo(0,document.body.scrollHeight);
+        }
+
     }
     if ($.inArray(currentPhoneme, consArray) >= 0) {
         $("#consTable").css("display", "block");
         $("#vowelTable").css("display", "none");
+        $("#pitchTable").css("display", "none");
         $("#consTab").addClass("active");
         $("#vowelTab").removeClass("active");
+        $("#pitchTab").removeClass("active");
     }
     if ($.inArray(currentPhoneme, vowArray) >= 0) {
         $("#consTable").css("display", "none");
         $("#vowelTable").css("display", "block");
+        $("#pitchTable").css("display", "none");
         $("#vowelTab").addClass("active");
         $("#consTab").removeClass("active");
+        $("#pitchTab").removeClass("active");
+    }
+    if ($.inArray(currentPhoneme, pitchArray) >= 0) {
+        $("#consTable").css("display", "none");
+        $("#vowelTable").css("display", "none");
+        $("#pitchTable").css("display", "block");
+        $("#pitchTab").addClass("active");
+        $("#consTab").removeClass("active");
+        $("#vowelTab").removeClass("active");
     }
     //document.getElementById("nav_ac").className += 'active';
     for (var i = 0; i < savedPhoneme.length; i++) {
         document.getElementById(savedPhoneme[i]).className = 'phoneme btn btn-xs btn-success';
-        var btn = document.getElementById(savedPhoneme[i]);
     }
     if (currentPhoneme != null && currentPhoneme != "index") {
         document.getElementById(currentPhoneme).className = 'phoneme btn btn-xs btn-primary';
@@ -211,28 +248,43 @@ $(document).ready( function() {
         $("#consTable").css("display", "block");
         $("#vowelTable").css("display", "none");
         $("#pitchTable").css("display", "none");
-        $(this).addClass("active");
         $("#vowelTab").removeClass("active");
         $("#pitchTab").removeClass("active");
+        if (!(document.getElementById("consTab").classList.contains("active"))) {
+            $("#SoundRecorder").hide();
+            $("#info-panel").hide();
+            $("#Passage").hide();
+        }
+        $(this).addClass("active");
     });
 
     $("#vowelTab").click(function () {
         $("#consTable").css("display", "none");
         $("#vowelTable").css("display", "block");
         $("#pitchTable").css("display", "none");
-        $(this).addClass("active");
         $("#consTab").removeClass("active");
         $("#pitchTab").removeClass("active");
+        if (!(document.getElementById("vowelTab").classList.contains("active"))) {
+            $("#SoundRecorder").hide();
+            $("#info-panel").hide();
+            $("#Passage").hide();
+        }
+        $(this).addClass("active");
     });
 
-    // $("#pitchTab").click(function () {
-    //     $("#consTable").css("display", "none");
-    //     $("#vowelTable").css("display", "none");
-    //     $("#pitchTable").css("display", "block");
-    //     $(this).addClass("active");
-    //     $("#vowelTab").removeClass("active");
-    //     $("#consTab").removeClass("active");
-    // });
+    $("#pitchTab").click(function () {
+        $("#consTable").css("display", "none");
+        $("#vowelTable").css("display", "none");
+        $("#pitchTable").css("display", "block");
+        $("#vowelTab").removeClass("active");
+        $("#consTab").removeClass("active");
+        if (!(document.getElementById("pitchTab").classList.contains("active"))) {
+            $("#SoundRecorder").hide();
+            $("#info-panel").hide();
+            $("#Passage").hide();
+        }
+        $(this).addClass("active");
+    });
 
     $("#record").click(function (){
         if (zoomMulti != 2) {
@@ -318,13 +370,14 @@ $(document).ready( function() {
                     recordbtn.disabled = true;
                     var playbtn = document.getElementById("playPause");
                     playbtn.disabled = true;
+                    $("#Passage").hide();
                     $("#info-panel").hide();
                     $("#SoundRecorder").hide();
                     document.getElementById(currentPhoneme).className = 'phoneme btn btn-xs btn-success';
                     if (savedPhoneme.length >= numPhoneme - 1) {
-                        var nextbtn = document.getElementById("btn_next");
+                        var nextbtn = document.getElementById("build-sabr-btn");
                         nextbtn.disabled = false;
-                        $("#btn_next").css("display", "inline-block");
+                        $("#build-sabr-btn").css("display", "inline-block");
                     }
                 });
             }
@@ -352,13 +405,14 @@ $(document).ready( function() {
                         zoomoutbtn.disabled = true;
                         var playbtn = document.getElementById("playPause");
                         playbtn.disabled = true;
+                        $("#Passage").hide();
                         $("#info-panel").hide();
                         $("#SoundRecorder").hide();
                         document.getElementById(currentPhoneme).className = 'phoneme btn btn-xs btn-success';
                         if (savedPhoneme.length >= numPhoneme - 1) {
-                            var nextbtn = document.getElementById("btn_next");
+                            var nextbtn = document.getElementById("build-sabr-btn");
                             nextbtn.disabled = false;
-                            $("#btn_next").css("display", "inline-block");
+                            $("#build-sabr-btn").css("display", "inline-block");
                         }
                         var finishPercent = (savedPhoneme.length + 1) / numPhoneme;
                         $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");

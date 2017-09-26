@@ -23,6 +23,16 @@
 	display: none;
 }
 
+#pitchTable {
+	margin-top: 10px;
+	/*width:200px;
+	height:100px;*/
+	/*display: none;*/
+	clear: both;
+	float: left;
+	display: none;
+}
+
 
 #consTable td{
 	vertical-align:middle;
@@ -48,6 +58,74 @@
 	width: 110px;
 }
 
+#pitchTable td{
+	vertical-align:middle;
+	text-align:center;
+	width: 110px;
+}
+
+#pitchTable th{
+	vertical-align:middle;
+	text-align:center;
+	width: 110px;
+}
+
+#info-table {
+	margin-top: 10px;
+	clear: both;
+	float: left;
+}
+
+/*#info-table td{*/
+	/*vertical-align:middle;*/
+	/*!*text-align:center;*!*/
+	/*padding-left: 10px;*/
+	/*padding-right: 10px;*/
+	/*height: 47px;*/
+/*}*/
+
+#info-table th{
+	vertical-align:middle;
+	/*text-align:center;*/
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 47px;
+}
+
+#pitch-info-table {
+	margin-top: 10px;
+	clear: both;
+	float: left;
+}
+
+/*#pitch-info-table td{*/
+	/*vertical-align:middle;*/
+	/*!*text-align:center;*!*/
+	/*padding-left: 10px;*/
+	/*width: 500px;*/
+	/*height: 47px;*/
+	/*!*font-size: 20px;*!*/
+/*}*/
+
+#pitch-info-table th{
+	vertical-align:middle;
+	/*text-align:center;*/
+	padding-left: 10px;
+	padding-right: 10px;
+	/*width: 500px;*/
+	height: 47px;
+	font-size: 20px;
+}
+
+#splitter hr{
+	border-top: 1px solid black;
+}
+.info-span {
+	height: 30px;
+	width: 30px;
+	font-size: 14px;
+	margin-left: 5px;
+}
 
 
 .phoneme {

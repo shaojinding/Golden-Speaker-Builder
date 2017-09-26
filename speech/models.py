@@ -22,7 +22,7 @@ class AnchorSet(models.Model):
     modified = models.BooleanField()
     aborted = models.BooleanField()
     slug = models.SlugField()
-    saved_phonemes = models.CharField(max_length=400)  # phonemes which are saved
+    saved_phonemes = models.CharField(max_length=1000)  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model
     pitch_path = models.CharField(max_length=128)  # path to pitch recording file
 
