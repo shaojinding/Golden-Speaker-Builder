@@ -3,6 +3,7 @@ from celery import shared_task
 from .models import AnchorSet, User, GoldenSpeaker
 import matlab.engine
 import os
+import logging
 
 @shared_task
 def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, center, phoneme, pitch_path, output_mat_path):
@@ -35,6 +36,7 @@ def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, c
         anchor_set.built = 'Built'
         anchor_set.save()
     except:
+        logging.exception('')
         anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
         anchor_set.built = 'Error'
         anchor_set.save()
