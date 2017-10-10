@@ -35,6 +35,7 @@ var Ipas = null;
 var Keywords = null;
 var pitchSentences = null;
 var center = 0;
+var recordingInterval = null;
 $(document).ready( function() {
     var finishPercent = savedPhoneme.length / numPhoneme;
     $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");
@@ -428,6 +429,21 @@ $(document).ready( function() {
     });
 
 });
+
+function timerRecording() {
+    var seconds = 59.99, second = 0, interval;
+    interval = setInterval(function () {
+        $("#recordingLength").html(second.toFixed(2).toString() + "/60.00");
+        if (second >= seconds)
+        {
+            $("#record").trigger("click");
+            clearInterval(interval);
+        }
+        second = second + 0.01;
+    }, 10);
+    return interval;
+}
+
 
 $(window).keydown(function(e) {
     e.stopPropagation();

@@ -34,6 +34,7 @@ function toggleRecording( e ) {
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = false;
         isRecording = false;
+        clearInterval(recordingInterval);
     } else {
         // start recording
         if (!recorder)
@@ -51,6 +52,7 @@ function toggleRecording( e ) {
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = true;
         isRecording = true;
+        recordingInterval = timerRecording();
         microphone.start();
         if (regionEnabled) {
             wavesurfer.empty();
@@ -138,10 +140,38 @@ function createDownloadLink() {
 }
 
 function wavesurfGetBlob(blob) {
+    blob = downsampleBuffer(blob, 44100, 16000);
     wavesurfer.loadBlob(blob);
     record_blob = blob;
     record_url = URL.createObjectURL(blob);
     record_url = record_url.substring(5, record_url.length);
+}
+
+function downsampleBuffer(buffer, sampleRate, outSampleRate) {
+    if (outSampleRate == sampleRate) {
+        return buffer;
+    }
+    if (outSampleRate > sampleRate) {
+        throw "downsampling rate show be smaller than original sample rate";
+    }
+    var sampleRateRatio = sampleRate / outSampleRate;
+    var newLength = Math.round(buffer.length / sampleRateRatio);
+    var result = new Int16Array(newLength);
+    var offsetResult = 0;
+    var offsetBuffer = 0;
+    while (offsetResult < result.length) {
+        var nextOffsetBuffer = Math.round((offsetResult + 1) * sampleRateRatio);
+        var accum = 0, count = 0;
+        for (var i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
+            accum += buffer[i];
+            count++;
+        }
+
+        result[offsetResult] = Math.min(1, accum / count)*0x7FFF;
+        offsetResult++;
+        offsetBuffer = nextOffsetBuffer;
+    }
+    return result.buffer;
 }
 
 window.onload = function init() {
