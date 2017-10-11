@@ -140,14 +140,13 @@ function createDownloadLink() {
 }
 
 function wavesurfGetBlob(blob) {
-    blob = downsampleBuffer(blob, 44100, 16000);
     wavesurfer.loadBlob(blob);
     record_blob = blob;
     record_url = URL.createObjectURL(blob);
     record_url = record_url.substring(5, record_url.length);
 }
 
-function downsampleBuffer(buffer, sampleRate, outSampleRate) {
+/*function downsampleBuffer(buffer, sampleRate, outSampleRate) {
     if (outSampleRate == sampleRate) {
         return buffer;
     }
@@ -172,7 +171,7 @@ function downsampleBuffer(buffer, sampleRate, outSampleRate) {
         offsetBuffer = nextOffsetBuffer;
     }
     return result.buffer;
-}
+}*/
 
 window.onload = function init() {
     try {
