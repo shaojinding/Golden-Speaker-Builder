@@ -34,7 +34,7 @@ function toggleRecording( e ) {
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = false;
         isRecording = false;
-        clearInterval(recordingInterval);
+        clearTimeout(handlerSetTimeout);
     } else {
         // start recording
         if (!recorder)
@@ -52,7 +52,8 @@ function toggleRecording( e ) {
         var playbtn = document.getElementById("playPause");
         playbtn.disabled = true;
         isRecording = true;
-        recordingInterval = timerRecording();
+        currentSecond = 0.0;
+        handlerSetTimeout = setTimeout("timerRecording()", 1000);
         microphone.start();
         if (regionEnabled) {
             wavesurfer.empty();
