@@ -203,7 +203,7 @@ def finish_record_session(request):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    num_phoneme = 39
+    num_phoneme = 71
     if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
         # del request.session['current_anchorset']
         anchor_set.completed = True
@@ -304,7 +304,7 @@ def build_sabr(request):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    num_phoneme = 50
+    num_phoneme = 71
     if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
         # del request.session['current_anchorset']
         anchor_set.completed = True
