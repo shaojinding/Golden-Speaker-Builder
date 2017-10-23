@@ -35,7 +35,7 @@ var Ipas = null;
 var Keywords = null;
 var pitchSentences = null;
 var center = 0;
-var timerSeconds = 60.0;
+var timerSeconds = 180.0;
 var currentSecond = 0.0;
 var handlerSetTimeout = null;
 //var recordingInterval = null;
@@ -448,7 +448,7 @@ $(document).ready( function() {
 // }
 
 function timerRecording() {
-    $("#recordingLength").html(currentSecond.toFixed(2).toString() + "/60.00");
+    $("#recordingLength").html(currentSecond.toFixed(2).toString() + "/" + timerSeconds.toFixed(2).toString());
     if (currentSecond >= timerSeconds)
     {
         $("#record").trigger("click");
