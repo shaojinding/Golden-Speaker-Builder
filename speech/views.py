@@ -153,6 +153,10 @@ def record(request, phoneme):
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
     saved_phonemes = anchor_set.get_saved_phonemes()
     json_saved_phoneme = json.dumps(saved_phonemes)
+    num_phoneme = 71
+    if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
+        anchor_set.completed = True
+        anchor_set.save()
     completed = anchor_set.completed
     with open('static/doc/keywords.txt', 'r') as kw_f:
         lines = kw_f.readlines()
