@@ -41,7 +41,7 @@
             <tr>
                 <th>Anchor set name</th>
                 <th>Set up time</th>
-{#                <th>Active</th>#}
+                {#                <th>Active</th>#}
                 <th>Used</th>
                 <th>Completed</th>
                 <th>Build status</th>
@@ -52,30 +52,50 @@
             <tbody>
             {% for anchorset in anchorsets %}
                 <tr>
-{#                    <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>#}
-                    <td>{{ anchorset.anchor_set_name }}</td>
+                    {#                    <td><a href="/speech/anchorset/{{ anchorset.slug }}">{{ anchorset.anchor_set_name }}</a></td>#}
+                    <td id="anchorset-entry-{{ anchorset.anchor_set_name }}">{{ anchorset.anchor_set_name }}</td>
                     <td class="time-stamp"></td>
-{#                    <td>{{ anchorset.timestamp }}</td>#}
-{#                    <td>{{ anchorset.active }}</td>#}
+                    {#                    <td>{{ anchorset.timestamp }}</td>#}
+                    {#                    <td>{{ anchorset.active }}</td>#}
                     <td>{{ anchorset.used }}</td>
                     <td>{{ anchorset.completed }}</td>
                     <td>{{ anchorset.built }}</td>
                     {% if anchorset.built == 'In processing' %}
                         <td>Processing...</td>
-                        <td></td>
-{#                        {% if anchorset.aborted == True %}#}
-{#                            <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>#}
-{#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>#}
-{#                        {% else %}#}
-{#                            <td>Processing...</td>#}
-{#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/abort_anchorset/{{ anchorset.slug }}';} else {}">Abort</button></td>#}
-{#                        {% endif %}#}
+                        {#                        {% if anchorset.aborted == True %}#}
+                        {#                            <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>#}
+                        {#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>#}
+                        {#                        {% else %}#}
+                        {#                            <td>Processing...</td>#}
+                        {#                            <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/abort_anchorset/{{ anchorset.slug }}';} else {}">Abort</button></td>#}
+                        {#                        {% endif %}#}
                     {% elif anchorset.built == 'Error' %}
-                        <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button> <button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</button></td>
+                        <td class="dropdown">
+                            <a href="#" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Danger</li>
+                                <li><a href="#" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</a></li>
+                            </ul>
+                        </td>
+                        <td><button type="button" class="btn btn-xs btn-success" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</button></td>
                         <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>
                     {% else %}
-                        <td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>
-                        <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>
+                        <td class="dropdown" id="option-{{ anchorset.anchor_set_name }}">
+                            <a href="#" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/speech/start_record_session/{{ anchorset.slug }}">Edit Anchor Set</a></li>
+{#                                <li><a href="#" onclick="rename('{{ anchorset.anchor_set_name }}')">Rename</a></li>#}
+                                <li><a href="/speech/rename_anchorset/{{ anchorset.slug }}">Rename</a></li>
+                                <li><a href="/speech/copy_anchorset/{{ anchorset.slug }}">Copy</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Danger</li>
+                                <li><a href="#" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</a></li>
+                            </ul>
+                        </td>
+                        {% comment %}<td><button type="button" class="btn btn-xs btn-success" onclick="window.location.href='/speech/start_record_session/{{ anchorset.slug }}'">Edit</button></td>
+                        <td><button type="button" class="btn btn-xs btn-danger" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</button></td>{% endcomment %}
                     {% endif %}
                 </tr>
             {% endfor %}

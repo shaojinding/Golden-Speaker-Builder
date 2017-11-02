@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django_auth0.auth_decorator import login_required_auth0
 from django.views.decorators.csrf import ensure_csrf_cookie
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
-from .forms import AnchorSetForm
+from .forms import AnchorSetForm, RenameAnchorSetForm
 from time import gmtime, strftime, time
 from django.contrib import messages
 import base64
@@ -12,6 +12,8 @@ import json
 import scipy.io.wavfile
 import numpy as np
 from tasks import build_sabr_model, synthesize_sabr
+from shutil import copyfile
+from copy import deepcopy
 
 
 # index page view
@@ -112,6 +114,131 @@ def add_anchorset(request):
         anchorset_form = AnchorSetForm()
         context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True}
         return render(request, 'speech/add_anchorset.html', context_dict)
+
+@login_required_auth0()
+def rename_anchorset(request, anchor_set_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    if request.method == 'POST':
+        anchorset_form = AnchorSetForm(data=request.POST)
+        if anchorset_form.is_valid():
+            try:
+                new_anchorset = anchorset_form.save(commit=False)
+                new_anchorset.active = False
+                new_anchorset.used = False
+                new_anchorset.completed = anchorset.completed
+                new_anchorset.modified = False
+                new_anchorset.built = anchorset.built
+                new_anchorset.user = user
+                new_anchorset.aborted = anchorset.aborted
+                new_anchorset.timestamp = anchorset.timestamp
+                # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
+                new_anchorset.set_saved_phonemes(anchorset.get_saved_phonemes())
+                new_anchorset.save()
+                new_anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, new_anchorset.slug)
+                new_anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, new_anchorset.slug)
+                new_anchorset.save()
+                copy_anchorset_files(anchorset, new_anchorset, user)
+
+                if 'current_anchorset' in request.session:
+                    if request.session['current_anchorset'] == anchorset.slug:
+                        del request.session['current_anchorset']
+                if os.path.exists('data/sabr/{0}{1}.mat'.format(username, anchorset.slug)):
+                    os.remove('data/sabr/{0}{1}.mat'.format(username, anchorset.slug))
+                if os.path.exists('data/pitch/{0}{1}.wav'.format(username, anchorset.slug)):
+                    os.remove('data/pitch/{0}{1}.wav'.format(username, anchorset.slug))
+                anchors = Anchor.objects.filter(anchor_set=anchorset)
+                for anchor in anchors:
+                    recording = Recording.objects.get(anchor=anchor)
+                    record_name = recording.record_name
+                    if os.path.exists('data/recordings/{}.wav'.format(record_name)):
+                        os.remove('data/recordings/{}.wav'.format(record_name))
+                AnchorSet.objects.filter(slug=anchorset.slug, user=user).delete()
+                return redirect('/speech/manage_anchorset')
+            except:
+                messages.error(request, 'You have had an anchor set with the this name')
+                anchorset_form = RenameAnchorSetForm()
+                context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True,
+                                'slug': anchor_set_name_slug}
+                return render(request, 'speech/rename_anchorset.html', context_dict)
+        else:
+            messages.error(request, 'Anchor set name should only contain A-Z, a-z, 0-9 and _')
+            anchorset_form = RenameAnchorSetForm()
+            context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True,
+                            'slug': anchor_set_name_slug}
+            return render(request, 'speech/rename_anchorset.html', context_dict)
+    else:
+        anchorset_form = RenameAnchorSetForm()
+        context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True,
+                        'slug': anchor_set_name_slug}
+        return render(request, 'speech/rename_anchorset.html', context_dict)
+
+
+@login_required_auth0()
+def copy_anchorset(request, anchor_set_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    if request.method == 'POST':
+        anchorset_form = AnchorSetForm(data=request.POST)
+        if anchorset_form.is_valid():
+            # try:
+                new_anchorset = anchorset_form.save(commit=False)
+                new_anchorset.active = False
+                new_anchorset.used = False
+                new_anchorset.completed = anchorset.completed
+                new_anchorset.modified = False
+                new_anchorset.built = anchorset.built
+                new_anchorset.user = user
+                new_anchorset.aborted = anchorset.aborted
+                new_anchorset.timestamp = time()
+                # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
+                new_anchorset.set_saved_phonemes(anchorset.get_saved_phonemes())
+                new_anchorset.save()
+                new_anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, new_anchorset.slug)
+                new_anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, new_anchorset.slug)
+                new_anchorset.save()
+                copy_anchorset_files(anchorset, new_anchorset, user)
+                return redirect('/speech/manage_anchorset')
+            # except:
+            #     messages.error(request, 'You have had an anchor set with the this name')
+            #     anchorset_form = RenameAnchorSetForm()
+            #     context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True, 'slug': anchor_set_name_slug}
+            #     return render(request, 'speech/copy_anchorset.html', context_dict)
+        else:
+            messages.error(request, 'Anchor set name should only contain A-Z, a-z, 0-9 and _')
+            anchorset_form = RenameAnchorSetForm()
+            context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True, 'slug': anchor_set_name_slug}
+            return render(request, 'speech/copy_anchorset.html', context_dict)
+    else:
+        anchorset_form = RenameAnchorSetForm()
+        context_dict = {'anchorset_form': anchorset_form, 'name': username, 'is_login': True, 'slug': anchor_set_name_slug}
+        return render(request, 'speech/copy_anchorset.html', context_dict)
+
+
+def copy_anchorset_files(old_anchorset, new_anchorset, user):
+    if os.path.exists(old_anchorset.sabr_model_path):
+        copyfile(old_anchorset.sabr_model_path, new_anchorset.sabr_model_path)
+    if os.path.exists(old_anchorset.pitch_path):
+        copyfile(old_anchorset.pitch_path, new_anchorset.pitch_path)
+    for anchor in Anchor.objects.filter(anchor_set=old_anchorset):
+        new_anchor = deepcopy(anchor)
+        new_anchor.pk = None
+        new_anchor.id = None
+        new_anchor.anchor_set = new_anchorset
+        new_anchor.save()
+        record = Recording.objects.filter(user=user, anchor=anchor)[0]
+        new_record = deepcopy(record)
+        new_record.pk = None
+        new_record.id = None
+        new_record.anchor = new_anchor
+        new_record.record_name = new_anchor.__unicode__()
+        new_record.save()
+        old_record_path = "data/recordings/%s.wav" % anchor.__unicode__()
+        new_record_path = "data/recordings/%s.wav" % new_anchor.__unicode__()
+        copyfile(old_record_path, new_record_path)
+
 
 
 # delete anchor set operation view

@@ -3,6 +3,8 @@ from speech import views
 
 urlpatterns = [
         url(r'^$', views.index, name='index'),
+        url(r'^copy_anchorset/(?P<anchor_set_name_slug>[\w\-]+)/', views.copy_anchorset, name='copy_anchorset'),
+        url(r'^rename_anchorset/(?P<anchor_set_name_slug>[\w\-]+)/', views.rename_anchorset, name='rename_anchorset'),
         url(r'^resynthesize/(?P<speaker_name_slug>[\w\-]+)/', views.resynthesize, name='resynthesize'),
         url(r'^rebuild_sabr/(?P<anchor_set_name_slug>[\w\-]+)/', views.rebuild_sabr, name='rebuild_sabr'),
         url(r'^start_record_session/(?P<anchor_set_name_slug>[\w\-]+)/$', views.start_record_session, name='start_record_session'),

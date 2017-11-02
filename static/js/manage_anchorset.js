@@ -42,3 +42,56 @@ function checkBuildStatus() {
 
 }
 
+/*
+function rename(name) {
+    var anchorsetName = document.getElementById("anchorset-entry-" + name);
+    var defaultText = anchorsetName.innerHTML;
+
+    var inputNode = document.createElement("INPUT");
+    inputNode.name = 'generated_input';
+    inputNode.style.display = "inline-block";
+    inputNode.style.height = "20px";
+    inputNode.value = defaultText;
+    inputNode.id = "input-name";
+    var btnNode = document.createElement("BUTTON");
+    btnNode.className = "btn btn-success btn-xs";
+    btnNode.style.display = "inline-block";
+    btnNode.onclick = function (name) {
+        // something to upload the new name, because it is hard to validate the form, we abandon it temporally.
+    };
+    var btnTextNode = document.createTextNode("Accept");
+    btnNode.appendChild(btnTextNode);
+
+    anchorsetName.innerHTML = "";
+    anchorsetName.appendChild(inputNode);
+    var anchorsetOption = document.getElementById("option-" + name);
+    while (anchorsetOption.firstChild) {
+        anchorsetOption.removeChild(anchorsetOption.firstChild);
+    }
+    anchorsetOption.appendChild(btnNode);
+    document.getElementById("anchorset-entry-" + name).firstChild.select();
+}
+
+function confirmRename() {
+    
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}*/
