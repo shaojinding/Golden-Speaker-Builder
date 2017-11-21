@@ -96,6 +96,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     timestamp = models.CharField(max_length=128)
     status = models.CharField(max_length=128)
     aborted = models.BooleanField()
+    tempo_scale = models.FloatField()
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)

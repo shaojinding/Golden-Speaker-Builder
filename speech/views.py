@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django_auth0.auth_decorator import login_required_auth0
 from django.views.decorators.csrf import ensure_csrf_cookie
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
-from .forms import AnchorSetForm, RenameAnchorSetForm
+from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
 from time import gmtime, strftime, time
 from django.contrib import messages
 import base64
@@ -539,8 +539,9 @@ def build_synthesize(request):
     source_models = SourceModel.objects.all()
     anchor_sets = AnchorSet.objects.filter(user=user, built='Built')
     utterances = Utterance.objects.all()
+    tempo_scale_form = InputTempoScaleForm()
     context_dict = {'name': username, 'is_login': True, 'source_models': source_models,
-                    'anchor_sets': anchor_sets, 'utterances': utterances}
+                    'anchor_sets': anchor_sets, 'utterances': utterances, 'tempo_scale_form': tempo_scale_form}
     return render(request, 'speech/build_synthesize.html', context_dict)
 
 
@@ -588,6 +589,7 @@ def synthesize(request):
         select_weeks_string = request.POST['select_weeks']
         source_model_name = request.POST['source_model']
         target_model_name = request.POST['target_model']
+        tempo_scale = float(request.POST['tempo_scale'])
         if select_names_string and source_model_name and target_model_name:
             select_names = select_names_string.strip().split(',')
             select_weeks = select_weeks_string.strip().split(',')
@@ -597,7 +599,7 @@ def synthesize(request):
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=timestamp, status="Synthesizing", aborted=False)
+                               user=user, timestamp=timestamp, status="Synthesizing", aborted=False, tempo_scale=tempo_scale)
             # gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
             #                    user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
@@ -615,7 +617,7 @@ def synthesize(request):
             utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
             #print utterance_path[0]
             #print utterance_path[1]
-            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path, tempo_scale)
             # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
     return redirect('/speech/practice/index')
 
@@ -629,6 +631,7 @@ def resynthesize(request, speaker_name_slug):
     output_wav_folder = 'data/output_wav/' + gs.slug
     source_model_name = gs.source_model.model_name
     gs_name = gs.speaker_name
+    tempo_scale = gs.tempo_scale
     gs.status = "Synthesizing"
     gs.save()
     target_model = gs.anchor_set
@@ -643,7 +646,7 @@ def resynthesize(request, speaker_name_slug):
     target_model_path = target_model.sabr_model_path
     utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in
                       zip(select_names, select_weeks)]
-    synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path)
+    synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path, tempo_scale)
 
     return redirect('/speech/practice/index')
 

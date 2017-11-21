@@ -29,3 +29,18 @@ class RenameAnchorSetForm(forms.Form):
             raise forms.ValidationError(
                 "The anchot set name should only contains characters and numbers"
             )
+
+
+class InputTempoScaleForm(forms.Form):
+    tempo_scale = forms.CharField(widget=forms.TextInput({"placeholder": "percentage, ranged from -100 to 100, "
+                                                                         "negative value indicates slowing down "
+                                                                         "while postive value indicates speeding up"}))
+
+    def clean(self):
+        cleaned_data = super(InputTempoScaleForm, self).clean()
+        tempo_scale = cleaned_data.get('tempo_scale')
+        reg = re.compile('^-?[1-9][0-9]?$|^100$')
+        if not reg.match(tempo_scale):
+            raise forms.ValidationError(
+                "The tempo scale should be percentage ranged from -100 to 100"
+            )

@@ -12,6 +12,8 @@ var selectNames = [];
 var selectWeeks = [];
 var transcriptions = null;
 var weeks = null;
+var slider = null;
+var disp = null;
 // var chosenIndexes = [];
 $(document).ready( function() {
     var audio = document.getElementById("source-play");
@@ -33,6 +35,7 @@ $(document).ready( function() {
         $(this).addClass('active');
         if (sourceModel != null) {
             getUtterances(audio, source);
+            $("#tempo-scale-block").css("display", "block")
         }
     });
     // $("body").on('click', 'a.utterance-item', function() {
@@ -98,6 +101,15 @@ $(document).ready( function() {
     //     // node.className = 'list-group-item utterance-item';
     //     //document.getElementById("utterance-list").insertBefore()
     // });
+
+    // tempo-scale-slider
+    slider = document.getElementById("tempo-scale-slider");
+    disp = document.getElementById("tempo-scale-disp");
+    disp.innerHTML = "{0}%".replace("{0}", slider.value);
+    slider.oninput = function() {
+        disp.innerHTML = "{0}%".replace("{0}", this.value);
+    };
+
     $("#synthesize").click(function () {
         try {
             var btnSynth = document.getElementById("synthesize");
@@ -111,6 +123,7 @@ $(document).ready( function() {
             for (var i = 0; i < checkedValue.length; i++) {
                 selectWeeks.push(weeks[parseInt(checkedValue[i])]);
             }
+            var tempo_scale = -(slider.value / 100.0) + 1.0;
             var csrftoken = getCookie('csrftoken');
             $.ajaxSetup({
                 beforeSend: function (xhr, settings) {
@@ -124,6 +137,7 @@ $(document).ready( function() {
             fd.append('source_model', sourceModel);
             fd.append('target_model', targetModel);
             fd.append('select_weeks', selectWeeks);
+            fd.append('tempo_scale', tempo_scale);
             $.ajax({
                 type: 'POST',
                 url: '/speech/synthesize/',
@@ -138,6 +152,8 @@ $(document).ready( function() {
         catch (e) {
             alert("synthesize failed! Please try again.");
         }
+
+
         // try {
         //     var checkedValue = $(".utterance-checkbox:checked").map(function(){return $(this).val()}).get();
         //     var checkedValue1 = checkedValue.map(function () {return parseInt(this)}).get();
@@ -194,45 +210,45 @@ function csrfSafeMethod(method) {
 
 function getUtterances(audio, source) {
     $.get('/speech/get_utterances/', {source_model: sourceModel}, function(data){
-                var arr = JSON.parse(data);
-                utteranceNames = arr[0];
-                transcriptions = arr[1];
-                weeks = arr[2];
-                var utterList = document.getElementById("utterance-list");
-                while(utterList.firstChild){
-                    utterList.removeChild(utterList.firstChild);
-                }
-                for (var i = 0; i < transcriptions.length; i ++) {
-                    var node = document.createElement("A");
-                    var btnNode = document.createElement("BUTTON");
-                    btnNode.className = "btn btn-success btn-xs source-speaker-preview";
-                    btnNode.style.marginRight = "5px";
-                    btnNode.onclick = function () {
-                        var parent = $(this).parent();
-                        var innerText = parent[0].childNodes[3].data;
-                        var strIdx = innerText.indexOf("]");
-                        // var temp = innerText.substring(strIdx + 1, innerText.length);
-                        var childIdx = transcriptions.indexOf(innerText.substring(strIdx + 1, innerText.length));
-                        source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[childIdx] + '.wav';
-                        audio.load();
-                        audio.play();
-                    };
-                    var checkbox = document.createElement('input');
-                    checkbox.type = "checkbox";
-                    checkbox.value = "{0}".replace("{0}", i);
-                    checkbox.className = "utterance-checkbox";
-                    var spaceNode = document.createTextNode("   ");
-                    var btnTextNode = document.createTextNode("play");
-                    btnNode.appendChild(btnTextNode);
-                    var textnode = document.createTextNode("[{}]".replace("{}", weeks[i]) + transcriptions[i]);
-                    node.appendChild(checkbox);
-                    node.appendChild(spaceNode);
-                    node.appendChild(btnNode);
-                    node.appendChild(textnode);
-                    node.className = 'list-group-item utterance-item';
-                    //document.getElementById("utterance-list").appendChild(btnNode);
-                    utterList.appendChild(node);
-                }
-                $("#utterance-block").css("display", "block");
-            });
+        var arr = JSON.parse(data);
+        utteranceNames = arr[0];
+        transcriptions = arr[1];
+        weeks = arr[2];
+        var utterList = document.getElementById("utterance-list");
+        while(utterList.firstChild){
+            utterList.removeChild(utterList.firstChild);
+        }
+        for (var i = 0; i < transcriptions.length; i ++) {
+            var node = document.createElement("A");
+            var btnNode = document.createElement("BUTTON");
+            btnNode.className = "btn btn-success btn-xs source-speaker-preview";
+            btnNode.style.marginRight = "5px";
+            btnNode.onclick = function () {
+                var parent = $(this).parent();
+                var innerText = parent[0].childNodes[3].data;
+                var strIdx = innerText.indexOf("]");
+                // var temp = innerText.substring(strIdx + 1, innerText.length);
+                var childIdx = transcriptions.indexOf(innerText.substring(strIdx + 1, innerText.length));
+                source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[childIdx] + '.wav';
+                audio.load();
+                audio.play();
+            };
+            var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.value = "{0}".replace("{0}", i);
+            checkbox.className = "utterance-checkbox";
+            var spaceNode = document.createTextNode("   ");
+            var btnTextNode = document.createTextNode("play");
+            btnNode.appendChild(btnTextNode);
+            var textnode = document.createTextNode("[{}]".replace("{}", weeks[i]) + transcriptions[i]);
+            node.appendChild(checkbox);
+            node.appendChild(spaceNode);
+            node.appendChild(btnNode);
+            node.appendChild(textnode);
+            node.className = 'list-group-item utterance-item';
+            //document.getElementById("utterance-list").appendChild(btnNode);
+            utterList.appendChild(node);
+        }
+        $("#utterance-block").css("display", "block");
+    });
 }

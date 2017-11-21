@@ -43,7 +43,7 @@ def build_sabr_model(username, anchor_set_name_slug, audio_paths, left, right, c
     return
 
 @shared_task
-def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_paths, source_model_path, target_model_path, output_paths):
+def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_paths, source_model_path, target_model_path, output_paths, tempo_scale):
     try:
         user = User.objects.get(user_name=username)
         cwd = os.getcwd()
@@ -61,7 +61,7 @@ def synthesize_sabr(username, gs_name, target_model_name_slug, source_analysis_p
         assert os.path.exists(abs_target_model_path)
         for i, abs_source_analysis_path in enumerate(abs_source_analysis_paths):
             abs_output_path = abs_output_paths[i]
-            suc = eng.service.synthesize(abs_source_analysis_path, abs_source_model_path, abs_target_model_path, abs_output_path)
+            suc = eng.service.synthesize(abs_source_analysis_path, abs_source_model_path, abs_target_model_path, abs_output_path, tempo_scale)
         eng.quit()
         gs = GoldenSpeaker.objects.get(user=user, speaker_name=gs_name)
         gs.status = "Finished"
