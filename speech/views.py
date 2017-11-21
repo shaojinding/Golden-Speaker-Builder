@@ -1,19 +1,21 @@
-import os
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django_auth0.auth_decorator import login_required_auth0
-from django.views.decorators.csrf import ensure_csrf_cookie
-from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
-from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
-from time import gmtime, strftime, time
-from django.contrib import messages
 import base64
 import json
-import scipy.io.wavfile
-import numpy as np
-from tasks import build_sabr_model, synthesize_sabr
-from shutil import copyfile
+import os
 from copy import deepcopy
+from shutil import copyfile
+from time import time
+
+import numpy as np
+import scipy.io.wavfile
+from django.contrib import messages
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
+from django_auth0.auth_decorator import login_required_auth0
+from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
+from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
 
 
 # index page view
