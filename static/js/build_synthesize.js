@@ -127,7 +127,7 @@ $(document).ready( function() {
             for (var i = 0; i < checkedValue.length; i++) {
                 selectWeeks.push(weeks[parseInt(checkedValue[i])]);
             }
-            var tempo_scale = -(slider.value / 100.0) + 1.0;
+            var tempo_scale = slider.value;
             var csrftoken = getCookie('csrftoken');
 
             $.ajaxSetup({
