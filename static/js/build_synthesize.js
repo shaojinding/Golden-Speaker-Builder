@@ -113,10 +113,14 @@ $(document).ready( function() {
     $("#synthesize").click(function () {
         try {
             var btnSynth = document.getElementById("synthesize");
-            btnSynth.disabled = true;
             var checkedValue = $(".utterance-checkbox:checked").map(function () {
                 return $(this).val()
             }).get();
+            if (checkedValue == null  || checkedValue.length ==0) {
+                alert("Please select the sentences you want to synthesize");
+                return;
+            }
+            btnSynth.disabled = true;
             for (var i = 0; i < checkedValue.length; i++) {
                 selectNames.push(utteranceNames[parseInt(checkedValue[i])]);
             }
@@ -125,6 +129,7 @@ $(document).ready( function() {
             }
             var tempo_scale = -(slider.value / 100.0) + 1.0;
             var csrftoken = getCookie('csrftoken');
+
             $.ajaxSetup({
                 beforeSend: function (xhr, settings) {
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
