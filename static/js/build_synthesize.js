@@ -1,6 +1,12 @@
 /**
  * Created by dshj940428 on 10/19/2016.
  */
+// phoneme substitution
+$('#auto-checkboxes').bonsai({
+    expandAll: false,
+    checkboxes: true, // depends on jquery.qubit plugin
+    createInputs: 'checkbox' // takes values from data-name and data-value, and data-name is inherited
+});
 var sourceModel = null;
 var targetModel = null;
 // var utteranceSelect = null;
@@ -109,6 +115,13 @@ $(document).ready( function() {
     slider.oninput = function() {
         disp.innerHTML = "{0}%".replace("{0}", this.value);
     };
+    // // phoneme substitution
+    // $('#auto-checkboxes').bonsai({
+    //     expandAll: true,
+    //     checkboxes: true, // depends on jquery.qubit plugin
+    //     createInputs: 'checkbox' // takes values from data-name and data-value, and data-name is inherited
+    // });
+    // $("#tree").fancytree();
 
     $("#synthesize").click(function () {
         try {

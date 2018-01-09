@@ -1,0 +1,77 @@
+{
+  "_args": [
+    [
+      "jquery-bonsai",
+      "/home/burning/Project/golden-speaker"
+    ]
+  ],
+  "_from": "jquery-bonsai@latest",
+  "_id": "jquery-bonsai@2.1.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/jquery-bonsai",
+  "_nodeVersion": "9.3.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/jquery-bonsai-2.1.3.tgz_1515368892823_0.05171786551363766"
+  },
+  "_npmUser": {
+    "email": "simon.wade@gmail.com",
+    "name": "aexmachina"
+  },
+  "_npmVersion": "5.5.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "jquery-bonsai",
+    "raw": "jquery-bonsai",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-bonsai/-/jquery-bonsai-2.1.3.tgz",
+  "_shasum": "50702e083dd2394d0eecb9f6c73923aa9ed3009e",
+  "_shrinkwrap": null,
+  "_spec": "jquery-bonsai",
+  "_where": "/home/burning/Project/golden-speaker",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/aexmachina/jquery-bonsai/issues"
+  },
+  "dependencies": {
+    "jquery": "*",
+    "jquery-qubit": "^2.0.8"
+  },
+  "description": "A lightweight jQuery plugin that takes a big nested list and prunes it down to a small expandable tree control.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-NtSKC4X6Zg9g7RRLtL7u1MKTLqa/JcjiXFS9YZmdoL6yreLiFc63adKFPPSMZ0aLOGW7N8wqKFc6QUkvoLifXg==",
+    "shasum": "50702e083dd2394d0eecb9f6c73923aa9ed3009e",
+    "tarball": "https://registry.npmjs.org/jquery-bonsai/-/jquery-bonsai-2.1.3.tgz"
+  },
+  "gitHead": "67347bfe88dfa42ac0687634e976f287fdb984e6",
+  "homepage": "https://github.com/aexmachina/jquery-bonsai#readme",
+  "license": "MIT",
+  "main": "jquery.bonsai.js",
+  "maintainers": [
+    {
+      "name": "aexmachina",
+      "email": "simon.wade@gmail.com"
+    }
+  ],
+  "name": "jquery-bonsai",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aexmachina/jquery-bonsai.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.1.3"
+}

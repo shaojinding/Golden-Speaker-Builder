@@ -1,0 +1,82 @@
+{
+  "_args": [
+    [
+      "jquery-qubit@^2.0.8",
+      "/home/burning/Project/golden-speaker/node_modules/jquery-bonsai"
+    ]
+  ],
+  "_from": "jquery-qubit@>=2.0.8 <3.0.0",
+  "_id": "jquery-qubit@2.0.9",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/jquery-qubit",
+  "_nodeVersion": "7.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/jquery-qubit-2.0.9.tgz_1485844716694_0.34535228344611824"
+  },
+  "_npmUser": {
+    "email": "simon.wade@gmail.com",
+    "name": "aexmachina"
+  },
+  "_npmVersion": "4.0.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "jquery-qubit",
+    "raw": "jquery-qubit@^2.0.8",
+    "rawSpec": "^2.0.8",
+    "scope": null,
+    "spec": ">=2.0.8 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/jquery-bonsai"
+  ],
+  "_resolved": "https://registry.npmjs.org/jquery-qubit/-/jquery-qubit-2.0.9.tgz",
+  "_shasum": "a667c4784de575a91a09dc27bcb2f861a299e62b",
+  "_shrinkwrap": null,
+  "_spec": "jquery-qubit@^2.0.8",
+  "_where": "/home/burning/Project/golden-speaker/node_modules/jquery-bonsai",
+  "authors": [
+    "aexmachina"
+  ],
+  "bugs": {
+    "url": "https://github.com/aexmachina/jquery-qubit/issues"
+  },
+  "dependencies": {
+    "jquery": "*"
+  },
+  "description": "Provides the semantics for a nested list of tri-state checkboxes, using the HTML5 \"indeterminate\" property",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "a667c4784de575a91a09dc27bcb2f861a299e62b",
+    "tarball": "https://registry.npmjs.org/jquery-qubit/-/jquery-qubit-2.0.9.tgz"
+  },
+  "gitHead": "aeab398ebc3b7d4e0834bf968f15afdc03290a55",
+  "homepage": "https://github.com/aexmachina/jquery-qubit#readme",
+  "keywords": [
+    "checkbox",
+    "indeterminate",
+    "jquery"
+  ],
+  "license": "MIT",
+  "main": "jquery.qubit.js",
+  "maintainers": [
+    {
+      "name": "aexmachina",
+      "email": "simon.wade@gmail.com"
+    }
+  ],
+  "name": "jquery-qubit",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aexmachina/jquery-qubit.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.9"
+}

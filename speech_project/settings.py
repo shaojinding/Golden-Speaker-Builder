@@ -52,6 +52,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'npm.finders.NpmFinder',
+# ]
+
 ROOT_URLCONF = 'speech_project.urls'
 
 TEMPLATES = [
@@ -160,3 +166,6 @@ LOGIN_URL = '/auth/login/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800
 
+
+# DJANGO-NPM
+# NPM_ROOT_PATH = os.path.join(BASE_DIR,'static')
