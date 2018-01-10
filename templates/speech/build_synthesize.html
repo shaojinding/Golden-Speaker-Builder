@@ -110,7 +110,7 @@
 
     </div>
 
-    <div id="phoneme-substitution-block">
+    <div id="phoneme-substitution-block" style="display: none">
         <div class="panel panel-default" id="phoneme-substitution-div">
             <div class="panel-heading">
                 <h3 class="panel-title">4. Select phonemes to be substituted by teacher's anchors</h3>
@@ -124,10 +124,10 @@
                             <li data-value="1">
                                 Vowels
                                 <ol data-name="vowel-cate">
-                                    <li data-value="2">
+                                    <li id="monophthong" data-value="2">
                                         Monophthongs
                                     </li>
-                                    <li data-value="3">
+                                    <li id="diphthong" data-value="3">
                                         Diphthongs
                                     </li>
                                 </ol>
@@ -138,22 +138,22 @@
                                     <li data-value="4">
                                         Voiced
                                         <ol data-name="voiced-cons-cate">
-                                            <li data-value="5">
+                                            <li id="stop-v" data-value="5">
                                                 Stops
                                             </li>
-                                            <li data-value="6">
+                                            <li id="fricative-v" data-value="6">
                                                 Fricatives
                                             </li>
-                                            <li data-value="7">
+                                            <li id="affricate-v" data-value="7">
                                                 Affricates
                                             </li>
-                                            <li data-value="8">
+                                            <li id="nasal" data-value="8">
                                                 Nasals
                                             </li>
-                                            <li data-value="9">
+                                            <li id="liquid" data-value="9">
                                                 Liquids
                                             </li>
-                                            <li data-value="10">
+                                            <li id="glide" data-value="10">
                                                 Glides
                                             </li>
                                         </ol>
@@ -161,13 +161,13 @@
                                     <li>
                                         Unvoiced
                                         <ol data-name="unvoiced-cons-cate">
-                                            <li data-value="11">
+                                            <li id="stop-uv" data-value="11">
                                                 Stops
                                             </li>
-                                            <li data-value="12">
+                                            <li id="fricative-uv" data-value="12">
                                                 Fricatives
                                             </li>
-                                            <li data-value="13">
+                                            <li id="affricate-uv" data-value="13">
                                                 Affricates
                                             </li>
                                         </ol>

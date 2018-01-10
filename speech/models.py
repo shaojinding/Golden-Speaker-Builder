@@ -97,6 +97,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     status = models.CharField(max_length=128)
     aborted = models.BooleanField()
     tempo_scale = models.FloatField()
+    select_phoneme_groups = models.CharField(max_length=1000)
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)
@@ -104,4 +105,10 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
 
     def __unicode__(self):
         return self.speaker_name
+
+    def set_select_phoneme_groups(self, x):  # set saved phonemes from front end
+        self.select_phoneme_groups = json.dumps(x)
+
+    def get_select_phoneme_groups(self):  # get saved phonemes to front end
+        return json.loads(self.select_phoneme_groups)
 

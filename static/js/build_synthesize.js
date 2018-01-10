@@ -20,6 +20,8 @@ var transcriptions = null;
 var weeks = null;
 var slider = null;
 var disp = null;
+var phonemeGroups = ['monophthong', 'diphthong', 'stop-v', 'fricative-v', 'affricate-v', 'nasal', 'liquid', 'glide', 'stop-uv', 'fricative-uv', 'affricate-uv'];
+var selectPhonemeGroups = [];
 // var chosenIndexes = [];
 $(document).ready( function() {
     var audio = document.getElementById("source-play");
@@ -41,7 +43,8 @@ $(document).ready( function() {
         $(this).addClass('active');
         if (sourceModel != null) {
             getUtterances(audio, source);
-            $("#tempo-scale-block").css("display", "block")
+            $("#tempo-scale-block").css("display", "block");
+            $("#phoneme-substitution-block").css("display", "block");
         }
     });
     // $("body").on('click', 'a.utterance-item', function() {
@@ -140,6 +143,18 @@ $(document).ready( function() {
             for (var i = 0; i < checkedValue.length; i++) {
                 selectWeeks.push(weeks[parseInt(checkedValue[i])]);
             }
+
+            // phoneme substitution
+            for (var i = 0; i < phonemeGroups.length; i++) {
+                var p = phonemeGroups[i];
+                var li = document.getElementById(p);
+                var childrens = li.children;
+                var checkbox = childrens[1];
+                if (checkbox.checked == true) {
+                    selectPhonemeGroups.push(p);
+                }
+
+            }
             var tempo_scale = slider.value;
             var csrftoken = getCookie('csrftoken');
 
@@ -156,6 +171,7 @@ $(document).ready( function() {
             fd.append('target_model', targetModel);
             fd.append('select_weeks', selectWeeks);
             fd.append('tempo_scale', tempo_scale);
+            fd.append('select_phoneme_groups', selectPhonemeGroups);
             $.ajax({
                 type: 'POST',
                 url: '/speech/synthesize/',
