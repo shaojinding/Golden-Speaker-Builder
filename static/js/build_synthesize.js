@@ -20,6 +20,8 @@ var transcriptions = null;
 var weeks = null;
 var slider = null;
 var disp = null;
+// var phonemeArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y', 'IY', 'UW', 'IH', 'UH', 'EY', 'OW', 'EH', 'AH', 'AE', 'AA', 'OY', 'AY', 'AO', 'AW', 'AX', 'ER'];
+var phonemeArray = ['AA', 'AE', 'AH', 'AO', 'AW', 'AX', 'AY', 'B',  'CH', 'D','DH', 'EH', 'ER', 'EY', 'F', 'G', 'HH', 'IH', 'IY', 'JH', 'K', 'L', 'M', 'N', 'NG', 'OW', 'OY', 'P', 'R', 'S', 'SH', 'T', 'TH', 'UH', 'UW', 'V', 'W', 'Y', 'Z', 'ZH'];
 var phonemeGroups = ['monophthong', 'diphthong', 'stop-v', 'fricative-v', 'affricate-v', 'nasal', 'liquid', 'glide', 'stop-uv', 'fricative-uv', 'affricate-uv'];
 var selectPhonemeGroups = [];
 // var chosenIndexes = [];
@@ -145,13 +147,13 @@ $(document).ready( function() {
             }
 
             // phoneme substitution
-            for (var i = 0; i < phonemeGroups.length; i++) {
-                var p = phonemeGroups[i];
+            for (var i = 0; i < phonemeArray.length; i++) {
+                var p = phonemeArray[i];
                 var li = document.getElementById(p);
                 var childrens = li.children;
                 var checkbox = childrens[1];
                 if (checkbox.checked == true) {
-                    selectPhonemeGroups.push(p);
+                    selectPhonemeGroups.push(i);
                 }
 
             }
