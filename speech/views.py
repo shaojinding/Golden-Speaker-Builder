@@ -694,7 +694,7 @@ def practice(request, golden_speaker_name_slug):
                 recording_blob = recording_file.read()
             recording_base64 = base64.b64encode(recording_blob)
             uttr_files['{0}_{1}'.format(gs.speaker_name, uttr.name)] = recording_base64
-            json_uttr_file = json.dumps(uttr_files)
+        json_uttr_file = json.dumps(uttr_files)
         context_dict = {'name': username, 'is_login': True, 'if_choose': if_choose, 'cwd': os.getcwd(), 'gs': gs, 'uttr_files': json_uttr_file}
     return render(request, 'speech/practice.html', context_dict)
 

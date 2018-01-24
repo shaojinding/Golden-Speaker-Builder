@@ -15,14 +15,14 @@ class AnchorSet(models.Model):
     anchor_set_name = models.CharField(max_length=128)
     user = models.ForeignKey(User)
     timestamp = models.CharField(max_length=128)  # set up time
-    active = models.BooleanField()  # whether the anchor set is active (in using)
-    used = models.BooleanField()  # whether the anchor set has been used
-    completed = models.BooleanField()  # whether all anchors are recorded
-    built = models.CharField(max_length=128)  # whether sabr model has been built
-    modified = models.BooleanField()
-    aborted = models.BooleanField()
+    active = models.BooleanField(default=False)  # whether the anchor set is active (in using)
+    used = models.BooleanField(default=False)  # whether the anchor set has been used
+    completed = models.BooleanField(default=False)  # whether all anchors are recorded
+    built = models.CharField(max_length=128, default='False')  # whether sabr model has been built
+    modified = models.BooleanField(default=False)
+    aborted = models.BooleanField(default=False)
     slug = models.SlugField()
-    saved_phonemes = models.CharField(max_length=1000)  # phonemes which are saved
+    saved_phonemes = models.CharField(max_length=1000, default='[""]')  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model
     pitch_path = models.CharField(max_length=128)  # path to pitch recording file
 
@@ -95,9 +95,9 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     contained_utterance = models.ManyToManyField(Utterance)
     timestamp = models.CharField(max_length=128)
     status = models.CharField(max_length=128)
-    aborted = models.BooleanField()
-    tempo_scale = models.FloatField()
-    select_phoneme_groups = models.CharField(max_length=1000)
+    aborted = models.BooleanField(default=False)
+    tempo_scale = models.FloatField(default=0.0)
+    select_phoneme_groups = models.CharField(max_length=1000, default='[""]')
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)
