@@ -280,6 +280,7 @@ def record(request, phoneme):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    display = anchor_set.display
     saved_phonemes = anchor_set.get_saved_phonemes()
     json_saved_phoneme = json.dumps(saved_phonemes)
     num_phoneme = 71
@@ -313,16 +314,31 @@ def record(request, phoneme):
             recording_blob = recording_file.read()
         recording_base64 = base64.b64encode(recording_blob)
         json_record_details = json.dumps([anchor.L, anchor.R, anchor.C, recording_base64])
-        context_dict = {'name': username, 'is_login': True,
+        context_dict = {'name': username, 'is_login': True, 'display': display,
                         'phoneme': phoneme, 'record_details': json_record_details,
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
                         'ipas': json_ipas, 'keywords': json_keywords, 'pitch_sentences': json_pitch_sentences}
     else:
-        context_dict = {'name': username, 'is_login': True,
+        context_dict = {'name': username, 'is_login': True, 'display': display,
                         'phoneme': phoneme, 'record_details': "[]",
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
                         'ipas': json_ipas, 'keywords': json_keywords, 'pitch_sentences': json_pitch_sentences}
     return render(request, 'speech/record.html', context_dict)
+
+
+# view for uploading pitch
+@login_required_auth0()
+@ensure_csrf_cookie
+def upload_toggle_phoneme_word(request):
+    if request.method == 'POST':
+        username = request.session['profile']['nickname']
+        user = User.objects.get(user_name=username)
+        anchor_set_name_slug = request.session['current_anchorset']
+        current_anchorset = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+        display = request.POST['display']
+        current_anchorset.display = display
+        current_anchorset.save()
+    return HttpResponse('success')
 
 
 # anchor set recording finished, pitch recording page

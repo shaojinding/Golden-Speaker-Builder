@@ -14,12 +14,17 @@
     <div class="progress">
         <div id="record-progress-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
+
+    {% block toggle_block %}
+    {% endblock %}
+
     <!-- tabs to switch between consonents and vowels -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" id="consTab" class="active"><a>Consonants</a></li>
         <li role="presentation" id="vowelTab"><a>Vowels</a></li>
         <li role="presentation" id="pitchTab"><a>Pitch Sentences</a></li>
     </ul>
+
     <!-- consonent table -->
     <div id="consTable">
         <table class="table table-bordered">
@@ -42,7 +47,8 @@
                 <th rowspan="6">OBSTRUENTS</th>
                 <th rowspan="2" colspan="2">Stop</th>
                 <th>Unvoiced</th>
-                <td><button type="button" id="P" class="phoneme btn btn-xs btn-default">p</button></td>
+                <td><button type="button" id="P" class="phoneme btn btn-xs btn-default">p</button>
+                </td>
                 <td></td>
                 <td></td>
                 <td><button type="button" id="T" class="phoneme btn btn-xs btn-default">t</button></td>

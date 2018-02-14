@@ -13,7 +13,10 @@
 
 {% block css %}
     <link type="text/css" rel="stylesheet" href="{% static "css/record.css" %}"/>
+{#    <link href="{% static "bootstrap-4.0.0/dist/css/bootstrap.min.css" %}" rel="stylesheet">#}
+    {#    <link href="{% static "bootstrap-toggle/css/bootstrap-toggle.min.css" %}" rel="stylesheet">#}
     <script src="{% static "js/jquery.js" %}"></script>
+    {#    <script src="{% static "bootstrap-toggle/js/bootstrap-toggle.min.js" %}"></script>#}
     <script src="{% static "js/record.js" %}"></script>
     <script src="{% static "js/recorder/recorder.js" %}"></script>
     <script src="{% static "js/recorder/main.js" %}"></script>
@@ -22,23 +25,37 @@
     <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+{#    <script src="{% static "bootstrap-4.0.0/dist/js/bootstrap.min.js" %}"></script>#}
+
     <script type="text/javascript">
+        Display = "{{ display }}";
         Ipas = {{ ipas|safe }};
         Keywords = {{ keywords|safe }};
-        pitchSentences = {{ pitch_sentences|safe }}
+        pitchSentences = {{ pitch_sentences|safe }};
         currentPhoneme = "{{ phoneme }}";
         savedPhoneme = {{ saved_phoneme|safe }};
         record_details = {{ record_details|safe }};
     </script>
 {% endblock %}
 
+{% block toggle_block %}
+    <div id="toggle-phoneme-word" class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label id="option-phoneme-label" class="btn btn-primary active">
+            <input type="radio" name="toggle-phoneme-word-options" id="option-phoneme" autocomplete="off" value="Phoneme"> Phoneme
+        </label>
+        <label id="option-word-label" class="btn btn-primary">
+            <input type="radio" name="toggle-phoneme-word-options" id="option-word" value="Word" autocomplete="off"> Word
+        </label>
+    </div>
+{% endblock %}
+
 {% block button_block %}
     {% if completed %}
         <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/build_sabr_model'">Finish</button>
-{#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
+        {#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
     {% else %}
         <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/build_sabr_model'">Finish</button>
-{#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
+        {#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
     {% endif %}
 {% endblock %}
 

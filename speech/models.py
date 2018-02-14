@@ -21,6 +21,7 @@ class AnchorSet(models.Model):
     built = models.CharField(max_length=128, default='False')  # whether sabr model has been built
     modified = models.BooleanField(default=False)
     aborted = models.BooleanField(default=False)
+    display = models.CharField(max_length=128, default='Phoneme')
     slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=1000, default='[""]')  # phonemes which are saved
     sabr_model_path = models.CharField(max_length=128)  # path to sabr model

@@ -16,7 +16,8 @@ var wavesurferWidth = null;
 var saveSuccess = false;
 var savedPhonemeCount = 0;
 var numPhoneme = 71; // add 31 pitch utterences
-var consArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y']
+var Phonemes = ['P', 'B', 'T', 'D', 'K', 'G', 'M', 'N', 'NG', 'F', 'V', 'TH', 'DH', 'S', 'Z', 'SH', 'ZH', 'HH', 'L', 'R', 'W', 'Y', 'CH', 'JH', 'IY', 'IH', 'EY', 'EH', 'AE', 'AH', 'AO', 'AX', 'UH', 'UW', 'AY', 'AW', 'OY', 'OW', 'AA', 'ER'];
+var consArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y'];
 var vowArray = ['IY', 'UW', 'IH', 'UH', 'EY', 'OW', 'EH', 'AH', 'AE', 'AA', 'OY', 'AY', 'AO', 'AW', 'AX', 'ER'];
 var pitchArray = ['pitchSentence1A', 'pitchSentence1B', 'pitchSentence2A', 'pitchSentence2B', 'pitchSentence3A', 'pitchSentence3B',
     'pitchSentence4A', 'pitchSentence4B', 'pitchSentence5A', 'pitchSentence5B',
@@ -38,11 +39,34 @@ var center = 0;
 var timerSeconds = 180.0;
 var currentSecond = 0.0;
 var handlerSetTimeout = null;
+var Display = null;
 //var recordingInterval = null;
 $(document).ready( function() {
     var finishPercent = savedPhoneme.length / numPhoneme;
     $("#record-progress-bar").css('width', (finishPercent * 100).toString() + "%");
     $("#record-progress-bar").text(Math.round(finishPercent * 100).toString() + "%");
+
+    if (Display == "Phoneme") {
+        for (var i = 0; i < Phonemes.length; i++) {
+            var p = Phonemes[i];
+            var ipa = Ipas[Phonemes.indexOf(p)];
+            $("#{0}".replace("{0}", p)).html(ipa);
+            $("#{0}".replace("{0}", p)).css('width', '30px');
+        }
+        document.getElementById("option-phoneme-label").className = 'btn btn-primary active';
+        document.getElementById("option-word-label").className = 'btn btn-primary';
+    }
+    else if (Display == "Word") {
+        for (var i = 0; i < Phonemes.length; i++) {
+            var p = Phonemes[i];
+            var kw = Keywords[Phonemes.indexOf(p)];
+            $("#{0}".replace("{0}", p)).html(kw);
+            $("#{0}".replace("{0}", p)).css('width', '50px');
+        }
+        document.getElementById("option-phoneme-label").className = 'btn btn-primary';
+        document.getElementById("option-word-label").className = 'btn btn-primary active';
+    }
+
     if (currentPhoneme == "index") {
         $("#consTable").css("display", "block");
         $("#SoundRecorder").hide();
@@ -63,10 +87,11 @@ $(document).ready( function() {
         }
         else {
             $("#Passage").hide();
-            var cp = $("#{0}".replace("{0}", currentPhoneme)).text();
+            // var cp = $("#{0}".replace("{0}", currentPhoneme)).text();
             // $("#phoneme-info").html("Phoneme: {0}".replace("{0}", cp));
-            $("#phoneme-info").html("{0}".replace("{0}", cp));
-            var keyword = Keywords[Ipas.indexOf(cp)];
+            var ipa = Ipas[Phonemes.indexOf(currentPhoneme)];
+            $("#phoneme-info").html("{0}".replace("{0}", ipa));
+            var keyword = Keywords[Phonemes.indexOf(currentPhoneme)];
             $("#word-info").html("{0}".replace("{0}", keyword));
             // $("#word-info").html("Key word: {0}".replace("{0}", keyword));
             window.scrollTo(0,document.body.scrollHeight);
@@ -116,6 +141,47 @@ $(document).ready( function() {
     //     $(this).addClass("active");
     //     $("#consTab").removeClass("active");
     // }
+
+    $('input[type=radio][name=toggle-phoneme-word-options]').change(function() {
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        var fd = new FormData();
+        if (this.value == 'Word') {
+            fd.append('display', 'Word');
+            for (var i = 0; i < Phonemes.length; i++) {
+                var p = Phonemes[i];
+                var kw = Keywords[Phonemes.indexOf(p)];
+                $("#{0}".replace("{0}", p)).html(kw);
+                $("#{0}".replace("{0}", p)).css('width', '50px');
+            }
+        }
+        else if (this.value == 'Phoneme') {
+            fd.append('display', 'Phoneme');
+            for (var i = 0; i < Phonemes.length; i++) {
+                var p = Phonemes[i];
+                var ipa = Ipas[Phonemes.indexOf(p)];
+                $("#{0}".replace("{0}", p)).html(ipa);
+                $("#{0}".replace("{0}", p)).css('width', '30px');
+            }
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/speech/upload_toggle_phoneme_word/',
+            data: fd,
+            processData: false,
+            contentType: false
+        }).done(function () {
+
+
+        });
+    });
+
     wavesurfer = WaveSurfer.create({
         container: '#wavesurf',
         waveColor: 'violet',
@@ -169,7 +235,6 @@ $(document).ready( function() {
         });
 
     }
-
 
     // wavesurfer.load("/static/audio/test.wav");
     wavesurfer.on('ready', function () {
