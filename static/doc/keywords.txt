@@ -1,40 +1,40 @@
-p poke
-b boat
-t tea
-d deep
-k keep
-ɡ gas
-m make
-n no
-ŋ sing
-f feed
-v vote
-θ think
-ð these
-s see
-z zoo
-ʃ sheep
-ʒ vision
-h heat
-l leads
-ɹ reads
-w weeds
-j yes
-tʃ cheat
-dʒ jeep
-i east
-ɪ if
-eɪ ace
-ɛ "s"
-æ ash
-ʌ us
-ɔ horse
-ə sofa
-ʊ push
-u boot
-aɪ ice
-aʊ ouch
-ɔɪ toy
-oʊ oh
-ɑ father
-ɝ earth
+p poke peace pay pick pit
+b boat bee boot bottle buy
+t tea test take too time
+d deep do day dime door
+k keep come kick key comma
+ɡ gas go guy guess again
+m make man lamb come my
+n no next neat now nut
+ŋ sing thing wrong lung rang
+f feed face feast life fist
+v vote very vine vest van
+θ think both thank path thin
+ð these they smooth then those
+s see sip sell send say
+z zoo lose zero zipper zone
+ʃ sheep sugar shy shell wash
+ʒ vision pleasure usually garage beige
+h heat high hot hill hope
+l leads letter last light lucky
+ɹ reads red right rest rope
+w weeds went want woe why
+j yes yellow you yawn young
+tʃ cheat chew chocolate cheek chai
+dʒ jeep jet jello joke joy
+i east see sheep feast seat
+ɪ if sift sister ship fist
+eɪ ace safe say face stay
+ɛ "s" set festival step chef
+æ ash sat has shaft ask
+ʌ us supper shut touch hut
+ɔ horse four force short sore
+ə sofa around about uhh cola
+ʊ push sugar should foot stood
+u boot soup sue shoe loose
+aɪ ice fight sigh shy high
+aʊ ouch out how south house
+ɔɪ toy toy toy toy toy
+oʊ oh so host those oath
+ɑ father hot shop sock wash
+ɝ earth earn ceertain circus thirsty

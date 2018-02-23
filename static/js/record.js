@@ -59,7 +59,7 @@ $(document).ready( function() {
     else if (Display == "Word") {
         for (var i = 0; i < Phonemes.length; i++) {
             var p = Phonemes[i];
-            var kw = Keywords[Phonemes.indexOf(p)];
+            var kw = Keywords[Phonemes.indexOf(p)][0];
             $("#{0}".replace("{0}", p)).html(kw);
             $("#{0}".replace("{0}", p)).css('width', '50px');
         }
@@ -92,7 +92,11 @@ $(document).ready( function() {
             var ipa = Ipas[Phonemes.indexOf(currentPhoneme)];
             $("#phoneme-info").html("{0}".replace("{0}", ipa));
             var keyword = Keywords[Phonemes.indexOf(currentPhoneme)];
-            $("#word-info").html("{0}".replace("{0}", keyword));
+            $("#word-info1").html("{0}".replace("{0}", keyword[0]));
+            $("#word-info2").html("{0}".replace("{0}", keyword[1]));
+            $("#word-info3").html("{0}".replace("{0}", keyword[2]));
+            $("#word-info4").html("{0}".replace("{0}", keyword[3]));
+            $("#word-info5").html("{0}".replace("{0}", keyword[4]));
             // $("#word-info").html("Key word: {0}".replace("{0}", keyword));
             window.scrollTo(0,document.body.scrollHeight);
         }
@@ -156,7 +160,7 @@ $(document).ready( function() {
             fd.append('display', 'Word');
             for (var i = 0; i < Phonemes.length; i++) {
                 var p = Phonemes[i];
-                var kw = Keywords[Phonemes.indexOf(p)];
+                var kw = Keywords[Phonemes.indexOf(p)[0]];
                 $("#{0}".replace("{0}", p)).html(kw);
                 $("#{0}".replace("{0}", p)).css('width', '50px');
             }

@@ -295,7 +295,7 @@ def record(request, phoneme):
     for line in lines:
         items = line.strip().split(' ')
         ipas.append(items[0])
-        keywords.append(items[1])
+        keywords.append(items[1:])
     json_ipas = json.dumps(ipas)
     json_keywords = json.dumps(keywords)
 
