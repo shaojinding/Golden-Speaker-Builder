@@ -160,7 +160,7 @@ $(document).ready( function() {
             fd.append('display', 'Word');
             for (var i = 0; i < Phonemes.length; i++) {
                 var p = Phonemes[i];
-                var kw = Keywords[Phonemes.indexOf(p)[0]];
+                var kw = Keywords[Phonemes.indexOf(p)][0];
                 $("#{0}".replace("{0}", p)).html(kw);
                 $("#{0}".replace("{0}", p)).css('width', '50px');
             }

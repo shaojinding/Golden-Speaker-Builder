@@ -18,11 +18,23 @@
     <script src="{% static "js/practice.js" %}"></script>
     <script src="{% static "js/recorder/recorder.js" %}"></script>
     <script src="{% static "js/recorder/main.js" %}"></script>
+    <script src="{% static "js/wavesurfer/soundtouch.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>
-    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+
+
+{#    <script src="{% static "js/wavesurfer-soundtouch/soundtouch.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/wavesurfer.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/util.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/webaudio.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/drawer.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/drawer.multicanvas.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/wavesurfer.regions.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/wavesurfer.timeline.js" %}"></script>#}
+{#    <script src="{% static "js/wavesurfer-soundtouch/wavesurfer.microphone.js" %}"></script>#}
     {% if not if_choose %}
         <script type="text/javascript">
             cwd = "{{ cwd }}";
@@ -144,6 +156,8 @@
                     <button id="zoomout-teacher" class="btn btn-default" disabled></button>
                     <a id="download-teacher" class="btn btn-default" disabled></a>
                 </div>
+                <input type="range" min="-30" max="30" value="0" class="slider" id="realtime-tempo-scale-slider">
+                <p>Value: <span id="realtime-tempo-scale-disp"></span></p>
             </div>
         </div>
     {% endif %}

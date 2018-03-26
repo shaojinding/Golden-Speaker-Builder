@@ -24,9 +24,13 @@ var centerTeacher = 0;
 var centerStudent = 0;
 var wavesurferWidth = null;
 var microphone = null;
+var slider = null;
+var disp = null;
+var playbackRate = 1.0;
 $(document).ready( function() {
     if (ifChoose == "False") {
-        wavesurferTeacher = WaveSurfer.create({
+        wavesurferTeacher = Object.create(WaveSurfer);
+        wavesurferTeacher.init({
             container: '#wavesurf-teacher',
             waveColor: 'violet',
             progressColor: 'purple',
@@ -88,6 +92,17 @@ $(document).ready( function() {
             var zoomoutbtn = document.getElementById("zoomout-student");
             zoomoutbtn.disabled = true;
         });
+
+
+        // tempo-scale-slider
+        slider = document.getElementById("realtime-tempo-scale-slider");
+        disp = document.getElementById("realtime-tempo-scale-disp");
+        disp.innerHTML = "{0}%".replace("{0}", slider.value);
+        slider.oninput = function() {
+            disp.innerHTML = "{0}%".replace("{0}", this.value);
+            playbackRate = 1.0 + slider.value / 100;
+            wavesurferTeacher.setPlaybackRate(playbackRate);
+        };
         wavesurferTeacher.on('ready', function () {
             ifTeacherLoad = true;
             wavesurferTeacher.enableDragSelection({
@@ -122,6 +137,60 @@ $(document).ready( function() {
                     zoomoutbtn.disabled = true;
                 }
             });
+            //var playbackRate = 1.0 + slider.value / 100;
+            //wavesurferTeacher.setPlaybackRate(playbackRate);
+            var st = new soundtouch.SoundTouch(wavesurferTeacher.backend.ac.sampleRate);
+            var buffer = wavesurferTeacher.backend.buffer;
+            var channels = buffer.numberOfChannels;
+            var l = buffer.getChannelData(0);
+            var r = channels > 1 ? buffer.getChannelData(1) : l;
+            var length = buffer.length;
+            var seekingPos = null;
+            var seekingDiff = 0;
+
+            var source = {
+                extract: function (target, numFrames, position) {
+                    if (seekingPos != null) {
+                        seekingDiff = seekingPos - position;
+                        seekingPos = null;
+                    }
+
+                    position += seekingDiff;
+
+                    for (var i = 0; i < numFrames; i++) {
+                        target[i * 2] = l[i + position];
+                        target[i * 2 + 1] = r[i + position];
+                    }
+
+                    return Math.min(numFrames, length - position);
+                }
+            };
+
+            var soundtouchNode;
+
+            wavesurferTeacher.on('play', function () {
+                seekingPos = ~~(wavesurferTeacher.backend.getPlayedPercents() * length);
+                //st.tempo = wavesurferTeacher.getPlaybackRate();
+                st.tempo = playbackRate;
+
+                if (st.tempo === 1) {
+                    wavesurferTeacher.backend.disconnectFilters();
+                } else {
+                    if (!soundtouchNode) {
+                        var filter = new soundtouch.SimpleFilter(source, st);
+                        soundtouchNode = soundtouch.getWebAudioNode(wavesurferTeacher.backend.ac, filter);
+                    }
+                    wavesurferTeacher.backend.setFilter(soundtouchNode);
+                }
+            });
+
+            wavesurferTeacher.on('pause', function () {
+                soundtouchNode && soundtouchNode.disconnect();
+            });
+
+            wavesurferTeacher.on('seek', function () {
+                seekingPos = ~~(wavesurfer.backend.getPlayedPercents() * length);
+            });
         });
         // wavesurferTeacher.empty();
         // wavesurferTeacher.on('ready', function () {
@@ -139,7 +208,8 @@ $(document).ready( function() {
         //     });
         // });
 
-        wavesurfer = WaveSurfer.create({
+        wavesurfer = Object.create(WaveSurfer);
+        wavesurfer.init({
             container: '#wavesurf-student',
             waveColor: 'violet',
             progressColor: 'purple',
@@ -147,6 +217,14 @@ $(document).ready( function() {
             autoCenter: false,
             hideScrollbar: true,
         });
+        // wavesurfer = WaveSurfer.create({
+        //     container: '#wavesurf-student',
+        //     waveColor: 'violet',
+        //     progressColor: 'purple',
+        //     height: '150',
+        //     autoCenter: false,
+        //     hideScrollbar: true,
+        // });
         wavesurfer.empty();
         microphone = Object.create(WaveSurfer.Microphone);
         microphone.init({
