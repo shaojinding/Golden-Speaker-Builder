@@ -17,6 +17,8 @@ from django_auth0.auth_decorator import login_required_auth0
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
 
+from pydub import AudioSegment
+
 
 # index page view
 def index(request):
@@ -706,8 +708,28 @@ def practice(request, golden_speaker_name_slug):
         uttrs = Utterance.objects.filter(goldenspeaker=gs)
         for uttr in uttrs:
             uttr_path = 'data/output_wav/{0}/{1}.wav'.format(gs.speaker_name, uttr.name)
-            with open(uttr_path, "rb") as recording_file:
+
+            # read wav file to an audio segment
+            song = AudioSegment.from_wav(uttr_path)
+
+            # create 1 sec of silence audio segment
+            one_sec_segment = AudioSegment.silent(duration=300)  # duration in milliseconds
+
+            # Add above two audio segments
+            final_song = song + one_sec_segment
+
+            # Either save modified audio
+            tmp_path = 'data/tmp/temp.wav'
+            final_song.export(tmp_path, format="wav")
+
+
+
+            with open(tmp_path, "rb") as recording_file:
                 recording_blob = recording_file.read()
+
+
+            # with open(uttr_path, "rb") as recording_file:
+            #     recording_blob = recording_file.read()
             recording_base64 = base64.b64encode(recording_blob)
             uttr_files['{0}_{1}'.format(gs.speaker_name, uttr.name)] = recording_base64
         json_uttr_file = json.dumps(uttr_files)

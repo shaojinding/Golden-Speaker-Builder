@@ -27,6 +27,11 @@ var microphone = null;
 var slider = null;
 var disp = null;
 var playbackRate = 1.0;
+var playbackRateRecord = 1.0;
+var st = null;
+var filter = null;
+var node = null;
+var audioUrl = null;
 $(document).ready( function() {
     if (ifChoose == "False") {
         wavesurferTeacher = Object.create(WaveSurfer);
@@ -101,7 +106,9 @@ $(document).ready( function() {
         slider.oninput = function() {
             disp.innerHTML = "{0}%".replace("{0}", this.value);
             playbackRate = 1.0 + slider.value / 100;
+            playbackRateRecord = playbackRate;
             wavesurferTeacher.setPlaybackRate(playbackRate);
+            // st.tempo = playbackRate;
         };
         wavesurferTeacher.on('ready', function () {
             ifTeacherLoad = true;
@@ -126,6 +133,11 @@ $(document).ready( function() {
                     var zoomoutbtn = document.getElementById("zoomout-teacher");
                     zoomoutbtn.disabled = false;
                 }
+                slider.value = 0.0;
+                playbackRate = 1.0;
+                disp.innerHTML = "disabled when segment selection";
+                wavesurferTeacher.setPlaybackRate(playbackRate);
+                slider.disabled = true;
             });
             wavesurferTeacher.on('region-removed', function () {
                 regionVarTeacher = null;
@@ -136,15 +148,28 @@ $(document).ready( function() {
                     var zoomoutbtn = document.getElementById("zoomout-teacher");
                     zoomoutbtn.disabled = true;
                 }
+                wavesurferTeacher.clearRegions();
+                wavesurferTeacher.disableDragSelection();
+                wavesurferTeacher.backend.disconnectFilters();
+                wavesurferTeacher.empty();
+                wavesurferTeacher.load(audioUrl);
+                playbackRate = playbackRateRecord;
+                slider.value = (playbackRate - 1.0) * 100;
+                disp.innerHTML = "{0}%".replace("{0}", slider.value);
+                wavesurferTeacher.setPlaybackRate(playbackRate);
+                slider.disabled = false;
             });
             //var playbackRate = 1.0 + slider.value / 100;
             //wavesurferTeacher.setPlaybackRate(playbackRate);
-            var st = new soundtouch.SoundTouch(wavesurferTeacher.backend.ac.sampleRate);
+            // wavesurfer.backend.source.loop = false;
+            st = new soundtouch.SoundTouch(wavesurferTeacher.backend.ac.sampleRate);
             var buffer = wavesurferTeacher.backend.buffer;
             var channels = buffer.numberOfChannels;
+            var length = buffer.length;
+            // var numSeg = Math.floor(length / 16384);
+            // var padLength = 16384 * (numSeg + 1);
             var l = buffer.getChannelData(0);
             var r = channels > 1 ? buffer.getChannelData(1) : l;
-            var length = buffer.length;
             var seekingPos = null;
             var seekingDiff = 0;
 
@@ -156,7 +181,9 @@ $(document).ready( function() {
                     }
 
                     position += seekingDiff;
-
+                    // position = seekingPos;
+                    // console.log(seekingDiff);
+                    // console.log(position);
                     for (var i = 0; i < numFrames; i++) {
                         target[i * 2] = l[i + position];
                         target[i * 2 + 1] = r[i + position];
@@ -170,26 +197,38 @@ $(document).ready( function() {
 
             wavesurferTeacher.on('play', function () {
                 seekingPos = ~~(wavesurferTeacher.backend.getPlayedPercents() * length);
-                //st.tempo = wavesurferTeacher.getPlaybackRate();
+                //console.log(seekingPos);
+                // st.tempo = wavesurferTeacher.getPlaybackRate();
                 st.tempo = playbackRate;
 
                 if (st.tempo === 1) {
                     wavesurferTeacher.backend.disconnectFilters();
                 } else {
-                    if (!soundtouchNode) {
-                        var filter = new soundtouch.SimpleFilter(source, st);
-                        soundtouchNode = soundtouch.getWebAudioNode(wavesurferTeacher.backend.ac, filter);
-                    }
+                    var filter = new soundtouch.SimpleFilter(source, st);
+                    soundtouchNode = soundtouch.getWebAudioNode(wavesurferTeacher.backend.ac, filter);
+
                     wavesurferTeacher.backend.setFilter(soundtouchNode);
                 }
             });
 
             wavesurferTeacher.on('pause', function () {
-                soundtouchNode && soundtouchNode.disconnect();
+                //soundtouchNode && soundtouchNode.disconnect();
+                wavesurferTeacher.backend.disconnectFilters();
+            });
+
+            wavesurferTeacher.on('finish', function () {
+                wavesurferTeacher.seekTo(0);
+                //soundtouchNode && soundtouchNode.disconnect();
+                wavesurferTeacher.clearRegions();
+                wavesurferTeacher.disableDragSelection();
+                wavesurferTeacher.backend.disconnectFilters();
+                wavesurferTeacher.empty();
+                wavesurferTeacher.load(audioUrl);
             });
 
             wavesurferTeacher.on('seek', function () {
                 seekingPos = ~~(wavesurfer.backend.getPlayedPercents() * length);
+                //console.log(seekingPos);
             });
         });
         // wavesurferTeacher.empty();
@@ -315,7 +354,7 @@ $(document).ready( function() {
         }
         var audioBase64 = uttrFiles["{0}_{1}".replace("{0}", goldenSpeakerName).replace("{1}", name)];
         var audioBlob = b64toBlob(audioBase64);
-        var audioUrl = window.URL.createObjectURL(audioBlob);
+        audioUrl = window.URL.createObjectURL(audioBlob);
         wavesurferTeacher.load(audioUrl);
         var playbtn = document.getElementById("playPause-teacher");
         playbtn.disabled = false;

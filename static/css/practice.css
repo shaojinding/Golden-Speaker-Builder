@@ -170,3 +170,16 @@ tr {
     background: #4CAF50;
     cursor: pointer;
 }
+
+
+
+.slider:disabled{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #4CAF50;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}

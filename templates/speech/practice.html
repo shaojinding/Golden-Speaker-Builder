@@ -156,8 +156,10 @@
                     <button id="zoomout-teacher" class="btn btn-default" disabled></button>
                     <a id="download-teacher" class="btn btn-default" disabled></a>
                 </div>
-                <input type="range" min="-30" max="30" value="0" class="slider" id="realtime-tempo-scale-slider">
-                <p>Value: <span id="realtime-tempo-scale-disp"></span></p>
+                <div id="time-scaling">
+                    <input type="range" min="-30" max="30" value="0" class="slider" id="realtime-tempo-scale-slider">
+                    <p>Time scaling factor: <span id="realtime-tempo-scale-disp"></span></p>
+                </div>
             </div>
         </div>
     {% endif %}
