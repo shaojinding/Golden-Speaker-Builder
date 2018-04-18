@@ -114,12 +114,12 @@ $(document).ready( function() {
     // });
 
     // tempo-scale-slider
-    slider = document.getElementById("tempo-scale-slider");
-    disp = document.getElementById("tempo-scale-disp");
-    disp.innerHTML = "{0}%".replace("{0}", slider.value);
-    slider.oninput = function() {
-        disp.innerHTML = "{0}%".replace("{0}", this.value);
-    };
+    // slider = document.getElementById("tempo-scale-slider");
+    // disp = document.getElementById("tempo-scale-disp");
+    // disp.innerHTML = "{0}%".replace("{0}", slider.value);
+    // slider.oninput = function() {
+    //     disp.innerHTML = "{0}%".replace("{0}", this.value);
+    // };
     // // phoneme substitution
     // $('#auto-checkboxes').bonsai({
     //     expandAll: true,
@@ -157,7 +157,8 @@ $(document).ready( function() {
                 }
 
             }
-            var tempo_scale = slider.value;
+            //var tempo_scale = slider.value;
+            var tempo_scale = 0.0;
             var csrftoken = getCookie('csrftoken');
 
             $.ajaxSetup({
