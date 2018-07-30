@@ -1,7 +1,3 @@
-[submodule "SABR"]
-	path = SABR
-	url = git@github.tamu.edu:cliberatore/SABR.git
-	branch = service
 [submodule "gsb_sabr_api"]
 	path = gsb_sabr_api
 	url = git@github.tamu.edu:dshj940428/gsb_sabr_api.git
