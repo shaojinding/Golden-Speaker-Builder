@@ -28,9 +28,6 @@
 {#    <script src="{% static "bootstrap-4.0.0/dist/js/bootstrap.min.js" %}"></script>#}
 
     <script type="text/javascript">
-        Display = "{{ display }}";
-        Ipas = {{ ipas|safe }};
-        Keywords = {{ keywords|safe }};
         pitchSentences = {{ pitch_sentences|safe }};
         currentPhoneme = "{{ phoneme }}";
         savedPhoneme = {{ saved_phoneme|safe }};
@@ -38,7 +35,7 @@
     </script>
 {% endblock %}
 
-{% block toggle_block %}
+{% comment %}{% block toggle_block %}
     <div id="toggle-phoneme-word" class="btn-group btn-group-toggle" data-toggle="buttons">
         <label id="option-phoneme-label" class="btn btn-primary active">
             <input type="radio" name="toggle-phoneme-word-options" id="option-phoneme" autocomplete="off" value="Phoneme"> Phoneme
@@ -47,7 +44,7 @@
             <input type="radio" name="toggle-phoneme-word-options" id="option-word" value="Word" autocomplete="off"> Word
         </label>
     </div>
-{% endblock %}
+{% endblock %}{% endcomment %}
 
 {% block button_block %}
     {% if completed %}

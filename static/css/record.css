@@ -6,22 +6,6 @@
     transition: none;
 }​
 
-#consTable {
-	margin-top: 10px;
-	/*width:200px;
-	height:100px;*/
-	/*display: none;*/
-	clear: both;
-	float: left;
-	display: none;
-}
-
-#vowelTable {
-	margin-top: 10px;
-	clear: both;
-	float: left;
-	display: none;
-}
 
 #pitchTable {
 	margin-top: 10px;
@@ -30,7 +14,7 @@
 	/*display: none;*/
 	clear: both;
 	float: left;
-	display: none;
+	display: block;
 }
 
 

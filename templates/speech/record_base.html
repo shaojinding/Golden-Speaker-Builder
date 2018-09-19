@@ -18,250 +18,82 @@
     {% block toggle_block %}
     {% endblock %}
 
-    <!-- tabs to switch between consonents and vowels -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" id="consTab" class="active"><a>Consonants</a></li>
-        <li role="presentation" id="vowelTab"><a>Vowels</a></li>
-        <li role="presentation" id="pitchTab"><a>Pitch Sentences</a></li>
-    </ul>
-
-    <!-- consonent table -->
-    <div id="consTable">
-        <table class="table table-bordered">
-            <tr>
-                <th rowspan="2"></th>
-                <th rowspan="2" colspan="2">MANNER</th>
-                <th rowspan="2">VOICING</th>
-                <th colspan="7">PLACE</th>
-            </tr>
-            <tr>
-                <th>Bilabial</th>
-                <th>Labiodental</th>
-                <th>Interdental</th>
-                <th>Alveolar</th>
-                <th>Palatal</th>
-                <th>Velar</th>
-                <th>Glottal</th>
-            </tr>
-            <tr>
-                <th rowspan="6">OBSTRUENTS</th>
-                <th rowspan="2" colspan="2">Stop</th>
-                <th>Unvoiced</th>
-                <td><button type="button" id="P" class="phoneme btn btn-xs btn-default">p</button>
-                </td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="T" class="phoneme btn btn-xs btn-default">t</button></td>
-                <td></td>
-                <td><button type="button" id="K" class="phoneme btn btn-xs btn-default">k</button></td>
-                <td></td>
-                <!--first row-->
-            </tr>
-            <tr>
-                <th>Voiced</th>
-                <td><button type="button" id="B" class="phoneme btn btn-xs btn-default">b</button></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="D" class="phoneme btn btn-xs btn-default">d</button></td>
-                <td></td>
-                <td><button type="button" id="G" class="phoneme btn btn-xs btn-default">ɡ</button></td>
-                <td></td>
-                <!--Second row-->
-            </tr>
-            <tr>
-                <th rowspan="2" colspan="2">Fricative</th>
-                <th>Unvoiced</th>
-                <td></td>
-                <td><button type="button" id="F" class="phoneme btn btn-xs btn-default">f</button></td>
-                <td><button type="button" id="TH" class="phoneme btn btn-xs btn-default">θ</button></td>
-                <td><button type="button" id="S" class="phoneme btn btn-xs btn-default">s</button></td>
-                <td><button type="button" id="SH" class="phoneme btn btn-xs btn-default">ʃ</button></td>
-                <td></td>
-                <td><button type="button" id="HH" class="phoneme btn btn-xs btn-default">h</button></td>
-                <!--Third row-->
-            </tr>
-            <tr>
-                <th>Voiced</th>
-                <td></td>
-                <td><button type="button" id="V" class="phoneme btn btn-xs btn-default">v</button></td>
-                <td><button type="button" id="DH" class="phoneme btn btn-xs btn-default">ð</button></td>
-                <td><button type="button" id="Z" class="phoneme btn btn-xs btn-default">z</button></td>
-                <td><button type="button" id="ZH" class="phoneme btn btn-xs btn-default">ʒ</button></td>
-                <td></td>
-                <td></td>
-                <!--Fourth row-->
-            </tr>
-            <tr>
-                <th rowspan="2" colspan="2">Affricate</th>
-                <th>Unvoiced</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="CH" class="phoneme btn btn-xs btn-default">tʃ</button></td>
-                <td></td>
-                <td></td>
-                <!--Fifth row-->
-            </tr>
-            <tr>
-                <th>Voiced</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="JH" class="phoneme btn btn-xs btn-default">dʒ</button></td>
-                <td></td>
-                <td></td>
-                <!--Sixth row-->
-            </tr>
-            <tr>
-                <th rowspan="4">SONORANTS</th>
-                <th colspan="2">Nasal</th>
-                <th>Voiced</th>
-                <td><button type="button" id="M" class="phoneme btn btn-xs btn-default">m</button></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="N" class="phoneme btn btn-xs btn-default">n</button></td>
-                <td></td>
-                <td><button type="button" id="NG" class="phoneme btn btn-xs btn-default">ŋ</button></td>
-                <td></td>
-                <!--Seventh row-->
-            </tr>
-            <tr>
-                <th rowspan="2">Liquid</th>
-                <th>Lateral</th>
-                <th>Voiced</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="L" class="phoneme btn btn-xs btn-default">l</button></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <!--Eighth row-->
-            </tr>
-            <tr>
-                <th>Rhotic</th>
-                <th>Voiced</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="R" class="phoneme btn btn-xs btn-default">ɹ</button></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <!--Nineth row-->
-            </tr>
-            <tr>
-                <th colspan="2">Glide</th>
-                <th>Voiced</th>
-                <td><button type="button" id="W" class="phoneme btn btn-xs btn-default">w</button></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="Y" class="phoneme btn btn-xs btn-default">j</button></td>
-                <td></td>
-                <td></td>
-                <!--Nineth row-->
-            </tr>
-        </table>
-    </div>
-    <!-- vowel table -->
-    <div id="vowelTable">
-        <table class="table table-bordered">
-            <tr>
-                <th></th>
-                <th>Front</th>
-                <th></th>
-                <th>Central</th>
-                <th></th>
-                <th>Back</th>
-            </tr>
-            <tr>
-                <th>Close-high</th>
-                <td><button type="button" id="IY" class="phoneme btn btn-xs btn-default">i</button></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" id="UW" class="phoneme btn btn-xs btn-default">u</button></td>
-            </tr>
-            <tr>
-                <th>Close-mid</th>
-                <td></td>
-                <td><button type="button" id="IH" class="phoneme btn btn-xs btn-default">ɪ</button></td>
-                <td></td>
-                <td><button type="button" id="UH" class="phoneme btn btn-xs btn-default">ʊ</button></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th></th>
-                <td><button type="button" id="EY" class="phoneme btn btn-xs btn-default">eɪ</button></td>
-                <td></td>
-                <td><button type="button" id="ER" class="phoneme btn btn-xs btn-default">ɝ</button></td>
-                <td><button type="button" id="AX" class="phoneme btn btn-xs btn-default">ə</button></td>
-                <td><button type="button" id="OW" class="phoneme btn btn-xs btn-default">oʊ</button></td>
-            </tr>
-            <tr>
-                <th>Open-mid</th>
-                <td></td>
-                <td><button type="button" id="EH" class="phoneme btn btn-xs btn-default">ɛ</button></td>
-                <td><button type="button" id="AH" class="phoneme btn btn-xs btn-default">ʌ</button></td>
-                <td><button type="button" id="OY" class="phoneme btn btn-xs btn-default">ɔɪ</button></td>
-                <td><button type="button" id="AO" class="phoneme btn btn-xs btn-default">ɔ</button></td>
-            </tr>
-            <tr>
-                <th>Open-low</th>
-                <td><button type="button" id="AE" class="phoneme btn btn-xs btn-default">æ</button></td>
-                <td><button type="button" id="AY" class="phoneme btn btn-xs btn-default">aɪ</button></td>
-                <td><button type="button" id="AW" class="phoneme btn btn-xs btn-default">aʊ</button></td>
-                <td></td>
-                <td><button type="button" id="AA" class="phoneme btn btn-xs btn-default">ɑ</button></td>
-            </tr>
-        </table>
-    </div>
 
     <!-- pitch table -->
     <div id="pitchTable">
         <table class="table table-bordered">
             <tr>
-                <td><button type="button" id="pitchSentence1A" class="phoneme btn btn-xs btn-default">1A</button></td>
-                <td><button type="button" id="pitchSentence1B" class="phoneme btn btn-xs btn-default">1B</button></td>
-                <td><button type="button" id="pitchSentence2A" class="phoneme btn btn-xs btn-default">2A</button></td>
-                <td><button type="button" id="pitchSentence2B" class="phoneme btn btn-xs btn-default">2B</button></td>
-                <td><button type="button" id="pitchSentence3A" class="phoneme btn btn-xs btn-default">3A</button></td>
-                <td><button type="button" id="pitchSentence3B" class="phoneme btn btn-xs btn-default">3B</button></td>
-                <td><button type="button" id="pitchSentence4A" class="phoneme btn btn-xs btn-default">4A</button></td>
-                <td><button type="button" id="pitchSentence4B" class="phoneme btn btn-xs btn-default">4B</button></td>
-                <td><button type="button" id="pitchSentence5A" class="phoneme btn btn-xs btn-default">5A</button></td>
-                <td><button type="button" id="pitchSentence5B" class="phoneme btn btn-xs btn-default">5B</button></td>
+                <td><button type="button" id="Sentence1" class="phoneme btn btn-xs btn-default">1</button></td>
+                <td><button type="button" id="Sentence2" class="phoneme btn btn-xs btn-default">2</button></td>
+                <td><button type="button" id="Sentence3" class="phoneme btn btn-xs btn-default">3</button></td>
+                <td><button type="button" id="Sentence4" class="phoneme btn btn-xs btn-default">3</button></td>
+                <td><button type="button" id="Sentence5" class="phoneme btn btn-xs btn-default">5</button></td>
+                <td><button type="button" id="Sentence6" class="phoneme btn btn-xs btn-default">6</button></td>
+                <td><button type="button" id="Sentence7" class="phoneme btn btn-xs btn-default">7</button></td>
+                <td><button type="button" id="Sentence8" class="phoneme btn btn-xs btn-default">8</button></td>
+                <td><button type="button" id="Sentence9" class="phoneme btn btn-xs btn-default">9</button></td>
+                <td><button type="button" id="Sentence10" class="phoneme btn btn-xs btn-default">10</button></td>
             </tr>
             <tr>
-                <td><button type="button" id="pitchSentence6A" class="phoneme btn btn-xs btn-default">6A</button></td>
-                <td><button type="button" id="pitchSentence6B" class="phoneme btn btn-xs btn-default">6B</button></td>
-                <td><button type="button" id="pitchSentence7A" class="phoneme btn btn-xs btn-default">7A</button></td>
-                <td><button type="button" id="pitchSentence7B" class="phoneme btn btn-xs btn-default">7B</button></td>
-                <td><button type="button" id="pitchSentence8A" class="phoneme btn btn-xs btn-default">8A</button></td>
-                <td><button type="button" id="pitchSentence8B" class="phoneme btn btn-xs btn-default">8B</button></td>
-                <td><button type="button" id="pitchSentence9A" class="phoneme btn btn-xs btn-default">9A</button></td>
-                <td><button type="button" id="pitchSentence9B" class="phoneme btn btn-xs btn-default">9B</button></td>
-                <td><button type="button" id="pitchSentence10A" class="phoneme btn btn-xs btn-default">10A</button></td>
-                <td><button type="button" id="pitchSentence10B" class="phoneme btn btn-xs btn-default">10B</button></td>
+                <td><button type="button" id="Sentence11" class="phoneme btn btn-xs btn-default">11</button></td>
+                <td><button type="button" id="Sentence12" class="phoneme btn btn-xs btn-default">12</button></td>
+                <td><button type="button" id="Sentence13" class="phoneme btn btn-xs btn-default">13</button></td>
+                <td><button type="button" id="Sentence14" class="phoneme btn btn-xs btn-default">14</button></td>
+                <td><button type="button" id="Sentence15" class="phoneme btn btn-xs btn-default">15</button></td>
+                <td><button type="button" id="Sentence16" class="phoneme btn btn-xs btn-default">16</button></td>
+                <td><button type="button" id="Sentence17" class="phoneme btn btn-xs btn-default">17</button></td>
+                <td><button type="button" id="Sentence18" class="phoneme btn btn-xs btn-default">18</button></td>
+                <td><button type="button" id="Sentence19" class="phoneme btn btn-xs btn-default">19</button></td>
+                <td><button type="button" id="Sentence20" class="phoneme btn btn-xs btn-default">20</button></td>
             </tr>
             <tr>
-                <td><button type="button" id="pitchSentence11A" class="phoneme btn btn-xs btn-default">11A</button></td>
-                <td><button type="button" id="pitchSentence11B" class="phoneme btn btn-xs btn-default">11B</button></td>
-                <td><button type="button" id="pitchSentence12A" class="phoneme btn btn-xs btn-default">12A</button></td>
-                <td><button type="button" id="pitchSentence12B" class="phoneme btn btn-xs btn-default">12B</button></td>
-                <td><button type="button" id="pitchSentence13A" class="phoneme btn btn-xs btn-default">13A</button></td>
-                <td><button type="button" id="pitchSentence13B" class="phoneme btn btn-xs btn-default">13B</button></td>
-                <td><button type="button" id="pitchSentence14A" class="phoneme btn btn-xs btn-default">14A</button></td>
-                <td><button type="button" id="pitchSentence14B" class="phoneme btn btn-xs btn-default">14B</button></td>
-                <td><button type="button" id="pitchSentence15A" class="phoneme btn btn-xs btn-default">15A</button></td>
-                <td><button type="button" id="pitchSentence15B" class="phoneme btn btn-xs btn-default">15B</button></td>
+                <td><button type="button" id="Sentence21" class="phoneme btn btn-xs btn-default">21</button></td>
+                <td><button type="button" id="Sentence22" class="phoneme btn btn-xs btn-default">22</button></td>
+                <td><button type="button" id="Sentence23" class="phoneme btn btn-xs btn-default">23</button></td>
+                <td><button type="button" id="Sentence24" class="phoneme btn btn-xs btn-default">24</button></td>
+                <td><button type="button" id="Sentence25" class="phoneme btn btn-xs btn-default">25</button></td>
+                <td><button type="button" id="Sentence26" class="phoneme btn btn-xs btn-default">26</button></td>
+                <td><button type="button" id="Sentence27" class="phoneme btn btn-xs btn-default">27</button></td>
+                <td><button type="button" id="Sentence28" class="phoneme btn btn-xs btn-default">28</button></td>
+                <td><button type="button" id="Sentence29" class="phoneme btn btn-xs btn-default">29</button></td>
+                <td><button type="button" id="Sentence30" class="phoneme btn btn-xs btn-default">30</button></td>
             </tr>
             <tr>
-                <td><button type="button" id="pitchSentence16" class="phoneme btn btn-xs btn-default">16</button></td>
+                <td><button type="button" id="Sentence31" class="phoneme btn btn-xs btn-default">31</button></td>
+                <td><button type="button" id="Sentence32" class="phoneme btn btn-xs btn-default">32</button></td>
+                <td><button type="button" id="Sentence33" class="phoneme btn btn-xs btn-default">33</button></td>
+                <td><button type="button" id="Sentence34" class="phoneme btn btn-xs btn-default">34</button></td>
+                <td><button type="button" id="Sentence35" class="phoneme btn btn-xs btn-default">35</button></td>
+                <td><button type="button" id="Sentence36" class="phoneme btn btn-xs btn-default">36</button></td>
+                <td><button type="button" id="Sentence37" class="phoneme btn btn-xs btn-default">37</button></td>
+                <td><button type="button" id="Sentence38" class="phoneme btn btn-xs btn-default">38</button></td>
+                <td><button type="button" id="Sentence39" class="phoneme btn btn-xs btn-default">39</button></td>
+                <td><button type="button" id="Sentence40" class="phoneme btn btn-xs btn-default">40</button></td>
             </tr>
+{#            <tr>#}
+{#                <td><button type="button" id="Sentence41" class="phoneme btn btn-xs btn-default">41</button></td>#}
+{#                <td><button type="button" id="Sentence42" class="phoneme btn btn-xs btn-default">42</button></td>#}
+{#                <td><button type="button" id="Sentence43" class="phoneme btn btn-xs btn-default">43</button></td>#}
+{#                <td><button type="button" id="Sentence44" class="phoneme btn btn-xs btn-default">43</button></td>#}
+{#                <td><button type="button" id="Sentence45" class="phoneme btn btn-xs btn-default">45</button></td>#}
+{#                <td><button type="button" id="Sentence46" class="phoneme btn btn-xs btn-default">46</button></td>#}
+{#                <td><button type="button" id="Sentence47" class="phoneme btn btn-xs btn-default">47</button></td>#}
+{#                <td><button type="button" id="Sentence48" class="phoneme btn btn-xs btn-default">48</button></td>#}
+{#                <td><button type="button" id="Sentence49" class="phoneme btn btn-xs btn-default">49</button></td>#}
+{#                <td><button type="button" id="Sentence50" class="phoneme btn btn-xs btn-default">50</button></td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td><button type="button" id="Sentence51" class="phoneme btn btn-xs btn-default">51</button></td>#}
+{#                <td><button type="button" id="Sentence52" class="phoneme btn btn-xs btn-default">52</button></td>#}
+{#                <td><button type="button" id="Sentence53" class="phoneme btn btn-xs btn-default">53</button></td>#}
+{#                <td><button type="button" id="Sentence54" class="phoneme btn btn-xs btn-default">54</button></td>#}
+{#                <td><button type="button" id="Sentence55" class="phoneme btn btn-xs btn-default">55</button></td>#}
+{#                <td><button type="button" id="Sentence56" class="phoneme btn btn-xs btn-default">56</button></td>#}
+{#                <td><button type="button" id="Sentence57" class="phoneme btn btn-xs btn-default">57</button></td>#}
+{#                <td><button type="button" id="Sentence58" class="phoneme btn btn-xs btn-default">58</button></td>#}
+{#                <td><button type="button" id="Sentence59" class="phoneme btn btn-xs btn-default">59</button></td>#}
+{#                <td><button type="button" id="Sentence60" class="phoneme btn btn-xs btn-default">60</button></td>#}
+{#            </tr>#}
         </table>
     </div>
 
