@@ -5,3 +5,6 @@
 [submodule "SABR"]
 	path = SABR
 	url = https://github.tamu.edu/dshj940428/SABR.git
+[submodule "gsb_ppg_gmm_api"]
+	path = gsb_ppg_gmm_api
+	url = https://github.tamu.edu/dshj940428/gsb_ppg_gmm_api.git
