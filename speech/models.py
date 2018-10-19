@@ -24,8 +24,8 @@ class AnchorSet(models.Model):
     display = models.CharField(max_length=128, default='Phoneme')
     slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=1000, default='[""]')  # phonemes which are saved
-    sabr_model_path = models.CharField(max_length=128)  # path to sabr model
-    pitch_path = models.CharField(max_length=128)  # path to pitch recording file
+    wav_file_dir = models.CharField(max_length=128, default='')  # wav file parent directory
+    cached_file_dir = models.CharField(max_length=128, default='')  # cached file parent directory
 
     class Meta:
         unique_together = ('anchor_set_name', 'user')
@@ -42,6 +42,12 @@ class AnchorSet(models.Model):
 
     def get_saved_phonemes(self):  # get saved phonemes to front end
         return json.loads(self.saved_phonemes)
+
+    # def set_cached_file_path(self, x):  # set cached file path
+    #     self.cached_file_path = json.dumps(x)
+    #
+    # def get_cached_file_path(self):  # get cached file path
+    #     return json.loads(self.cached_file_path)
 
 
 class Anchor(models.Model):  # the anchor is determined by both recording and anchor set

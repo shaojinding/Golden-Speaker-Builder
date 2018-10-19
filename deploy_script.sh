@@ -5,5 +5,6 @@ cp -r external/* SABR/toolkits/
 mkdir data
 mkdir data/output_wav
 mkdir data/sabr
+mkdir data/cache
 mkdir data/pitch
 mkdir data/recordings

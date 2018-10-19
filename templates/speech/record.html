@@ -48,10 +48,10 @@
 
 {% block button_block %}
     {% if completed %}
-        <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/build_sabr_model'">Finish</button>
+        <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/cache_utterances'">Finish</button>
         {#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
     {% else %}
-        <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/build_sabr_model'">Finish</button>
+        <button id="build-sabr-btn" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="alert('Your Golden Speaker is being built. Please go to Edit Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/cache_utterances'">Finish</button>
         {#        <button id="btn_next" type="button" class="btn btn-success" style="float: right; clear: both; display: none" onclick="window.location.href='/speech/finish_record_session'">Next</button>#}
     {% endif %}
 {% endblock %}

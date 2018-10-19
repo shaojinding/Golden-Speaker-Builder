@@ -2,7 +2,7 @@ import base64
 import json
 import os
 from copy import deepcopy
-from shutil import copyfile
+from shutil import copyfile, rmtree
 from time import time
 
 import numpy as np
@@ -12,7 +12,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
+# from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
+from gsb_ppg_gmm_api.tasks import data_preprocess
 from django_auth0.auth_decorator import login_required_auth0
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
@@ -100,8 +101,12 @@ def add_anchorset(request):
                 # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
                 anchorset.set_saved_phonemes([])
                 anchorset.save()
-                anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, anchorset.slug)
-                anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, anchorset.slug)
+                anchorset.wav_file_dir = 'data/recordings/{0}_{1}'.format(username, anchorset.slug)
+                if not os.path.exists(anchorset.wav_file_dir):
+                    os.mkdir(anchorset.wav_file_dir)
+                anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, anchorset.slug)
+                if not os.path.exists(anchorset.cached_file_dir):
+                    os.mkdir(anchorset.cached_file_dir)
                 anchorset.save()
                 return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
             except:
@@ -140,18 +145,21 @@ def rename_anchorset(request, anchor_set_name_slug):
                 # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
                 new_anchorset.set_saved_phonemes(anchorset.get_saved_phonemes())
                 new_anchorset.save()
-                new_anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, new_anchorset.slug)
-                new_anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, new_anchorset.slug)
+                new_anchorset.wav_file_dir = 'data/recordings/{0}_{1}'.format(username, new_anchorset.slug)
+                if not os.path.exists(new_anchorset.wav_file_dir):
+                    os.mkdir(new_anchorset.wav_file_dir)
+                    new_anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, new_anchorset.slug)
+                if not os.path.exists(new_anchorset.cached_file_dir):
+                    os.mkdir(new_anchorset.cached_file_dir)
                 new_anchorset.save()
                 copy_anchorset_files(anchorset, new_anchorset, user)
 
                 if 'current_anchorset' in request.session:
                     if request.session['current_anchorset'] == anchorset.slug:
                         del request.session['current_anchorset']
-                if os.path.exists('data/sabr/{0}{1}.mat'.format(username, anchorset.slug)):
-                    os.remove('data/sabr/{0}{1}.mat'.format(username, anchorset.slug))
-                if os.path.exists('data/pitch/{0}{1}.wav'.format(username, anchorset.slug)):
-                    os.remove('data/pitch/{0}{1}.wav'.format(username, anchorset.slug))
+                # remove all the cached files
+                if os.path.exists(anchorset.cached_file_dir):
+                    rmtree(anchorset.cached_file_dir)
                 anchors = Anchor.objects.filter(anchor_set=anchorset)
                 for anchor in anchors:
                     recording = Recording.objects.get(anchor=anchor)
@@ -188,23 +196,27 @@ def copy_anchorset(request, anchor_set_name_slug):
         anchorset_form = AnchorSetForm(data=request.POST)
         if anchorset_form.is_valid():
             # try:
-                new_anchorset = anchorset_form.save(commit=False)
-                new_anchorset.active = False
-                new_anchorset.used = False
-                new_anchorset.completed = anchorset.completed
-                new_anchorset.modified = False
-                new_anchorset.built = anchorset.built
-                new_anchorset.user = user
-                new_anchorset.aborted = anchorset.aborted
-                new_anchorset.timestamp = time()
-                # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
-                new_anchorset.set_saved_phonemes(anchorset.get_saved_phonemes())
-                new_anchorset.save()
-                new_anchorset.sabr_model_path = 'data/sabr/{0}{1}.mat'.format(username, new_anchorset.slug)
-                new_anchorset.pitch_path = 'data/pitch/{0}{1}.wav'.format(username, new_anchorset.slug)
-                new_anchorset.save()
-                copy_anchorset_files(anchorset, new_anchorset, user)
-                return redirect('/speech/manage_anchorset')
+            new_anchorset = anchorset_form.save(commit=False)
+            new_anchorset.active = False
+            new_anchorset.used = False
+            new_anchorset.completed = anchorset.completed
+            new_anchorset.modified = False
+            new_anchorset.built = anchorset.built
+            new_anchorset.user = user
+            new_anchorset.aborted = anchorset.aborted
+            new_anchorset.timestamp = time()
+            # anchorset.timestamp = strftime("%b %d %Y %H:%M:%S", gmtime())
+            new_anchorset.set_saved_phonemes(anchorset.get_saved_phonemes())
+            new_anchorset.save()
+            new_anchorset.wav_file_dir = 'data/recordings/{0}_{1}'.format(username, new_anchorset.slug)
+            if not os.path.exists(new_anchorset.wav_file_dir):
+                os.mkdir(new_anchorset.wav_file_dir)
+                new_anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, new_anchorset.slug)
+            if not os.path.exists(new_anchorset.cached_file_dir):
+                os.mkdir(new_anchorset.cached_file_dir)
+            new_anchorset.save()
+            copy_anchorset_files(anchorset, new_anchorset, user)
+            return redirect('/speech/manage_anchorset')
             # except:
             #     messages.error(request, 'You have had an anchor set with the this name')
             #     anchorset_form = RenameAnchorSetForm()
@@ -222,10 +234,6 @@ def copy_anchorset(request, anchor_set_name_slug):
 
 
 def copy_anchorset_files(old_anchorset, new_anchorset, user):
-    if os.path.exists(old_anchorset.sabr_model_path):
-        copyfile(old_anchorset.sabr_model_path, new_anchorset.sabr_model_path)
-    if os.path.exists(old_anchorset.pitch_path):
-        copyfile(old_anchorset.pitch_path, new_anchorset.pitch_path)
     for anchor in Anchor.objects.filter(anchor_set=old_anchorset):
         new_anchor = deepcopy(anchor)
         new_anchor.pk = None
@@ -238,6 +246,12 @@ def copy_anchorset_files(old_anchorset, new_anchorset, user):
         new_record.id = None
         new_record.anchor = new_anchor
         new_record.record_name = new_anchor.__unicode__()
+        if os.path.exists(record.cached_file_path):
+            cache_filename = os.path.basename(record.cached_file_path)
+            old_cache_path = record.cached_file_path
+            new_cache_path = os.path.join(new_anchorset.cached_file_dir, cache_filename)
+            copyfile(old_cache_path, new_cache_path)
+            new_record.cached_file_path = new_cache_path
         new_record.save()
         old_record_path = "data/recordings/%s.wav" % anchor.__unicode__()
         new_record_path = "data/recordings/%s.wav" % new_anchor.__unicode__()
@@ -253,17 +267,11 @@ def delete_anchorset(request, anchor_set_name_slug):
     if 'current_anchorset' in request.session:
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
-    if os.path.exists('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug)):
-        os.remove('data/sabr/{0}{1}.mat'.format(username, anchor_set_name_slug))
-    if os.path.exists('data/pitch/{0}{1}.wav'.format(username, anchor_set_name_slug)):
-        os.remove('data/pitch/{0}{1}.wav'.format(username, anchor_set_name_slug))
     anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)
-    anchors = Anchor.objects.filter(anchor_set=anchorset)
-    for anchor in anchors:
-        recording = Recording.objects.get(anchor=anchor)
-        record_name = recording.record_name
-        if os.path.exists('data/recordings/{}.wav'.format(record_name)):
-            os.remove('data/recordings/{}.wav'.format(record_name))
+    if os.path.exists(anchorset.cached_file_dir):
+        rmtree(anchorset.cached_file_dir)
+    if os.path.exists(anchorset.wav_file_dir):
+        rmtree(anchorset.wav_file_dir)
     AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user).delete()
     return redirect('/speech/manage_anchorset')
 
@@ -302,7 +310,7 @@ def record(request, phoneme):
         anchor = Anchor.objects.get(anchor_set=anchor_set, phoneme=phoneme)
         recording = Recording.objects.get(anchor=anchor)
         record_name = recording.record_name
-        with open("data/recordings/%s.wav" % record_name, "rb") as recording_file:
+        with open("{0}/{1}.wav".format(anchor_set.wav_file_dir, record_name), "rb") as recording_file:
             recording_blob = recording_file.read()
         recording_base64 = base64.b64encode(recording_blob)
         json_record_details = json.dumps([anchor.L, anchor.R, anchor.C, recording_base64])
@@ -325,7 +333,7 @@ def finish_record_session(request):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    num_phoneme = 71
+    num_phoneme = 40
     if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
         # del request.session['current_anchorset']
         anchor_set.completed = True
@@ -381,7 +389,7 @@ def upload_annotation(request):
                     recording_blob = base64.b64decode(recording_base64)
                     rec = Recording.objects.get(anchor=anc)
                     record_name = rec.record_name
-                    with open("data/recordings/%s.wav" % record_name, "wb") as recording_file:
+                    with open("{0}/{1}.wav".format(current_anchorset.wav_file_dir, record_name), "wb") as recording_file:
                         recording_file.write(recording_blob)
             else:
                 anc = Anchor(anchor_set=current_anchorset, phoneme=phoneme, L=L, R=R, C=C)
@@ -393,7 +401,7 @@ def upload_annotation(request):
                 current_anchorset.save()
                 record_name = anc.__unicode__()
                 recording_blob = base64.b64decode(recording_base64)
-                with open("data/recordings/%s.wav" % record_name, "wb") as recording_file:
+                with open("{0}/{1}.wav".format(current_anchorset.wav_file_dir, record_name), "wb") as recording_file:
                     recording_file.write(recording_blob)
                 rec = Recording(record_name=record_name, phoneme=phoneme, user=user, anchor=anc)
                 rec.save()
@@ -417,6 +425,66 @@ def upload_pitch(request):
         current_anchorset.modified = True
         current_anchorset.save()
     return HttpResponse('sucess')
+
+# view for building sabr model
+@login_required_auth0()
+def cache_utterances(request):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchor_set_name_slug = request.session['current_anchorset']
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    num_phoneme = 40
+    if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
+        # del request.session['current_anchorset']
+        anchor_set.completed = True
+        # anchor_set.aborted = False
+        anchor_set.save()
+    else:
+        messages.add_message(request, messages.INFO,
+                             'You did not finish recording '
+                             'all anchor sets, please finish them first.')
+        return redirect('/speech/record/index')
+    if anchor_set.built == 'Built' and not anchor_set.modified:
+        return redirect('/speech')
+    anchor_set.built = 'In processing'
+    anchor_set.modified = False
+    anchor_set.save()
+    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
+    audio_paths = []
+    left = []
+    right = []
+    output_mat_path = anchor_set.cached_file_dir
+    for anchor in anchors:
+        recording = Recording.objects.get(anchor=anchor)
+        audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
+        left.append(anchor.L)
+        right.append(anchor.R)
+    # build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+    return redirect('/speech')
+
+# view for building sabr model
+@login_required_auth0()
+def re_cache_utterances(request, anchor_set_name_slug):
+    username = request.session['profile']['nickname']
+    user = User.objects.get(user_name=username)
+    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
+    anchor_set.built = 'In processing'
+    anchor_set.modified = False
+    anchor_set.save()
+    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
+    audio_paths = []
+    left = []
+    right = []
+    output_mat_path = anchor_set.sabr_model_path
+    for anchor in anchors:
+        recording = Recording.objects.get(anchor=anchor)
+        audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
+        left.append(anchor.L)
+        right.append(anchor.R)
+    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+    return redirect('/speech/manage_anchorset/')
+
 
 
 # view for building sabr model
