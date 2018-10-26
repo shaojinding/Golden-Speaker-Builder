@@ -13,7 +13,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 # from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
-from gsb_ppg_gmm_api.tasks import data_preprocess
+from gsb_ppg_gmm_api.tasks import data_preprocess, build_pitch_model
 from django_auth0.auth_decorator import login_required_auth0
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
@@ -107,6 +107,7 @@ def add_anchorset(request):
                 anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, anchorset.slug)
                 if not os.path.exists(anchorset.cached_file_dir):
                     os.mkdir(anchorset.cached_file_dir)
+                anchorset.pitch_model_dir = 'data/pitch_model/{0}_{1}'.format(username, anchorset.slug)
                 anchorset.save()
                 return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
             except:
@@ -151,12 +152,17 @@ def rename_anchorset(request, anchor_set_name_slug):
                     new_anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, new_anchorset.slug)
                 if not os.path.exists(new_anchorset.cached_file_dir):
                     os.mkdir(new_anchorset.cached_file_dir)
+                anchorset.pitch_model_dir = 'data/pitch_model/{0}_{1}'.format(username, new_anchorset.slug)
                 new_anchorset.save()
                 copy_anchorset_files(anchorset, new_anchorset, user)
 
+                # remove files in the old anchorset
                 if 'current_anchorset' in request.session:
                     if request.session['current_anchorset'] == anchorset.slug:
                         del request.session['current_anchorset']
+                # remove pitch model
+                if os.path.exists(anchorset.pitch_model_dir):
+                    os.remove(anchorset.pitch_model_dir)
                 # remove all the cached files
                 if os.path.exists(anchorset.cached_file_dir):
                     rmtree(anchorset.cached_file_dir)
@@ -214,6 +220,7 @@ def copy_anchorset(request, anchor_set_name_slug):
                 new_anchorset.cached_file_dir = 'data/cache/{0}_{1}'.format(username, new_anchorset.slug)
             if not os.path.exists(new_anchorset.cached_file_dir):
                 os.mkdir(new_anchorset.cached_file_dir)
+                new_anchorset.pitch_model_dir = 'data/pitch_model/{0}_{1}'.format(username, new_anchorset.slug)
             new_anchorset.save()
             copy_anchorset_files(anchorset, new_anchorset, user)
             return redirect('/speech/manage_anchorset')
@@ -234,6 +241,8 @@ def copy_anchorset(request, anchor_set_name_slug):
 
 
 def copy_anchorset_files(old_anchorset, new_anchorset, user):
+    # Copy pitch model file
+    copyfile(old_anchorset.pitch_model_dir, new_anchorset.pitch_model_dir)
     for anchor in Anchor.objects.filter(anchor_set=old_anchorset):
         new_anchor = deepcopy(anchor)
         new_anchor.pk = None
@@ -268,6 +277,8 @@ def delete_anchorset(request, anchor_set_name_slug):
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
     anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)
+    if os.path.exists(anchorset.pitch_model_dir):
+        os.remove(anchorset.pitch_model_dir)
     if os.path.exists(anchorset.cached_file_dir):
         rmtree(anchorset.cached_file_dir)
     if os.path.exists(anchorset.wav_file_dir):
@@ -453,14 +464,20 @@ def cache_utterances(request):
     audio_paths = []
     left = []
     right = []
+    cached_file_paths = []
     output_mat_path = anchor_set.cached_file_dir
     for anchor in anchors:
         recording = Recording.objects.get(anchor=anchor)
         audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
+        cached_file_paths.append("{0}/{1}.mat".format(anchor_set.cached_file_dir, recording.record_name))
         left.append(anchor.L)
         right.append(anchor.R)
     # build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
     data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+
+    # Build pitch model
+    output_pitch_model_path = anchorset.pitch_model_path
+    build_pitch_model(username, anchor_set_name_slug, cached_file_paths, output_pitch_model_path)
     return redirect('/speech')
 
 # view for building sabr model
