@@ -110,7 +110,7 @@
 
     </div>
 
-    <div id="phoneme-substitution-block" style="display: none">
+    {% comment %}<div id="phoneme-substitution-block" style="display: none">
         <div class="panel panel-default" id="phoneme-substitution-div">
             <div class="panel-heading">
                 <h3 class="panel-title">4. Select phonemes to be substituted by teacher's anchors</h3>
@@ -242,81 +242,10 @@
             </div>
         </div>
 
-    </div>
-
-{% comment %}    <div id="phoneme-substitution-block" style="display: none">
-        <div class="panel panel-default" id="phoneme-substitution-div">
-            <div class="panel-heading">
-                <h3 class="panel-title">4. Select phonemes to be substituted by teacher's anchors</h3>
-            </div>
-            <div class="panel-body">
-                <p>Please select the phonemes which you want to substituted by teacher's anchors.</p>
-                <ol id="auto-checkboxes" data-name="all">
-                    <li data-value="0">
-                        All
-                        <ol data-name="vowel-cons">
-                            <li data-value="1">
-                                Vowels
-                                <ol data-name="vowel-cate">
-                                    <li id="monophthong" data-value="2">
-                                        Monophthongs
-                                    </li>
-                                    <li id="diphthong" data-value="3">
-                                        Diphthongs
-                                    </li>
-                                </ol>
-                            </li>
-                            <li>
-                                Consonants
-                                <ol data-name="cons-vuv">
-                                    <li data-value="4">
-                                        Voiced
-                                        <ol data-name="voiced-cons-cate">
-                                            <li id="stop-v" data-value="5">
-                                                Stops
-                                            </li>
-                                            <li id="fricative-v" data-value="6">
-                                                Fricatives
-                                            </li>
-                                            <li id="affricate-v" data-value="7">
-                                                Affricates
-                                            </li>
-                                            <li id="nasal" data-value="8">
-                                                Nasals
-                                            </li>
-                                            <li id="liquid" data-value="9">
-                                                Liquids
-                                            </li>
-                                            <li id="glide" data-value="10">
-                                                Glides
-                                            </li>
-                                        </ol>
-                                    </li>
-                                    <li>
-                                        Unvoiced
-                                        <ol data-name="unvoiced-cons-cate">
-                                            <li id="stop-uv" data-value="11">
-                                                Stops
-                                            </li>
-                                            <li id="fricative-uv" data-value="12">
-                                                Fricatives
-                                            </li>
-                                            <li id="affricate-uv" data-value="13">
-                                                Affricates
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-        </div>
-
     </div>{% endcomment %}
 
-    <div id="tempo-scale-block" style="display: none">
+
+{% comment %}    <div id="tempo-scale-block" style="display: none">
 {#        <div class="panel panel-default" id="tempo-scale-div">#}
 {#            <div class="panel-heading">#}
 {#                <h3 class="panel-title">5. Select tempo</h3>#}
@@ -331,6 +260,10 @@
         <div id="operation-div" style="margin-bottom: 20px">
             <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
         </div>
+    </div>{% endcomment %}
+
+    <div id="operation-div" style="margin-bottom: 20px; display: none">
+        <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
     </div>
 
 

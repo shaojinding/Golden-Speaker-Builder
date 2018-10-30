@@ -42,7 +42,6 @@
                 <th>Anchor set name</th>
                 <th>Set up time</th>
                 {#                <th>Active</th>#}
-                <th>Used</th>
                 <th>Completed</th>
                 <th>Build status</th>
                 <th></th>
@@ -57,7 +56,6 @@
                     <td class="time-stamp"></td>
                     {#                    <td>{{ anchorset.timestamp }}</td>#}
                     {#                    <td>{{ anchorset.active }}</td>#}
-                    <td>{{ anchorset.used }}</td>
                     <td>{{ anchorset.completed }}</td>
                     <td>{{ anchorset.built }}</td>
                     {% if anchorset.built == 'In processing' %}

@@ -45,8 +45,9 @@ $(document).ready( function() {
         $(this).addClass('active');
         if (sourceModel != null) {
             getUtterances(audio, source);
-            $("#tempo-scale-block").css("display", "block");
-            $("#phoneme-substitution-block").css("display", "block");
+            $("#operation-div").css("display", "block");
+            // $("#tempo-scale-block").css("display", "block");
+            // $("#phoneme-substitution-block").css("display", "block");
         }
     });
     // $("body").on('click', 'a.utterance-item', function() {

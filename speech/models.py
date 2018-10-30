@@ -16,7 +16,6 @@ class AnchorSet(models.Model):
     user = models.ForeignKey(User)
     timestamp = models.CharField(max_length=128)  # set up time
     active = models.BooleanField(default=False)  # whether the anchor set is active (in using)
-    used = models.BooleanField(default=False)  # whether the anchor set has been used
     completed = models.BooleanField(default=False)  # whether all anchors are recorded
     built = models.CharField(max_length=128, default='False')  # whether sabr model has been built
     pitch_model_built = models.CharField(max_length=128, default='False')
@@ -27,7 +26,7 @@ class AnchorSet(models.Model):
     saved_phonemes = models.CharField(max_length=1000, default='[""]')  # phonemes which are saved
     wav_file_dir = models.CharField(max_length=128, default='')  # wav file parent directory
     cached_file_dir = models.CharField(max_length=128, default='')  # cached file parent directory
-    pitch_model_dir = models.CharField(max_length=128, default='')
+    cached_file_paths = models.CharField(max_length=4000, default='[""]')
 
     class Meta:
         unique_together = ('anchor_set_name', 'user')
@@ -45,11 +44,11 @@ class AnchorSet(models.Model):
     def get_saved_phonemes(self):  # get saved phonemes to front end
         return json.loads(self.saved_phonemes)
 
-    # def set_cached_file_path(self, x):  # set cached file path
-    #     self.cached_file_path = json.dumps(x)
-    #
-    # def get_cached_file_path(self):  # get cached file path
-    #     return json.loads(self.cached_file_path)
+    def set_cached_file_paths(self, x):  # set cached file path
+        self.cached_file_paths = json.dumps(x)
+
+    def get_cached_file_paths(self):  # get cached file path
+        return json.loads(self.cached_file_paths)
 
 
 class Anchor(models.Model):  # the anchor is determined by both recording and anchor set
@@ -76,6 +75,8 @@ class Recording(models.Model):
 class SourceModel(models.Model):
     model_name = models.CharField(unique=True, max_length=20)
     slug = models.SlugField(unique=True)
+    cached_file_paths = models.CharField(max_length=4000, default='[""]')
+    pitch_model_dir = models.CharField(max_length=128, default='')
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.model_name)
@@ -83,6 +84,12 @@ class SourceModel(models.Model):
 
     def __unicode__(self):
         return self.model_name
+
+    def set_cached_file_paths(self, x):  # set cached file path
+        self.cached_file_paths = json.dumps(x)
+
+    def get_cached_file_paths(self):  # get cached file path
+        return json.loads(self.cached_file_paths)
 
 
 class Utterance(models.Model):  # the utterance belongs to a source model, and has transcription and name
@@ -105,8 +112,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     timestamp = models.CharField(max_length=128)
     status = models.CharField(max_length=128)
     aborted = models.BooleanField(default=False)
-    tempo_scale = models.FloatField(default=0.0)
-    select_phoneme_groups = models.CharField(max_length=1000, default='[""]')
+    gmm_model_path = models.CharField(max_length=128, default='')
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)
@@ -114,10 +120,4 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
 
     def __unicode__(self):
         return self.speaker_name
-
-    def set_select_phoneme_groups(self, x):  # set saved phonemes from front end
-        self.select_phoneme_groups = json.dumps(x)
-
-    def get_select_phoneme_groups(self):  # get saved phonemes to front end
-        return json.loads(self.select_phoneme_groups)
 

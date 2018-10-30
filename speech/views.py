@@ -13,7 +13,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 # from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
-from gsb_ppg_gmm_api.tasks import data_preprocess, build_pitch_model
+from gsb_ppg_gmm_api.tasks import data_preprocess
 from django_auth0.auth_decorator import login_required_auth0
 from models import User, Recording, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
@@ -91,7 +91,6 @@ def add_anchorset(request):
             try:
                 anchorset = anchorset_form.save(commit=False)
                 anchorset.active = False
-                anchorset.used = False
                 anchorset.completed = False
                 anchorset.modified = False
                 anchorset.built = "False"
@@ -136,7 +135,6 @@ def rename_anchorset(request, anchor_set_name_slug):
             try:
                 new_anchorset = anchorset_form.save(commit=False)
                 new_anchorset.active = False
-                new_anchorset.used = False
                 new_anchorset.completed = anchorset.completed
                 new_anchorset.modified = False
                 new_anchorset.built = anchorset.built
@@ -204,7 +202,6 @@ def copy_anchorset(request, anchor_set_name_slug):
             # try:
             new_anchorset = anchorset_form.save(commit=False)
             new_anchorset.active = False
-            new_anchorset.used = False
             new_anchorset.completed = anchorset.completed
             new_anchorset.modified = False
             new_anchorset.built = anchorset.built
@@ -474,10 +471,6 @@ def cache_utterances(request):
         right.append(anchor.R)
     # build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
     data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
-
-    # Build pitch model
-    output_pitch_model_path = anchorset.pitch_model_path
-    build_pitch_model(username, anchor_set_name_slug, cached_file_paths, output_pitch_model_path)
     return redirect('/speech')
 
 # view for building sabr model
@@ -493,122 +486,16 @@ def re_cache_utterances(request, anchor_set_name_slug):
     audio_paths = []
     left = []
     right = []
+    cached_file_paths = []
     output_mat_path = anchor_set.sabr_model_path
     for anchor in anchors:
         recording = Recording.objects.get(anchor=anchor)
         audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
+        cached_file_paths.append("{0}/{1}.mat".format(anchor_set.cached_file_dir, recording.record_name))
         left.append(anchor.L)
         right.append(anchor.R)
     data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
     return redirect('/speech/manage_anchorset/')
-
-
-
-# view for building sabr model
-@login_required_auth0()
-def build_sabr(request):
-    username = request.session['profile']['nickname']
-    user = User.objects.get(user_name=username)
-    anchor_set_name_slug = request.session['current_anchorset']
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    num_phoneme = 71
-    if len(anchor_set.get_saved_phonemes()) >= num_phoneme:
-        # del request.session['current_anchorset']
-        anchor_set.completed = True
-        # anchor_set.aborted = False
-        anchor_set.save()
-    else:
-        messages.add_message(request, messages.INFO,
-                             'You did not finish recording '
-                             'all anchor sets, please finish them first.')
-        return redirect('/speech/record/index')
-    if anchor_set.built == 'Built' and not anchor_set.modified:
-        return redirect('/speech')
-    anchor_set.built = 'In processing'
-    anchor_set.modified = False
-    anchor_set.save()
-    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
-    audio_paths = []
-    left = []
-    right = []
-    center = []
-    pitch_left = []
-    pitch_right = []
-    pitch_center = []
-    phoneme = []
-    pitch_path = anchor_set.pitch_path
-    raw_pitch_paths = []
-    output_mat_path = anchor_set.sabr_model_path
-    for anchor in anchors:
-        recording = Recording.objects.get(anchor=anchor)
-        if 'pitchSentence' in str(recording.phoneme):
-            raw_pitch_paths.append('data/recordings/{}'.format(recording.record_name))
-            pitch_left.append(anchor.L)
-            pitch_right.append(anchor.R)
-            pitch_center.append(anchor.C)
-        else:
-            audio_paths.append('data/recordings/{}'.format(recording.record_name))
-            phoneme.append(str(recording.phoneme))
-            left.append(anchor.L)
-            right.append(anchor.R)
-            center.append(anchor.C)
-    concat_pitch_utts(raw_pitch_paths, pitch_left, pitch_right, pitch_path)
-    build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
-                                    phoneme, pitch_path, output_mat_path)
-    return redirect('/speech')
-
-
-def concat_pitch_utts(pitch_paths, left, right, output_pitch_path):
-    concat_list = []
-    for i, p in enumerate(pitch_paths):
-        fs, y = scipy.io.wavfile.read(os.path.join(os.getcwd(), p + '.wav'))
-        l = np.int32(np.ceil(left[i] * fs))
-        r = np.int32(np.ceil(right[i] * fs))
-        concat_list.append(y[l: r, :])
-    concat_audio = np.vstack(concat_list)
-    scipy.io.wavfile.write(output_pitch_path, fs, concat_audio)
-
-
-
-# view for building sabr model
-@login_required_auth0()
-def rebuild_sabr(request, anchor_set_name_slug):
-    username = request.session['profile']['nickname']
-    user = User.objects.get(user_name=username)
-    anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    anchor_set.built = 'In processing'
-    anchor_set.modified = False
-    anchor_set.save()
-    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
-    audio_paths = []
-    left = []
-    right = []
-    center = []
-    pitch_left = []
-    pitch_right = []
-    pitch_center = []
-    phoneme = []
-    pitch_path = anchor_set.pitch_path
-    raw_pitch_paths = []
-    output_mat_path = anchor_set.sabr_model_path
-    for anchor in anchors:
-        recording = Recording.objects.get(anchor=anchor)
-        if 'pitchSentence' in str(recording.phoneme):
-            raw_pitch_paths.append('data/recordings/{}'.format(recording.record_name))
-            pitch_left.append(anchor.L)
-            pitch_right.append(anchor.R)
-            pitch_center.append(anchor.C)
-        else:
-            audio_paths.append('data/recordings/{}'.format(recording.record_name))
-            phoneme.append(str(recording.phoneme))
-            left.append(anchor.L)
-            right.append(anchor.R)
-            center.append(anchor.C)
-    concat_pitch_utts(raw_pitch_paths, pitch_left, pitch_right, pitch_path)
-    build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, center,
-                           phoneme, pitch_path, output_mat_path)
-    return redirect('/speech/manage_anchorset/')
-
 
 
 # page to choose source and target anchor set, and choose utterance to be built
@@ -680,24 +567,24 @@ def synthesize(request):
             target_model_name_slug = target_model.slug
             timestamp = str(time())
             gs_name = source_model_name + '-' + target_model_name_slug + '-' + timestamp.replace('.', '-')
+            gmm_model_path = os.path.join('data/gmm_model', '{0}_{1}.mat'.format(source_model_name, target_model_name_slug))
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-                               user=user, timestamp=timestamp, status="Synthesizing", aborted=False, tempo_scale=tempo_scale)
+                               user=user, timestamp=timestamp, status="Synthesizing", aborted=False, gmm_model_path=gmm_model_path)
             # gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
             #                    user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
-            gs.set_select_phoneme_groups(select_phoneme_groups)
             for name in select_names:
                 uttr = Utterance.objects.get(name=name, source_model=source_model)
                 gs.contained_utterance.add(uttr)
             gs.save()
             slug = gs.slug
-            output_wav_folder = 'data/output_wav/' + slug
+            output_wav_folder = os.path.join('data/output_wav', slug)
             if not os.path.exists(output_wav_folder):
                 os.mkdir(output_wav_folder)
-            output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
-            source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
-            target_model_path = target_model.sabr_model_path
-            utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
+            output_wav_path = [os.path.join(output_wav_folder, '{}.wav'.format(u)) for u in select_names]
+            source_utt_paths = source_model.get_cached_file_paths()
+            target_utt_paths = target_model.get_cached_file_paths()
+            utterance_paths = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
             #print utterance_path[0]
             #print utterance_path[1]
             synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path, tempo_scale, select_phoneme_groups)
