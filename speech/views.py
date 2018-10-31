@@ -461,16 +461,15 @@ def cache_utterances(request):
     audio_paths = []
     left = []
     right = []
-    cached_file_paths = []
     output_mat_path = anchor_set.cached_file_dir
+    pitch_model_path = anchor_set.pitch_model_dir
     for anchor in anchors:
         recording = Recording.objects.get(anchor=anchor)
         audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
-        cached_file_paths.append("{0}/{1}.mat".format(anchor_set.cached_file_dir, recording.record_name))
         left.append(anchor.L)
         right.append(anchor.R)
     # build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
-    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path, pitch_model_path)
     return redirect('/speech')
 
 # view for building sabr model
@@ -556,12 +555,9 @@ def synthesize(request):
         select_weeks_string = request.POST['select_weeks']
         source_model_name = request.POST['source_model']
         target_model_name = request.POST['target_model']
-        tempo_scale = float(request.POST['tempo_scale'])
-        select_phoneme_groups_string = request.POST['select_phoneme_groups']
         if select_names_string and source_model_name and target_model_name:
             select_names = select_names_string.strip().split(',')
             select_weeks = select_weeks_string.strip().split(',')
-            select_phoneme_groups = select_phoneme_groups_string.strip().split(',')
             source_model = SourceModel.objects.get(model_name=source_model_name)
             target_model = AnchorSet.objects.get(anchor_set_name=target_model_name, user=user)
             target_model_name_slug = target_model.slug
@@ -570,25 +566,26 @@ def synthesize(request):
             gmm_model_path = os.path.join('data/gmm_model', '{0}_{1}.mat'.format(source_model_name, target_model_name_slug))
             gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
                                user=user, timestamp=timestamp, status="Synthesizing", aborted=False, gmm_model_path=gmm_model_path)
-            # gs = GoldenSpeaker(speaker_name=gs_name, source_model=source_model, anchor_set=target_model,
-            #                    user=user, timestamp=strftime("%b %d %Y %H:%M:%S", gmtime()), status="Synthesizing")
             gs.save()
             for name in select_names:
                 uttr = Utterance.objects.get(name=name, source_model=source_model)
                 gs.contained_utterance.add(uttr)
             gs.save()
-            slug = gs.slug
-            output_wav_folder = os.path.join('data/output_wav', slug)
-            if not os.path.exists(output_wav_folder):
-                os.mkdir(output_wav_folder)
-            output_wav_path = [os.path.join(output_wav_folder, '{}.wav'.format(u)) for u in select_names]
+
+            # Prepare inputs to synthesize function
+            utt_paths = [os.path.join('static/ARCTIC', source_model_name, 'test/mat', week, '{}.mat'.format(name))
+                         for name, week in zip(select_names, select_weeks)]
             source_utt_paths = source_model.get_cached_file_paths()
             target_utt_paths = target_model.get_cached_file_paths()
-            utterance_paths = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in zip(select_names, select_weeks)]
-            #print utterance_path[0]
-            #print utterance_path[1]
-            synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path, tempo_scale, select_phoneme_groups)
-            # synthesize_sabr(utterance_path, source_model_path, target_model_path, output_wav_path)
+            src_pitch_model_path = source_model.pitch_model_dir
+            tgt_pitch_model_path = target_model.pitch_model_dir
+            output_wav_folder = os.path.join('data/output_wav', gs.slug)
+            if not os.path.exists(output_wav_folder):
+                os.mkdir(output_wav_folder)
+            output_wav_paths = [os.path.join(output_wav_folder, '{}.wav'.format(name)) for name in select_names]
+            synthesize(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
+                       src_pitch_model_path, tgt_pitch_model_path, output_wav_paths)
+
     return redirect('/speech/practice/index')
 
 

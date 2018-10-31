@@ -18,7 +18,6 @@ class AnchorSet(models.Model):
     active = models.BooleanField(default=False)  # whether the anchor set is active (in using)
     completed = models.BooleanField(default=False)  # whether all anchors are recorded
     built = models.CharField(max_length=128, default='False')  # whether sabr model has been built
-    pitch_model_built = models.CharField(max_length=128, default='False')
     modified = models.BooleanField(default=False)
     aborted = models.BooleanField(default=False)
     display = models.CharField(max_length=128, default='Phoneme')
@@ -27,6 +26,7 @@ class AnchorSet(models.Model):
     wav_file_dir = models.CharField(max_length=128, default='')  # wav file parent directory
     cached_file_dir = models.CharField(max_length=128, default='')  # cached file parent directory
     cached_file_paths = models.CharField(max_length=4000, default='[""]')
+    pitch_model_dir = models.CharField(max_length=128, default='')
 
     class Meta:
         unique_together = ('anchor_set_name', 'user')
