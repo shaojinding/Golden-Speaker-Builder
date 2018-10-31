@@ -582,9 +582,8 @@ def synthesize(request):
             output_wav_folder = os.path.join('data/output_wav', gs.slug)
             if not os.path.exists(output_wav_folder):
                 os.mkdir(output_wav_folder)
-            output_wav_paths = [os.path.join(output_wav_folder, '{}.wav'.format(name)) for name in select_names]
             synthesize(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
-                       src_pitch_model_path, tgt_pitch_model_path, output_wav_paths)
+                       src_pitch_model_path, tgt_pitch_model_path, output_wav_folder)
 
     return redirect('/speech/practice/index')
 
