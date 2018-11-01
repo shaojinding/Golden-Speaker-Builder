@@ -8,10 +8,10 @@ django.setup()
 from speech.models import SourceModel, Utterance
 
 def populate():
-    cbl = add_source_model('cbl')[0]
-    gma = add_source_model('gma')[0]
+    cbl = add_source_model('cbl')
+    gma = add_source_model('gma')
     cache_dir = 'static/ARCTIC'
-    week = 'Fall2018'
+    week = 'Spring2019'
     speakers = {'cbl': cbl, 'gma': gma}
     for speaker in speakers.keys():
         with open('static/ARCTIC/{}/test/prompts.txt'.format(speaker), 'r') as f:
@@ -27,7 +27,13 @@ def add_uttr(name, source_model, trans, week):
     return u
 
 def add_source_model(name):
-    s = SourceModel.objects.get_or_create(model_name=name)
+    s = SourceModel.objects.get_or_create(model_name=name)[0]
+    cache_dir = 'static/ARCTIC'
+    cached_files = sorted(os.listdir('{}/{}/train/mat'.format(cache_dir, name)), key=lambda x: (int(re.sub('\D', '', x)), x))
+    cached_file_paths = [os.path.join('{}/{}/train/mat'.format(cache_dir, name), c) for c in cached_files]
+    s.set_cached_file_paths(cached_file_paths)
+    s.pitch_model_dir = '{}/{}/pitch_model/model.mat'.format(cache_dir, name)
+    s.save()
     return s
 
 # Start execution here!

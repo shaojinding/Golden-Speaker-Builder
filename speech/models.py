@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.template.defaultfilters import slugify
 from django.db import models
 import json
+import os
 
 
 class User(models.Model):
@@ -38,6 +39,21 @@ class AnchorSet(models.Model):
     def __unicode__(self):
         return self.anchor_set_name
 
+    def set_wav_file_dir(self, x):
+        self.wav_file_dir = x
+        if not os.path.exists(self.wav_file_dir):
+            os.makedirs(self.wav_file_dir)
+
+    def set_cached_file_dir(self, x):
+        self.cached_file_dir = x
+        if not os.path.exists(self.cached_file_dir):
+            os.makedirs(self.cached_file_dir)
+
+    def set_pitch_model_dir(self, x):
+        self.pitch_model_dir = x
+        if not os.path.exists(os.path.dirname(self.pitch_model_dir)):
+            os.makedirs(os.path.dirname(self.pitch_model_dir))
+
     def set_saved_phonemes(self, x):  # set saved phonemes from front end
         self.saved_phonemes = json.dumps(x)
 
@@ -53,23 +69,23 @@ class AnchorSet(models.Model):
 
 class Anchor(models.Model):  # the anchor is determined by both recording and anchor set
     anchor_set = models.ForeignKey(AnchorSet)
-    phoneme = models.CharField(max_length=128)
+    record_name = models.CharField(max_length=128, default='')
     L = models.FloatField(default=0.0)
     C = models.FloatField(default=0.0)
     R = models.FloatField(default=0.0)
 
     def __unicode__(self):
-        return '{0}_{1}_{2}'.format(self.anchor_set.user.user_name, self.anchor_set.anchor_set_name, self.phoneme)
-
-
-class Recording(models.Model):
-    record_name = models.CharField(unique=True, max_length=128)
-    phoneme = models.CharField(max_length=128)  # phoneme of the recording
-    user = models.ForeignKey(User)
-    anchor = models.ForeignKey(Anchor)
-
-    def __unicode__(self):
         return self.record_name
+
+
+# class Recording(models.Model):
+#     record_name = models.CharField(unique=True, max_length=128)
+#     phoneme = models.CharField(max_length=128)  # phoneme of the recording
+#     user = models.ForeignKey(User)
+#     anchor = models.ForeignKey(Anchor)
+#
+#     def __unicode__(self):
+#         return self.record_name
 
 
 class SourceModel(models.Model):
