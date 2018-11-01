@@ -13,24 +13,8 @@
 
 {% block css %}
     <link href="{% static "css/build_synthesize.css" %}" rel="stylesheet">
-    {#    <link href="{% static "css/jquery.bonsai.css" %}" rel="stylesheet">#}
-    {#    <script type="text/javascript" src="{% static "js/jquery.js" %}"></script>#}
     <link href="{% static "js/jquery-bonsai/jquery.bonsai.css" %}" rel="stylesheet">
-    {#    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>#}
-    {#    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>#}
-    {#    <!-- Bundled Fancytree core and most extensions: -->#}
-    {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fancytree/2.20.0/jquery.fancytree-all.min.js"></script>#}
-    {#    <script#}
-    {#            src="https://code.jquery.com/jquery-2.0.3.min.js"#}
-    {#            integrity="sha256-sTy1mJ4I/LAjFCCdEB4RAvPSmRCb3CU7YqodohyeOLo="#}
-    {#            crossorigin="anonymous"></script>#}
-    {#    <script src="{% static "js/jquery-bonsai/jquery.bonsai.js" %}"></script>#}
-    {#    <script src="{% static "js/jquery-qubit/jquery.qubit.js" %}"></script>#}
 
-
-
-    {#    <script src="{% static "js/jquery.bonsai.js" %}"></script>#}
-    {#    <script src="{% static "js/jquery.qubit.js" %}"></script>#}
 {% endblock %}
 
 {% block bottom_block %}
@@ -90,183 +74,13 @@
                 </div>
             </div>
         </div>
-        {#        <!-- add and remove buttons -->#}
-        {#        <div id="add-remove-div" style="margin-bottom: 20px">#}
-        {#            <button id="add-utterance" class="btn btn-success" style="margin-right: 20px; margin-left: 20px" disabled>Add &darr;</button>#}
-        {#            <button id="remove-utterance" class="btn btn-danger" disabled>Remove &uarr;</button>#}
-        {#        </div>#}
-        {#        <!-- table to show choosen source utterances -->#}
-        {#        <div class="panel panel-default" id="goldenspeaker-div">#}
-        {#            <div class="panel-heading">#}
-        {#                <h3 class="panel-title">Golden Speaker sentences</h3>#}
-        {#            </div>#}
-        {#            <div class="panel-body">#}
-        {#                <div class="scroll-list-uttr list-group" id="added-utterance-list">#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        <!-- synthesize button -->
 
 
     </div>
-
-    {% comment %}<div id="phoneme-substitution-block" style="display: none">
-        <div class="panel panel-default" id="phoneme-substitution-div">
-            <div class="panel-heading">
-                <h3 class="panel-title">4. Select phonemes to be substituted by teacher's anchors</h3>
-            </div>
-            <div class="panel-body">
-                <p>Please select the phonemes which you want to substituted by teacher's anchors.</p>
-                <ol id="auto-checkboxes" data-name="all">
-                    <li data-value="0">
-                        All
-                        <ol data-name="vowel-cons">
-                            <li data-value="1">
-                                Vowels
-                                <ol data-name="vowel-cate">
-                                    <li id="monophthong" data-value="2">
-                                        Monophthongs
-                                        <ol>
-                                            <li id="IY">i</li>
-                                            <li id="IH">ɪ</li>
-                                            <li id="EY">eɪ</li>
-                                            <li id="EH">ɛ</li>
-                                            <li id="AE">æ</li>
-                                            <li id="AA">ɑ</li>
-                                            <li id="AH">ʌ</li>
-                                            <li id="AX">ə</li>
-                                            <li id="ER">ɝ</li>
-                                            <li id="UW">u</li>
-                                            <li id="UH">ʊ</li>
-                                            <li id="OW">oʊ</li>
-                                            <li id="AO">ɔ</li>
-                                        </ol>
-                                    </li>
-                                    <li id="diphthong" data-value="3">
-                                        Diphthongs
-                                        <ol>
-                                            <li id="AY">aɪ</li>
-                                            <li id="AW">aʊ</li>
-                                            <li id="OY">ɔɪ</li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                            <li>
-                                Consonants
-                                <ol data-name="cons-vuv">
-                                    <li data-value="4">
-                                        Voiced
-                                        <ol data-name="voiced-cons-cate">
-                                            <li id="stop-v" data-value="5">
-                                                Stops
-                                                <ol>
-                                                    <li id="B">b</li>
-                                                    <li id="D">d</li>
-                                                    <li id="G">g</li>
-                                                </ol>
-                                            </li>
-                                            <li id="fricative-v" data-value="6">
-                                                Fricatives
-                                                <ol>
-                                                    <li id="V">v</li>
-                                                    <li id="DH">ð</li>
-                                                    <li id="Z">z</li>
-                                                    <li id="ZH">ʒ</li>
-                                                </ol>
-                                            </li>
-                                            <li id="affricate-v" data-value="7">
-                                                Affricates
-                                                <ol>
-                                                    <li id="JH">dʒ</li>
-                                                </ol>
-                                            </li>
-                                            <li id="nasal" data-value="8">
-                                                Nasals
-                                                <ol>
-                                                    <li id="M">m</li>
-                                                    <li id="N">n</li>
-                                                    <li id="NG">ŋ</li>
-                                                </ol>
-                                            </li>
-                                            <li id="liquid" data-value="9">
-                                                Liquids
-                                                <ol>
-                                                    <li id="L">l</li>
-                                                    <li id="R">ɹ</li>
-                                                </ol>
-                                            </li>
-                                            <li id="glide" data-value="10">
-                                                Glides
-                                                <ol>
-                                                    <li id="W">w</li>
-                                                    <li id="Y">j</li>
-                                                </ol>
-                                            </li>
-                                        </ol>
-                                    </li>
-                                    <li>
-                                        Unvoiced
-                                        <ol data-name="unvoiced-cons-cate">
-                                            <li id="stop-uv" data-value="11">
-                                                Stops
-                                                <ol>
-                                                    <li id="P">p</li>
-                                                    <li id="T">t</li>
-                                                    <li id="K">k</li>
-                                                </ol>
-                                            </li>
-                                            <li id="fricative-uv" data-value="12">
-                                                Fricatives
-                                                <ol>
-                                                    <li id="F">f</li>
-                                                    <li id="TH">θ</li>
-                                                    <li id="S">s</li>
-                                                    <li id="SH">ʃ</li>
-                                                    <li id="HH">h</li>
-                                                </ol>
-                                            </li>
-                                            <li id="affricate-uv" data-value="13">
-                                                Affricates
-                                                <ol>
-                                                    <li id="CH">tʃ</li>
-                                                </ol>
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-    </div>{% endcomment %}
-
-
-{% comment %}    <div id="tempo-scale-block" style="display: none">
-{#        <div class="panel panel-default" id="tempo-scale-div">#}
-{#            <div class="panel-heading">#}
-{#                <h3 class="panel-title">5. Select tempo</h3>#}
-{#            </div>#}
-{#            <div class="panel-body">#}
-{#                <p>Please select the percentage you want to speed up or slow down the Golden Speaker sentences.</p>#}
-{#                <p>A positive value indicate speeding up, and a negative value indicate slowing down.</p>#}
-{#                <input type="range" min="-30" max="30" value="0" class="slider" id="tempo-scale-slider">#}
-{#                <p>Value: <span id="tempo-scale-disp"></span></p>#}
-{#            </div>#}
-{#        </div>#}
-        <div id="operation-div" style="margin-bottom: 20px">
-            <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
-        </div>
-    </div>{% endcomment %}
 
     <div id="operation-div" style="margin-bottom: 20px; display: none">
         <button id="synthesize" class="btn btn-success" style="margin-right: 20px; margin-left: 20px">Synthesize</button>
     </div>
-
-
 
 
     <script src="{% static "js/jquery.js" %}"></script>

@@ -22,7 +22,7 @@ var slider = null;
 var disp = null;
 // var phonemeArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y', 'IY', 'UW', 'IH', 'UH', 'EY', 'OW', 'EH', 'AH', 'AE', 'AA', 'OY', 'AY', 'AO', 'AW', 'AX', 'ER'];
 var phonemeArray = ['AA', 'AE', 'AH', 'AO', 'AW', 'AX', 'AY', 'B',  'CH', 'D','DH', 'EH', 'ER', 'EY', 'F', 'G', 'HH', 'IH', 'IY', 'JH', 'K', 'L', 'M', 'N', 'NG', 'OW', 'OY', 'P', 'R', 'S', 'SH', 'T', 'TH', 'UH', 'UW', 'V', 'W', 'Y', 'Z', 'ZH'];
-var phonemeGroups = ['monophthong', 'diphthong', 'stop-v', 'fricative-v', 'affricate-v', 'nasal', 'liquid', 'glide', 'stop-uv', 'fricative-uv', 'affricate-uv'];
+// var phonemeGroups = ['monophthong', 'diphthong', 'stop-v', 'fricative-v', 'affricate-v', 'nasal', 'liquid', 'glide', 'stop-uv', 'fricative-uv', 'affricate-uv'];
 var selectPhonemeGroups = [];
 // var chosenIndexes = [];
 $(document).ready( function() {
@@ -50,84 +50,6 @@ $(document).ready( function() {
             // $("#phoneme-substitution-block").css("display", "block");
         }
     });
-    // $("body").on('click', 'a.utterance-item', function() {
-    //     $(".utterance-item").removeClass('active');
-    //     // utteranceSelect = $(this).html();
-    //     idxAdd = $(this).index();
-    //     $(this).addClass('active');
-    //     var btnAdd = document.getElementById("add-utterance");
-    //     btnAdd.disabled = false;
-    // });
-    // $("#add-utterance").click(function () {
-    //     //var parent = document.getElementById("utterance-list");
-    //     //var child1 = document.getElementById("utterance-list").firstElementChild;
-    //     // var utterList = document.getElementById("utterance-list");
-    //     var child = document.getElementsByClassName("utterance-item");
-    //     child = child[idxAdd];
-    //     var childText = child.childNodes[1];
-    //     var innerText = childText.data;
-    //     var childIdx = transcriptions.indexOf(innerText);
-    //     selectNames.push(utteranceNames[childIdx]);
-    //     // chosenIndexes.push(idxAdd);
-    //     child.className = 'list-group-item added-utterance-item';
-    //     document.getElementById("added-utterance-list").appendChild(child);
-    //     var btnAdd = document.getElementById("add-utterance");
-    //     btnAdd.disabled = true;
-    //     // parent.removeChild(child);
-    //     // var node = document.createElement("A");
-    //     // var textnode = document.createTextNode(utteranceSelect);
-    //     // node.appendChild(textnode);
-    //     // node.className = 'list-group-item added-utterance-item';
-    //     // document.getElementById("added-utterance-list").appendChild(node);
-    // });
-    // $("body").on('click', 'a.added-utterance-item', function() {
-    //     $(".added-utterance-item").removeClass('active');
-    //     // utteranceAddSelect = $(this).html();
-    //     idxRemove = $(this).index();
-    //     $(this).addClass('active');
-    //     var btnRemove = document.getElementById("remove-utterance");
-    //     btnRemove.disabled = false;
-    // });
-    // $("#remove-utterance").click(function () {
-    //     var child = document.getElementsByClassName("added-utterance-item");
-    //     child = child[idxRemove];
-    //     // var innerText = child.innerText;
-    //     // var childIdx = transcriptions.indexOf(innerText);
-    //     // var removingName = utteranceNames[childIdx];
-    //     selectNames.splice(idxRemove, 1);
-    //     // var removingName = selectNames.pop(idxRemove);
-    //     // var removingIdx = utteranceNames.indexOf(removingName);
-    //     child.className = 'list-group-item utterance-item';
-    //     document.getElementById("utterance-list").appendChild(child);
-    //     // var utterList = document.getElementById("utterance-list");
-    //     // utterList.insertBefore(child, utterList.childNodes[removingIdx + 1]);
-    //     // document.getElementById("utterance-list").appendChild(child);
-    //     var btnRemove = document.getElementById("remove-utterance");
-    //     btnRemove.disabled = true;
-    //     // var parent = document.getElementById("added-utterance-list");
-    //     // var child = document.getElementById("added-utterance-list").firstElementChild;
-    //     // parent.removeChild(child);
-    //     // var node = document.createElement("A");
-    //     // var textnode = document.createTextNode(utteranceSelect);
-    //     // node.appendChild(textnode);
-    //     // node.className = 'list-group-item utterance-item';
-    //     //document.getElementById("utterance-list").insertBefore()
-    // });
-
-    // tempo-scale-slider
-    // slider = document.getElementById("tempo-scale-slider");
-    // disp = document.getElementById("tempo-scale-disp");
-    // disp.innerHTML = "{0}%".replace("{0}", slider.value);
-    // slider.oninput = function() {
-    //     disp.innerHTML = "{0}%".replace("{0}", this.value);
-    // };
-    // // phoneme substitution
-    // $('#auto-checkboxes').bonsai({
-    //     expandAll: true,
-    //     checkboxes: true, // depends on jquery.qubit plugin
-    //     createInputs: 'checkbox' // takes values from data-name and data-value, and data-name is inherited
-    // });
-    // $("#tree").fancytree();
 
     $("#synthesize").click(function () {
         try {
@@ -147,19 +69,6 @@ $(document).ready( function() {
                 selectWeeks.push(weeks[parseInt(checkedValue[i])]);
             }
 
-            // phoneme substitution
-            for (var i = 0; i < phonemeArray.length; i++) {
-                var p = phonemeArray[i];
-                var li = document.getElementById(p);
-                var childrens = li.children;
-                var checkbox = childrens[1];
-                if (checkbox.checked == true) {
-                    selectPhonemeGroups.push(i);
-                }
-
-            }
-            //var tempo_scale = slider.value;
-            var tempo_scale = 0.0;
             var csrftoken = getCookie('csrftoken');
 
             $.ajaxSetup({
@@ -174,8 +83,6 @@ $(document).ready( function() {
             fd.append('source_model', sourceModel);
             fd.append('target_model', targetModel);
             fd.append('select_weeks', selectWeeks);
-            fd.append('tempo_scale', tempo_scale);
-            fd.append('select_phoneme_groups', selectPhonemeGroups);
             $.ajax({
                 type: 'POST',
                 url: '/speech/synthesize/',
@@ -191,37 +98,6 @@ $(document).ready( function() {
             alert("synthesize failed! Please try again.");
         }
 
-
-        // try {
-        //     var checkedValue = $(".utterance-checkbox:checked").map(function(){return $(this).val()}).get();
-        //     var checkedValue1 = checkedValue.map(function () {return parseInt(this)}).get();
-        //     var csrftoken = getCookie('csrftoken');
-        //     selectNames = utteranceNames[checkedValue];
-        //     $.ajaxSetup({
-        //         beforeSend: function (xhr, settings) {
-        //             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-        //                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        //             }
-        //         }
-        //     });
-        //     $("#synthesize-notification").css('display', 'inline-block');
-        //     var fd = new FormData();
-        //     fd.append('select_names', checkedValue);
-        //     fd.append('source_model', sourceModel);
-        //     fd.append('target_model', targetModel);
-        //     $.ajax({
-        //         type: 'POST',
-        //         url: '/speech/synthesize/',
-        //         data: fd,
-        //         processData: false,
-        //         contentType: false
-        //     }).done(function () {
-        //         window.location.href = '/speech/practice/index'
-        //     });
-        // }
-        // catch (e) {
-        //     alert("synthesize failed! Please try again.")
-        // }
     });
 });
 
