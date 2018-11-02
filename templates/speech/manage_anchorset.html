@@ -71,7 +71,7 @@
                         <td class="dropdown">
                             <a href="#" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/rebuild_sabr/{{ anchorset.slug }}'">Rebuild</a></li>
+                                <li><a href="#" onclick="alert('Your Golden Speaker is being built. Please go to Manage Anchor Set to check on the status. Once the building is done, you will be able to build your Golden Speaker');window.location.href='/speech/re_cache_utterances/{{ anchorset.slug }}'">Rebuild</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Danger</li>
                                 <li><a href="#" onclick="if (confirm('Are you sure to delete this anchor set?')) {window.location.href='/speech/delete_anchorset/{{ anchorset.slug }}';} else {}">Delete</a></li>
