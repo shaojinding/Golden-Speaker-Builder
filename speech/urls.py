@@ -14,6 +14,7 @@ urlpatterns = [
         # url(r'^finish_record_session', views.finish_record_session, name="finish_record_session"),
         # url(r'^build_sabr', views.build_sabr, name='build_sabr'),
         url(r'^cache_utterances', views.cache_utterances, name='cache_utterances'),
+        url(r'^re_cache_utterances/(?P<anchor_set_name_slug>[\w\-]+)/', views.re_cache_utterances, name='re_cache_utterances'),
         url(r'^build_synthesize', views.build_synthesize, name='build_synthesize'),
         url(r'^get_utterances', views.get_utterances, name='get_utterances'),
         url(r'^synthesize', views.synthesize, name='synthesize'),

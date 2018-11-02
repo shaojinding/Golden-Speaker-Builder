@@ -443,7 +443,7 @@ def cache_utterances(request):
         left.append(anchor.L)
         right.append(anchor.R)
     # build_sabr_model.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
-    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path, pitch_model_path)
+    data_preprocess.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path, pitch_model_path)
     return redirect('/speech')
 
 # view for building sabr model
@@ -455,19 +455,17 @@ def re_cache_utterances(request, anchor_set_name_slug):
     anchor_set.built = 'In processing'
     anchor_set.modified = False
     anchor_set.save()
-    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('phoneme')
+    anchors = Anchor.objects.filter(anchor_set=anchor_set).order_by('record_name')
     audio_paths = []
     left = []
     right = []
-    cached_file_paths = []
-    output_mat_path = anchor_set.sabr_model_path
+    output_mat_path = anchor_set.cached_file_dir
+    pitch_model_path = anchor_set.pitch_model_dir
     for anchor in anchors:
-        recording = Recording.objects.get(anchor=anchor)
-        audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, recording.record_name))
-        cached_file_paths.append("{0}/{1}.mat".format(anchor_set.cached_file_dir, recording.record_name))
+        audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, anchor.record_name))
         left.append(anchor.L)
         right.append(anchor.R)
-    data_preprocess(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path)
+    data_preprocess.delay(username, anchor_set_name_slug, audio_paths, left, right, output_mat_path, pitch_model_path)
     return redirect('/speech/manage_anchorset/')
 
 
