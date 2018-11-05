@@ -572,27 +572,26 @@ def resynthesize(request, speaker_name_slug):
     username = request.session['profile']['nickname']
     user = User.objects.get(user_name=username)
     gs = GoldenSpeaker.objects.get(user=user, slug=speaker_name_slug)
-    output_wav_folder = 'data/output_wav/' + gs.slug
-    source_model_name = gs.source_model.model_name
+    output_wav_dir = gs.output_wav_dir
+    source_model = gs.source_model
+    source_model_name = source_model.model_name
+    gmm_model_path = gs.gmm_model_path
     gs_name = gs.speaker_name
-    tempo_scale = gs.tempo_scale
-    select_phoneme_groups = gs.get_select_phoneme_groups()
     gs.status = "Synthesizing"
     gs.save()
     target_model = gs.anchor_set
-    target_model_name_slug = target_model.slug
+
     utterances = gs.contained_utterance.all()
     select_names = [u.name for u in utterances]
     select_weeks = [u.week for u in utterances]
-    if not os.path.exists(output_wav_folder):
-        os.mkdir(output_wav_folder)
-    output_wav_path = [output_wav_folder + '/' + u + '.wav' for u in select_names]
-    source_model_path = 'static/ARCTIC/models/' + source_model_name + '.mat'
-    target_model_path = target_model.sabr_model_path
-    utterance_path = ['static/ARCTIC/cache/' + w + '/' + source_model_name + '/' + u + '.mat' for u, w in
-                      zip(select_names, select_weeks)]
-    synthesize_sabr.delay(username, gs_name, target_model_name_slug, utterance_path, source_model_path, target_model_path, output_wav_path, tempo_scale, select_phoneme_groups)
-
+    utt_paths = [os.path.join('static/ARCTIC', source_model_name, 'test/mat', '{}.mat'.format(name))
+                 for name, week in zip(select_names, select_weeks)]
+    source_utt_paths = source_model.get_cached_file_paths()
+    target_utt_paths = target_model.get_cached_file_paths()
+    src_pitch_model_path = source_model.pitch_model_dir
+    tgt_pitch_model_path = target_model.pitch_model_dir
+    gmm_synthesize.delay(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
+                         src_pitch_model_path, tgt_pitch_model_path, output_wav_dir)
     return redirect('/speech/practice/index')
 
 @login_required_auth0()
