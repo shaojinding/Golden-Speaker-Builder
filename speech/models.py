@@ -129,6 +129,7 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
     status = models.CharField(max_length=128)
     aborted = models.BooleanField(default=False)
     gmm_model_path = models.CharField(max_length=128, default='')
+    output_wav_dir = models.CharField(max_length=128, default='')  # cached file parent directory
 
     def save(self, *args, **kwargs):  # slugify before save
         self.slug = slugify(self.speaker_name)
@@ -136,4 +137,9 @@ class GoldenSpeaker(models.Model):  # golden speaker is determined by source mod
 
     def __unicode__(self):
         return self.speaker_name
+
+    def set_output_wav_dir(self, x):
+        self.output_wav_dir = x
+        if not os.path.exists(self.output_wav_dir):
+            os.makedirs(self.output_wav_dir)
 

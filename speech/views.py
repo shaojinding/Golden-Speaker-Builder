@@ -13,7 +13,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 # from gsb_sabr_api.tasks import build_sabr_model, synthesize_sabr
-from gsb_ppg_gmm_api.tasks import data_preprocess
+from gsb_ppg_gmm_api.tasks import data_preprocess, gmm_synthesize
 from django_auth0.auth_decorator import login_required_auth0
 from models import User, AnchorSet, Anchor, SourceModel, Utterance, GoldenSpeaker
 from .forms import AnchorSetForm, RenameAnchorSetForm, InputTempoScaleForm
@@ -548,6 +548,9 @@ def synthesize(request):
                 gs.contained_utterance.add(uttr)
             gs.save()
 
+            output_wav_dir = os.path.join('data/output_wav', username, gs.slug)
+            gs.set_output_wav_dir(output_wav_dir)
+
             # Prepare inputs to synthesize function
             # Remove week temporally since there is no folder for week for now
             utt_paths = [os.path.join('static/ARCTIC', source_model_name, 'test/mat', '{}.mat'.format(name))
@@ -556,11 +559,8 @@ def synthesize(request):
             target_utt_paths = target_model.get_cached_file_paths()
             src_pitch_model_path = source_model.pitch_model_dir
             tgt_pitch_model_path = target_model.pitch_model_dir
-            output_wav_folder = os.path.join('data/output_wav', gs.slug)
-            if not os.path.exists(output_wav_folder):
-                os.mkdir(output_wav_folder)
-            synthesize(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
-                       src_pitch_model_path, tgt_pitch_model_path, output_wav_folder)
+            gmm_synthesize(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
+                       src_pitch_model_path, tgt_pitch_model_path, output_wav_dir)
 
     return redirect('/speech/practice/index')
 
