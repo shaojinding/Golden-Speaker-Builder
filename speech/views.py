@@ -253,7 +253,7 @@ def delete_anchorset(request, anchor_set_name_slug):
     if 'current_anchorset' in request.session:
         if request.session['current_anchorset'] == anchor_set_name_slug:
             del request.session['current_anchorset']
-    anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)
+    anchorset = AnchorSet.objects.filter(slug=anchor_set_name_slug, user=user)[0]
     if os.path.exists(anchorset.pitch_model_dir):
         os.remove(anchorset.pitch_model_dir)
     if os.path.exists(anchorset.cached_file_dir):
