@@ -288,7 +288,7 @@ def record(request, phoneme):
         anchor_set.save()
     completed = anchor_set.completed
 
-    with open('static/doc/pitch.txt', 'r') as pitch_f:
+    with open('static/doc/sentences.txt', 'r') as pitch_f:
         pitch_f = pitch_f.readlines()
     pitch_sentences = []
     for line in pitch_f:
