@@ -240,9 +240,9 @@ def copy_anchorset_files(old_anchorset, new_anchorset, user):
         old_record_path = os.path.join(old_anchorset.wav_file_dir, '{}.wav'.format(anchor.record_name))
         new_record_path = os.path.join(new_anchorset.wav_file_dir, '{}.wav'.format(anchor.record_name))
         copyfile(old_record_path, new_record_path)
-        old_cache_path = os.path.join(old_anchorset.cache_file_dir, '{}.mat'.format(anchor.record_name))
+        old_cache_path = os.path.join(old_anchorset.cached_file_dir, '{}.mat'.format(anchor.record_name))
         if os.path.exists(old_cache_path):
-            new_cache_path = os.path.join(new_anchorset.cache_file_dir, '{}.mat'.format(anchor.record_name))
+            new_cache_path = os.path.join(new_anchorset.cached_file_dir, '{}.mat'.format(anchor.record_name))
             copyfile(old_cache_path, new_cache_path)
 
 
