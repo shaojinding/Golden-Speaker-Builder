@@ -559,7 +559,7 @@ def synthesize(request):
             target_utt_paths = target_model.get_cached_file_paths()
             src_pitch_model_path = source_model.pitch_model_dir
             tgt_pitch_model_path = target_model.pitch_model_dir
-            gmm_synthesize(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
+            gmm_synthesize.delay(username, gs_name, utt_paths, gmm_model_path, source_utt_paths, target_utt_paths,
                        src_pitch_model_path, tgt_pitch_model_path, output_wav_dir)
 
     return redirect('/speech/practice/index')
