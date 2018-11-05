@@ -19,7 +19,7 @@ var numPhoneme = 40; // 40 utterances in total
 // var Phonemes = ['P', 'B', 'T', 'D', 'K', 'G', 'M', 'N', 'NG', 'F', 'V', 'TH', 'DH', 'S', 'Z', 'SH', 'ZH', 'HH', 'L', 'R', 'W', 'Y', 'CH', 'JH', 'IY', 'IH', 'EY', 'EH', 'AE', 'AH', 'AO', 'AX', 'UH', 'UW', 'AY', 'AW', 'OY', 'OW', 'AA', 'ER'];
 // var consArray = ['P', 'T', 'K', 'B', 'D', 'G', 'F', 'TH', 'S', 'SH', 'HH', 'V', 'DH', 'Z', 'ZH', 'CH', 'JH', 'M', 'N', 'NG', 'L', 'R', 'W', 'Y'];
 // var vowArray = ['IY', 'UW', 'IH', 'UH', 'EY', 'OW', 'EH', 'AH', 'AE', 'AA', 'OY', 'AY', 'AO', 'AW', 'AX', 'ER'];
-var pitchArray = ['Sentence1', 'Sentence2', 'Sentence3', 'Sentence4', 'Sentence5', 'Sentence6', 'Sentence7', 'Sentence8', 'Sentence9', 'Sentence10',
+var pitchArray = ['Sentence01', 'Sentence02', 'Sentence03', 'Sentence04', 'Sentence05', 'Sentence06', 'Sentence07', 'Sentence08', 'Sentence09', 'Sentence10',
 'Sentence11', 'Sentence12', 'Sentence13', 'Sentence14', 'Sentence15', 'Sentence16', 'Sentence17', 'Sentence18', 'Sentence19', 'Sentence20',
 'Sentence21', 'Sentence22', 'Sentence23', 'Sentence24', 'Sentence25', 'Sentence26', 'Sentence27', 'Sentence28', 'Sentence29', 'Sentence30',
 'Sentence31', 'Sentence32', 'Sentence33', 'Sentence34', 'Sentence35', 'Sentence36', 'Sentence37', 'Sentence38', 'Sentence39', 'Sentence40'];
