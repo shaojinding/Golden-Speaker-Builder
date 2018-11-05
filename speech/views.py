@@ -550,6 +550,7 @@ def synthesize(request):
 
             output_wav_dir = os.path.join('data/output_wav', username, gs.slug)
             gs.set_output_wav_dir(output_wav_dir)
+            gs.save()
 
             # Prepare inputs to synthesize function
             # Remove week temporally since there is no folder for week for now
@@ -627,7 +628,8 @@ def practice(request, golden_speaker_name_slug):
         gs = GoldenSpeaker.objects.get(slug=golden_speaker_name_slug)
         uttrs = Utterance.objects.filter(goldenspeaker=gs)
         for uttr in uttrs:
-            uttr_path = 'data/output_wav/{0}/{1}.wav'.format(gs.speaker_name, uttr.name)
+            uttr_path = '{0}/{1}.wav'.format(gs.output_wav_dir, uttr.name)
+            # uttr_path = 'data/output_wav/{0}/{1}/{2}.wav'.format(username, gs.speaker_name, uttr.name)
 
             # read wav file to an audio segment
             song = AudioSegment.from_wav(uttr_path)

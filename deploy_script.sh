@@ -12,3 +12,4 @@ mkdir data/cache
 mkdir data/pitch
 mkdir data/recordings
 mkdir data/pitch_model
+mkdir data/tmp
