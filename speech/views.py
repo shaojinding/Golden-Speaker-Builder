@@ -102,7 +102,7 @@ def add_anchorset(request):
                 anchorset.save()
                 anchorset.set_wav_file_dir('data/recordings/{0}/{1}'.format(username, anchorset.slug))
                 anchorset.set_cached_file_dir('data/cache/{0}/{1}'.format(username, anchorset.slug))
-                anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}'.format(username, anchorset.slug))
+                anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}.mat'.format(username, anchorset.slug))
                 anchorset.save()
                 return redirect('/speech/start_record_session/{}'.format(anchorset.slug))
             except:
@@ -204,7 +204,7 @@ def copy_anchorset(request, anchor_set_name_slug):
 
             new_anchorset.set_wav_file_dir('data/recordings/{0}/{1}'.format(username, new_anchorset.slug))
             new_anchorset.set_cached_file_dir('data/cache/{0}/{1}'.format(username, new_anchorset.slug))
-            new_anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}'.format(username, new_anchorset.slug))
+            new_anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}.mat'.format(username, new_anchorset.slug))
 
             new_anchorset.save()
 
@@ -438,6 +438,9 @@ def cache_utterances(request):
     left = []
     right = []
     output_mat_path = anchor_set.cached_file_dir
+    if os.listdir(output_mat_path):
+        rmtree(output_mat_path)
+        os.makedirs(output_mat_path)
     pitch_model_path = anchor_set.pitch_model_dir
     for anchor in anchors:
         audio_paths.append("{0}/{1}.wav".format(anchor_set.wav_file_dir, anchor.record_name))
