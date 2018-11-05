@@ -228,7 +228,8 @@ def copy_anchorset(request, anchor_set_name_slug):
 
 def copy_anchorset_files(old_anchorset, new_anchorset, user):
     # Copy pitch model file
-    copyfile(old_anchorset.pitch_model_dir, new_anchorset.pitch_model_dir)
+    if os.path.exists(old_anchorset.pitch_model_dir):
+        copyfile(old_anchorset.pitch_model_dir, new_anchorset.pitch_model_dir)
     for anchor in Anchor.objects.filter(anchor_set=old_anchorset):
         new_anchor = deepcopy(anchor)
         new_anchor.pk = None
