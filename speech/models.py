@@ -21,7 +21,6 @@ class AnchorSet(models.Model):
     built = models.CharField(max_length=128, default='False')  # whether sabr model has been built
     modified = models.BooleanField(default=False)
     aborted = models.BooleanField(default=False)
-    display = models.CharField(max_length=128, default='Phoneme')
     slug = models.SlugField()
     saved_phonemes = models.CharField(max_length=1000, default='[""]')  # phonemes which are saved
     wav_file_dir = models.CharField(max_length=128, default='')  # wav file parent directory

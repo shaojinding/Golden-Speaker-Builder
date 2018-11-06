@@ -143,6 +143,7 @@ def rename_anchorset(request, anchor_set_name_slug):
 
                 new_anchorset.set_wav_file_dir('data/recordings/{0}/{1}'.format(username, new_anchorset.slug))
                 new_anchorset.set_cached_file_dir('data/cache/{0}/{1}'.format(username, new_anchorset.slug))
+                new_anchorset.cached_file_paths = anchorset.cached_file_paths
                 new_anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}.mat'.format(username, new_anchorset.slug))
 
                 new_anchorset.save()
@@ -204,6 +205,7 @@ def copy_anchorset(request, anchor_set_name_slug):
 
             new_anchorset.set_wav_file_dir('data/recordings/{0}/{1}'.format(username, new_anchorset.slug))
             new_anchorset.set_cached_file_dir('data/cache/{0}/{1}'.format(username, new_anchorset.slug))
+            new_anchorset.cached_file_paths = anchorset.cached_file_paths
             new_anchorset.set_pitch_model_dir('data/pitch_model/{0}/{1}.mat'.format(username, new_anchorset.slug))
 
             new_anchorset.save()
@@ -279,7 +281,6 @@ def record(request, phoneme):
     user = User.objects.get(user_name=username)
     anchor_set_name_slug = request.session['current_anchorset']
     anchor_set = AnchorSet.objects.get(slug=anchor_set_name_slug, user=user)
-    display = anchor_set.display
     saved_phonemes = anchor_set.get_saved_phonemes()
     json_saved_phoneme = json.dumps(saved_phonemes)
     num_phoneme = 40
@@ -302,12 +303,12 @@ def record(request, phoneme):
             recording_blob = recording_file.read()
         recording_base64 = base64.b64encode(recording_blob)
         json_record_details = json.dumps([anchor.L, anchor.R, anchor.C, recording_base64])
-        context_dict = {'name': username, 'is_login': True, 'display': display,
+        context_dict = {'name': username, 'is_login': True,
                         'phoneme': phoneme, 'record_details': json_record_details,
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
                         'pitch_sentences': json_pitch_sentences}
     else:
-        context_dict = {'name': username, 'is_login': True, 'display': display,
+        context_dict = {'name': username, 'is_login': True,
                         'phoneme': phoneme, 'record_details': "[]",
                         'saved_phoneme': json_saved_phoneme, 'completed': completed,
                         'pitch_sentences': json_pitch_sentences}
