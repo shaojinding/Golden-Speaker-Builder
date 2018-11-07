@@ -437,4 +437,3 @@ class DeleteGoldenSpeakerViewTest(TestCase):
         response = self.client.get(reverse('delete_golden_speaker', args={'a-b-c'}))
         self.assertEqual(response.status_code, 302)
 
-        

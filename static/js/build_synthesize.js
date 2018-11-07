@@ -143,7 +143,7 @@ function getUtterances(audio, source) {
                 var strIdx = innerText.indexOf("]");
                 // var temp = innerText.substring(strIdx + 1, innerText.length);
                 var childIdx = transcriptions.indexOf(innerText.substring(strIdx + 1, innerText.length));
-                source.src = "/static/ARCTIC/audio/" + sourceModel + '/'  + utteranceNames[childIdx] + '.wav';
+                source.src = "/static/ARCTIC/" + sourceModel + '/test/recording/'  + utteranceNames[childIdx] + '.wav';
                 audio.load();
                 audio.play();
             };
