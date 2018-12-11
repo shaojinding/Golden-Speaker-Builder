@@ -1,0 +1,53 @@
+{% extends 'mpd/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Mispronunciation Detection{% endblock %}
+
+{% block nav_title3 %}
+    Mispronunciation Detection
+{% endblock %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static "css/mpd.css" %}"/>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/mpd.js" %}"></script>
+    <script src="{% static "js/recorder/recorder.js" %}"></script>
+    <script src="{% static "js/recorder/main_mpd.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.min.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.regions.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
+    <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
+
+{% endblock %}
+
+{% block bottom_block %}
+    <div id="SoundRecorder">
+        <!-- visualization parts : including waveform and timeline -->
+        <div id="viz">
+            <div id="wavesurf">
+            </div>
+            <div id="timeline">
+            </div>
+
+        </div>
+        <!-- control buttons -->
+        <div id="controls">
+            {#            <button id="record" class="ctrlButton" disabled></button>#}
+            {#            <button id="playPause" class="ctrlButton" disabled></button>#}
+            {#            <button id="zoomin" class="ctrlButton" disabled></button>#}
+            {#            <button id="zoomout" class="ctrlButton" disabled></button>#}
+            {#            <button id="save" class="ctrlButton" disabled></button>#}
+            {#            <i class="fa fa-wrench faa-wrench animated"></i>#}
+            {#            <i class="fa fa-microphone animated" aria-hidden="true"></i>#}
+            <button id="record" class="btn btn-default"></button>
+            <button id="playPause" class="btn btn-default"></button>
+            <button id="save" class="btn btn-default"></button>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
