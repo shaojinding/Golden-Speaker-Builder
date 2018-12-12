@@ -1,3 +1,6 @@
 [submodule "gsb_ppg_gmm_api"]
 	path = gsb_ppg_gmm_api
 	url = https://github.tamu.edu/dshj940428/gsb_ppg_gmm_api.git
+[submodule "gsb-mpd"]
+	path = gsb-mpd
+	url = https://github.tamu.edu/guanlong-zhao/gsb-mpd.git
