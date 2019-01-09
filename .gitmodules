@@ -4,3 +4,6 @@
 [submodule "gsb-mpd"]
 	path = gsb-mpd
 	url = https://github.tamu.edu/guanlong-zhao/gsb-mpd.git
+[submodule "textgrid-parser"]
+	path = textgrid-parser
+	url = https://github.com/burningding/textgrid-parser.git
