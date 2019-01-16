@@ -1,7 +1,13 @@
 {% extends 'mpd/base.html' %}
 {% load staticfiles %}
 
-{% block title %}Mispronunciation Detection{% endblock %}
+{% block title %}
+    Mispronunciation Detection
+{% endblock %}
+
+{% block nav_title1 %}
+    <a href="{% url 'index_mpd' %}">Home</a> &raquo;
+{% endblock %}
 
 {% block nav_title3 %}
     Mispronunciation Detection

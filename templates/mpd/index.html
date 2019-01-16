@@ -1,0 +1,44 @@
+{% extends 'mpd/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Mispronunciation Detection{% endblock %}
+
+{% block nav_title3 %}
+    Mispronunciation Detection
+{% endblock %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static "css/index.css" %}"/>
+
+{% endblock %}
+
+{% block bottom_block %}
+    <div id="InputUsername">
+        <form id="username_form" method="post" action="/mpd/"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- error message -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+            {{ username_form.as_p }}
+
+            <!-- Provide a button to click to submit the form. -->
+            <input type="submit" class="btn btn-default" name="submit" value="Submit" />
+        </form>
+    </div>
+
+
+{% endblock %}

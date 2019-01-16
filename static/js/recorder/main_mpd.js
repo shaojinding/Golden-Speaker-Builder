@@ -27,7 +27,9 @@ function toggleRecording( e ) {
         microphone.stop();
         e.classList.remove("recording");
         var playbtn = document.getElementById("playPause");
+        var savebtn = document.getElementById("save");
         playbtn.disabled = false;
+        savebtn.disabled = false;
         isRecording = false;
     } else {
         // start recording

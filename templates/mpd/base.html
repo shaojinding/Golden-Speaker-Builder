@@ -55,12 +55,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-maroon navbar-right">
 {#                <li id="nav_home"><a href="{% url 'index' %}">Home</a></li>#}
-                {% if is_login %}
-                    <li class="nav_title">Welcome, {{ name }}</li>
-                    <li><a href={% url 'logout' %}>Logout</a></li>
-                {% else %}
-                    <li><a href={% url 'login' %}>Login</a></li>
-                {% endif %}
+{#                {% if is_login %}#}
+{#                    <li class="nav_title">Welcome, {{ name }}</li>#}
+{#                    <li><a href={% url 'logout' %}>Logout</a></li>#}
+{#                {% else %}#}
+{#                    <li><a href={% url 'login' %}>Login</a></li>#}
+{#                {% endif %}#}
 
             </ul>
         </div>

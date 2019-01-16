@@ -68,7 +68,7 @@ $(document).ready( function() {
                     processData: false,
                     contentType: false
                 }).done(function () {
-
+                    getTextgrid();
                 });
             }
 
@@ -80,6 +80,11 @@ $(document).ready( function() {
 
 });
 
+function getTextgrid() {
+    $.get('/mpd/get_textgrid/', {utt_id: 0}, function(data){
+        var textgrid = JSON.parse(data);
+    });
+}
 
 function getCookie(name) {
     var cookieValue = null;
