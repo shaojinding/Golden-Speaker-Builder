@@ -16,10 +16,11 @@ def index(request):
     if request.method == 'POST':
         username_form = UsernameForm(data=request.POST)
         if username_form.is_valid():
-            user = username_form.save()
+            user = username_form.save(commit=False)
             request.session['username'] = user.username
             user.set_wav_file_dir('data/mpd/recordings/{0}'.format(user.username))
             user.set_textgrid_dir('data/mpd/textgrids/{0}'.format(user.username))
+            user.save()
             return redirect('/mpd/mpd')
         else:
             messages.error(request, 'Anchor set name should only contain A-Z, a-z, 0-9 and _')
@@ -44,8 +45,8 @@ def upload_audio(request):
         user = User.objects.get(username=username)
         recording_base64 = request.POST['recording']
         recording_blob = base64.b64decode(recording_base64)
-        with open("{0}/{1:04d}.wav".format(user.wav_file_dir, user.num_saved_recordings), "wb") as recording_file:
-            recording_file.write(recording_blob)
+        # with open("{0}/{1:04d}.wav".format(user.wav_file_dir, user.num_saved_recordings), "wb") as recording_file:
+        #     recording_file.write(recording_blob)
         user.num_saved_recordings += 1
         user.save()
     return HttpResponse('success')
@@ -57,9 +58,12 @@ def get_textgrid(request):
         utt_id = request.GET['utt_id']
         username = request.session['username']
         user = User.objects.get(username=username)
+        wav_dir = "{0}/{1:04d}.wav".format(user.wav_file_dir, int(utt_id))
+        trans_dir = "gsb-mpd/src/script/../../test/data/test_mono_channel.txt"
+        tg_dir = "{0}/{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id))
         os.environ.update({'CONDA_PATH': '/home/burning/Tools/anaconda2'})
-        os.system('./gsb-mpd/run_mpd.sh')
-        with open("{0}/{1:04d}.wav".format(user.textgrid_dir, int(utt_id)), "rb") as f:
+        os.system('./gsb-mpd/run_mpd.sh {0} {1} {2}'.format(wav_dir, trans_dir, tg_dir))
+        with open("{0}/{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id)), "rb") as f:
             text = f.readlines()
         text = remove_empty_lines(text)
         textgrid = TextGrid(text)

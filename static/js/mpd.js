@@ -1,5 +1,6 @@
 var wavesurfer = null;
 var microphone = null;
+var utt_id = 0;
 
 $(document).ready( function() {
     wavesurfer = WaveSurfer.create({
@@ -68,7 +69,8 @@ $(document).ready( function() {
                     processData: false,
                     contentType: false
                 }).done(function () {
-                    getTextgrid();
+                    getTextgrid(utt_id);
+                    utt_id = utt_id + 1;
                 });
             }
 
@@ -80,8 +82,8 @@ $(document).ready( function() {
 
 });
 
-function getTextgrid() {
-    $.get('/mpd/get_textgrid/', {utt_id: 0}, function(data){
+function getTextgrid(utt_id) {
+    $.get('/mpd/get_textgrid/', {utt_id: utt_id}, function(data){
         var textgrid = JSON.parse(data);
     });
 }
