@@ -33,11 +33,13 @@ def index(request):
         return render(request, 'mpd/index.html', context_dict)
 
 def mpd(request):
-    context_dict = {}
+    with open("gsb-mpd/src/script/../../test/data/test_mono_channel.txt", "rb") as f:
+        text = f.readlines()
+    json_file = json.dumps(text)
+    context_dict = {"sentences": json_file}
     return render(request, 'mpd/mpd.html', context_dict)
 
 # view for uploading annotations
-@login_required_auth0()
 @ensure_csrf_cookie
 def upload_audio(request):
     if request.method == 'POST':
@@ -45,14 +47,13 @@ def upload_audio(request):
         user = User.objects.get(username=username)
         recording_base64 = request.POST['recording']
         recording_blob = base64.b64decode(recording_base64)
-        # with open("{0}/{1:04d}.wav".format(user.wav_file_dir, user.num_saved_recordings), "wb") as recording_file:
-        #     recording_file.write(recording_blob)
+        with open("{0}/{1:04d}.wav".format(user.wav_file_dir, user.num_saved_recordings), "wb") as recording_file:
+            recording_file.write(recording_blob)
         user.num_saved_recordings += 1
         user.save()
     return HttpResponse('success')
 
 # ajax get query utterances for database
-@login_required_auth0()
 def get_textgrid(request):
     if request.method == 'GET':
         utt_id = request.GET['utt_id']
@@ -63,7 +64,9 @@ def get_textgrid(request):
         tg_dir = "{0}/{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id))
         os.environ.update({'CONDA_PATH': '/home/burning/Tools/anaconda2'})
         os.system('./gsb-mpd/run_mpd.sh {0} {1} {2}'.format(wav_dir, trans_dir, tg_dir))
-        with open("{0}/{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id)), "rb") as f:
+        # with open("{0}/{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id)), "rb") as f:
+        #     text = f.readlines()
+        with open("/home/burning/Project/golden-speaker/gsb-mpd/exp/temp/test.TextGrid", "rb") as f:
             text = f.readlines()
         text = remove_empty_lines(text)
         textgrid = TextGrid(text)

@@ -24,10 +24,15 @@
     <script src="{% static "js/wavesurfer/wavesurfer.spectrogram.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.timeline.js" %}"></script>
     <script src="{% static "js/wavesurfer/wavesurfer.microphone.js" %}"></script>
-
+    <script type="text/javascript">
+        sentences = {{ sentences|safe }};
+    </script>
 {% endblock %}
 
 {% block bottom_block %}
+    <div style="float: left;clear: both">
+        <p id="sentence-display" style="font-size: 30px; line-height: 40px; font-family: Courier; text-align: center; padding-top: 20px; margin-bottom: 50px;"></p>
+    </div>
     <div id="SoundRecorder">
         <!-- visualization parts : including waveform and timeline -->
         <div id="viz">
@@ -47,14 +52,17 @@
             {#            <i class="fa fa-wrench faa-wrench animated"></i>#}
             {#            <i class="fa fa-microphone animated" aria-hidden="true"></i>#}
             <button id="record" class="btn btn-default"></button>
-            <button id="playPause" class="btn btn-default"></button>
-            <button id="save" class="btn btn-default"></button>
+            <button id="playPause" class="btn btn-default" disabled></button>
+            <button id="save" class="btn btn-default" disabled></button>
 
         </div>
     </div>
 
-    <div id="mpd-display">
-
+    <div id="mpd-display" style="float: left;clear: both">
+        <table id="mpd-table" class="table table-bordered">
+            <tr id="mpd-word"></tr>
+            <tr id="mpd-phoneme"></tr>
+        </table>
     </div>
 
 
