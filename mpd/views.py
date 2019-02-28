@@ -19,6 +19,7 @@ def index(request):
             user = username_form.save(commit=False)
             request.session['username'] = user.username
             user.set_wav_file_dir('data/mpd/recordings/{0}'.format(user.username))
+            user.set_transcription_dir('data/mpd/transcriptions/{0}'.format(user.username))
             user.set_textgrid_dir('data/mpd/textgrids/{0}'.format(user.username))
             user.save()
             return redirect('/mpd/mpd')
@@ -46,11 +47,14 @@ def upload_audio(request):
         username = request.session['username']
         user = User.objects.get(username=username)
         recording_base64 = request.POST['recording']
+        transcription = request.POST['transcription']
         utt_id = request.POST['utt_id']
         repeat_id = request.POST['repeat_id']
         recording_blob = base64.b64decode(recording_base64)
         with open("{0}/{1:04d}_{1:04d}.wav".format(user.wav_file_dir, int(utt_id), int(repeat_id)), "wb") as recording_file:
             recording_file.write(recording_blob)
+        with open("{0}/{1:04d}_{1:04d}.txt".format(user.transcription_dir, int(utt_id), int(repeat_id)), "w") as transcription_file:
+            transcription_file.write(transcription)
         # user.num_saved_recordings += 1
         # user.save()
     return HttpResponse('success')

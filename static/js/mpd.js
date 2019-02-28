@@ -55,6 +55,12 @@ $(document).ready( function() {
     });
 
     $("#save").click(function () {
+        var savebtn = document.getElementById("save");
+        savebtn.disabled = true;
+        var recordbtn = document.getElementById("record");
+        recordbtn.disabled = true;
+        var playPausebtn = document.getElementById("playPause");
+        playPausebtn.disabled = true;
         try {
             var csrftoken = getCookie('csrftoken');
             $.ajaxSetup({
@@ -71,6 +77,7 @@ $(document).ready( function() {
                 var base64data = reader.result;
                 var base64blob = base64data.substring(22, base64data.length);
                 fd.append('recording', base64blob);
+                fd.append('transcription', sentences[utt_id])
                 fd.append('utt_id', utt_id);
                 fd.append('repeat_id', repeat_id);
                 $.ajax({
@@ -83,6 +90,12 @@ $(document).ready( function() {
                     cleanDisplayMPD();
                     getTextgrid(utt_id, repeat_id);
                     repeat_id = repeat_id + 1;
+                    var savebtn = document.getElementById("save");
+                    savebtn.disabled = false;
+                    var recordbtn = document.getElementById("record");
+                    recordbtn.disabled = false;
+                    var playPausebtn = document.getElementById("playPause");
+                    playPausebtn.disabled = false;
                 });
             }
 
