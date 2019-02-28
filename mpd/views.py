@@ -65,7 +65,7 @@ def get_textgrid(request):
         wav_dir = "{0}/{1:04d}_{1:04d}.wav".format(user.wav_file_dir, int(utt_id), int(repeat_id))
         trans_dir = "gsb-mpd/src/script/../../test/data/test_mono_channel.txt"
         tg_dir = "{0}/{1:04d}_{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id), int(repeat_id))
-        os.environ.update({'CONDA_PATH': '/home/burning/Tools/anaconda2'})
+        os.environ.update({'CONDA_PATH': '/root/anaconda3'})
         os.system('./run_mpd.sh {0} {1} {2}'.format(wav_dir, trans_dir, tg_dir))
         with open("{0}/{1:04d}_{1:04d}.TextGrid".format(user.textgrid_dir, int(utt_id), int(repeat_id)), "rb") as f:
             text = f.readlines()
