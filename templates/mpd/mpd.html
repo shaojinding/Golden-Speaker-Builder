@@ -31,7 +31,14 @@
 
 {% block bottom_block %}
     <div style="float: left;clear: both">
-        <p id="sentence-display" style="font-size: 30px; line-height: 40px; font-family: Courier; text-align: center; padding-top: 20px; margin-bottom: 50px;"></p>
+        <p style="font-size: 30px; line-height: 40px; font-family: Courier; text-align: center; padding-top: 20px;">Step 1: Read and record the sentence</p>
+
+<table id="pitch-info-table" class="table-bordered table-striped">
+                <tr>
+                    {#                <th>Please record the following sentence:<span id="PassageText" class="label label-info info-span"></span></th>#}
+                    <th id="sentence-display"></th>
+                </tr>
+            </table>
     </div>
     <div id="SoundRecorder">
         <!-- visualization parts : including waveform and timeline -->
@@ -58,12 +65,14 @@
         </div>
     </div>
 
-    <div id="mpd-display" style="float: left;clear: both">
+    <div id="mpd-display" style="float: left;clear: both;">
         <table id="mpd-table" class="table table-bordered">
             <tr id="mpd-word"></tr>
             <tr id="mpd-phoneme"></tr>
         </table>
     </div>
+
+    <button id="next" type="button" class="btn btn-success" style="float: right; clear: both">Next</button>
 
 
 

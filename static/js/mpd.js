@@ -1,6 +1,7 @@
 var wavesurfer = null;
 var microphone = null;
 var utt_id = 0;
+var repeat_id = 0;
 var sentences = null;
 var ALPHABET_TO_IPA_DICT = {'AA': 'ɑ', 'AE': 'æ', 'AH': 'ʌ', 'AO': 'ɔ', 'AW': 'aʊ', 'AX': 'ə', 'AY': 'aɪ', 'EH': 'ɛ',
                             'ER': 'ɝ', 'EY': 'eɪ', 'IH': 'ɪ', 'IY': 'i', 'OW': 'oʊ', 'OY': 'ɔɪ', 'UH': 'ʊ', 'UW': 'u',
@@ -70,6 +71,8 @@ $(document).ready( function() {
                 var base64data = reader.result;
                 var base64blob = base64data.substring(22, base64data.length);
                 fd.append('recording', base64blob);
+                fd.append('utt_id', utt_id);
+                fd.append('repeat_id', repeat_id);
                 $.ajax({
                     type: 'POST',
                     url: '/mpd/upload_audio/',
@@ -77,8 +80,9 @@ $(document).ready( function() {
                     processData: false,
                     contentType: false
                 }).done(function () {
-                    getTextgrid(utt_id);
-                    utt_id = utt_id + 1;
+                    cleanDisplayMPD();
+                    getTextgrid(utt_id, repeat_id);
+                    repeat_id = repeat_id + 1;
                 });
             }
 
@@ -88,17 +92,40 @@ $(document).ready( function() {
         }
     });
 
+    $("#next").click(function (){
+        utt_id = utt_id + 1;
+        $("#sentence-display").html(sentences[utt_id]);
+        cleanDisplayMPD();
+        //document.getElementById("mpd-word").outerHTML = "";
+        //document.getElementById("mpd-phoneme").outerHTML = "";
+        //$("#mpd-display").css("display", "none");
+
+
+        //document.getElementsByClassName("remove-ele").remove();
+    });
+
 });
 
+function cleanDisplayMPD() {
+    var node = document.getElementById("mpd-word");
+        while (node.children.length > 0) {
+            node.removeChild(node.children[0])
+        }
+        var node = document.getElementById("mpd-phoneme");
+        while (node.children.length > 0) {
+            node.removeChild(node.children[0])
+        }
+}
+
 function getTextgrid(utt_id) {
-    $.get('/mpd/get_textgrid/', {utt_id: utt_id}, function(data){
+    $.get('/mpd/get_textgrid/', {utt_id: utt_id, repeat_id: repeat_id}, function(data){
         var textgrid = JSON.parse(data);
         var word_tier = textgrid.tiers[0];
         var phoneme_tier = textgrid.tiers[1];
         var error_tier = textgrid.tiers[2];
         for (var i=0; i<word_tier.items.length; i++) {
-            var word_el = $('<th></th>');// word element
-            var phoneme_in_word_el = $('<td></td>');// phonemes in a td, corresponding to a word
+            var word_el = $('<th class="remove-ele"></th>');// word element
+            var phoneme_in_word_el = $('<td class="remove-ele"></td>');// phonemes in a td, corresponding to a word
             var word = word_tier.items[i];
             if (word.text.length != 0) {
                 word_el.html(word.text);
@@ -119,8 +146,11 @@ function getTextgrid(utt_id) {
                     }
                 }
                 $('#mpd-phoneme').append(phoneme_in_word_el);
+
             }
         }
+        //$("#mpd-display").css("display", "block")
+        //document.getElementById("mpd-word").removeChild(this)
     });
 }
 

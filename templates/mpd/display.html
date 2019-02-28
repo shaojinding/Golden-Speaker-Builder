@@ -1,0 +1,106 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <html><head><title>NLP: shjd</title>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://nlp.engl.iastate.edu/css/nlp.css?v=2" type="text/css" media="all" />
+    <script>
+      var isNode = (typeof process !== "undefined" && typeof require !== "undefined");
+      if (isNode) {
+        var gui=require('nw.gui');
+        gui.Window.get().maximize();
+      }
+    </script>
+    </head><body>
+
+    <div class="no-print">
+    <div id="page-header">
+    <div id="isu-masthead">
+    <div class="container">
+    <div id="header-profile"><i class="fa fa-user"></i> shjd | <a href="/profile/">my profile</a> | <a href="/profile/welcome.p?logout=1">log out</a></div>
+    <a href="http://www.iastate.edu" id="isu-logo" title="Iowa State University" target="_blank"><img src="https://nlp.engl.iastate.edu/css/isu-nameplate.png" alt="Iowa State University"></a>
+    <a href="/a/" id="app-link">Evgeny Chukharev-Hudilainen, PhD</a>
+    </div>
+    </div>
+    <div id="isu-goldline">
+    </div>
+  <div id="nav-menu"><div class="container"><a href='/a/'>Welcome</a><a href='/a/participant/'>Research Participant</a></div></div><div style="clear: both; height: 15px;"></div></div></div><div id="page"><div class=narrow><p style='font-size: 30px; float: right; text-align: right;'>SHJD</p><p style='font-size: 30px; float: left; color: red; display: none;' id='timeout'>Time to move on!</p><div style='clear:both;'></div><script>var learnerFname = "audio/original_recordings/SHJD_915.wav"; var teacherFname = ""; var sentence="Cri|ckets be|gan to chirp, and more geese and ducks flew o|ver|head.";</script><form id="form" method="post" action="./"><input type=hidden name=id value="915"><input type=hidden name=annotation id="annotation" value=""><input type=hidden name=demo value="0"></form><style>
+  .clickable:hover { background-color: yellow; cursor: pointer; }
+  .selected { background-color: #ffbbbb; }
+  .selected:hover { background-color: #ff0000; }
+  .fa:hover { cursor: pointer; color: red; }
+  .recording i { animation: blinker 1s linear infinite; color: red; }
+  @keyframes blinker { 50% { opacity: 0; } }
+</style>
+
+<div style="padding-top: 40px; width: 700px; margin: auto;">
+  <div style="width: 50%; float: left; text-align: center;" id="your-reading">
+    Step 1: Listen to your recording<p><i class="fa fa-play-circle-o" style="font-size: 100px;"></i>
+  </div>
+  <div style="width: 50%; float: right; text-align: center;" id="model-reading">
+    Step 2: Listen to the model recording<p><i class="fa fa-play-circle-o" style="font-size: 100px;"></i>
+  </div>
+
+  <div style="text-align: center; clear: both; padding-top: 30px;">Step 3: Highlight your mispronunciations</div>
+  <div id="annotation_box" style="font-size: 30px; line-height: 40px; font-family: Courier; text-align: center; padding-top: 20px; margin-bottom: 50px;">
+  </div>
+
+  <p style="text-align: center;">Please click "Next" only when you are done with this sentence. There is no way to go back.</p>
+
+  <div style="width: 100%; float: right; text-align: center; display:none;" id="next">
+    <i class="fa fa-caret-right" style="font-size: 50px;"></i>
+    <p>Next</p>
+  </div>
+
+  <audio autoplay><source></source></audio>
+</div>
+
+<script>
+  var step1clicked, step2clicked;
+
+  function displaySentence() {
+    $('#next').hide();
+    sentence = sentence.replace(/\s+/g, '| |');
+    var list = sentence.split('|');
+    for (var i=0; i<list.length; i++) {
+      var el = $('<span></span>');
+      el.html(list[i]);
+      el.attr('data-index', i+1);
+      if (list[i] != ' ') el.addClass('clickable');
+      $('#annotation_box').append(el);
+    }
+
+    $('.clickable').click(function() {
+      $(this).toggleClass('selected');
+    });
+  }
+
+  $('#your-reading').click(function() {
+    $('audio source').attr('src', learnerFname);
+    $('audio').get(0).load();
+    step1clicked=true;
+    if (step2clicked) $('#next').show();
+  });
+  $('#model-reading').click(function() {
+    $('audio source').attr('src', teacherFname);
+    $('audio').get(0).load();
+    step2clicked=true;
+    if (step1clicked) $('#next').show();
+  });
+  $("#next").click(function() {
+    $("#next").fadeOut('slow');
+    var out = [];
+    $('.selected').each(function() {
+      out.push(parseInt($(this).attr('data-index')));
+    });
+    console.log(out);
+    $('#annotation').val(out.join(','));
+    $('#form').submit();
+  });
+
+  displaySentence();
+  setTimeout(function() { $('#timeout').fadeIn('slow') }, 5 * 60 * 1000);
+</script>
+<div style='clear: both;'></div></div></div></body></html>
