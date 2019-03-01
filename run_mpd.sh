@@ -38,7 +38,7 @@ echo "Activate conda env"
 conda activate gsb-mpd-prod
 
 # Include the package in the python search path
-PROJECT_PATH=/home/burning/Project/golden-speaker/gsb-mpd
+PROJECT_PATH=/var/gzhao/gsb-mpd
 export PYTHONPATH=${PROJECT_PATH}/src:$PYTHONPATH
 
 mkdir -p gsb-mpd/exp/temp
