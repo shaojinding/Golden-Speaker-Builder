@@ -90,8 +90,6 @@ $(document).ready( function() {
                     cleanDisplayMPD();
                     getTextgrid(utt_id, repeat_id);
                     repeat_id = repeat_id + 1;
-                    var savebtn = document.getElementById("save");
-                    savebtn.disabled = false;
                     var recordbtn = document.getElementById("record");
                     recordbtn.disabled = false;
                     var playPausebtn = document.getElementById("playPause");
@@ -109,6 +107,9 @@ $(document).ready( function() {
         utt_id = utt_id + 1;
         $("#sentence-display").html(sentences[utt_id]);
         cleanDisplayMPD();
+        var playPausebtn = document.getElementById("playPause");
+        playPausebtn.disabled = true;
+        wavesurfer.empty();
         //document.getElementById("mpd-word").outerHTML = "";
         //document.getElementById("mpd-phoneme").outerHTML = "";
         //$("#mpd-display").css("display", "none");
