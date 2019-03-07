@@ -45,13 +45,7 @@ $(document).ready( function() {
         toggleRecording(this);
     });
     $("#playPause").click(function (){
-        if (regionVar == null) {
-            wavesurfer.playPause();
-        }
-        else {
-            regionVar.play();
-        }
-
+        wavesurfer.playPause();
     });
 
     $("#save").click(function () {
