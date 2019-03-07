@@ -42,7 +42,7 @@ PROJECT_PATH=/var/gzhao/gsb-mpd
 export PYTHONPATH=${PROJECT_PATH}/src:$PYTHONPATH
 
 mkdir -p gsb-mpd/exp/temp
-python /var/gzhao/gsb-mpd/src/script/runtime_mpd_demo.py ${wav_dir} ${trans_dir} ${save_dir}
+python /var/gzhao/gsb-mpd/src/script/runtime_mpd_demo_v3_api.py ${wav_dir} ${trans_dir} ${save_dir}
 
 echo "All done."
 
