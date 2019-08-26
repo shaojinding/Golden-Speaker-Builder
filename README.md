@@ -22,3 +22,4 @@ MATLAB
 *  `cd "matlabroot\extern\engines\python"`
 *  `python setup.py install --prefix="/usr/lib/python2.7/site-packages"`
 
+GMM-backend: see [this repo]() for instructions
