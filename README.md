@@ -22,4 +22,32 @@ MATLAB
 *  `cd "matlabroot\extern\engines\python"`
 *  `python setup.py install --prefix="/usr/lib/python2.7/site-packages"`
 
-GMM-backend: see [this repo]() for instructions
+## Config the application
+First, run `git clone https://github.tamu.edu/dshj940428/golden-speaker.git` to clone the repo to the servere. For example, on current GSB server, the directory to the repo is `/var/golden-speaker`.
+
+Second, download and extract the needed files from [here]() to `/var/ARCTIC_v3`.
+
+Third, config the MATLAB backend code. Run the following commands:
+
+```
+mkdir /var/gzhao
+cd /var/gzhao
+git clone https://github.tamu.edu/guanlong-zhao/vc-tools.git
+cd /var/gzhao/vc-tools
+git checkout gsb
+```
+
+Finally, configure the application by running:
+```
+sh deploy_script.sh
+```
+
+## Start the application
+```
+sh run.sh
+```
+
+## Stop the application
+```
+sh stop.sh
+```
