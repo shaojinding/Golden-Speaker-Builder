@@ -2,9 +2,9 @@
 This repository contains the code for Golden Speaker Builder.
 
 ## Server requirement (suggested)
-*  >8-core CPU
-*  >1TB harddrive
-*  >32GB memory
+*  8-core CPU
+*  1TB harddrive
+*  32GB memory
 
 ## Dependency
 Nginx
