@@ -1,0 +1,17 @@
+# Setting
+input_size = 80
+hidden_size = 40
+num_classes = 1
+num_epochs = 100
+batch_size = 128
+learning_rate = 0.001
+model_type = 'L2ArcticFCnetJoint'
+# If is_train is False, then have to provide a path with cached model files.
+is_train = True
+# Path to dir that contains pre-trained models.
+cache_dir = ''
+is_rbm = False
+# Path to pre-trained RBM model.
+rbm_path = ''
+is_test = False
+is_train_all_all_data = True
