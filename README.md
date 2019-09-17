@@ -32,7 +32,7 @@ Third, config the MATLAB backend code. Run the following commands:
 ```
 mkdir /var/gzhao
 cd /var/gzhao
-git clone https://github.tamu.edu/guanlong-zhao/vc-tools.git
+git clone https://github.com/guanlongzhao/ppg-gmm.git
 cd /var/gzhao/vc-tools
 git checkout gsb
 ```
