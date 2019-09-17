@@ -15,6 +15,13 @@ Python
 *  Python version: 2.7
 *  Python dependencies: `pip install -r requirements.txt`
 
+RabbitMQ server
+```
+sudo yum install rabbitmq-server.noarch
+systemctl enable rabbitmq-server
+systemctl start rabbitmq-server
+```
+
 MATLAB
 *  MATLAB version: R2016a
 
