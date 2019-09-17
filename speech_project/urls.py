@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^speech/', include('speech.urls')),
     url(r'^auth/', include('django_auth0.urls')),
-    url(r'^mpd/', include('mpd.urls')),
     #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root', settings.STATIC_ROOT}),
     #url(r'^notifications/', include('pinax.notifications.urls')),
 ]

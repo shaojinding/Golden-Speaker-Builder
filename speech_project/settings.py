@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'speech',
-    'mpd',
     'django_auth0',
 ]
 
