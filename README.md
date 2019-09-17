@@ -23,7 +23,7 @@ MATLAB
 *  `python setup.py install --prefix="/usr/lib/python2.7/site-packages"`
 
 ## Config the application
-First, run `git clone https://github.tamu.edu/dshj940428/golden-speaker.git` to clone the repo to the servere. For example, on current GSB server, the directory to the repo is `/var/golden-speaker`.
+First, run `git clone https://github.com/shaojinding/Golden-Speaker-Builder.git` to clone the repo to the servere. For example, on current GSB server, the directory to the repo is `/var/golden-speaker`.
 
 Second, download and extract the needed files from [here]() to `/var/ARCTIC_v3`.
 
